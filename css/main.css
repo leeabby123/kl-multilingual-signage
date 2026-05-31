@@ -24,14 +24,18 @@
   color: var(--top-cream);
   font-family: var(--font-ms-en);
   display: flex;
-  align-items: center;
+  align-items: flex-start;     /* anchor content to top so footer doesn't get cut */
   justify-content: center;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  overflow-y: auto;            /* allow scroll within section if very small viewport */
 }
 
 .top-content {
   width: 100%;
-  max-width: 720px;
-  padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+  max-width: 640px;            /* tighter to avoid overflow on edge cases */
+  padding: var(--space-md) var(--space-md);
+  margin: 0 auto;
 }
 
 .top-label {
@@ -133,28 +137,33 @@
 
 .top-footer-meta + .top-footer-meta { margin-top: 6px; }
 
-/* Top page → Hub button (top-right corner) */
+/* Hub entry button — arrow icon, NOT text (cross-language friendly per Kunm) */
 .enter-hub-btn {
   position: absolute;
   top: var(--space-md);
   right: var(--space-md);
-  background: rgba(255, 204, 0, 0.1);
+  background: rgba(255, 204, 0, 0.12);
   border: 1px solid var(--top-gold-line-strong);
   color: var(--top-gold);
-  padding: 8px 16px;
-  font-size: var(--text-micro);
-  letter-spacing: 0.2em;
-  border-radius: var(--radius-sm);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   transition: var(--transition-fast);
-  text-transform: uppercase;
-  font-family: var(--font-ms-en);
   z-index: 10;
+  cursor: pointer;
+  font-size: 26px;
 }
 
 .enter-hub-btn:hover {
-  background: rgba(255, 204, 0, 0.2);
+  background: rgba(255, 204, 0, 0.25);
   border-color: var(--top-gold);
+  transform: translateX(2px);
 }
+
+.enter-hub-btn i { line-height: 1; }
 
 /* Scroll cue — down arrow */
 .scroll-cue {
@@ -182,68 +191,184 @@
 }
 
 /* ============================================================
-   SECTION: MIDDLE (Landing) — Watercolor garden
+   SECTION: MIDDLE (Landing) — Watercolor garden, fills viewport
    ============================================================ */
 .section--middle {
   background: var(--neutral-cream);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
 }
 
 .middle-art {
+  position: absolute;
+  inset: 0;                /* fill the section completely */
   width: 100%;
-  max-width: 1200px;
   height: 100%;
+}
+
+.middle-art object,
+.middle-art svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Force SVG to cover the viewport like background-size:cover */
+.middle-art object {
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+/* ============================================================
+   5-Color Flower Switcher — Per memory #29
+   - Big enough to be recognizably interactive (not decorative)
+   - Labels next to each flower (self-referential script)
+   - NO hover animation (cause of shaking bug)
+   - Click-only switching
+   ============================================================ */
+.lang-switcher {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 220px;            /* much bigger than before (was 120px) */
+  height: 220px;
+  z-index: 100;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.10));
+  pointer-events: none;    /* let svg children handle pointer events selectively */
+}
+
+.lang-switcher svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+/* Click target — NO transform/scale on hover (this is what caused the shake) */
+.lang-petal {
+  cursor: pointer;
+  outline: none;
+}
+
+.lang-petal-hit {
+  /* The clickable circle behind each flower — invisible but capturable */
+  fill: transparent;
+  cursor: pointer;
+  transition: fill 0.15s ease;
+}
+
+.lang-petal:hover .lang-petal-hit {
+  fill: rgba(0, 0, 0, 0.03);   /* whisper-subtle background, NO movement */
+}
+
+.lang-petal:focus-visible .lang-petal-hit {
+  fill: rgba(0, 0, 0, 0.06);
+}
+
+.lang-label {
+  font-family: var(--font-ms-en);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--neutral-gray-700);
+  pointer-events: none;
+  user-select: none;
+}
+
+.lang-label--zh { font-family: var(--font-zh); }
+.lang-label--ta { font-family: var(--font-ta); }
+.lang-label--jawi { font-family: var(--font-jawi); font-size: 13px; }
+
+.lang-switcher.scrolled-fade {
+  /* Used by JS to fade switcher when scrolling to top page (legend fades with flowers) */
+  opacity: 0.15;
+  transition: opacity 0.6s ease;
+}
+
+/* ============================================================
+   Middle Page Scroll Arrows — BIG, eye-catching, instantly recognizable
+   ============================================================ */
+.middle-scroll-up,
+.middle-scroll-down {
+  position: absolute;
+  left: 50%;
+  z-index: 8;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  /* Backdrop pill so arrow is visible against any background */
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.middle-scroll-up {
+  top: var(--space-md);
+  transform: translateX(-50%);
+  color: var(--top-navy);
+  animation: bounce-up 2s ease-in-out infinite;
+}
+
+.middle-scroll-down {
+  bottom: var(--space-md);
+  transform: translateX(-50%);
+  color: var(--bottom-coral-bright);
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+.middle-scroll-up:hover,
+.middle-scroll-down:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.middle-scroll-up .arrow-icon,
+.middle-scroll-down .arrow-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
 }
 
-.middle-art svg {
-  width: 100%;
-  height: auto;
-  max-height: 90vh;
+.middle-scroll-up .arrow-icon svg,
+.middle-scroll-down .arrow-icon svg {
+  width: 48px;
+  height: 48px;
+  display: block;
 }
 
-/* Up arrow at top of middle page */
-.middle-scroll-up {
-  position: absolute;
-  top: var(--space-md);
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--neutral-gray-400);
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 5;
-  animation: bounce-up 2.5s ease-in-out infinite;
-  text-decoration: none;
+.middle-scroll-up .arrow-label,
+.middle-scroll-down .arrow-label {
+  font-size: var(--text-caption);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.75;
 }
 
-.middle-scroll-up:hover { color: var(--top-navy); }
-
-/* Down arrow at bottom of middle page */
-.middle-scroll-down {
-  position: absolute;
-  bottom: var(--space-md);
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--neutral-gray-400);
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 5;
-  animation: bounce-down 2.5s ease-in-out infinite;
-  text-decoration: none;
+/* Replace earlier bounce keyframes to use translateX(-50%) properly */
+@keyframes bounce-up {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
 }
-
-.middle-scroll-down:hover { color: var(--bottom-coral); }
+@keyframes bounce-down {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
 
 /* ============================================================
-   SECTION: BOTTOM (民间多语) — Warm placeholder
+   SECTION: BOTTOM (民间多语) — Bright peach/coral, festive mood
    ============================================================ */
 .section--bottom {
-  background: linear-gradient(180deg, var(--bottom-peach) 0%, #f8e0d0 100%);
+  background:
+    radial-gradient(circle at 25% 30%, rgba(255, 204, 0, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 75% 70%, rgba(255, 138, 91, 0.22) 0%, transparent 45%),
+    linear-gradient(180deg, var(--bottom-peach) 0%, var(--bottom-peach-deep) 100%);
   color: var(--bottom-warm-ink);
   display: flex;
   align-items: center;
@@ -251,10 +376,13 @@
   flex-direction: column;
   text-align: center;
   padding: var(--space-2xl) var(--space-lg);
+  position: relative;
 }
 
 .bottom-placeholder {
-  max-width: 600px;
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
 }
 
 .bottom-tagline {
@@ -264,73 +392,27 @@
   color: var(--bottom-warm-ink);
   margin: 0 0 var(--space-md);
   line-height: var(--leading-tight);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .bottom-tagline-secondary {
   font-size: var(--text-body);
-  color: var(--bottom-warm-ink);
-  opacity: 0.75;
+  color: var(--bottom-warm-ink-soft);
   margin: 0 0 var(--space-xl);
   line-height: var(--leading-relaxed);
 }
 
 .bottom-tagline-secondary > div {
-  margin-bottom: var(--space-xs);
+  margin-bottom: 6px;
 }
 
 .bottom-placeholder-note {
   font-size: var(--text-caption);
-  color: var(--bottom-warm-ink);
-  opacity: 0.4;
+  color: var(--bottom-warm-ink-soft);
+  opacity: 0.55;
   font-style: italic;
   margin-top: var(--space-2xl);
 }
-
-/* ============================================================
-   5-Color Flower Switcher Component
-   Per memory #29: 5 small hibiscus arranged as petals of larger hibiscus
-   ONLY appears on 5 secondary pages, NOT on main index
-   ============================================================ */
-.lang-switcher {
-  position: fixed;
-  top: var(--space-md);
-  right: var(--space-md);
-  width: 120px;
-  height: 120px;
-  z-index: 100;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
-}
-
-.lang-switcher svg {
-  width: 100%;
-  height: 100%;
-}
-
-.lang-petal {
-  cursor: pointer;
-  transition: var(--transition-fast);
-  transform-origin: center;
-}
-
-.lang-petal:hover {
-  filter: brightness(1.15);
-  transform: scale(1.08);
-}
-
-.lang-petal.active {
-  filter: brightness(1.2);
-}
-
-.lang-petal-label {
-  font-size: 8px;
-  fill: var(--neutral-gray-700);
-  text-anchor: middle;
-  pointer-events: none;
-  opacity: 0;
-  transition: var(--transition-fast);
-}
-
-.lang-petal:hover + .lang-petal-label { opacity: 1; }
 
 /* ============================================================
    Loading state (avoid flash before JS scrolls to middle)

@@ -1,0 +1,425 @@
+/* ============================================================
+   Secondary Pages Stylesheet
+   Used by: about, sources, members, timeline, acknowledgements
+   Per memory #28: "systematic variation" — design system locked,
+   content layout varies per page based on content type
+   ============================================================ */
+
+.page-secondary {
+  background: var(--neutral-cream);
+  color: var(--neutral-gray-700);
+  min-height: 100vh;
+}
+
+.secondary-page {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-lg) var(--space-2xl);
+}
+
+.secondary-back {
+  position: fixed;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 50;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: var(--text-small);
+  color: var(--neutral-gray-700);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 999px;
+  border: 1px solid var(--neutral-gray-100);
+  transition: var(--transition-fast);
+}
+
+.back-link:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--top-navy);
+}
+
+/* === Headings === */
+.secondary-page h1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1);
+  color: var(--neutral-gray-900);
+  margin: 0 0 var(--space-md);
+  line-height: var(--leading-tight);
+  font-weight: 500;
+}
+
+.secondary-page h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  color: var(--neutral-gray-900);
+  margin: var(--space-xl) 0 var(--space-sm);
+  line-height: var(--leading-tight);
+  font-weight: 500;
+}
+
+.secondary-page h3 {
+  font-family: var(--font-ms-en);
+  font-size: var(--text-h3);
+  color: var(--neutral-gray-900);
+  margin: var(--space-lg) 0 var(--space-xs);
+  font-weight: 600;
+}
+
+.secondary-page .lede {
+  font-size: 1.15rem;
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-gray-700);
+  font-weight: 400;
+  margin: 0 0 var(--space-xl);
+  font-family: var(--font-serif);
+}
+
+.secondary-page p {
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-md);
+  color: var(--neutral-gray-700);
+}
+
+.secondary-page p strong {
+  color: var(--neutral-gray-900);
+  font-weight: 600;
+}
+
+.secondary-page em {
+  font-style: italic;
+  color: var(--neutral-gray-700);
+}
+
+/* === About-specific: text-left prose layout (memory #28) === */
+.secondary-page--prose section {
+  margin-bottom: var(--space-xl);
+}
+
+/* === 3-layer framework cards === */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.framework-card {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--neutral-paper);
+  border-top: 4px solid var(--neutral-gray-200);
+}
+
+.framework-card--ms { border-top-color: var(--color-ms); }
+.framework-card--zhta {
+  border-top: none;
+  background: linear-gradient(to right,
+    color-mix(in srgb, var(--color-zh) 8%, var(--neutral-paper)) 50%,
+    color-mix(in srgb, var(--color-ta) 8%, var(--neutral-paper)) 50%);
+  position: relative;
+}
+.framework-card--zhta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--color-zh) 50%, var(--color-ta) 50%);
+}
+.framework-card--en { border-top-color: var(--color-en); }
+
+.framework-label {
+  font-weight: 700;
+  font-size: var(--text-body);
+  color: var(--neutral-gray-900);
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+
+.framework-mode {
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--neutral-gray-400);
+  margin-bottom: var(--space-xs);
+}
+
+.framework-text {
+  font-size: var(--text-small);
+  line-height: var(--leading-normal);
+  color: var(--neutral-gray-700);
+}
+
+/* === Findings list === */
+.findings-list {
+  padding-left: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.findings-list li {
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-xs);
+  color: var(--neutral-gray-700);
+}
+
+.sample-limited {
+  color: var(--neutral-gray-400);
+  border-bottom: 1px dashed var(--neutral-gray-200);
+  padding-bottom: 1px;
+}
+
+.sample-caveat {
+  font-size: var(--text-caption);
+  color: var(--neutral-gray-400);
+  padding: var(--space-sm);
+  background: var(--neutral-gray-50);
+  border-left: 3px solid var(--neutral-gray-200);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+}
+
+/* === Sources page === */
+.sources-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--text-small);
+}
+
+.sources-table th, .sources-table td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--neutral-gray-100);
+  vertical-align: top;
+}
+
+.sources-table thead th {
+  background: var(--neutral-gray-50);
+  font-weight: 600;
+  color: var(--neutral-gray-900);
+  border-bottom: 2px solid var(--neutral-gray-200);
+}
+
+.sources-table tr:hover { background: var(--neutral-gray-50); }
+
+.district-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.district-dot--ps { background: var(--district-ps); }
+.district-dot--li { background: var(--district-li); }
+.district-dot--bb { background: var(--district-bb); }
+.district-dot--kb { background: var(--district-kb); }
+
+/* === Members page (memory #28: centered grid, 5 people equal) === */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+
+.member-card {
+  background: var(--neutral-paper);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+  border: 1px solid var(--neutral-gray-100);
+  transition: var(--transition-fast);
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.member-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--text-h3);
+  color: white;
+}
+.member-avatar--a { background: var(--district-kb); }
+.member-avatar--b { background: var(--district-ps); }
+.member-avatar--c { background: var(--district-bb); }
+.member-avatar--d { background: var(--district-li); }
+.member-avatar--e { background: linear-gradient(135deg, var(--color-zh), var(--color-en)); }
+
+.member-name {
+  font-weight: 600;
+  color: var(--neutral-gray-900);
+  margin-bottom: 2px;
+  font-size: var(--text-body);
+}
+
+.member-role {
+  font-size: var(--text-caption);
+  color: var(--neutral-gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-xs);
+}
+
+.member-task {
+  font-size: var(--text-small);
+  color: var(--neutral-gray-700);
+  line-height: var(--leading-normal);
+}
+
+.advisor-bar {
+  text-align: center;
+  padding: var(--space-md);
+  background: var(--neutral-gray-50);
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0 var(--space-xl);
+}
+
+.advisor-label {
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--neutral-gray-400);
+  margin-bottom: 4px;
+}
+
+.advisor-name {
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  color: var(--neutral-gray-900);
+  font-style: italic;
+}
+
+/* === Timeline (memory #28: horizontal flowing) === */
+.timeline {
+  position: relative;
+  margin: var(--space-xl) 0;
+  padding: var(--space-md) 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right,
+    var(--color-ms) 0%,
+    var(--color-ms) 16%,
+    var(--color-ta) 16%,
+    var(--color-ta) 32%,
+    var(--color-en) 32%,
+    var(--color-en) 50%,
+    var(--color-zh) 50%,
+    var(--color-zh) 66%,
+    var(--color-jawi) 66%,
+    var(--color-jawi) 83%,
+    var(--bottom-coral) 83%);
+  transform: translateY(-50%);
+  opacity: 0.4;
+}
+
+.timeline-nodes {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-xs);
+  position: relative;
+}
+
+.timeline-node {
+  text-align: center;
+  padding: var(--space-sm) var(--space-xs);
+}
+
+.timeline-marker {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--neutral-paper);
+  border: 3px solid var(--color-ms);
+  margin: 0 auto var(--space-xs);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-week {
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--neutral-gray-400);
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-weight: 600;
+  font-size: var(--text-small);
+  color: var(--neutral-gray-900);
+  margin-bottom: 4px;
+}
+
+.timeline-desc {
+  font-size: var(--text-caption);
+  color: var(--neutral-gray-700);
+  line-height: 1.4;
+}
+
+/* === Acknowledgements (memory #28: centered, ceremonial) === */
+.ack-page {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+}
+
+.ack-section {
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.ack-label {
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--neutral-gray-400);
+  margin-bottom: var(--space-xs);
+}
+
+.ack-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-gray-700);
+}
+
+.ack-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--neutral-gray-200);
+  margin: var(--space-xl) auto;
+}
+
+/* === Responsive (desktop only per memory #25, but graceful narrow) === */
+@media (max-width: 900px) {
+  .framework-grid, .members-grid, .timeline-nodes {
+    grid-template-columns: 1fr;
+  }
+  .secondary-page { padding: var(--space-xl) var(--space-md) var(--space-xl); }
+  .lang-switcher { width: 160px; height: 160px; }
+}

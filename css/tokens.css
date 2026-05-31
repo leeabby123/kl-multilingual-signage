@@ -43,10 +43,13 @@
   --top-gold-line: rgba(255, 204, 0, 0.3);
   --top-gold-line-strong: rgba(255, 204, 0, 0.7);
 
-  /* === Bottom page (民间多语) — warm tone placeholder === */
-  --bottom-peach: #f4d7c8;
-  --bottom-coral: #e89e7c;
-  --bottom-warm-ink: #5a3e1a;
+  /* === Bottom page (民间多语) — bright peach/coral cheerful palette === */
+  --bottom-peach: #ffd4b8;        /* bright peach base */
+  --bottom-peach-deep: #ffb898;   /* warmer mid */
+  --bottom-coral: #ff8a5b;        /* coral accent */
+  --bottom-coral-bright: #ff7548;
+  --bottom-warm-ink: #5a2e0d;     /* warm dark for contrast */
+  --bottom-warm-ink-soft: #7a4520;
 
   /* === Hub page — neutral (objective tone) === */
   --hub-bg: #f8f5ec;

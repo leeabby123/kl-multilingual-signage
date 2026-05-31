@@ -3,31 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>timeline · KL Multilingual Signage</title>
+  <title>Timeline · Garis Masa · 时间轴</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
-  <style>
-    body { background: var(--neutral-cream); min-height: 100vh; }
-    .secondary-page { max-width: var(--container-max); margin: 0 auto; padding: var(--space-2xl) var(--space-lg); }
-    .secondary-page h1 { font-family: var(--font-serif); font-size: var(--text-h1); color: var(--neutral-gray-700); margin: 0 0 var(--space-md); }
-    .placeholder-note { color: var(--neutral-gray-400); font-style: italic; }
-    .secondary-back { display: inline-block; margin-bottom: var(--space-lg); color: var(--neutral-gray-400); text-decoration: none; font-size: var(--text-small); }
-    .secondary-back:hover { color: var(--neutral-gray-700); }
-  </style>
+  <link rel="stylesheet" href="../css/secondary.css">
 </head>
-<body>
+<body class="page-secondary">
 
-<!-- 5-color flower language switcher (per memory #29) -->
 <div class="lang-switcher" aria-label="Switch language"></div>
+<aside class="secondary-back"><a href="hub.html" class="back-link">← Hub</a></aside>
 
 <main class="secondary-page">
-  <a class="secondary-back" href="hub.html">← Hub</a>
-  <h1>timeline</h1>
-  <p class="placeholder-note">[Phase 2 content placeholder — to be filled with locked 5-language text from content.json]</p>
+  <h1 style="text-align: center;">Garis Masa · 时间轴 · Timeline</h1>
+  <p class="lede" style="text-align: center;">A condensed schedule of the AQC7015 capstone project — from topic selection to final presentation.</p>
+
+  <div class="timeline">
+    <div class="timeline-nodes">
+      <div class="timeline-node">
+        <div class="timeline-marker" style="border-color: var(--color-ms);"></div>
+        <div class="timeline-week">Week 1</div>
+        <div class="timeline-title">Topic Selection</div>
+        <div class="timeline-desc">Locked: KL multilingual signage as research focus. Infographic mockup produced.</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-marker" style="border-color: var(--color-ta);"></div>
+        <div class="timeline-week">Week 2</div>
+        <div class="timeline-title">TEI + Voyant Training</div>
+        <div class="timeline-desc">Encoded PS_007 + LI_016 with multilingual markup; tested ZH–TA hypothesis in Voyant Contexts.</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-marker" style="border-color: var(--color-en);"></div>
+        <div class="timeline-week">Week 7</div>
+        <div class="timeline-title">Proposal + CS1</div>
+        <div class="timeline-desc">Group proposal submitted. Individual Case Study 1: Lingscape app analysis.</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-marker" style="border-color: var(--color-zh);"></div>
+        <div class="timeline-week">Week 8–10</div>
+        <div class="timeline-title">Literature + Excel</div>
+        <div class="timeline-desc">Field protocol finalized. 13-column annotation schema agreed across 5 fieldworkers.</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-marker" style="border-color: var(--color-jawi);"></div>
+        <div class="timeline-week">Week 11</div>
+        <div class="timeline-title">Fieldwork + Handover</div>
+        <div class="timeline-desc">4 districts × 15 signs = 60 photographs collected. Data consolidated into master spreadsheet.</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-marker" style="border-color: var(--bottom-coral);"></div>
+        <div class="timeline-week">Week 12</div>
+        <div class="timeline-title">Integration + Submission</div>
+        <div class="timeline-desc">Website build (6/7 testing · 6/8 deadline). Class presentation 6/9.</div>
+      </div>
+    </div>
+  </div>
+
+  <section style="margin-top: var(--space-2xl);">
+    <h2>Key Milestones</h2>
+    <p><strong>April 20, 2026</strong> · Case Study 1 (Lingscape analysis) submitted<br>
+    <strong>May 20, 2026</strong> · Case Study 2 (Information Literacy reframing) submitted<br>
+    <strong>May 31, 2026</strong> · Phase 1 website live · stable visual baseline<br>
+    <strong>June 8, 2026</strong> · Capstone website final submission<br>
+    <strong>June 9, 2026</strong> · In-class presentation</p>
+  </section>
 </main>
 
 <script src="../js/i18n.js"></script>

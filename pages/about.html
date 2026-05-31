@@ -3,31 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>about · KL Multilingual Signage</title>
+  <title>About · Tentang · KL Multilingual Signage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
-  <style>
-    body { background: var(--neutral-cream); min-height: 100vh; }
-    .secondary-page { max-width: var(--container-max); margin: 0 auto; padding: var(--space-2xl) var(--space-lg); }
-    .secondary-page h1 { font-family: var(--font-serif); font-size: var(--text-h1); color: var(--neutral-gray-700); margin: 0 0 var(--space-md); }
-    .placeholder-note { color: var(--neutral-gray-400); font-style: italic; }
-    .secondary-back { display: inline-block; margin-bottom: var(--space-lg); color: var(--neutral-gray-400); text-decoration: none; font-size: var(--text-small); }
-    .secondary-back:hover { color: var(--neutral-gray-700); }
-  </style>
+  <link rel="stylesheet" href="../css/secondary.css">
 </head>
-<body>
+<body class="page-secondary">
 
-<!-- 5-color flower language switcher (per memory #29) -->
 <div class="lang-switcher" aria-label="Switch language"></div>
 
-<main class="secondary-page">
-  <a class="secondary-back" href="hub.html">← Hub</a>
-  <h1>about</h1>
-  <p class="placeholder-note">[Phase 2 content placeholder — to be filled with locked 5-language text from content.json]</p>
+<aside class="secondary-back">
+  <a href="hub.html" class="back-link">← Hub</a>
+</aside>
+
+<main class="secondary-page secondary-page--prose">
+  <h1>About · Tentang · 关于</h1>
+  <p class="lede">
+    A digital humanities study of <strong>multilingual public signage in Kuala Lumpur</strong>—
+    examining how Malay, Chinese, Tamil, English, and Jawi script coexist (or fail to)
+    across <strong>60 signs in 4 districts</strong>: Petaling Street, Little India, Bukit Bintang, and Kampung Baru.
+  </p>
+
+  <section>
+    <h2>Research Question</h2>
+    <p>How does multilingual public signage in Kuala Lumpur reflect the layered tensions
+      between <em>state language policy</em> and <em>community linguistic practice</em>?</p>
+  </section>
+
+  <section>
+    <h2>Legal Background — Malaysia's Language Framework</h2>
+    <p>Malaysia's <strong>National Language Act 1963/67</strong> codifies Bahasa Melayu as
+      the sole national language. The Federal Territory's <strong>Undang-Undang Kecil Iklan 1982</strong>
+      operationalizes this through Section 3, requiring all advertisements to be in the national language
+      and giving Malay text <em>typographic priority</em>—larger in size than any other script.</p>
+    <p>Kuala Lumpur City Hall (DBKL) enforces a <strong>"30% rule"</strong>: Malay text must occupy
+      at least 30% of the signboard area, with prior approval from <strong>Dewan Bahasa dan Pustaka (DBP)</strong>.
+      In practice, this means every public sign is a small act of negotiation—between law,
+      commerce, history, and identity.</p>
+  </section>
+
+  <section>
+    <h2>Three-Layer Analytical Framework</h2>
+    <p>We read the linguistic landscape through three interlocking layers:</p>
+    <div class="framework-grid">
+      <div class="framework-card framework-card--ms">
+        <div class="framework-label">MS · Bahasa Melayu</div>
+        <div class="framework-mode">Top-down · Policy-driven</div>
+        <div class="framework-text">Mandated by national language law; appears on 91.7% of signs (55/60). Bilingual to compliance, not necessarily to community.</div>
+      </div>
+      <div class="framework-card framework-card--zhta">
+        <div class="framework-label">ZH · TA</div>
+        <div class="framework-mode">Bottom-up · Community-driven</div>
+        <div class="framework-text">Chinese (46.7%) and Tamil (15%) appear where ethnic communities live and work. Their distribution mirrors district demographics, not policy.</div>
+      </div>
+      <div class="framework-card framework-card--en">
+        <div class="framework-label">EN · English</div>
+        <div class="framework-mode">Economic Pragmatism</div>
+        <div class="framework-text">81.7% of signs include English—not mandated, not community-bound, but commercially universal. The lingua franca of consumption.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Project Contribution</h2>
+    <p>Our contribution is not a single "headline finding" but a <strong>systematic framework + 8 patterns</strong>
+      derived from 60 fieldwork samples:</p>
+    <ol class="findings-list">
+      <li><strong>ZH–TA non-coexistence</strong> · 58/60 signs (96.7%); exceptions LI_07 (Ruddra Veenay music shop) + KB_01 (Klinik Kasut shoe repair)</li>
+      <li><strong>PS Chinese signs trilingual</strong> · 92.3% combine ZH+MS+EN</li>
+      <li><strong>KB monolingual island</strong> · 46.7% Malay-only; Jawi reserve (KB 3 / PS 2 / BB 1 / LI 0)</li>
+      <li><strong>Government 1.67 lang/sign vs Shop 2.66</strong> · Commerce more multilingual than the state</li>
+      <li><span class="sample-limited">Tamil official 0%</span> · across 5 government + 4 road signs</li>
+      <li><span class="sample-limited">Chinese radiation gradient</span> · PS 86.7% &gt; BB 46.7% &gt; LI/KB 26.7%; Tamil concentrated in LI 46.7%</li>
+      <li><span class="sample-limited">Jawi/Arabic three functions</span> · PS historical sediment / BB commercial internationalization / KB ethnic life heritage</li>
+      <li><span class="sample-limited">Religious-space exemption</span> · only 3 signs use script freely outside the 30% rule</li>
+    </ol>
+    <p class="sample-caveat">
+      <em>Findings 5–8 marked as sample-limited; conclusions tentative pending wider sampling.</em>
+      <br>Based on 60 signs across 4 districts.
+    </p>
+  </section>
+
+  <section>
+    <h2>Prior Literature</h2>
+    <p>Our work extends <strong>David &amp; Manan (2015)</strong>, who examined 858 multilingual
+      signs across Kuala Lumpur as a whole, treating the city as a mixed sample. Our contribution
+      is the <strong>4-district disaggregation</strong>: instead of city-wide averages, we compare
+      how the same legal framework produces different linguistic landscapes when filtered through
+      district demographics, history, and commerce.</p>
+  </section>
+
+  <section>
+    <h2>Method</h2>
+    <p><strong>Sampling:</strong> 15 signs per district, randomly selected from public-facing
+      commercial, residential, and government spaces. Total <strong>4 × 15 = 60 signs</strong>.</p>
+    <p><strong>Coding:</strong> Each sign was photographed and annotated with present languages,
+      sign type, text content, and contextual notes. Data captured in a master Excel sheet with 13 fields per sign.</p>
+    <p><strong>Analysis:</strong> Cross-district comparison via cluster maps and language
+      co-occurrence matrices. Voyant Tools used for word-frequency exploration; TEI encoding tested on representative samples.</p>
+  </section>
 </main>
 
 <script src="../js/i18n.js"></script>

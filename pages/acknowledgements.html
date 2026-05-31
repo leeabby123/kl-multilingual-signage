@@ -3,31 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>acknowledgements · KL Multilingual Signage</title>
+  <title>Acknowledgements · Penghargaan · 致谢</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
-  <style>
-    body { background: var(--neutral-cream); min-height: 100vh; }
-    .secondary-page { max-width: var(--container-max); margin: 0 auto; padding: var(--space-2xl) var(--space-lg); }
-    .secondary-page h1 { font-family: var(--font-serif); font-size: var(--text-h1); color: var(--neutral-gray-700); margin: 0 0 var(--space-md); }
-    .placeholder-note { color: var(--neutral-gray-400); font-style: italic; }
-    .secondary-back { display: inline-block; margin-bottom: var(--space-lg); color: var(--neutral-gray-400); text-decoration: none; font-size: var(--text-small); }
-    .secondary-back:hover { color: var(--neutral-gray-700); }
-  </style>
+  <link rel="stylesheet" href="../css/secondary.css">
 </head>
-<body>
+<body class="page-secondary">
 
-<!-- 5-color flower language switcher (per memory #29) -->
 <div class="lang-switcher" aria-label="Switch language"></div>
+<aside class="secondary-back"><a href="hub.html" class="back-link">← Hub</a></aside>
 
-<main class="secondary-page">
-  <a class="secondary-back" href="hub.html">← Hub</a>
-  <h1>acknowledgements</h1>
-  <p class="placeholder-note">[Phase 2 content placeholder — to be filled with locked 5-language text from content.json]</p>
+<main class="ack-page">
+  <h1>Penghargaan · 致谢 · Acknowledgements</h1>
+
+  <div class="ack-section" style="margin-top: var(--space-2xl);">
+    <div class="ack-label">Penyelia · Supervisor</div>
+    <div class="ack-text">
+      To <strong>Dr. Ali Fauzi Bin Ahmad Khan</strong>, our project advisor, whose guidance steadied
+      us through the project's transitions and whose questions sharpened our findings.
+    </div>
+  </div>
+
+  <div class="ack-divider"></div>
+
+  <div class="ack-section">
+    <div class="ack-label">Kumpulan · Team</div>
+    <div class="ack-text">
+      To my four teammates — <strong>LIAO RUIXUAN, WEI JITAO, CHEN MEILIN, WEI HONGHAI</strong>
+      — who walked the streets of Kuala Lumpur sign by sign, building this dataset together.
+      Every photograph in this study is a small act of care.
+    </div>
+  </div>
+
+  <div class="ack-divider"></div>
+
+  <div class="ack-section">
+    <div class="ack-label">Prior Work</div>
+    <div class="ack-text">
+      To <strong>David &amp; Manan (2015)</strong>, whose 858-sample study of KL's linguistic
+      landscape provided the prior literature this project extends, refines, and disaggregates.
+    </div>
+  </div>
+
+  <div class="ack-divider"></div>
+
+  <div class="ack-section">
+    <div class="ack-label">Communities</div>
+    <div class="ack-text">
+      To the shopkeepers, residents, and passersby of Petaling Street, Little India,
+      Bukit Bintang, and Kampung Baru — whose everyday acts of language-making, hanging signs
+      in <em>Bahasa Melayu</em>, 中文, தமிழ், English, and جاوي, give this city its texture.
+    </div>
+  </div>
+
+  <div class="ack-divider"></div>
+
+  <div class="ack-section">
+    <div class="ack-label">Course</div>
+    <div class="ack-text">
+      A capstone project for <strong>AQC7015 Digital Humanities</strong>, Semester 2, 2025/2026.<br>
+      Faculty of Arts and Social Sciences · University of Malaya.
+    </div>
+  </div>
 </main>
 
 <script src="../js/i18n.js"></script>

@@ -3,31 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>members · KL Multilingual Signage</title>
+  <title>Team Members · Ahli Kumpulan · 组员介绍</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
-  <style>
-    body { background: var(--neutral-cream); min-height: 100vh; }
-    .secondary-page { max-width: var(--container-max); margin: 0 auto; padding: var(--space-2xl) var(--space-lg); }
-    .secondary-page h1 { font-family: var(--font-serif); font-size: var(--text-h1); color: var(--neutral-gray-700); margin: 0 0 var(--space-md); }
-    .placeholder-note { color: var(--neutral-gray-400); font-style: italic; }
-    .secondary-back { display: inline-block; margin-bottom: var(--space-lg); color: var(--neutral-gray-400); text-decoration: none; font-size: var(--text-small); }
-    .secondary-back:hover { color: var(--neutral-gray-700); }
-  </style>
+  <link rel="stylesheet" href="../css/secondary.css">
 </head>
-<body>
+<body class="page-secondary">
 
-<!-- 5-color flower language switcher (per memory #29) -->
 <div class="lang-switcher" aria-label="Switch language"></div>
+<aside class="secondary-back"><a href="hub.html" class="back-link">← Hub</a></aside>
 
-<main class="secondary-page">
-  <a class="secondary-back" href="hub.html">← Hub</a>
-  <h1>members</h1>
-  <p class="placeholder-note">[Phase 2 content placeholder — to be filled with locked 5-language text from content.json]</p>
+<main class="secondary-page" style="text-align: center;">
+  <h1>Ahli Kumpulan · 组员介绍 · Team Members</h1>
+  <p class="lede">A 5-person collaborative team for AQC7015 Digital Humanities, Semester 2, 2025/2026 — University of Malaya.</p>
+
+  <div class="advisor-bar">
+    <div class="advisor-label">Penyelia · Advisor</div>
+    <div class="advisor-name">Dr. Ali Fauzi Bin Ahmad Khan</div>
+  </div>
+
+  <div class="members-grid">
+    <article class="member-card">
+      <div class="member-avatar member-avatar--a">A</div>
+      <div class="member-name">LIAO RUIXUAN</div>
+      <div class="member-role">Fieldwork</div>
+      <div class="member-task">Kampung Baru<br>(15 signs)</div>
+    </article>
+    <article class="member-card">
+      <div class="member-avatar member-avatar--b">B</div>
+      <div class="member-name">WEI JITAO</div>
+      <div class="member-role">Fieldwork</div>
+      <div class="member-task">Petaling Street<br>(15 signs)</div>
+    </article>
+    <article class="member-card">
+      <div class="member-avatar member-avatar--c">C</div>
+      <div class="member-name">CHEN MEILIN</div>
+      <div class="member-role">Fieldwork</div>
+      <div class="member-task">Bukit Bintang<br>(15 signs)</div>
+    </article>
+    <article class="member-card">
+      <div class="member-avatar member-avatar--d">D</div>
+      <div class="member-name">WEI HONGHAI</div>
+      <div class="member-role">Fieldwork</div>
+      <div class="member-task">Little India<br>(15 signs)</div>
+    </article>
+    <article class="member-card">
+      <div class="member-avatar member-avatar--e">E</div>
+      <div class="member-name">LI BINGYI</div>
+      <div class="member-role">Web Development</div>
+      <div class="member-task">Site design,<br>data integration,<br>visualization</div>
+    </article>
+  </div>
+
+  <section style="margin-top: var(--space-2xl); text-align: left;">
+    <h2 style="text-align: center;">Sampling Distribution</h2>
+    <p style="text-align: center; max-width: 720px; margin-left: auto; margin-right: auto;">
+      Each fieldworker collected data exclusively from their assigned district. This ensured consistent
+      coverage and avoided sampling bias from overlapping observations. Site development (LI BINGYI / Kunm)
+      began after fieldwork data was consolidated into the master spreadsheet — a sequential workflow
+      that balanced field labor with technical integration.
+    </p>
+  </section>
 </main>
 
 <script src="../js/i18n.js"></script>

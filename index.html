@@ -11,9 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&family=Noto+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-  <!-- Tabler icons for chevrons (used in top page mockup) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
@@ -27,9 +24,9 @@
        ============================================================ -->
   <section class="section section--top" id="section-top" aria-label="National Discourse — UUK 3 Bahasa Iklan">
 
-    <!-- Enter Hub button (top-right) -->
-    <button class="enter-hub-btn" data-enter-hub="top" type="button">
-      Hub →
+    <!-- Enter Hub button (top-right) — arrow icon, not text -->
+    <button class="enter-hub-btn" data-enter-hub="top" type="button" aria-label="Enter Hub">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
     </button>
 
     <main class="top-content">
@@ -96,7 +93,7 @@
 
     <!-- Scroll cue: down to middle -->
     <a class="scroll-cue" data-scroll-target="#section-middle" aria-label="Scroll to middle (landing)">
-      <i class="ti ti-chevron-down" aria-hidden="true"></i>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
     </a>
 
   </section>
@@ -108,9 +105,12 @@
        ============================================================ -->
   <section class="section section--middle" id="section-middle" aria-label="Landing — Bila Bahasa Menjadi Bunga">
 
-    <!-- Up arrow → top page -->
+    <!-- Up arrow → top page (BIG, eye-catching) -->
     <a class="middle-scroll-up" data-scroll-target="#section-top" aria-label="Scroll up to national discourse">
-      <i class="ti ti-chevron-up" aria-hidden="true"></i>
+      <span class="arrow-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,15 12,9 18,15"/></svg>
+      </span>
+      <span class="arrow-label">Naik</span>
     </a>
 
     <div class="middle-art">
@@ -118,9 +118,12 @@
       <object data="assets/svg/middle-garden.svg" type="image/svg+xml" aria-label="Multilingual garden landing — title plaque in 4 languages surrounded by 5-colored hibiscuses, palm trees, and KL city silhouette"></object>
     </div>
 
-    <!-- Down arrow → bottom page -->
+    <!-- Down arrow → bottom page (BIG, eye-catching) -->
     <a class="middle-scroll-down" data-scroll-target="#section-bottom" aria-label="Scroll down to civilian languages">
-      <i class="ti ti-chevron-down" aria-hidden="true"></i>
+      <span class="arrow-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+      </span>
+      <span class="arrow-label">Turun</span>
     </a>
 
   </section>
@@ -133,14 +136,18 @@
   <section class="section section--bottom" id="section-bottom" aria-label="Civilian Languages — placeholder">
 
     <!-- Up arrow → middle page -->
-    <a class="middle-scroll-up" data-scroll-target="#section-middle" style="color: var(--bottom-warm-ink); opacity: 0.6;" aria-label="Scroll up to landing">
-      <i class="ti ti-chevron-up" aria-hidden="true"></i>
+    <a class="middle-scroll-up" data-scroll-target="#section-middle" aria-label="Scroll up to landing"
+       style="color: var(--bottom-warm-ink); background: rgba(255,255,255,0.7);">
+      <span class="arrow-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,15 12,9 18,15"/></svg>
+      </span>
+      <span class="arrow-label">Naik</span>
     </a>
 
-    <!-- Enter Hub button -->
-    <button class="enter-hub-btn" data-enter-hub="bottom" type="button"
-            style="background: rgba(90, 62, 26, 0.08); border-color: var(--bottom-warm-ink); color: var(--bottom-warm-ink);">
-      Hub →
+    <!-- Enter Hub button (top-right) — arrow icon, not text -->
+    <button class="enter-hub-btn" data-enter-hub="bottom" type="button" aria-label="Enter Hub"
+            style="background: rgba(255, 138, 91, 0.18); border-color: var(--bottom-coral); color: var(--bottom-warm-ink);">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
     </button>
 
     <div class="bottom-placeholder">

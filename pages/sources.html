@@ -3,31 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sources · KL Multilingual Signage</title>
+  <title>Data Sources · Sumber Data · KL Multilingual Signage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
-  <style>
-    body { background: var(--neutral-cream); min-height: 100vh; }
-    .secondary-page { max-width: var(--container-max); margin: 0 auto; padding: var(--space-2xl) var(--space-lg); }
-    .secondary-page h1 { font-family: var(--font-serif); font-size: var(--text-h1); color: var(--neutral-gray-700); margin: 0 0 var(--space-md); }
-    .placeholder-note { color: var(--neutral-gray-400); font-style: italic; }
-    .secondary-back { display: inline-block; margin-bottom: var(--space-lg); color: var(--neutral-gray-400); text-decoration: none; font-size: var(--text-small); }
-    .secondary-back:hover { color: var(--neutral-gray-700); }
-  </style>
+  <link rel="stylesheet" href="../css/secondary.css">
 </head>
-<body>
+<body class="page-secondary">
 
-<!-- 5-color flower language switcher (per memory #29) -->
 <div class="lang-switcher" aria-label="Switch language"></div>
+<aside class="secondary-back"><a href="hub.html" class="back-link">← Hub</a></aside>
 
 <main class="secondary-page">
-  <a class="secondary-back" href="hub.html">← Hub</a>
-  <h1>sources</h1>
-  <p class="placeholder-note">[Phase 2 content placeholder — to be filled with locked 5-language text from content.json]</p>
+  <h1>Sumber Data · 数据来源 · Data Sources</h1>
+  <p class="lede">
+    All findings derive from <strong>60 fieldwork photographs</strong> taken across 4 districts of Kuala Lumpur in April–May 2026, annotated in a master spreadsheet with 13 fields per sign.
+  </p>
+
+  <section>
+    <h2>Sampling Method</h2>
+    <p>Each fieldworker collected <strong>15 signs from their assigned district</strong> using a random-walk protocol: walk a designated transect, photograph the first sign at each intersection that meets the inclusion criteria. Inclusion criteria: (a) visible from a public sidewalk, (b) text-bearing, (c) not part of a private indoor space.</p>
+    <p>This yielded <strong>4 districts × 15 signs = 60 total samples</strong>. Sample size is intentionally small and exploratory; findings about <em>presence/absence</em> patterns (ZH–TA non-coexistence, KB monolingual character) are stable, while findings about <em>frequency ratios</em> are sample-limited.</p>
+  </section>
+
+  <section>
+    <h2>District Composition</h2>
+    <table class="sources-table">
+      <thead>
+        <tr>
+          <th>District</th>
+          <th>Fieldworker</th>
+          <th>Period</th>
+          <th>Sample</th>
+          <th>Avg. languages/sign</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="district-dot district-dot--ps"></span>Petaling Street (PS) · 茨厂街</td><td>WEI JITAO</td><td>Apr 2026</td><td>15</td><td>2.73</td></tr>
+        <tr><td><span class="district-dot district-dot--li"></span>Little India (LI) · 小印度</td><td>WEI HONGHAI</td><td>Apr 2026</td><td>15</td><td>2.33</td></tr>
+        <tr><td><span class="district-dot district-dot--bb"></span>Bukit Bintang (BB) · 武吉免登</td><td>CHEN MEILIN</td><td>May 2026</td><td>15</td><td>2.47</td></tr>
+        <tr><td><span class="district-dot district-dot--kb"></span>Kampung Baru (KB) · 甘榜峇鲁</td><td>LIAO RUIXUAN</td><td>May 2026</td><td>15</td><td>2.13</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Annotation Schema (13 fields)</h2>
+    <p>Each sign was coded against a structured 13-column schema in the master Excel sheet:</p>
+    <table class="sources-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Photo_ID</td><td>String</td><td>Unique identifier (e.g., PS_07, LI_12)</td></tr>
+        <tr><td>Photo_Filename</td><td>String</td><td>Image file reference (e.g., KB_01.jpg)</td></tr>
+        <tr><td>ZH / TA / MS / EN</td><td>Yes/No</td><td>Presence of each major language</td></tr>
+        <tr><td>Other Language</td><td>Enum</td><td>Arabic / Other / null</td></tr>
+        <tr><td>Sign_Type</td><td>Enum</td><td>Shop · Restaurant · Road Sign · Government · Religious · Advertisement · Transport · Notice · Other</td></tr>
+        <tr><td>Text_Content</td><td>String</td><td>Full transcription of sign text</td></tr>
+        <tr><td>Language_Count</td><td>Int</td><td>Total distinct languages present</td></tr>
+        <tr><td>Representative</td><td>Yes/No</td><td>Flagged for use as district exemplar</td></tr>
+        <tr><td>Caption</td><td>String</td><td>One-line interpretation</td></tr>
+        <tr><td>Notes</td><td>String</td><td>Free-text contextual observations</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Aggregate Statistics</h2>
+    <table class="sources-table">
+      <thead>
+        <tr><th>District</th><th>ZH</th><th>TA</th><th>MS</th><th>EN</th><th>Jawi/Arabic</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="district-dot district-dot--ps"></span>PS</td><td>86.7%</td><td>0%</td><td>100%</td><td>86.7%</td><td>2 signs</td></tr>
+        <tr><td><span class="district-dot district-dot--li"></span>LI</td><td>26.7%</td><td>46.7%</td><td>73.3%</td><td>86.7%</td><td>0 signs</td></tr>
+        <tr><td><span class="district-dot district-dot--bb"></span>BB</td><td>46.7%</td><td>6.7%</td><td>100%</td><td>93.3%</td><td>1 sign</td></tr>
+        <tr><td><span class="district-dot district-dot--kb"></span>KB</td><td>26.7%</td><td>6.7%</td><td>93.3%</td><td>60%</td><td>3 signs</td></tr>
+        <tr style="background: var(--neutral-gray-50); font-weight: 600;"><td>All 60</td><td>46.7%</td><td>15%</td><td>91.7%</td><td>81.7%</td><td>6 signs (10%)</td></tr>
+      </tbody>
+    </table>
+    <p class="sample-caveat">Based on 60 signs across 4 districts. Master spreadsheet: <code>signs.json</code> (44 KB) in the repository data folder.</p>
+  </section>
+
+  <section>
+    <h2>Tools Used</h2>
+    <p><strong>Voyant Tools</strong> · word frequency, Contexts module for ZH–TA co-occurrence testing.<br>
+    <strong>TEI XML</strong> · encoding tested on PS_007 and LI_016 with <code>xml:lang</code> and <code>@rend="primary"/"secondary"</code>.<br>
+    <strong>Google My Maps</strong> · spatial visualization of districts.<br>
+    <strong>This website</strong> · custom HTML/CSS/JS with <code>data/signs.json</code> as the canonical record.</p>
+  </section>
 </main>
 
 <script src="../js/i18n.js"></script>

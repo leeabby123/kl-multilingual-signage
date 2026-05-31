@@ -9,40 +9,99 @@
   background: var(--neutral-cream);
   color: var(--neutral-gray-700);
   min-height: 100vh;
+  display: flex;
 }
 
-.secondary-page {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: var(--space-2xl) var(--space-lg) var(--space-2xl);
-}
-
-.secondary-back {
+/* ============================================================
+   Fixed Left Sidebar (memory #30 lock — must be on every secondary page)
+   Direct page-to-page navigation, NO need to go through Back
+   ============================================================ */
+.sidebar {
   position: fixed;
-  top: var(--space-md);
-  left: var(--space-md);
-  z-index: 50;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background: var(--neutral-paper);
+  border-right: 1px solid var(--neutral-gray-100);
+  padding: var(--space-md) 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 30;
 }
 
-.back-link {
+.sidebar-back {
+  padding: 0 var(--space-md) var(--space-md);
+  border-bottom: 1px solid var(--neutral-gray-100);
+  margin-bottom: var(--space-sm);
+}
+
+.sidebar-back-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
+  color: var(--neutral-gray-400);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  padding: 4px;
+}
+.sidebar-back-link:hover { color: var(--top-navy); }
+.sidebar-back-link svg { width: 22px; height: 22px; display: block; }
+
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-link {
+  padding: 10px var(--space-md);
   font-size: var(--text-small);
   color: var(--neutral-gray-700);
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 999px;
-  border: 1px solid var(--neutral-gray-100);
+  letter-spacing: 0.02em;
+  border-left: 2px solid transparent;
   transition: var(--transition-fast);
+  font-family: var(--font-ms-en);
 }
 
-.back-link:hover {
-  background: rgba(255, 255, 255, 0.95);
+.sidebar-link:hover {
+  background: var(--neutral-gray-50);
   color: var(--top-navy);
+}
+
+.sidebar-link.active {
+  color: var(--top-navy);
+  border-left-color: var(--top-navy);
+  background: var(--neutral-gray-50);
+  font-weight: 600;
+}
+
+.secondary-page {
+  flex: 1;
+  margin-left: 200px;        /* offset by sidebar width */
+  max-width: calc(var(--container-max) + 200px);
+  padding: var(--space-2xl) var(--space-lg) var(--space-2xl);
+}
+
+/* ============================================================
+   i18n: titles default English, switch on lang change
+   Per memory #29: titles single-language via data-lang-content
+   ============================================================ */
+[data-lang-content] {
+  display: none;
+}
+
+html[data-lang="en"] [data-lang-content="en"],
+html[data-lang="ms"] [data-lang-content="ms"],
+html[data-lang="zh"] [data-lang-content="zh"],
+html[data-lang="ta"] [data-lang-content="ta"],
+html[data-lang="jawi"] [data-lang-content="jawi"] {
+  display: revert;
+}
+
+/* Default (no data-lang attr yet) → show English */
+html:not([data-lang]) [data-lang-content="en"] {
+  display: revert;
 }
 
 /* === Headings === */

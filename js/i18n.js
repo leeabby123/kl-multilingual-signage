@@ -25,7 +25,7 @@
   ];
 
   const STORAGE_KEY = 'lang-preference';
-  const DEFAULT_LANG = 'ms';
+  const DEFAULT_LANG = 'en';        // per memory #29: default English, switcher changes
 
   // Exact petal path from homepage_garden_final.svg #fr def
   const PETAL_PATH = 'M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z';
@@ -157,14 +157,15 @@
   function applyLanguage(code) {
     document.documentElement.setAttribute('data-lang', code);
 
-    // Show/hide multi-lang content blocks
-    document.querySelectorAll('[data-lang-content]').forEach(el => {
-      const isMatch = el.dataset.langContent === code;
-      el.style.display = isMatch ? '' : 'none';
-    });
-
     // Update page <html lang> for accessibility
     document.documentElement.setAttribute('lang', code === 'jawi' ? 'ms-Arab' : code);
+
+    // For Jawi, swap title direction
+    if (code === 'jawi') {
+      document.documentElement.setAttribute('dir', 'rtl');
+    } else {
+      document.documentElement.setAttribute('dir', 'ltr');
+    }
 
     // Rebuild switcher to reflect new active state
     const placeholder = document.querySelector('.lang-switcher');
@@ -194,20 +195,17 @@
      ---------------------------------------------------------- */
   function init() {
     const placeholder = document.querySelector('.lang-switcher');
-    if (!placeholder) return;
-
     const currentLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
-    placeholder.innerHTML = '';
-    placeholder.appendChild(buildSwitcher(currentLang));
-    attachHandlers(placeholder);
 
+    // Set data-lang on <html> early so CSS selectors apply before any visible flash
     document.documentElement.setAttribute('data-lang', currentLang);
     document.documentElement.setAttribute('lang', currentLang === 'jawi' ? 'ms-Arab' : currentLang);
 
-    // Apply language to existing content blocks on init
-    document.querySelectorAll('[data-lang-content]').forEach(el => {
-      el.style.display = el.dataset.langContent === currentLang ? '' : 'none';
-    });
+    if (!placeholder) return;
+
+    placeholder.innerHTML = '';
+    placeholder.appendChild(buildSwitcher(currentLang));
+    attachHandlers(placeholder);
   }
 
   if (document.readyState === 'loading') {

@@ -1,150 +1,163 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hub · Multilingual Public Signage in KL</title>
+  <title>Hub · KL Multilingual Public Signage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/secondary.css">
   <style>
-    body { background: var(--hub-bg); min-height: 100vh; }
-    .hub-shell {
-      display: grid;
-      grid-template-rows: auto 1fr;
-      grid-template-columns: 200px 1fr;
-      height: 100vh;
-    }
-    .hub-top-bar {
-      grid-column: 1 / -1;
-      display: flex;
-      gap: 8px;
-      padding: 16px;
-      background: var(--neutral-paper);
-      border-bottom: 1px solid var(--neutral-gray-100);
-      overflow-x: auto;
-    }
-    .hub-finding-btn {
-      padding: 10px 14px;
-      border-radius: var(--radius-md);
-      font-size: var(--text-caption);
-      font-family: var(--font-ms-en);
-      background: var(--neutral-cream);
-      border: 1px solid var(--neutral-gray-200);
-      color: var(--neutral-gray-700);
-      white-space: nowrap;
-      transition: var(--transition-fast);
-    }
-    .hub-finding-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
-    .hub-finding-btn.f-stable { border-color: var(--neutral-gray-400); }
-    .hub-finding-btn.f-limited { border-style: dashed; opacity: 0.85; }
-
-    .hub-sidebar {
-      padding: var(--space-lg) var(--space-md);
-      background: var(--neutral-paper);
-      border-right: 1px solid var(--neutral-gray-100);
-    }
-    .hub-sidebar-title {
-      font-size: var(--text-caption);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--neutral-gray-400);
-      margin: 0 0 var(--space-md);
-    }
-    .hub-sidebar-link {
-      display: block;
-      padding: 8px 12px;
-      margin-bottom: 4px;
-      color: var(--neutral-gray-700);
-      text-decoration: none;
-      font-size: var(--text-small);
-      border-radius: var(--radius-sm);
-      transition: var(--transition-fast);
-    }
-    .hub-sidebar-link:hover { background: var(--neutral-cream); }
-
+    /* Hub-specific: 8 finding buttons in 2 staggered rows ABOVE the map (memory #23 lock) */
     .hub-main {
-      padding: var(--space-lg);
+      margin-left: 200px;
+      padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .hub-map-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-    }
-    .hub-placeholder {
-      text-align: center;
+      min-height: 60vh;
+      background: var(--neutral-paper);
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--neutral-gray-200);
       color: var(--neutral-gray-400);
-      max-width: 500px;
+      font-style: italic;
+      padding: var(--space-2xl);
+      text-align: center;
     }
-    .hub-placeholder h2 { font-family: var(--font-serif); margin-bottom: var(--space-sm); font-style: italic; }
-
-    .hub-back {
+    .hub-back-btn-corner {
       position: fixed;
-      top: 16px;
-      right: 16px;
-      padding: 8px 12px;
-      background: var(--neutral-cream);
-      border: 1px solid var(--neutral-gray-200);
+      top: var(--space-md);
+      right: var(--space-md);
+      z-index: 50;
+      background: none;
+      border: none;
+      color: var(--neutral-gray-400);
+      cursor: pointer;
+      padding: 8px;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+    .hub-back-btn-corner:hover { opacity: 1; }
+    .hub-back-btn-corner svg { width: 26px; height: 26px; display: block; }
+
+    /* 8 finding buttons: 2 rows ABOVE map, staggered (brick layout) */
+    .hub-findings-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px 14px;
+    }
+    .hub-findings-row { display: contents; }
+    .hub-findings-bar .finding-btn:nth-child(5),
+    .hub-findings-bar .finding-btn:nth-child(6),
+    .hub-findings-bar .finding-btn:nth-child(7),
+    .hub-findings-bar .finding-btn:nth-child(8) {
+      transform: translateX(50%);  /* lower row offset by half cell = brick wall */
+    }
+    /* Make grid 2-row aware: 4 columns, 2 rows of 4 */
+    .finding-btn {
+      padding: 10px 14px;
+      font-size: var(--text-small);
       border-radius: var(--radius-sm);
-      font-size: var(--text-caption);
-      text-decoration: none;
+      background: var(--neutral-paper);
       color: var(--neutral-gray-700);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-align: center;
+      font-family: var(--font-ms-en);
+    }
+    .finding-btn.stable {
+      border: 1.5px solid var(--neutral-gray-700);
+    }
+    .finding-btn.sample-limited {
+      border: 1.5px dashed var(--neutral-gray-400);
+      color: var(--neutral-gray-400);
+    }
+    .finding-btn:hover {
+      background: var(--neutral-gray-50);
+      transform: translateY(-1px);
+    }
+    .finding-btn.sample-limited:hover { transform: translateY(-1px); }
+    /* second-row buttons keep their brick offset on hover */
+    .hub-findings-bar .finding-btn:nth-child(n+5):hover {
+      transform: translateX(50%) translateY(-1px);
+    }
+    .hub-findings-bar .finding-btn .label-num {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--neutral-gray-100);
+      color: var(--neutral-gray-700);
+      font-size: 11px;
+      line-height: 18px;
+      margin-right: 6px;
+      font-weight: 600;
+    }
+    .finding-btn.sample-limited .label-num {
+      background: transparent;
+      border: 1px dashed var(--neutral-gray-400);
     }
   </style>
 </head>
-<body>
+<body class="page-secondary">
 
-<div class="hub-shell">
+<div class="lang-switcher" aria-label="Switch language"></div>
 
-  <div class="hub-top-bar">
-    <!-- 8 finding buttons: top row stable (solid), bottom row sample-limited (dashed) -->
-    <button class="hub-finding-btn f-stable">① ZH–TA 不共存 96.7%</button>
-    <button class="hub-finding-btn f-stable">② PS 中文牌三语 92.3%</button>
-    <button class="hub-finding-btn f-stable">③ KB 单语孤岛</button>
-    <button class="hub-finding-btn f-stable">④ 政府 1.67 vs 商店 2.66</button>
-    <button class="hub-finding-btn f-limited">⑤ Tamil 官方 0%</button>
-    <button class="hub-finding-btn f-limited">⑥ 中文辐射</button>
-    <button class="hub-finding-btn f-limited">⑦ Jawi/Arabic 三功能</button>
-    <button class="hub-finding-btn f-limited">⑧ 宗教空间豁免</button>
+<!-- Back button (poppyfield minimal arrow, top-right) -->
+<button class="hub-back-btn-corner" onclick="history.back()" aria-label="Back">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12,19 5,12 12,5"/></svg>
+</button>
+
+<!-- Fixed sidebar (5 secondary pages, directly navigable) -->
+<aside class="sidebar">
+  <div class="sidebar-back" style="visibility: hidden;"></div>
+  <nav class="sidebar-nav">
+    <a href="about.html" class="sidebar-link"><span data-lang-content="en">About</span><span data-lang-content="ms">Tentang</span><span data-lang-content="zh">关于</span><span data-lang-content="ta">தகவல்</span><span data-lang-content="jawi">تنتڠ</span></a>
+    <a href="sources.html" class="sidebar-link"><span data-lang-content="en">Data Sources</span><span data-lang-content="ms">Sumber Data</span><span data-lang-content="zh">数据来源</span><span data-lang-content="ta">தரவு மூலங்கள்</span><span data-lang-content="jawi">سومبر داتا</span></a>
+    <a href="members.html" class="sidebar-link"><span data-lang-content="en">Team</span><span data-lang-content="ms">Ahli Kumpulan</span><span data-lang-content="zh">组员</span><span data-lang-content="ta">குழு</span><span data-lang-content="jawi">اهلي كومڤولن</span></a>
+    <a href="timeline.html" class="sidebar-link"><span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span></a>
+    <a href="acknowledgements.html" class="sidebar-link"><span data-lang-content="en">Acknowledgements</span><span data-lang-content="ms">Penghargaan</span><span data-lang-content="zh">致谢</span><span data-lang-content="ta">நன்றியுரை</span><span data-lang-content="jawi">ڤڠهرݢأن</span></a>
+  </nav>
+</aside>
+
+<main class="hub-main">
+
+  <!-- 8 finding buttons in 2 staggered rows ABOVE the map per memory #23 -->
+  <div class="hub-findings-bar">
+    <!-- Row 1: 4 STABLE findings (solid borders) -->
+    <button class="finding-btn stable" data-finding="1"><span class="label-num">1</span>ZH–TA 不共存 96.7%</button>
+    <button class="finding-btn stable" data-finding="2"><span class="label-num">2</span>PS 中文牌三语 92.3%</button>
+    <button class="finding-btn stable" data-finding="3"><span class="label-num">3</span>KB 单语孤岛</button>
+    <button class="finding-btn stable" data-finding="4"><span class="label-num">4</span>政府 1.67 vs 商店 2.66</button>
+    <!-- Row 2: 4 SAMPLE-LIMITED findings (dashed borders), offset by 50% for brick layout -->
+    <button class="finding-btn sample-limited" data-finding="5"><span class="label-num">5</span>Tamil 官方 0%</button>
+    <button class="finding-btn sample-limited" data-finding="6"><span class="label-num">6</span>中文辐射</button>
+    <button class="finding-btn sample-limited" data-finding="7"><span class="label-num">7</span>Jawi/Arabic 三功能</button>
+    <button class="finding-btn sample-limited" data-finding="8"><span class="label-num">8</span>宗教空间豁免</button>
   </div>
 
-  <aside class="hub-sidebar">
-    <p class="hub-sidebar-title">Pages</p>
-    <a class="hub-sidebar-link" href="about.html">About · Tentang</a>
-    <a class="hub-sidebar-link" href="sources.html">Sumber Data</a>
-    <a class="hub-sidebar-link" href="members.html">Ahli Kumpulan</a>
-    <a class="hub-sidebar-link" href="timeline.html">Garis Masa</a>
-    <a class="hub-sidebar-link" href="acknowledgements.html">Penghargaan</a>
-  </aside>
+  <!-- KL Map placeholder (full build in Phase 2) -->
+  <div class="hub-map-area" id="hub-map">
+    <h2 style="font-style: normal; color: var(--neutral-gray-700); margin-bottom: var(--space-sm);">KL Map · 60 Sign Clusters</h2>
+    <p>Hub interactive map placeholder.<br>4-district KL base map with 60 hibiscus-shaped clusters · Phase 2 build.</p>
+    <p style="font-size: var(--text-caption); margin-top: var(--space-lg); opacity: 0.7;">
+      On final build: click 8 finding buttons above → finding modal · click any cluster → signboard modal
+    </p>
+  </div>
 
-  <main class="hub-main">
-    <div class="hub-placeholder">
-      <h2>KL Map · 60 Sign Clusters</h2>
-      <p>Hub interactive map placeholder. Awaiting visual asset (4-district KL base map with 60 hibiscus-shaped clusters).</p>
-      <p style="margin-top: var(--space-md); font-size: var(--text-caption);">
-        On final build: click 8 finding buttons above → finding modal · click any cluster → signboard modal
-      </p>
-    </div>
-  </main>
+</main>
 
-  <a class="hub-back" href="../index.html" id="hub-back">← Back</a>
-</div>
-
-<script>
-  // Return to source page on back-click (preserves top→Hub→top or bottom→Hub→bottom)
-  document.getElementById('hub-back').addEventListener('click', (e) => {
-    e.preventDefault();
-    const source = sessionStorage.getItem('hub-source');
-    if (source === 'bottom') {
-      sessionStorage.setItem('return-to', 'bottom');
-    } else {
-      sessionStorage.setItem('return-to', 'top');
-    }
-    sessionStorage.removeItem('hub-source');
-    window.location.href = '../index.html';
-  });
-</script>
-
+<script src="../js/i18n.js"></script>
 </body>
 </html>

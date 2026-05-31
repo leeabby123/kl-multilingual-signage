@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About · Tentang · KL Multilingual Signage</title>
+  <title>About · KL Multilingual Signage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -15,12 +15,36 @@
 
 <div class="lang-switcher" aria-label="Switch language"></div>
 
-<aside class="secondary-back">
-  <a href="hub.html" class="back-link">← Hub</a>
+<!-- Fixed sidebar: 5 pages + Back to Hub (poppyfield minimal back arrow) -->
+<aside class="sidebar">
+  <div class="sidebar-back">
+    <a href="hub.html" class="sidebar-back-link" aria-label="Back to Hub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12,19 5,12 12,5"/></svg>
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="about.html" class="sidebar-link active">
+      <span data-lang-content="en">About</span><span data-lang-content="ms">Tentang</span><span data-lang-content="zh">关于</span><span data-lang-content="ta">தகவல்</span><span data-lang-content="jawi">تنتڠ</span>
+    </a>
+    <a href="sources.html" class="sidebar-link">
+      <span data-lang-content="en">Data Sources</span><span data-lang-content="ms">Sumber Data</span><span data-lang-content="zh">数据来源</span><span data-lang-content="ta">தரவு மூலங்கள்</span><span data-lang-content="jawi">سومبر داتا</span>
+    </a>
+    <a href="members.html" class="sidebar-link">
+      <span data-lang-content="en">Team</span><span data-lang-content="ms">Ahli Kumpulan</span><span data-lang-content="zh">组员</span><span data-lang-content="ta">குழு</span><span data-lang-content="jawi">اهلي كومڤولن</span>
+    </a>
+    <a href="timeline.html" class="sidebar-link">
+      <span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span>
+    </a>
+    <a href="acknowledgements.html" class="sidebar-link">
+      <span data-lang-content="en">Acknowledgements</span><span data-lang-content="ms">Penghargaan</span><span data-lang-content="zh">致谢</span><span data-lang-content="ta">நன்றியுரை</span><span data-lang-content="jawi">ڤڠهرݢأن</span>
+    </a>
+  </nav>
 </aside>
 
 <main class="secondary-page secondary-page--prose">
-  <h1>About · Tentang · 关于</h1>
+  <h1>
+    <span data-lang-content="en">About</span><span data-lang-content="ms">Tentang</span><span data-lang-content="zh">关于</span><span data-lang-content="ta">தகவல்</span><span data-lang-content="jawi">تنتڠ</span>
+  </h1>
   <p class="lede">
     A digital humanities study of <strong>multilingual public signage in Kuala Lumpur</strong>—
     examining how Malay, Chinese, Tamil, English, and Jawi script coexist (or fail to)
@@ -72,13 +96,13 @@
     <p>Our contribution is not a single "headline finding" but a <strong>systematic framework + 8 patterns</strong>
       derived from 60 fieldwork samples:</p>
     <ol class="findings-list">
-      <li><strong>ZH–TA non-coexistence</strong> · 58/60 signs (96.7%); exceptions LI_07 (Ruddra Veenay music shop) + KB_01 (Klinik Kasut shoe repair)</li>
+      <li><strong>ZH–TA non-coexistence</strong> · 58/60 signs (96.7%); exceptions LI_07 + KB_01</li>
       <li><strong>PS Chinese signs trilingual</strong> · 92.3% combine ZH+MS+EN</li>
       <li><strong>KB monolingual island</strong> · 46.7% Malay-only; Jawi reserve (KB 3 / PS 2 / BB 1 / LI 0)</li>
       <li><strong>Government 1.67 lang/sign vs Shop 2.66</strong> · Commerce more multilingual than the state</li>
       <li><span class="sample-limited">Tamil official 0%</span> · across 5 government + 4 road signs</li>
       <li><span class="sample-limited">Chinese radiation gradient</span> · PS 86.7% &gt; BB 46.7% &gt; LI/KB 26.7%; Tamil concentrated in LI 46.7%</li>
-      <li><span class="sample-limited">Jawi/Arabic three functions</span> · PS historical sediment / BB commercial internationalization / KB ethnic life heritage</li>
+      <li><span class="sample-limited">Jawi/Arabic three functions</span> · PS historical / BB international / KB ethnic heritage</li>
       <li><span class="sample-limited">Religious-space exemption</span> · only 3 signs use script freely outside the 30% rule</li>
     </ol>
     <p class="sample-caveat">
@@ -101,7 +125,7 @@
     <p><strong>Sampling:</strong> 15 signs per district, randomly selected from public-facing
       commercial, residential, and government spaces. Total <strong>4 × 15 = 60 signs</strong>.</p>
     <p><strong>Coding:</strong> Each sign was photographed and annotated with present languages,
-      sign type, text content, and contextual notes. Data captured in a master Excel sheet with 13 fields per sign.</p>
+      sign type, text content, and contextual notes. 13 fields per sign.</p>
     <p><strong>Analysis:</strong> Cross-district comparison via cluster maps and language
       co-occurrence matrices. Voyant Tools used for word-frequency exploration; TEI encoding tested on representative samples.</p>
   </section>

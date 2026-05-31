@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timeline · Garis Masa · 时间轴</title>
+  <title>Timeline · KL Multilingual Signage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -14,10 +14,24 @@
 <body class="page-secondary">
 
 <div class="lang-switcher" aria-label="Switch language"></div>
-<aside class="secondary-back"><a href="hub.html" class="back-link">← Hub</a></aside>
+
+<aside class="sidebar">
+  <div class="sidebar-back">
+    <a href="hub.html" class="sidebar-back-link" aria-label="Back to Hub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12,19 5,12 12,5"/></svg>
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="about.html" class="sidebar-link"><span data-lang-content="en">About</span><span data-lang-content="ms">Tentang</span><span data-lang-content="zh">关于</span><span data-lang-content="ta">தகவல்</span><span data-lang-content="jawi">تنتڠ</span></a>
+    <a href="sources.html" class="sidebar-link"><span data-lang-content="en">Data Sources</span><span data-lang-content="ms">Sumber Data</span><span data-lang-content="zh">数据来源</span><span data-lang-content="ta">தரவு மூலங்கள்</span><span data-lang-content="jawi">سومبر داتا</span></a>
+    <a href="members.html" class="sidebar-link"><span data-lang-content="en">Team</span><span data-lang-content="ms">Ahli Kumpulan</span><span data-lang-content="zh">组员</span><span data-lang-content="ta">குழு</span><span data-lang-content="jawi">اهلي كومڤولن</span></a>
+    <a href="timeline.html" class="sidebar-link active"><span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span></a>
+    <a href="acknowledgements.html" class="sidebar-link"><span data-lang-content="en">Acknowledgements</span><span data-lang-content="ms">Penghargaan</span><span data-lang-content="zh">致谢</span><span data-lang-content="ta">நன்றியுரை</span><span data-lang-content="jawi">ڤڠهرݢأن</span></a>
+  </nav>
+</aside>
 
 <main class="secondary-page">
-  <h1 style="text-align: center;">Garis Masa · 时间轴 · Timeline</h1>
+  <h1 style="text-align: center;"><span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span></h1>
   <p class="lede" style="text-align: center;">A condensed schedule of the AQC7015 capstone project — from topic selection to final presentation.</p>
 
   <div class="timeline">
@@ -26,37 +40,37 @@
         <div class="timeline-marker" style="border-color: var(--color-ms);"></div>
         <div class="timeline-week">Week 1</div>
         <div class="timeline-title">Topic Selection</div>
-        <div class="timeline-desc">Locked: KL multilingual signage as research focus. Infographic mockup produced.</div>
+        <div class="timeline-desc">Locked: KL multilingual signage as research focus.</div>
       </div>
       <div class="timeline-node">
         <div class="timeline-marker" style="border-color: var(--color-ta);"></div>
         <div class="timeline-week">Week 2</div>
         <div class="timeline-title">TEI + Voyant Training</div>
-        <div class="timeline-desc">Encoded PS_007 + LI_016 with multilingual markup; tested ZH–TA hypothesis in Voyant Contexts.</div>
+        <div class="timeline-desc">Encoded PS_007 + LI_016; tested ZH–TA hypothesis.</div>
       </div>
       <div class="timeline-node">
         <div class="timeline-marker" style="border-color: var(--color-en);"></div>
         <div class="timeline-week">Week 7</div>
         <div class="timeline-title">Proposal + CS1</div>
-        <div class="timeline-desc">Group proposal submitted. Individual Case Study 1: Lingscape app analysis.</div>
+        <div class="timeline-desc">Group proposal + Lingscape app case study.</div>
       </div>
       <div class="timeline-node">
         <div class="timeline-marker" style="border-color: var(--color-zh);"></div>
         <div class="timeline-week">Week 8–10</div>
         <div class="timeline-title">Literature + Excel</div>
-        <div class="timeline-desc">Field protocol finalized. 13-column annotation schema agreed across 5 fieldworkers.</div>
+        <div class="timeline-desc">Field protocol; 13-column annotation schema agreed.</div>
       </div>
       <div class="timeline-node">
         <div class="timeline-marker" style="border-color: var(--color-jawi);"></div>
         <div class="timeline-week">Week 11</div>
         <div class="timeline-title">Fieldwork + Handover</div>
-        <div class="timeline-desc">4 districts × 15 signs = 60 photographs collected. Data consolidated into master spreadsheet.</div>
+        <div class="timeline-desc">4 districts × 15 signs = 60 photographs collected.</div>
       </div>
       <div class="timeline-node">
         <div class="timeline-marker" style="border-color: var(--bottom-coral);"></div>
         <div class="timeline-week">Week 12</div>
         <div class="timeline-title">Integration + Submission</div>
-        <div class="timeline-desc">Website build (6/7 testing · 6/8 deadline). Class presentation 6/9.</div>
+        <div class="timeline-desc">Website build (6/7 testing · 6/8 deadline · 6/9 presentation).</div>
       </div>
     </div>
   </div>

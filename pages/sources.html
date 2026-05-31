@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Sources · Sumber Data · KL Multilingual Signage</title>
+  <title>Data Sources · KL Multilingual Signage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -14,10 +14,24 @@
 <body class="page-secondary">
 
 <div class="lang-switcher" aria-label="Switch language"></div>
-<aside class="secondary-back"><a href="hub.html" class="back-link">← Hub</a></aside>
+
+<aside class="sidebar">
+  <div class="sidebar-back">
+    <a href="hub.html" class="sidebar-back-link" aria-label="Back to Hub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12,19 5,12 12,5"/></svg>
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="about.html" class="sidebar-link"><span data-lang-content="en">About</span><span data-lang-content="ms">Tentang</span><span data-lang-content="zh">关于</span><span data-lang-content="ta">தகவல்</span><span data-lang-content="jawi">تنتڠ</span></a>
+    <a href="sources.html" class="sidebar-link active"><span data-lang-content="en">Data Sources</span><span data-lang-content="ms">Sumber Data</span><span data-lang-content="zh">数据来源</span><span data-lang-content="ta">தரவு மூலங்கள்</span><span data-lang-content="jawi">سومبر داتا</span></a>
+    <a href="members.html" class="sidebar-link"><span data-lang-content="en">Team</span><span data-lang-content="ms">Ahli Kumpulan</span><span data-lang-content="zh">组员</span><span data-lang-content="ta">குழு</span><span data-lang-content="jawi">اهلي كومڤولن</span></a>
+    <a href="timeline.html" class="sidebar-link"><span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span></a>
+    <a href="acknowledgements.html" class="sidebar-link"><span data-lang-content="en">Acknowledgements</span><span data-lang-content="ms">Penghargaan</span><span data-lang-content="zh">致谢</span><span data-lang-content="ta">நன்றியுரை</span><span data-lang-content="jawi">ڤڠهرݢأن</span></a>
+  </nav>
+</aside>
 
 <main class="secondary-page">
-  <h1>Sumber Data · 数据来源 · Data Sources</h1>
+  <h1><span data-lang-content="en">Data Sources</span><span data-lang-content="ms">Sumber Data</span><span data-lang-content="zh">数据来源</span><span data-lang-content="ta">தரவு மூலங்கள்</span><span data-lang-content="jawi">سومبر داتا</span></h1>
   <p class="lede">
     All findings derive from <strong>60 fieldwork photographs</strong> taken across 4 districts of Kuala Lumpur in April–May 2026, annotated in a master spreadsheet with 13 fields per sign.
   </p>
@@ -31,15 +45,7 @@
   <section>
     <h2>District Composition</h2>
     <table class="sources-table">
-      <thead>
-        <tr>
-          <th>District</th>
-          <th>Fieldworker</th>
-          <th>Period</th>
-          <th>Sample</th>
-          <th>Avg. languages/sign</th>
-        </tr>
-      </thead>
+      <thead><tr><th>District</th><th>Fieldworker</th><th>Period</th><th>Sample</th><th>Avg. languages/sign</th></tr></thead>
       <tbody>
         <tr><td><span class="district-dot district-dot--ps"></span>Petaling Street (PS) · 茨厂街</td><td>WEI JITAO</td><td>Apr 2026</td><td>15</td><td>2.73</td></tr>
         <tr><td><span class="district-dot district-dot--li"></span>Little India (LI) · 小印度</td><td>WEI HONGHAI</td><td>Apr 2026</td><td>15</td><td>2.33</td></tr>
@@ -51,7 +57,6 @@
 
   <section>
     <h2>Annotation Schema (13 fields)</h2>
-    <p>Each sign was coded against a structured 13-column schema in the master Excel sheet:</p>
     <table class="sources-table">
       <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
       <tbody>
@@ -72,9 +77,7 @@
   <section>
     <h2>Aggregate Statistics</h2>
     <table class="sources-table">
-      <thead>
-        <tr><th>District</th><th>ZH</th><th>TA</th><th>MS</th><th>EN</th><th>Jawi/Arabic</th></tr>
-      </thead>
+      <thead><tr><th>District</th><th>ZH</th><th>TA</th><th>MS</th><th>EN</th><th>Jawi/Arabic</th></tr></thead>
       <tbody>
         <tr><td><span class="district-dot district-dot--ps"></span>PS</td><td>86.7%</td><td>0%</td><td>100%</td><td>86.7%</td><td>2 signs</td></tr>
         <tr><td><span class="district-dot district-dot--li"></span>LI</td><td>26.7%</td><td>46.7%</td><td>73.3%</td><td>86.7%</td><td>0 signs</td></tr>
@@ -83,7 +86,7 @@
         <tr style="background: var(--neutral-gray-50); font-weight: 600;"><td>All 60</td><td>46.7%</td><td>15%</td><td>91.7%</td><td>81.7%</td><td>6 signs (10%)</td></tr>
       </tbody>
     </table>
-    <p class="sample-caveat">Based on 60 signs across 4 districts. Master spreadsheet: <code>signs.json</code> (44 KB) in the repository data folder.</p>
+    <p class="sample-caveat">Based on 60 signs across 4 districts. Master spreadsheet: <code>signs.json</code> in the repository data folder.</p>
   </section>
 
   <section>

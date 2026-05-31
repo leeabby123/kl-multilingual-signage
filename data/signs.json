@@ -1,0 +1,1145 @@
+{
+  "signs": [
+    {
+      "photo_id": "KB_01",
+      "filename": "KB_01.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": true,
+        "ta": true,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "The sign indicates a local shop named \"Klinik Kasut,\" which literally translates to \"Shoe Clinic.\" It is a service establishment dedicated to repairing, restoring, and cleaning shoes.",
+      "language_count": 4,
+      "representative": true,
+      "caption": "A grassroots commercial signboard of a local shoe repair shop named \"KLINIK KASUT\" (Shoe Clinic) in Kampung Baru. Situated beneath the Malaysian national flag, the sign perfectly aligns four scripts: traditional Jawi, Latin Malay, Tamil, and Simplified Chinese. As an exemplary specimen of bottom-up multilingual linguistic landscape, it demonstrates how private everyday businesses spontaneously transcend official language boundaries, adopting a high-level four-language presentation to maximize inclusivity and reach potential customers across all major ethnic groups in Malaysia.",
+      "notes": "the only one has Tamil"
+    },
+    {
+      "photo_id": "KB_02",
+      "filename": "KB_02.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": "Arabic",
+      "sign_type": "Road Sign",
+      "text_content": "This is an official street sign for \"Jalan Raja Alang\" located in Kuala Lumpur with the postcode 50300. It also indicates that the street was formerly known as \"Jalan Perkins\" (Perkins Road).",
+      "language_count": 1,
+      "representative": true,
+      "caption": "A standard blue municipal street sign erected by the Kuala Lumpur City Hall (DBKL). The signage features traditional Jawi calligraphy at the top, followed by the modern romanized Malay road name \"JALAN RAJA ALANG\" and its postal code, with its historical colonial name \"(JALAN PERKINS)\" appended at the bottom. This official visual marker illustrates how Malaysia’s public language policy balances modern national language standardization with the institutional preservation of Islamic cultural heritage and colonial geographic history.",
+      "notes": "Jawi"
+    },
+    {
+      "photo_id": "KB_03",
+      "filename": "KB_03.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Other",
+      "text_content": "The signs direct users to two facilities: a \"Wudhuk\" area designated for Islamic ritual purification (ablution) and a general \"Toilet\" for men and women.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_04",
+      "filename": "KB_04.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Other",
+      "text_content": "This is a directional and parking fee sign for the Al Islam Specialist Hospital. It points toward the emergency department and main entrance, while listing parking rates for Parking A, including a flat discount rate for validated patients.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_05",
+      "filename": "KB_05.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Government",
+      "text_content": "This is a safety warning sign from Tenaga Nasional Berhad (TNB) for an electrical substation located near Masjid Jamek, Kampung Baru. It states that safety is the top priority and strictly prohibits unauthorized entry, supplemented by safety equipment icons at the bottom.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_06",
+      "filename": "KB_06.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": "Arabic",
+      "sign_type": "Religious/Temple/Mosque",
+      "text_content": "The decorative tiled sign marks the entrance or boundary of the \"Masjid Jamek Kg. Baru\" located in Kuala Lumpur. It displays the mosque's name in both elegant Jawi calligraphy and standard Latin script.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": "Jawi"
+    },
+    {
+      "photo_id": "KB_07",
+      "filename": "KB_07.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": false,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "The sign marks an educational facility named \"NEXTCALIPH NATURE CHILDCARE CENTRE.\" It is a childcare establishment that appears to focus on a nature-inspired theme or curriculum.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_08",
+      "filename": "KB_08.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Government",
+      "text_content": "The signs identify the glass-facade building as \"Wisma YWP,\" which serves as the headquarters for \"Yayasan Wilayah Persekutuan\" (Federal Territories Foundation). Flags of Malaysia, the Federal Territories, and the foundation are flying at the entrance.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_09",
+      "filename": "KB_09.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": "Arabic",
+      "sign_type": "Shop/Restaurant",
+      "text_content": "The sign belongs to a local food and beverage stall named \"Warung Roszaid,\" which is sponsored by the Extra Joss energy drink brand. It highlights their culinary offerings, specifically serving Nasi Campur (mixed rice) and freshly cooked hot dishes.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_10",
+      "filename": "KB_10.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Government",
+      "text_content": "The notice from the Kuala Lumpur City Hall (DBKL) announces a trial one-way traffic system implementation for Jalan Daud and Lorong Raja Mahmud starting from March 15, 2017. It includes a route map (\"Peta Laluan\") and provides a telephone number and email address for public inquiries or objections.",
+      "language_count": 2,
+      "representative": true,
+      "caption": "An official yellow traffic notice board issued by the Kuala Lumpur City Hall (DBKL) regarding a trial one-way routing scheme, set against a backdrop of modern high-rise buildings. Written entirely in the formal, administrative register of the national language (Malay), the notice details a traffic experiment starting March 15, 2017, complemented by a simplified route map grid (Peta Laluan). This signage exemplifies the absolute dominance of official state language in urban public management, while establishing a striking visual contrast between the rustic community notice and the rapidly gentrifying urban landscape.",
+      "notes": null
+    },
+    {
+      "photo_id": "KB_11",
+      "filename": "KB_11.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Government",
+      "text_content": "The sign introduces Tn Hj Abdul Ahad Bin Hj Abu Bakar as the representative for Kampong Masjid under the Malay Agricultural Settlement (M.A.S Kampong Bharu) administrative board, which was established on January 12, 1900. It provides his contact number and email address for official communication.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_12",
+      "filename": "KB_12.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Notice/Poster",
+      "text_content": "The sign serves as a security warning stating that the area is under closed-circuit television (CCTV) surveillance. It informs the public in three languages that cameras are actively operating in the vicinity.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_13",
+      "filename": "KB_13.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Notice/Poster",
+      "text_content": "The sign features a standard universal \"No Parking\" symbol (a letter 'P' inside a red circle with a slash). Below the graphic, it delivers a strict command prohibiting parking in three different languages to ensure all drivers understand.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_14",
+      "filename": "KB_14.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Notice/Poster",
+      "text_content": "The sign outlines a 3-step instruction guide for using a self-service washing machine (\"WASHER\"). It instructs users to load laundry and secure the door, select a washing temperature program (P1 to P3), and finally insert a token to start the machine. The large decorative landmark sign marks the entrance or a prominent structure of \"Kampong Bharu\" (Kampung Baru) in Kuala Lumpur. It displays the historic Malay enclave's name using both elegant traditional Jawi calligraphy and Latin script against an intricate geometric latticework background.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "KB_15",
+      "filename": "KB_15.jpg",
+      "district": "KB",
+      "district_name": "Kampung Baru",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Government",
+      "text_content": "This is an official institutional school gate sign identifying the \"Kampung Baharu Special Education Primary School,\" providing its complete municipal address, postal code, phone number, and official email under the Ministry of Education.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": null
+    },
+    {
+      "photo_id": "PS_01",
+      "filename": "PS_01.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Displays gold text for 'SAUDAGAR TEH' and 'KONG WOOI FONG TEA MERCHANTS SDN BHD' with Chinese text underneath. A side lightbox shows the 'KWF' logo and 'Since 1928'.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Highlights the establishment year 1928 and carries the standard Malaysian corporate designation indicator."
+    },
+    {
+      "photo_id": "PS_02",
+      "filename": "PS_02.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Road Sign",
+      "text_content": "\"Jalan Sang Guna, A Street of Many Names, Drury Lane,",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Documented by Think City; explains the history of the area dating back to the 1880s."
+    },
+    {
+      "photo_id": "PS_03",
+      "filename": "PS_03.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Displays a 'YBH' logo, 'KEDAI PEMBORONG PERAK' in Malay, 'YOU BOON HOCK TRADING SDN BHD' in English, and corresponding Chinese text. Also lists jewelry specialties and a phone number.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Includes product component percentages, origin country mentions, business registration suffixes, and a prominent contact number."
+    },
+    {
+      "photo_id": "PS_04",
+      "filename": "PS_04.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Transport",
+      "text_content": "\"Jln. Tun Perak, Jln. Parlimen, Jln. Pudu, Jln. Cheras, Puduraya, Petaling Street, Pasar Seni\"",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": "Located in Kuala Lumpur near Chinatown; includes directions to major transit hubs and streets."
+    },
+    {
+      "photo_id": "PS_05",
+      "filename": "PS_05.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Displays 'RESTORAN SOONG KEE' in Malay text at the top, traditional Chinese characters for the shop name in the center, and 'BEEF NOODLE' in English at the bottom along with business registration details.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Features the signature dish and corporate registration details directly on the main commercial display."
+    },
+    {
+      "photo_id": "PS_06",
+      "filename": "PS_06.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Other",
+      "text_content": "Awning features 'Pik Wah cafe', 'Since 1971', and Malay ownership info. Glass storefront displays 'Restoran Pik Wah @ China Town' with menu indicators, a shop number, and a neon pillar sign.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "Front view of the Pik Wah Cafe storefront in Chinatown, showcasing a multilingual mix of English, Malay, and Chinese signage with a Kowloon Ice House neon sign on the left pillar.",
+      "notes": "Features official corporate registration details along with traditional auspicious characters for prosperity and peace near the entrance."
+    },
+    {
+      "photo_id": "PS_07",
+      "filename": "PS_07.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Features 'KEDAI KOPI LAI FOONG' in large Malay text at the top, traditional Chinese characters in the middle, and 'LAI FOONG CAFE' in English at the bottom.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Features a traditional block-letter design typical of long-established local coffee shops."
+    },
+    {
+      "photo_id": "PS_08",
+      "filename": "PS_08.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Displays 'RESTORAN SHIN KEE' in Malay text, traditional Chinese characters for the business name, and 'SHIN KEE BEEF NOODLE SPECIALIST' in English at the bottom.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Specifies the culinary specialty of the restaurant directly within the English text."
+    },
+    {
+      "photo_id": "PS_09",
+      "filename": "PS_09.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": "Arabic",
+      "sign_type": "Road Sign",
+      "text_content": "\"Lorong Panggung, Twin Towers/KLCC, I'm waiting for you in Kuala Lumpur\"",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Located near Kwai Chai Hong (Lorong Panggung); features a mix of poetic slogans and local attraction pointers."
+    },
+    {
+      "photo_id": "PS_10",
+      "filename": "PS_10.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": "Arabic",
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Displays 'Kedai Ubat Kien Fatt' on the upper facade. The lower section features Jawi script, Chinese characters, and 'Kien Fatt Medical Store' in English, with an Axe Brand side sign.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "Front view of the Kien Fatt Medical Store facade, showcasing a diverse multilingual combination of Malay, Jawi script, Chinese, and English text across the building front.",
+      "notes": "Features an attached commercial side sign for Axe Brand medicated oil on the right wall and a street notice board on the bottom left."
+    },
+    {
+      "photo_id": "PS_11",
+      "filename": "PS_11.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Advertisement",
+      "text_content": "Displays 'HOTEL BAJET' on top, 'BIRDNEST collective cafe & guesthouse' in the center, and Malay ownership text with a registration number at the bottom.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": "Features the official corporate ownership details and the business registration number alongside the mandatory budget hotel classification text."
+    },
+    {
+      "photo_id": "PS_12",
+      "filename": "PS_12.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Advertisement",
+      "text_content": "Hanging boards feature promotional text in Malay, English, and Chinese regarding freshness on the left, and beef noodle menu items in English and Chinese with RM15 pricing on the right.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "View of hanging multilingual food stall signs decorated with string lights, featuring promotional phrases and menu options in Malay, English, and Chinese.",
+      "notes": "Features food pricing details in Malaysian Ringgit (RM) alongside slogans highlighting freshness and recommendations."
+    },
+    {
+      "photo_id": "PS_13",
+      "filename": "PS_13.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Main facade features 'PAJAK GADAI HENG HUA SDN. BHD.' in Malay and Chinese. Side signs display 'PAJAK GADAI', 'PAWN SHOP', a traditional pawn character, and a guesthouse advertisement.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "Front view of the colorful Heng Hua Pawn Shop building facade, featuring a prominent multilingual mix of Malay, English, and Chinese business signage alongside a guesthouse advertisement.",
+      "notes": "Displays official corporate business status indicators alongside traditional pawnshop symbolic characters, contact numbers, and email addresses."
+    },
+    {
+      "photo_id": "PS_14",
+      "filename": "PS_14.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Features 'RESTORAN MEE TARIK LANZHOU' in white text across the top, with the year '1983' and Chinese text for Lanzhou beef noodles centered below it.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": "Features the establishment or heritage year 1983 integrated directly between the Chinese branding text."
+    },
+    {
+      "photo_id": "PS_15",
+      "filename": "PS_15.jpg",
+      "district": "PS",
+      "district_name": "Petaling Street",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "Displays 'RESTORAN' and the 'KIM YONG GEE' logo on the left. The right side features 'HONG KONG SIGNATURE BEEF NOODLE' along with matching Malay and Chinese text and corporate registration details.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Includes corporate ownership text at the bottom right corner and promotional slogans highlighting regional acclaim."
+    },
+    {
+      "photo_id": "BB_01",
+      "filename": "BB_01.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Transport",
+      "text_content": "A public transport sign displaying the station name “Bukit Bintang” together with the Malay word “Keluar” and the English word “EXIT”.",
+      "language_count": 2,
+      "representative": false,
+      "caption": "Malay-English public transport signage at Bukit Bintang Monorail Station.",
+      "notes": "Malay and English function together as public service languages for navigation and accessibility."
+    },
+    {
+      "photo_id": "BB_02",
+      "filename": "BB_02.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A restaurant sign featuring the Malay word “RESTORAN” at the top left and English restaurant branding and food descriptions in the center.",
+      "language_count": 2,
+      "representative": false,
+      "caption": "English-Malay restaurant sign featuring Indian cuisine branding in Bukit Bintang.",
+      "notes": "English dominates the commercial branding, while Malay serves a functional role through the use of the word “RESTORAN”."
+    },
+    {
+      "photo_id": "BB_03",
+      "filename": "BB_03.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": true,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A multilingual restaurant sign containing Tamil text at the top, English branding in the center, and Malay food names below.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "Multilingual Indian restaurant sign in Bukit Bintang.",
+      "notes": "Tamil reflects Indian cultural identity while English and Malay improve accessibility."
+    },
+    {
+      "photo_id": "BB_04",
+      "filename": "BB_04.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A travel agency advertisement sign displaying Malay text at the top, English company branding in the center, and Chinese characters below.",
+      "language_count": 3,
+      "representative": false,
+      "caption": "Multilingual travel agency advertisement in Bukit Bintang.",
+      "notes": "The sign targets multilingual customers through the use of three languages."
+    },
+    {
+      "photo_id": "BB_05",
+      "filename": "BB_05.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Transport",
+      "text_content": "A directional sign inside the monorail walkway showing Malay words such as “Keluar” and “Laluan Monorel KL” together with English place names and directions.",
+      "language_count": 2,
+      "representative": false,
+      "caption": "Malay-English transportation directional signage in Bukit Bintang.",
+      "notes": "Malay is used for official transport information while English improves accessibility for tourists and international visitors."
+    },
+    {
+      "photo_id": "BB_06",
+      "filename": "BB_06.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Advertisement",
+      "text_content": "A large shopping mall advertisement featuring the Malay sentence “Percutian Anda Bermula Di Sini” together with the English slogan “Fly Better”.",
+      "language_count": 2,
+      "representative": false,
+      "caption": "Malay-English commercial advertisement inside Pavilion Kuala Lumpur.",
+      "notes": "English dominates international branding while Malay localizes the advertisement for Malaysian consumers."
+    },
+    {
+      "photo_id": "BB_07",
+      "filename": "BB_07.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": "Arabic",
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A restaurant sign featuring English and Malay text, Chinese characters below, and Arabic script above the logo.",
+      "language_count": 3,
+      "representative": false,
+      "caption": "Multilingual Muslim restaurant sign in Bukit Bintang.",
+      "notes": "Arabic and Chinese are used together with Malay and English to attract diverse customers."
+    },
+    {
+      "photo_id": "BB_08",
+      "filename": "BB_08.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A restaurant sign displaying large Chinese characters “Chong Qing Lao Hot Pot” prominently, with the English words “RESTORAN HOTPOT CHONG QING” above. Additional Chinese text appears on the storefront decorations below.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "Multilingual Chinese hotpot restaurant signage in Bukit Bintang featuring Chinese, English, and Malay.",
+      "notes": "Chinese dominates the restaurant identity, while English and Malay improve accessibility for local and international customers."
+    },
+    {
+      "photo_id": "BB_09",
+      "filename": "BB_09.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A restaurant sign displaying Chinese characters together with the English name “NOBLE HOUSE”. The word “RESTORAN” also appears in small text on the left side.",
+      "language_count": 3,
+      "representative": false,
+      "caption": "Chinese-English-Malay restaurant signage in Bukit Bintang.",
+      "notes": "Chinese dominates the restaurant identity while English and Malay improve accessibility."
+    },
+    {
+      "photo_id": "BB_10",
+      "filename": "BB_10.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Transport",
+      "text_content": "A multilingual MRT directional sign displaying Malay words such as “Pintu” and “Peta Lokasi” together with English translations including “Location Map” and station information.",
+      "language_count": 2,
+      "representative": true,
+      "caption": "Malay-English MRT directional signage in Bukit Bintang.",
+      "notes": "Malay and English are used together in public transport signage for local and international accessibility."
+    },
+    {
+      "photo_id": "BB_11",
+      "filename": "BB_11.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": "Other",
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A multilingual pharmacy sign displaying the Malay word “FARMASI”, the English words “Wellcome” and “PHARMACY”, Chinese characters, and the word “APOTIK”.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "Multilingual pharmacy signage in Bukit Bintang.",
+      "notes": "The sign combines Malay, English, Chinese, and another regional language to attract customers from diverse linguistic backgrounds."
+    },
+    {
+      "photo_id": "BB_12",
+      "filename": "BB_12.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A restaurant sign displaying Chinese characters together with the words “BAK KUT TEH”. Romanized Chinese text “DONG FANG XIANG” also appears below the Chinese name.",
+      "language_count": 2,
+      "representative": false,
+      "caption": "Chinese-Malay restaurant signage in Bukit Bintang.",
+      "notes": "Chinese cultural identity is combined with Malay food terminology in commercial branding."
+    },
+    {
+      "photo_id": "BB_13",
+      "filename": "BB_13.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Advertisement",
+      "text_content": "A commercial advertisement displaying the Malay sentence “Mencapai Kejayaan bersama-sama kami” together with the English slogan “Reach for Great”.",
+      "language_count": 2,
+      "representative": false,
+      "caption": "Malay-English commercial advertisement in Bukit Bintang.",
+      "notes": "Malay and English are used together in advertising to target wider audiences."
+    },
+    {
+      "photo_id": "BB_14",
+      "filename": "BB_14.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A multilingual pharmacy sign displaying Malay, English, and Chinese text. The words “APOTIK”, “FARMASI”, and “PHARMACY” are displayed prominently, with Chinese characters placed at the bottom.",
+      "language_count": 3,
+      "representative": false,
+      "caption": "Chinese-English-Malay pharmacy signage in Bukit Bintang.",
+      "notes": "The sign uses multiple languages to attract customers from different linguistic backgrounds."
+    },
+    {
+      "photo_id": "BB_15",
+      "filename": "BB_15.jpg",
+      "district": "BB",
+      "district_name": "Bukit Bintang",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A shopping mall sign displaying the Malay place names “Bukit Bintang” and “Hang Tuah” together with English text such as “City Centre” and “Main Entrance”.",
+      "language_count": 2,
+      "representative": false,
+      "caption": "Malay-English commercial signage in Bukit Bintang.",
+      "notes": "Malay place names are combined with English commercial terminology in the mall branding."
+    },
+    {
+      "photo_id": "LI_01",
+      "filename": "LI_01.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": false,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Religious/Temple/Mosque",
+      "text_content": "A Chinese temple or religious building sign with Chinese characters visible on the façade and entrance area.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": "Main visible language is Chinese; treated as a religious/cultural sign."
+    },
+    {
+      "photo_id": "LI_02",
+      "filename": "LI_02.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A restaurant sign for Indian Empire, with the Malay word 'Restoran' and English text describing Indian food.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": "Restaurant sign with Malay and English."
+    },
+    {
+      "photo_id": "LI_03",
+      "filename": "LI_03.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A hardware and paint shop sign with Chinese characters, Malay wording, and English brand/business information.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "This sign is selected because it shows a clear multilingual commercial pattern. Chinese, Malay, and English appear together, showing how non-Indian businesses can still be part of the wider visual environment around Little India.",
+      "notes": "Chinese appears together with Malay and English; no Tamil."
+    },
+    {
+      "photo_id": "LI_04",
+      "filename": "LI_04.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": true,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A motorcycle shop sign with the Yamaha brand, Malay business description, English wording, and Chinese company name.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Commercial sign with Chinese, Malay and English."
+    },
+    {
+      "photo_id": "LI_05",
+      "filename": "LI_05.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A Sunrich shop sign that includes Malay wording for a liquor wholesaler and an English-style brand name.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": "Malay is used for business description; English appears mainly as the brand name."
+    },
+    {
+      "photo_id": "LI_06",
+      "filename": "LI_06.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": true,
+        "ms": false,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A Raaji Silk Palace sign with English and Tamil text for a silk and clothing-related business.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": "Tamil appears together with English on a textile-related shop sign."
+    },
+    {
+      "photo_id": "LI_07",
+      "filename": "LI_07.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": true,
+        "ta": true,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A Ruddra Veenay shop sign for CDs, VCDs, DVDs and MP3 products, showing Malay, English, Tamil and Chinese.",
+      "language_count": 4,
+      "representative": true,
+      "caption": "This sign is selected because it contains all four main languages recorded in the dataset. It is a strong example of multilingual commercial signage in Little India.",
+      "notes": "Clear example where Chinese and Tamil appear together."
+    },
+    {
+      "photo_id": "LI_08",
+      "filename": "LI_08.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": false
+      },
+      "other_language": null,
+      "sign_type": "Road Sign",
+      "text_content": "A blue road direction sign showing places such as Pusat Bandaraya, Jalan Travers, Bangsar, Pasar Seni and Pudu Sentral.",
+      "language_count": 1,
+      "representative": true,
+      "caption": "This sign is selected because it represents public road signage rather than a shop sign. It shows how Malay is used in official direction signs around the area.",
+      "notes": "Public road sign; mainly Malay place/direction wording."
+    },
+    {
+      "photo_id": "LI_09",
+      "filename": "LI_09.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": true,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A Madanikas clothing shop sign with Malay wording, English/romanised shop name, and Tamil text.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Tamil appears with Malay and English/romanised shop branding."
+    },
+    {
+      "photo_id": "LI_10",
+      "filename": "LI_10.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": true,
+        "ms": false,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Religious/Temple/Mosque",
+      "text_content": "A sign for The Vivekananda Ashrama Kuala Lumpur, with Tamil text above the English name.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": "Religious or cultural institution sign with Tamil and English."
+    },
+    {
+      "photo_id": "LI_11",
+      "filename": "LI_11.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": true,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A UM Stores department store sign with English, Tamil and Malay wording related to a retail shop.",
+      "language_count": 3,
+      "representative": false,
+      "caption": null,
+      "notes": "Retail sign with Tamil, English and Malay elements."
+    },
+    {
+      "photo_id": "LI_12",
+      "filename": "LI_12.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": false,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A Star Fancy Store sign advertising Indian fashion jewellery, bangles, earrings, necksets and saree matching services.",
+      "language_count": 1,
+      "representative": false,
+      "caption": null,
+      "notes": "English-only commercial sign related to Indian fashion accessories."
+    },
+    {
+      "photo_id": "LI_13",
+      "filename": "LI_13.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": true,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Notice/Poster",
+      "text_content": "A Happy Deepavali banner with English, Malay and Tamil greetings for the festival.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "This banner is selected because it shows festival-related public communication. English, Malay and Tamil appear together, linking the linguistic landscape with Deepavali and Indian cultural identity.",
+      "notes": "Festival banner; useful for showing cultural event language use."
+    },
+    {
+      "photo_id": "LI_14",
+      "filename": "LI_14.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": false,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Shop/Restaurant",
+      "text_content": "A Raani Silks shopfront with English business name and Malay/English notice information visible near the entrance.",
+      "language_count": 2,
+      "representative": false,
+      "caption": null,
+      "notes": "Textile shopfront; Malay appears in the store notice."
+    },
+    {
+      "photo_id": "LI_15",
+      "filename": "LI_15.jpg",
+      "district": "LI",
+      "district_name": "Little India",
+      "languages": {
+        "zh": false,
+        "ta": true,
+        "ms": true,
+        "en": true
+      },
+      "other_language": null,
+      "sign_type": "Other",
+      "text_content": "A Little India welcome gateway with Malay, English and Tamil text.",
+      "language_count": 3,
+      "representative": true,
+      "caption": "This gateway is selected because it visually represents Little India as a cultural place. Malay, English and Tamil appear together, while Tamil marks the area's Indian identity.",
+      "notes": "Gateway/landmark sign; placed under Other because the template has no gateway category."
+    }
+  ],
+  "total": 60
+}

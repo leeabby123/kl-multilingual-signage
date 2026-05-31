@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hub · Multilingual Public Signage in KL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    body { background: var(--hub-bg); min-height: 100vh; }
+    .hub-shell {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 200px 1fr;
+      height: 100vh;
+    }
+    .hub-top-bar {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 8px;
+      padding: 16px;
+      background: var(--neutral-paper);
+      border-bottom: 1px solid var(--neutral-gray-100);
+      overflow-x: auto;
+    }
+    .hub-finding-btn {
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      font-size: var(--text-caption);
+      font-family: var(--font-ms-en);
+      background: var(--neutral-cream);
+      border: 1px solid var(--neutral-gray-200);
+      color: var(--neutral-gray-700);
+      white-space: nowrap;
+      transition: var(--transition-fast);
+    }
+    .hub-finding-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .hub-finding-btn.f-stable { border-color: var(--neutral-gray-400); }
+    .hub-finding-btn.f-limited { border-style: dashed; opacity: 0.85; }
+
+    .hub-sidebar {
+      padding: var(--space-lg) var(--space-md);
+      background: var(--neutral-paper);
+      border-right: 1px solid var(--neutral-gray-100);
+    }
+    .hub-sidebar-title {
+      font-size: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--neutral-gray-400);
+      margin: 0 0 var(--space-md);
+    }
+    .hub-sidebar-link {
+      display: block;
+      padding: 8px 12px;
+      margin-bottom: 4px;
+      color: var(--neutral-gray-700);
+      text-decoration: none;
+      font-size: var(--text-small);
+      border-radius: var(--radius-sm);
+      transition: var(--transition-fast);
+    }
+    .hub-sidebar-link:hover { background: var(--neutral-cream); }
+
+    .hub-main {
+      padding: var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hub-placeholder {
+      text-align: center;
+      color: var(--neutral-gray-400);
+      max-width: 500px;
+    }
+    .hub-placeholder h2 { font-family: var(--font-serif); margin-bottom: var(--space-sm); font-style: italic; }
+
+    .hub-back {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      padding: 8px 12px;
+      background: var(--neutral-cream);
+      border: 1px solid var(--neutral-gray-200);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-caption);
+      text-decoration: none;
+      color: var(--neutral-gray-700);
+    }
+  </style>
+</head>
+<body>
+
+<div class="hub-shell">
+
+  <div class="hub-top-bar">
+    <!-- 8 finding buttons: top row stable (solid), bottom row sample-limited (dashed) -->
+    <button class="hub-finding-btn f-stable">① ZH–TA 不共存 96.7%</button>
+    <button class="hub-finding-btn f-stable">② PS 中文牌三语 92.3%</button>
+    <button class="hub-finding-btn f-stable">③ KB 单语孤岛</button>
+    <button class="hub-finding-btn f-stable">④ 政府 1.67 vs 商店 2.66</button>
+    <button class="hub-finding-btn f-limited">⑤ Tamil 官方 0%</button>
+    <button class="hub-finding-btn f-limited">⑥ 中文辐射</button>
+    <button class="hub-finding-btn f-limited">⑦ Jawi/Arabic 三功能</button>
+    <button class="hub-finding-btn f-limited">⑧ 宗教空间豁免</button>
+  </div>
+
+  <aside class="hub-sidebar">
+    <p class="hub-sidebar-title">Pages</p>
+    <a class="hub-sidebar-link" href="about.html">About · Tentang</a>
+    <a class="hub-sidebar-link" href="sources.html">Sumber Data</a>
+    <a class="hub-sidebar-link" href="members.html">Ahli Kumpulan</a>
+    <a class="hub-sidebar-link" href="timeline.html">Garis Masa</a>
+    <a class="hub-sidebar-link" href="acknowledgements.html">Penghargaan</a>
+  </aside>
+
+  <main class="hub-main">
+    <div class="hub-placeholder">
+      <h2>KL Map · 60 Sign Clusters</h2>
+      <p>Hub interactive map placeholder. Awaiting visual asset (4-district KL base map with 60 hibiscus-shaped clusters).</p>
+      <p style="margin-top: var(--space-md); font-size: var(--text-caption);">
+        On final build: click 8 finding buttons above → finding modal · click any cluster → signboard modal
+      </p>
+    </div>
+  </main>
+
+  <a class="hub-back" href="../index.html" id="hub-back">← Back</a>
+</div>
+
+<script>
+  // Return to source page on back-click (preserves top→Hub→top or bottom→Hub→bottom)
+  document.getElementById('hub-back').addEventListener('click', (e) => {
+    e.preventDefault();
+    const source = sessionStorage.getItem('hub-source');
+    if (source === 'bottom') {
+      sessionStorage.setItem('return-to', 'bottom');
+    } else {
+      sessionStorage.setItem('return-to', 'top');
+    }
+    sessionStorage.removeItem('hub-source');
+    window.location.href = '../index.html';
+  });
+</script>
+
+</body>
+</html>

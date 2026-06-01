@@ -13,12 +13,15 @@
      - left nav rail = Omeka-style fixed sidebar
    ============================================================================ */
 :root {
-  --bg-page:     #e8e3d8;
-  --bg-map:      #fff9eb;
-  --ink:         #6e3a20;
-  --ink-soft:    #8a5638;
-  --line:        #c8b8a8;
-  --c-zh:        #d63031;
+  /* === Hub palette — locked 6/1 (Kunm's ivory + sage scheme) === */
+  --bg-page:     #fff9eb;   /* page background = ivory (Kunm's swatch) */
+  --bg-map:      #fffef5;   /* map canvas slightly brighter than page */
+  --ink:         #5a4030;   /* main text — softened from #6e3a20 */
+  --ink-soft:    #8a6a50;   /* secondary text — lightened from #8a5638 */
+  --line:        #d8c8b8;   /* dividers + borders — lighter */
+  --accent-sage: #80c193;   /* Kunm's sage swatch — leaf/garden accent */
+  --accent-sage-soft: #b8dcc4;  /* tinted version for backgrounds */
+  --c-zh:        #d63031;   /* 5 locked language colors — DO NOT CHANGE */
   --c-ta:        #e67e22;
   --c-ms:        #27ae60;
   --c-en:        #2980b9;
@@ -37,8 +40,8 @@ html, body {
 .nav-rail {
   position: fixed; left: 0; top: 0; bottom: 0;
   width: 180px;
-  background: #ddd5c5;
-  border-right: 1px solid var(--line);
+  background: var(--accent-sage-soft);   /* sage-tinted leaf panel */
+  border-right: 1px solid var(--accent-sage);
   padding: 28px 18px;
   z-index: 10;
 }
@@ -96,7 +99,7 @@ html, body {
   text-overflow: ellipsis;
   min-width: 0;
 }
-.finding-btn:hover { background: #f8efd6; }
+.finding-btn:hover { background: var(--accent-sage-soft); border-color: var(--accent-sage); }
 .finding-btn.tentative { border-style: dashed; }
 
 /* ===== MAP CONTAINER ===== */
@@ -151,7 +154,7 @@ html, body {
   color: var(--ink);
   cursor: pointer;
 }
-.zoom-btn:hover { background: #f8efd6; }
+.zoom-btn:hover { background: var(--accent-sage-soft); }
 .zoom-pct {
   font-size: 11px; color: var(--ink-soft);
   text-align: center; padding: 4px 0;
@@ -247,6 +250,75 @@ html[data-lang="zh"]   [data-lang-content="zh"],
 html[data-lang="ta"]   [data-lang-content="ta"],
 html[data-lang="jawi"] [data-lang-content="jawi"] { display: revert; }
 html:not([data-lang]) [data-lang-content="en"] { display: revert; }
+
+/* ===== Finding interaction styles ===== */
+.map-svg-host svg .cluster {
+  transition: opacity 0.45s ease-out, filter 0.45s ease-out;
+}
+.map-svg-host svg .cluster.dimmed {
+  opacity: 0.12;
+  pointer-events: none;
+}
+.map-svg-host svg .cluster.highlighted {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(128, 193, 147, 0.85));  /* sage glow */
+}
+
+/* Modal: when in finding-mode, dim backdrop less + slide modal to side */
+.modal-backdrop.finding-mode {
+  background: rgba(110, 58, 32, 0.06);
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 32px;
+  transition: background 0.4s;
+}
+.modal-backdrop.finding-mode.side-left {
+  justify-content: flex-start;
+}
+.modal-backdrop.finding-mode .modal {
+  max-width: 380px;
+  min-width: 340px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 18px 50px rgba(110, 58, 32, 0.32);
+  animation: modal-slide-in 0.45s ease-out;
+}
+@keyframes modal-slide-in {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.modal-backdrop.finding-mode.side-left .modal {
+  animation-name: modal-slide-in-left;
+}
+@keyframes modal-slide-in-left {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.modal .finding-body p {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0;
+}
+.modal .finding-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dotted var(--line);
+}
+.modal .finding-meta-chip {
+  font-size: 11px;
+  padding: 3px 8px;
+  background: #f0e8d4;
+  color: var(--ink-soft);
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+.modal .finding-meta-chip.tentative {
+  background: #f5e0c8;
+}
 </style>
 </head>
 <body>
@@ -1102,20 +1174,238 @@ document.querySelectorAll('.lang-switcher .petal').forEach(p => {
 });
 
 // ============================================================================
-// FINDING BUTTONS — modal stub for now
+// FINDING BUTTONS — full interaction (filter clusters + pan/zoom + 5-lang modal)
 // ============================================================================
-document.querySelectorAll('.finding-btn').forEach(b => {
-  b.addEventListener('click', () => {
-    document.getElementById('modal-title').textContent = b.textContent.trim();
-    document.getElementById('modal-body').innerHTML = `
-      <p style="color:var(--ink-soft); font-size:13px; line-height:1.6;">
-        Finding id: <code>${b.dataset.finding}</code><br><br>
-        Visualization scaffold — wire this to per-finding map overlay
-        (highlight subset of clusters, show comparison chart, etc.)
-      </p>`;
-    document.getElementById('modal-backdrop').classList.add('open');
+const FINDING_KEYS = {
+  'zh-ta-non-coexist': 'f1_zh_ta_separation',
+  'ps-trilingual':     'f2_ps_chinese_trilingual',
+  'kb-monolingual':    'f3_kb_monolingual',
+  'govt-vs-shop':      'f4_gov_vs_shop',
+  'tamil-official':    'f5_tamil_official_zero',
+  'zh-spread':         'f6_chinese_radiation',
+  'jawi-functions':    'f7_jawi_three_functions',
+  'religious-exempt':  'f8_religious_exemption',
+};
+
+let findingsData = null;
+let originalViewBox = null;
+let activeFindingKey = null;   // tracks currently-shown finding for lang re-render
+
+fetch('../data/findings_content.json')
+  .then(r => r.json())
+  .then(d => { findingsData = d.findings_long; })
+  .catch(err => console.warn('findings JSON load failed:', err));
+
+/**
+ * Build a cluster predicate from a finding's relevant_clusters spec.
+ * Handles 4 filter syntaxes:
+ *   - explicit sign_ids list
+ *   - data-district='ps'
+ *   - data-sign-type IN ('government', 'road sign')
+ *   - data-sign-type='religious'
+ *   - data-langs contains 'zh'
+ * Falls back to gov+shop type combo (used by f4_gov_vs_shop which has no filter).
+ */
+function buildClusterFilter(rc) {
+  if (rc && rc.sign_ids) {
+    const ids = new Set(rc.sign_ids);
+    return c => ids.has(c.id.replace('cluster-', ''));
+  }
+  const f = (rc && rc.filter) ? rc.filter.toLowerCase() : '';
+  let m;
+  if ((m = f.match(/data-district\s*=\s*'(\w+)'/))) {
+    const d = m[1].toUpperCase();
+    return c => c.dataset.district === d;
+  }
+  if ((m = f.match(/data-sign-type\s+in\s*\(([^)]+)\)/))) {
+    const types = m[1].split(',').map(s =>
+      s.trim().replace(/'/g, '').replace(/\s+/g, '_').toLowerCase());
+    return c => {
+      const ct = (c.dataset.signType || '').toLowerCase();
+      return types.some(t => ct === t || ct.startsWith(t));
+    };
+  }
+  if ((m = f.match(/data-sign-type\s*=\s*'(\w+)'/))) {
+    const t = m[1].toLowerCase();
+    return c => (c.dataset.signType || '').toLowerCase().includes(t);
+  }
+  if ((m = f.match(/data-langs\s+contains\s+'(\w+)'/))) {
+    const lang = m[1].toLowerCase();
+    if (lang === 'jawi') {
+      // Jawi/Arabic stored in data-other, not data-langs
+      return c => /arabic|jawi/i.test(c.dataset.other || '') ||
+                  (c.dataset.langs || '').toLowerCase().split(',').includes('jawi');
+    }
+    return c => (c.dataset.langs || '').toLowerCase().split(',').includes(lang);
+  }
+  // f4 fallback: government + road_sign + shop + restaurant
+  return c => {
+    const t = (c.dataset.signType || '').toLowerCase();
+    return /government|road_sign|shop|restaurant/.test(t);
+  };
+}
+
+/** Read centroid of a cluster from its <use> children's translate(). */
+function clusterCenter(cluster) {
+  const uses = cluster.querySelectorAll('use');
+  let sx = 0, sy = 0, n = 0;
+  uses.forEach(u => {
+    const t = u.getAttribute('transform') || '';
+    const m = t.match(/translate\(([-\d.]+)[,\s]+([-\d.]+)\)/);
+    if (m) { sx += parseFloat(m[1]); sy += parseFloat(m[2]); n++; }
   });
+  return n ? { x: sx / n, y: sy / n } : null;
+}
+
+/** Union bounding box of matched clusters. */
+function unionBounds(clusters) {
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  let any = false;
+  clusters.forEach(c => {
+    const ctr = clusterCenter(c);
+    if (!ctr) return;
+    any = true;
+    if (ctr.x < minX) minX = ctr.x;
+    if (ctr.y < minY) minY = ctr.y;
+    if (ctr.x > maxX) maxX = ctr.x;
+    if (ctr.y > maxY) maxY = ctr.y;
+  });
+  return any ? { minX, minY, maxX, maxY } : null;
+}
+
+/** Animate map viewBox to fit bounds, preserving 1600:1000 aspect. */
+function fitMapToBounds(b, margin) {
+  margin = margin || 100;
+  const map = document.getElementById('map-svg');
+  if (!map) return;
+  if (!originalViewBox) originalViewBox = map.getAttribute('viewBox');
+
+  const targetW = (b.maxX - b.minX) + margin * 2;
+  const targetH = (b.maxY - b.minY) + margin * 2;
+  const cx = (b.minX + b.maxX) / 2;
+  const cy = (b.minY + b.maxY) / 2;
+  const ASPECT = 1600 / 1000;
+  let fitW, fitH;
+  if (targetW / Math.max(targetH, 1) > ASPECT) {
+    fitW = Math.max(targetW, 700);
+    fitH = fitW / ASPECT;
+  } else {
+    fitH = Math.max(targetH, 450);
+    fitW = fitH * ASPECT;
+  }
+  const x = cx - fitW / 2;
+  const y = cy - fitH / 2;
+  map.style.transition = 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+  map.setAttribute('viewBox', `${x} ${y} ${fitW} ${fitH}`);
+}
+
+function resetMap() {
+  const map = document.getElementById('map-svg');
+  if (map && originalViewBox) {
+    map.style.transition = 'all 0.5s ease-out';
+    map.setAttribute('viewBox', originalViewBox);
+  }
+  document.querySelectorAll('.cluster').forEach(c =>
+    c.classList.remove('dimmed', 'highlighted'));
+}
+
+/** Render finding content in active language (call on switch). */
+function renderFindingContent(findingKey) {
+  if (!findingsData) return;
+  const f = findingsData[findingKey];
+  if (!f) return;
+  const title = (f.title && f.title[currentLang]) || (f.title && f.title.en) || findingKey;
+  const body  = (f.body  && f.body[currentLang])  || (f.body  && f.body.en)  || '';
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-body').innerHTML = `
+    <div class="finding-body"><p>${body.replace(/\n/g, '</p><p>')}</p></div>`;
+}
+
+function showFinding(buttonKey, btn) {
+  const findingKey = FINDING_KEYS[buttonKey];
+  if (!findingKey || !findingsData) {
+    if (!findingsData) {
+      document.getElementById('modal-title').textContent = 'Loading…';
+      document.getElementById('modal-body').innerHTML = '<p>Findings data still loading. Try again in a moment.</p>';
+      document.getElementById('modal-backdrop').classList.add('open');
+    }
+    return;
+  }
+  const finding = findingsData[findingKey];
+  if (!finding) return;
+
+  activeFindingKey = findingKey;
+
+  // Filter + dim/highlight clusters
+  const predicate = buildClusterFilter(finding.relevant_clusters || {});
+  const all = Array.from(document.querySelectorAll('.cluster'));
+  const matched = [], unmatched = [];
+  all.forEach(c => (predicate(c) ? matched : unmatched).push(c));
+  matched.forEach(c => { c.classList.remove('dimmed'); c.classList.add('highlighted'); });
+  unmatched.forEach(c => { c.classList.remove('highlighted'); c.classList.add('dimmed'); });
+
+  // Pan/zoom to matched bounds + decide modal side
+  const backdrop = document.getElementById('modal-backdrop');
+  backdrop.classList.add('finding-mode');
+  backdrop.classList.remove('side-left', 'side-right');
+
+  const bounds = unionBounds(matched);
+  if (bounds) {
+    fitMapToBounds(bounds);
+    // Modal goes to the side OPPOSITE the matched-cluster centroid
+    const cx = (bounds.minX + bounds.maxX) / 2;
+    backdrop.classList.add(cx > 800 ? 'side-left' : 'side-right');
+  } else {
+    backdrop.classList.add('side-right');
+  }
+
+  // Render text in active language
+  renderFindingContent(findingKey);
+
+  // Add a meta-chip showing tentative flag if applicable
+  const isTentative = btn && btn.classList.contains('tentative');
+  const chip = isTentative
+    ? '<div class="finding-meta"><span class="finding-meta-chip tentative">Sample-limited</span></div>'
+    : '<div class="finding-meta"><span class="finding-meta-chip">Sample n = 60 · 4 districts</span></div>';
+  document.getElementById('modal-body').insertAdjacentHTML('beforeend', chip);
+
+  backdrop.classList.add('open');
+}
+
+function closeFinding() {
+  const backdrop = document.getElementById('modal-backdrop');
+  backdrop.classList.remove('open', 'finding-mode', 'side-left', 'side-right');
+  resetMap();
+  activeFindingKey = null;
+}
+
+// Wire up buttons
+document.querySelectorAll('.finding-btn').forEach(b => {
+  b.addEventListener('click', () => showFinding(b.dataset.finding, b));
 });
+
+// Close button + backdrop close → also reset map
+const _origClose = document.getElementById('modal-close').onclick;
+document.getElementById('modal-close').onclick = () => {
+  if (activeFindingKey) closeFinding();
+  else if (_origClose) _origClose();
+  else document.getElementById('modal-backdrop').classList.remove('open');
+};
+document.getElementById('modal-backdrop').addEventListener('click', e => {
+  if (e.target.id === 'modal-backdrop' && activeFindingKey) closeFinding();
+});
+
+// Esc to close
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && activeFindingKey) closeFinding();
+});
+
+// Re-render modal text when language switches
+const _origSetLang = setLanguage;
+setLanguage = function(lang) {
+  _origSetLang(lang);
+  if (activeFindingKey) renderFindingContent(activeFindingKey);
+};
 </script>
 </body>
 </html>

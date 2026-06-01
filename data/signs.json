@@ -17,7 +17,19 @@
       "language_count": 4,
       "representative": true,
       "caption": "A grassroots commercial signboard of a local shoe repair shop named \"KLINIK KASUT\" (Shoe Clinic) in Kampung Baru. Situated beneath the Malaysian national flag, the sign perfectly aligns four scripts: traditional Jawi, Latin Malay, Tamil, and Simplified Chinese. As an exemplary specimen of bottom-up multilingual linguistic landscape, it demonstrates how private everyday businesses spontaneously transcend official language boundaries, adopting a high-level four-language presentation to maximize inclusivity and reach potential customers across all major ethnic groups in Malaysia.",
-      "notes": "the only one has Tamil"
+      "notes": "the only one has Tamil",
+      "caption_i18n": {
+        "zh": "甘榜峇鲁一家名为「KLINIK KASUT」（鞋诊所）的本地修鞋店的草根商业招牌。招牌悬于马来西亚国旗下方，完美对齐四种文字：传统 Jawi、Rumi 马来文、Tamil 和简体华文。作为自下而上多语景观的典范样本，它展示了私营日常商业如何自发跨越官方语言边界，采用最高规格的四语呈现，以最大化包容性并触达马来西亚所有主要族群的潜在顾客。",
+        "ms": "Papan tanda komersial akar umbi sebuah kedai pembaikan kasut tempatan bernama \"KLINIK KASUT\" di Kampung Baru. Terletak di bawah bendera kebangsaan Malaysia, papan tanda ini menjajarkan empat skrip dengan sempurna: Jawi tradisional, Rumi Melayu, Tamil, dan Cina Ringkas. Sebagai spesimen contoh lanskap linguistik berbilang bahasa dari bawah ke atas, ia menunjukkan bagaimana perniagaan persendirian harian melangkaui sempadan bahasa rasmi secara spontan, mengamalkan persembahan empat bahasa peringkat tinggi untuk memaksimumkan keterangkuman dan menjangkau bakal pelanggan dari semua kumpulan etnik utama di Malaysia.",
+        "ta": "கம்பங் பாருவில் உள்ள \"KLINIK KASUT\" (காலணி சிகிச்சை மையம்) என்ற உள்ளூர் காலணி பழுதுபார்க்கும் கடையின் அடிமட்ட வணிக விளம்பரப் பலகை. மலேசிய தேசியக் கொடியின் கீழ் அமைந்துள்ள இந்தப் பலகை, பாரம்பரிய ஜாவி, லத்தீன் மலாய், தமிழ் மற்றும் எளிமைப்படுத்தப்பட்ட சீனம் ஆகிய நான்கு எழுத்துமுறைகளைத் துல்லியமாக ஒன்றிணைக்கிறது. அடிமட்டத்திலிருந்து உருவாகும் பன்மொழிப் புலமைக்கு ஒரு சிறந்த எடுத்துக்காட்டாக, மலேசியாவின் அனைத்து முக்கிய இனக்குழுக்களையும் உள்ளடக்கிய தன்மையை அதிகரிக்கவும், சாத்தியமான வாடிக்கையாளர்களைச் சென்றடையவும், தனியார் அன்றாட வணிகங்கள் எவ்வாறு தன்னிச்சையாக அதிகாரப்பூர்வ மொழி எல்லைகளைக் கடந்து, ஒரு உயர் மட்ட நான்கு மொழிப் பிரதிநிதித்துவத்தை ஏற்றுக்கொள்கின்றன என்பதை இது நிரூபிக்கிறது.",
+        "jawi": "ڤاڤن تندا کومرسيال اکر اومبي سبواه کداي ڤمباءيقن کاسوت تمڤتن برنام \"KLINIK KASUT\" د کامڤوڠ بارو. ترلتق د باوه بنديرا کبڠساءن مليسيا، ڤاڤن تندا اين منجاجرکن امڤت سکريڤ دڠن سمڤورنا: جاوي تراديسيونل، رومي ملايو، تاميل، دان چينا ريڠکس. سباݢاي چونتوه لنسکڤ ليڠݢويستيک بربيلڠ بهاس دري باوه ک اتس، اي منونجوقکن باݢايمان ڤرنياݢاءن ڤرسنديرين هارين ملڠکاهي سمڤادن بهاس راسمي سچارا سڤونتن، مڠعملکن ڤرسمبهن امڤت بهاس ڤريڠکت تيڠݢي اونتوق ممکسيمومکن کترڠکومن دان منجڠکاو باکل ڤلڠݢن دري سموا کومڤولن اتنيک اوتاما د مليسيا."
+      },
+      "notes_i18n": {
+        "zh": "唯一含 Tamil 的招牌。",
+        "ms": "Satu-satunya papan tanda yang mengandungi Tamil.",
+        "ta": "தமிழ் இருக்கும் ஒரே அடையாளப் பலகை.",
+        "jawi": "ساتو-ساتوڽ ڤاڤن تندا يڠ مڠاندوڠي تاميل."
+      }
     },
     {
       "photo_id": "KB_02",
@@ -36,7 +48,19 @@
       "language_count": 1,
       "representative": true,
       "caption": "A standard blue municipal street sign erected by the Kuala Lumpur City Hall (DBKL). The signage features traditional Jawi calligraphy at the top, followed by the modern romanized Malay road name \"JALAN RAJA ALANG\" and its postal code, with its historical colonial name \"(JALAN PERKINS)\" appended at the bottom. This official visual marker illustrates how Malaysia’s public language policy balances modern national language standardization with the institutional preservation of Islamic cultural heritage and colonial geographic history.",
-      "notes": "Jawi"
+      "notes": "Jawi",
+      "caption_i18n": {
+        "zh": "由吉隆坡市政厅（DBKL）竖立的标准蓝色市政路牌。顶部为传统 Jawi 书法，下方为现代化 Rumi 马来文路名「JALAN RAJA ALANG」及其邮政编码，底部附有殖民时期的历史名称「(JALAN PERKINS)」。这块官方视觉标识展示了马来西亚公共语言政策如何在现代国语标准化与对伊斯兰文化遗产、殖民地理历史的制度性保存之间取得平衡。",
+        "ms": "Papan tanda jalan perbandaran biru standard yang didirikan oleh Dewan Bandaraya Kuala Lumpur (DBKL). Papan tanda ini memaparkan kaligrafi Jawi tradisional di bahagian atas, diikuti dengan nama jalan Rumi moden \"JALAN RAJA ALANG\" dan poskodnya, dengan nama kolonial sejarahnya \"(JALAN PERKINS)\" dilampirkan di bahagian bawah. Penanda visual rasmi ini menggambarkan bagaimana dasar bahasa awam Malaysia mengimbangi penyeragaman bahasa kebangsaan moden dengan pemuliharaan institusi warisan budaya Islam dan sejarah geografi kolonial.",
+        "ta": "கோலாலம்பூர் மாநகராட்சி (DBKL) நிறுவிய நிலையான நீல நகராட்சி தெரு அடையாளப் பலகை. மேலே பாரம்பரிய ஜாவி காலிகிராஃபி, அதைத் தொடர்ந்து நவீன ரோமன் மலாய் சாலையின் பெயர் \"JALAN RAJA ALANG\" மற்றும் அதன் தபால் குறியீடு, கீழே அதன் வரலாற்று காலனித்துவ பெயர் \"(JALAN PERKINS)\" இணைக்கப்பட்டுள்ளது. இந்த உத்தியோகபூர்வ காட்சி அடையாளம், மலேசியாவின் பொது மொழிக் கொள்கை எவ்வாறு நவீன தேசிய மொழி தரப்படுத்தலையும், இஸ்லாமிய பண்பாட்டு பாரம்பரியம் மற்றும் காலனித்துவ புவியியல் வரலாற்றின் நிறுவன பாதுகாப்பையும் சமநிலைப்படுத்துகிறது என்பதை விளக்குகிறது.",
+        "jawi": "ڤاڤن تندا جالن ڤربندارن بيرو ستندرد يڠ دديريکن اوليه ديوان بندارايا کوالا لومڤور (DBKL). ڤاڤن تندا اين مماڤرکن کاليݢرافي جاوي تراديسيونل د بهاݢين اتس، دايکوتي دڠن نام جالن رومي مودين \"JALAN RAJA ALANG\" دان ڤوسکودڽ، دڠن نام کولونيل سجاره-ڽ \"(JALAN PERKINS)\" دلامڤيرکن د بهاݢين باوه. ڤنندا ۏيسوال راسمي اين مڠݢمبرکن باݢايمان داسر بهاس عوام مليسيا مڠيمبڠي ڤڽرݢمن بهاس کبڠساءن مودين دڠن ڤموليهرأن انستيتوسي وريسن بودايا اسلام دان سجاره ݢأوݢرافي کولونيل."
+      },
+      "notes_i18n": {
+        "zh": "Jawi（爪夷文）。",
+        "ms": "Jawi.",
+        "ta": "ஜாவி.",
+        "jawi": "جاوي."
+      }
     },
     {
       "photo_id": "KB_03",
@@ -112,7 +136,13 @@
       "language_count": 1,
       "representative": false,
       "caption": null,
-      "notes": "Jawi"
+      "notes": "Jawi",
+      "notes_i18n": {
+        "zh": "Jawi（爪夷文）。",
+        "ms": "Jawi.",
+        "ta": "ஜாவி.",
+        "jawi": "جاوي."
+      }
     },
     {
       "photo_id": "KB_07",
@@ -188,7 +218,13 @@
       "language_count": 2,
       "representative": true,
       "caption": "An official yellow traffic notice board issued by the Kuala Lumpur City Hall (DBKL) regarding a trial one-way routing scheme, set against a backdrop of modern high-rise buildings. Written entirely in the formal, administrative register of the national language (Malay), the notice details a traffic experiment starting March 15, 2017, complemented by a simplified route map grid (Peta Laluan). This signage exemplifies the absolute dominance of official state language in urban public management, while establishing a striking visual contrast between the rustic community notice and the rapidly gentrifying urban landscape.",
-      "notes": null
+      "notes": null,
+      "caption_i18n": {
+        "zh": "由吉隆坡市政厅（DBKL）发布的官方黄色交通通告板，关于一项试行单向通行方案，背景为现代化高层建筑。通告完全以国语（马来文）的正式行政语域撰写，详述了 2017 年 3 月 15 日起的交通试验，并配有简化的路线图网格（Peta Laluan）。这块招牌体现了官方国家语言在城市公共管理中的绝对主导地位，同时在素朴的社区公告与快速绅士化的城市景观之间形成鲜明的视觉对比。",
+        "ms": "Papan notis lalu lintas kuning rasmi yang dikeluarkan oleh Dewan Bandaraya Kuala Lumpur (DBKL) berhubung skim laluan sehala percubaan, dilatari bangunan pencakar langit moden. Ditulis sepenuhnya dalam laras formal dan pentadbiran bahasa kebangsaan (Melayu), notis ini memperincikan eksperimen lalu lintas yang bermula pada 15 Mac 2017, dilengkapi dengan grid peta laluan ringkas (Peta Laluan). Papan tanda ini mencontohkan dominasi mutlak bahasa rasmi negara dalam pengurusan awam bandar, sekali gus mewujudkan kontras visual yang mencolok antara notis komuniti yang sederhana dengan landskap bandar yang pesat menjalani gentrifikasi.",
+        "ta": "நவீன உயரமான கட்டிடங்களின் பின்னணியில், ஒரு சோதனை ஒருவழிப் பாதை திட்டம் தொடர்பாக கோலாலம்பூர் மாநகராட்சியால் (DBKL) வெளியிடப்பட்ட அதிகாரப்பூர்வ மஞ்சள் போக்குவரத்து அறிவிப்புப் பலகை ஒன்று உள்ளது. தேசிய மொழியான மலாய் மொழியின் முறையான, நிர்வாக நடையில் முழுமையாக எழுதப்பட்ட இந்த அறிவிப்பு, மார்ச் 15, 2017 அன்று தொடங்கும் ஒரு போக்குவரத்துச் சோதனையை விவரிக்கிறது; இது எளிமைப்படுத்தப்பட்ட வழித்தட வரைபடக் கட்டத்துடன் (பெட்டா லலுவான்) இணைக்கப்பட்டுள்ளது. இந்த அறிவிப்புப் பலகையானது, நகர்ப்புற பொது நிர்வாகத்தில் அதிகாரப்பூர்வ அரசு மொழியின் முழுமையான ஆதிக்கத்திற்கு ஒரு எடுத்துக்காட்டாக விளங்குவதோடு, கிராமப்புற சமூக அறிவிப்பிற்கும் வேகமாக நாகரிகமடைந்து வரும் நகர்ப்புற நிலப்பரப்பிற்கும் இடையே ஒரு குறிப்பிடத்தக்க காட்சி வேறுபாட்டையும் ஏற்படுத்துகிறது.",
+        "jawi": "ڤاڤن نوتيس لالو لينتس کونيڠ راسمي يڠ دکلوارکن اوليه ديوان Bandaraya کوالا لومڤور (DBKL) برهوبوڠ سکيم لالوان سهالا ڤرچوباءن، دلاتري باڠونن ڤنچاکر لاڠيت مودن. دتوليس سڤنوهڽ دالم لارس فورمل دان ڤنتدبيرن بهاس کبڠساءن (ملايو)، نوتيس اين ممڤرينچيکن ايکسڤيريمن لالو لينتس يڠ برمولا ڤد 15 مچ 2017، دلڠکڤي دڠن ݢريد ڤتا لالوان ريڠکس (ڤتا لالوان). ڤاڤن تندا اين منچونتوهکن دوميناسي مطلق بهاس راسمي نݢارا دالم ڤڠوروسن عوام باندر، سکالي ݢوس موجودکن کونترس ۏيسوال يڠ منچولوق انتارا نوتيس کومونيتي يڠ سدرهان دڠن لنسکڤ باندر يڠ ڤست منجالني gentrifikasi."
+      }
     },
     {
       "photo_id": "KB_11",
@@ -302,7 +338,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Highlights the establishment year 1928 and carries the standard Malaysian corporate designation indicator."
+      "notes": "Highlights the establishment year 1928 and carries the standard Malaysian corporate designation indicator.",
+      "notes_i18n": {
+        "zh": "突出标示创立年份 1928，并附马来西亚标准企业称谓后缀。",
+        "ms": "Menonjolkan tahun penubuhan 1928 dan membawa penunjuk gelaran korporat Malaysia yang standard.",
+        "ta": "நிறுவப்பட்ட ஆண்டான 1928-ஐ சிறப்பித்துக் காட்டுவதோடு, நிலையான மலேசிய நிறுவனப் பெயர் அடையாளக் குறியீட்டையும் கொண்டுள்ளது.",
+        "jawi": "منونجولکن تاهون ڤنوبوهن 1928 دان ممباوا ڤنونجوق ݢلرن کورڤورت مليسيا يڠ ستندرد."
+      }
     },
     {
       "photo_id": "PS_02",
@@ -321,7 +363,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Documented by Think City; explains the history of the area dating back to the 1880s."
+      "notes": "Documented by Think City; explains the history of the area dating back to the 1880s.",
+      "notes_i18n": {
+        "zh": "由 Think City 记录；说明该区域追溯至 1880 年代的历史。",
+        "ms": "Didokumenkan oleh Think City; menerangkan sejarah kawasan ini sejak tahun 1880-an.",
+        "ta": "Think City அமைப்பால் ஆவணப்படுத்தப்பட்டது; 1880 களைச் சார்ந்த இப்பகுதியின் வரலாற்றை விளக்குகிறது.",
+        "jawi": "ددوکوميڠکن اوليه Think City؛ منرڠکن سجاره کواسن اين سجق تاهون 1880-ان."
+      }
     },
     {
       "photo_id": "PS_03",
@@ -340,7 +388,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Includes product component percentages, origin country mentions, business registration suffixes, and a prominent contact number."
+      "notes": "Includes product component percentages, origin country mentions, business registration suffixes, and a prominent contact number.",
+      "notes_i18n": {
+        "zh": "包含产品成分百分比、原产国说明、商业注册后缀及醒目的联系电话。",
+        "ms": "Termasuk peratusan komponen produk, sebutan negara asal, akhiran pendaftaran perniagaan, dan nombor telefon yang menonjol.",
+        "ta": "தயாரிப்புக் கூறுகளின் சதவீதம், மூல நாட்டின் குறிப்பு, வணிகப் பதிவின் அடையாள ஒட்டுப்பெயர், மற்றும் முக்கியமான தொடர்பு எண் ஆகியவை இடம்பெற்றுள்ளன.",
+        "jawi": "ترماسوق ڤراتوسن کومڤونن ڤرودوق، سبوتن نݢارا اصل، اخيرن ڤندفترن ڤرنياݢاءن، دان نومبور تيليفون يڠ منونجول."
+      }
     },
     {
       "photo_id": "PS_04",
@@ -359,7 +413,13 @@
       "language_count": 1,
       "representative": false,
       "caption": null,
-      "notes": "Located in Kuala Lumpur near Chinatown; includes directions to major transit hubs and streets."
+      "notes": "Located in Kuala Lumpur near Chinatown; includes directions to major transit hubs and streets.",
+      "notes_i18n": {
+        "zh": "位于吉隆坡茨厂街附近；标示通往主要交通枢纽与街道的方向指引。",
+        "ms": "Terletak di Kuala Lumpur berhampiran Chinatown; merangkumi arah menuju hab transit dan jalan utama.",
+        "ta": "கோலாலம்பூரில் சைனாடவுன் அருகே அமைந்துள்ளது; முக்கிய போக்குவரத்து மையங்கள் மற்றும் தெருக்களுக்கான வழிகாட்டிகள் இடம்பெற்றுள்ளன.",
+        "jawi": "ترلتق د کوالا لومڤور برهمڤيرن چاينتاوون؛ مرڠکومي اره منوجو هب ترنسيت دان جالن اوتاما."
+      }
     },
     {
       "photo_id": "PS_05",
@@ -378,7 +438,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Features the signature dish and corporate registration details directly on the main commercial display."
+      "notes": "Features the signature dish and corporate registration details directly on the main commercial display.",
+      "notes_i18n": {
+        "zh": "在主商业展示板上直接标注招牌菜与企业注册信息。",
+        "ms": "Memaparkan hidangan istimewa dan butiran pendaftaran korporat secara langsung pada paparan komersial utama.",
+        "ta": "சிறப்பு உணவையும் நிறுவனப் பதிவு விவரங்களையும் முக்கிய வணிகக் காட்சிப் பலகையில் நேரடியாக இடம்பெற்றுள்ளன.",
+        "jawi": "مماڤرکن هيداڠن استيميوا دان بوتيرن ڤندفترن کورڤورت سچارا لڠسوڠ ڤد ڤاڤرن کومرسيال اوتاما."
+      }
     },
     {
       "photo_id": "PS_06",
@@ -397,7 +463,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "Front view of the Pik Wah Cafe storefront in Chinatown, showcasing a multilingual mix of English, Malay, and Chinese signage with a Kowloon Ice House neon sign on the left pillar.",
-      "notes": "Features official corporate registration details along with traditional auspicious characters for prosperity and peace near the entrance."
+      "notes": "Features official corporate registration details along with traditional auspicious characters for prosperity and peace near the entrance.",
+      "caption_i18n": {
+        "zh": "茨厂街碧华茶餐室门面正视图，展现英文、马来文、华文多语招牌组合，左侧柱子上挂有「九龙冰室」霓虹灯招牌。",
+        "ms": "Pandangan hadapan fasad Pik Wah Cafe di Chinatown, mempamerkan campuran berbilang bahasa papan tanda dalam bahasa Inggeris, Melayu, dan Cina, dengan papan tanda neon \"Kowloon Ice House\" pada tiang kiri.",
+        "ta": "சைனாடவுனில் உள்ள பிக் வா கஃபே கடையின் முன்புறத் தோற்றம்; இதில் ஆங்கிலம், மலாய் மற்றும் சீனம் ஆகிய பன்மொழி அடையாளப் பலகைகளும், இடது தூணில் கவுலூன் ஐஸ் ஹவுஸின் நியான் விளக்கும் இடம்பெற்றுள்ளன.",
+        "jawi": "ڤندڠن هادڤن فسد ڤيک واه Cafe د چاينتاوون، ممڤاميرکن چمڤورن بربيلڠ بهاس ڤاڤن تندا دالم بهاس ايڠݢريس، ملايو، دان چينا، دڠن ڤاڤن تندا نيون \"Kowloon Ice House\" ڤد تياڠ کيري."
+      },
+      "notes_i18n": {
+        "zh": "标注正式企业注册信息，并在入口附近书写传统吉祥字「兴隆」与「平安」。",
+        "ms": "Memaparkan butiran pendaftaran korporat rasmi bersama aksara tradisional bertuah untuk kemakmuran dan keamanan berhampiran pintu masuk.",
+        "ta": "உத்தியோகபூர்வ நிறுவனப் பதிவு விவரங்கள் மற்றும் வாயில் அருகே செழிப்பு மற்றும் அமைதிக்கான பாரம்பரிய மங்கல எழுத்துக்கள் இடம்பெற்றுள்ளன.",
+        "jawi": "مماڤرکن بوتيرن ڤندفترن کورڤورت راسمي برسام اکسارا تراديسيونل برتواه اونتوق کمقمورن دان کأمنن برهمڤيرن ڤينتو ماسوق."
+      }
     },
     {
       "photo_id": "PS_07",
@@ -416,7 +494,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Features a traditional block-letter design typical of long-established local coffee shops."
+      "notes": "Features a traditional block-letter design typical of long-established local coffee shops.",
+      "notes_i18n": {
+        "zh": "采用本地老字号茶餐室典型的传统块体字设计。",
+        "ms": "Memaparkan reka bentuk huruf blok tradisional yang lazim bagi kedai kopi tempatan yang lama bertapak.",
+        "ta": "நெடுங்காலமாக நிலைபெற்ற உள்ளூர் கபேக்களுக்கே உரிய பாரம்பரிய தடித்த எழுத்து வடிவமைப்பை இது கொண்டுள்ளது.",
+        "jawi": "مماڤرکن ريک بنتوق هوروف بلوق تراديسيونل يڠ لازيم باݢي کداي کوڤي تمڤتن يڠ لاما برتاڤق."
+      }
     },
     {
       "photo_id": "PS_08",
@@ -435,7 +519,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Specifies the culinary specialty of the restaurant directly within the English text."
+      "notes": "Specifies the culinary specialty of the restaurant directly within the English text.",
+      "notes_i18n": {
+        "zh": "在英文字样中直接标明餐厅的招牌菜种类。",
+        "ms": "Menyatakan kepakaran masakan restoran secara langsung dalam teks Inggeris.",
+        "ta": "உணவகத்தின் சிறப்பு உணவை ஆங்கில உரையில் நேரடியாக குறிப்பிடுகிறது.",
+        "jawi": "مڽتاکن کڤاکارن ماسقن ريستوران سچارا لڠسوڠ دالم تيکس ايڠݢريس."
+      }
     },
     {
       "photo_id": "PS_09",
@@ -454,7 +544,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Located near Kwai Chai Hong (Lorong Panggung); features a mix of poetic slogans and local attraction pointers."
+      "notes": "Located near Kwai Chai Hong (Lorong Panggung); features a mix of poetic slogans and local attraction pointers.",
+      "notes_i18n": {
+        "zh": "位于鬼仔巷（Lorong Panggung）附近；融合诗意标语与本地景点指引。",
+        "ms": "Terletak berhampiran Kwai Chai Hong (Lorong Panggung); memaparkan campuran cogan kata puitis dan penunjuk tarikan tempatan.",
+        "ta": "குவாய் சாய் ஹாங் (லோரோங் பாங்குங்) அருகே அமைந்துள்ளது; கவித்துவமான வாசகங்கள் மற்றும் உள்ளூர் சுற்றுலாத் தலங்கள் குறித்த குறிப்புகள் இதில் கலந்துள்ளன.",
+        "jawi": "ترلتق برهمڤيرن Kwai Chai Hong (لوروڠ ڤڠݢوڠ)؛ مماڤرکن چمڤورن چوݢن کات ڤويتيس دان ڤنونجوق تاريقن تمڤتن."
+      }
     },
     {
       "photo_id": "PS_10",
@@ -473,7 +569,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "Front view of the Kien Fatt Medical Store facade, showcasing a diverse multilingual combination of Malay, Jawi script, Chinese, and English text across the building front.",
-      "notes": "Features an attached commercial side sign for Axe Brand medicated oil on the right wall and a street notice board on the bottom left."
+      "notes": "Features an attached commercial side sign for Axe Brand medicated oil on the right wall and a street notice board on the bottom left.",
+      "caption_i18n": {
+        "zh": "建发药行（Kien Fatt Medical Store）建筑正面外立面视图，展示马来文、Jawi 文字、华文与英文多语并陈的丰富组合。",
+        "ms": "Pandangan hadapan fasad Kedai Ubat Kien Fatt, mempamerkan gabungan berbilang bahasa yang pelbagai termasuk bahasa Melayu, skrip Jawi, Cina, dan Inggeris merentas hadapan bangunan.",
+        "ta": "கையன் ஃபாட் மருந்து கடையின் முகப்பின் பார்வை; கட்டிடத்தின் முன்புறம் முழுவதும் மலாய், ஜாவி எழுத்து, சீனம் மற்றும் ஆங்கில உரைகளின் பல்வேறு பன்மொழிக் கலவை இடம்பெற்றுள்ளது.",
+        "jawi": "ڤندڠن هادڤن فسد کداي اوبت Kien Fatt، ممڤاميرکن ݢابوڠن بربيلڠ بهاس يڠ ڤلباݢاي ترماسوق بهاس ملايو، سکريڤ جاوي، چينا، دان ايڠݢريس مرنتس هادڤن باڠونن."
+      },
+      "notes_i18n": {
+        "zh": "右墙附有「斧标驱风油」（Axe Brand）商业侧招，左下方设有街区告示板。",
+        "ms": "Memaparkan papan tanda sisi komersial Axe Brand minyak ubat pada dinding kanan dan papan notis jalan di sebelah kiri bawah.",
+        "ta": "வலது சுவரில் Axe Brand மருந்து எண்ணெய்க்கான பக்கப் பலகையும், இடது கீழ் பகுதியில் தெரு அறிவிப்புப் பலகையும் இடம்பெற்றுள்ளன.",
+        "jawi": "مماڤرکن ڤاڤن تندا سيسي کومرسيال Axe Brand ميڽق اوبت ڤد دينديڠ کانن دان ڤاڤن نوتيس جالن د سبله کيري باوه."
+      }
     },
     {
       "photo_id": "PS_11",
@@ -492,7 +600,13 @@
       "language_count": 2,
       "representative": false,
       "caption": null,
-      "notes": "Features the official corporate ownership details and the business registration number alongside the mandatory budget hotel classification text."
+      "notes": "Features the official corporate ownership details and the business registration number alongside the mandatory budget hotel classification text.",
+      "notes_i18n": {
+        "zh": "标注官方企业所有权信息、营业注册编号及强制性的经济型酒店分级文字。",
+        "ms": "Memaparkan butiran pemilikan korporat rasmi dan nombor pendaftaran perniagaan bersama teks pengelasan hotel bajet yang diwajibkan.",
+        "ta": "உத்தியோகபூர்வ நிறுவன உரிமை விவரங்களும் வணிகப் பதிவெண்ணும், கட்டாயமான பட்ஜெட் ஹோட்டல் வகைப்பாட்டு உரையும் இடம்பெற்றுள்ளன.",
+        "jawi": "مماڤرکن بوتيرن ڤميليقن کورڤورت راسمي دان نومبور ڤندفترن ڤرنياݢاءن برسام تيکس ڤڠلاسن هوتيل بجيت يڠ دواجبکن."
+      }
     },
     {
       "photo_id": "PS_12",
@@ -511,7 +625,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "View of hanging multilingual food stall signs decorated with string lights, featuring promotional phrases and menu options in Malay, English, and Chinese.",
-      "notes": "Features food pricing details in Malaysian Ringgit (RM) alongside slogans highlighting freshness and recommendations."
+      "notes": "Features food pricing details in Malaysian Ringgit (RM) alongside slogans highlighting freshness and recommendations.",
+      "caption_i18n": {
+        "zh": "悬挂的多语美食摊招牌视图，配以串灯装饰，呈现马来文、英文、华文的促销语句与菜单选项。",
+        "ms": "Pandangan papan tanda gerai makanan berbilang bahasa yang tergantung dihiasi lampu pelita, memaparkan frasa promosi dan pilihan menu dalam bahasa Melayu, Inggeris, dan Cina.",
+        "ta": "சரம் விளக்குகளால் அலங்கரிக்கப்பட்டு தொங்கவிடப்பட்ட பன்மொழி உணவுக் கடை அடையாளப் பலகைகளின் காட்சி; மலாய், ஆங்கிலம் மற்றும் சீன மொழிகளில் விளம்பர சொற்றொடர்களும் பட்டியல் தேர்வுகளும் இடம்பெற்றுள்ளன.",
+        "jawi": "ڤندڠن ڤاڤن تندا ݢراي ماکنن بربيلڠ بهاس يڠ ترݢنتوڠ دهياسي لمڤو ڤليتا، مماڤرکن فراسا ڤروموسي دان ڤيليهن مينو دالم بهاس ملايو، ايڠݢريس، دان چينا."
+      },
+      "notes_i18n": {
+        "zh": "以马来西亚林吉特（RM）标注食物价格，并配有强调新鲜与推荐的促销语句。",
+        "ms": "Memaparkan butiran harga makanan dalam Ringgit Malaysia (RM) bersama cogan kata yang menonjolkan kesegaran dan saranan.",
+        "ta": "மலேசிய ரிங்கிட்டில் (RM) உணவின் விலை விவரங்கள், புத்தம் புது தன்மை மற்றும் சிபாரிசுகளை எடுத்துக்காட்டும் விளம்பர வாசகங்களுடன் இடம்பெற்றுள்ளன.",
+        "jawi": "مماڤرکن بوتيرن هرݢ ماکنن دالم ريڠݢيت مليسيا (RM) برسام چوݢن کات يڠ منونجولکن کسݢرن دان سرنن."
+      }
     },
     {
       "photo_id": "PS_13",
@@ -530,7 +656,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "Front view of the colorful Heng Hua Pawn Shop building facade, featuring a prominent multilingual mix of Malay, English, and Chinese business signage alongside a guesthouse advertisement.",
-      "notes": "Displays official corporate business status indicators alongside traditional pawnshop symbolic characters, contact numbers, and email addresses."
+      "notes": "Displays official corporate business status indicators alongside traditional pawnshop symbolic characters, contact numbers, and email addresses.",
+      "caption_i18n": {
+        "zh": "色彩缤纷的兴华大押当铺建筑外立面正视图，突出展示马来文、英文、华文的多语商业招牌组合，旁边附有客栈广告。",
+        "ms": "Pandangan hadapan fasad bangunan Kedai Pajak Gadai Heng Hua yang berwarna-warni, mempamerkan campuran berbilang bahasa papan tanda perniagaan dalam bahasa Melayu, Inggeris, dan Cina yang menonjol, di sebelah iklan rumah tetamu.",
+        "ta": "வண்ணமயமான ஹெங் ஹுவா அடகுக் கடை கட்டிட முகப்பின் முன்புறத் தோற்றம்; இதில் மலாய், ஆங்கிலம் மற்றும் சீன மொழிகளின் கலவையான முக்கிய பன்மொழி வணிக அடையாளப் பலகைகளும், ஒரு விருந்தினர் இல்ல விளம்பரமும் இடம்பெற்றுள்ளன.",
+        "jawi": "ڤندڠن هادڤن فسد باڠونن کداي ڤاجق ݢاداي Heng Hua يڠ برورنا-ورني، ممڤاميرکن چمڤورن بربيلڠ بهاس ڤاڤن تندا ڤرنياݢاءن دالم بهاس ملايو، ايڠݢريس، دان چينا يڠ منونجول، د سبله اعلان رومه تتامو."
+      },
+      "notes_i18n": {
+        "zh": "标示官方企业经营状态、传统当铺象征字、联系电话及电邮地址。",
+        "ms": "Memaparkan penunjuk status perniagaan korporat rasmi bersama aksara simbolik pajak gadai tradisional, nombor telefon, dan alamat e-mel.",
+        "ta": "உத்தியோகபூர்வ நிறுவன வணிக நிலை சுட்டிகள், பாரம்பரிய அடகுக் கடை குறியீட்டு எழுத்துக்கள், தொடர்பு எண்கள் மற்றும் மின்னஞ்சல் முகவரிகள் இடம்பெற்றுள்ளன.",
+        "jawi": "مماڤرکن ڤنونجوق ستاتوس ڤرنياݢاءن کورڤورت راسمي برسام اکسارا سيمبوليک ڤاجق ݢاداي تراديسيونل، نومبور تيليفون، دان علامت اي-ميل."
+      }
     },
     {
       "photo_id": "PS_14",
@@ -549,7 +687,13 @@
       "language_count": 2,
       "representative": false,
       "caption": null,
-      "notes": "Features the establishment or heritage year 1983 integrated directly between the Chinese branding text."
+      "notes": "Features the establishment or heritage year 1983 integrated directly between the Chinese branding text.",
+      "notes_i18n": {
+        "zh": "将创立或传承年份 1983 直接嵌入华文商号文字之间。",
+        "ms": "Tahun penubuhan atau warisan 1983 disepadukan secara langsung di antara teks penjenamaan Cina.",
+        "ta": "நிறுவப்பட்ட அல்லது பாரம்பரிய ஆண்டு 1983, சீன முத்திரை உரைக்கிடையே நேரடியாக இணைக்கப்பட்டுள்ளது.",
+        "jawi": "تاهون ڤنوبوهن اتاو وريسن 1983 دسڤادوکن سچارا لڠسوڠ د انتارا تيکس ڤنجنامأن چينا."
+      }
     },
     {
       "photo_id": "PS_15",
@@ -568,7 +712,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Includes corporate ownership text at the bottom right corner and promotional slogans highlighting regional acclaim."
+      "notes": "Includes corporate ownership text at the bottom right corner and promotional slogans highlighting regional acclaim.",
+      "notes_i18n": {
+        "zh": "右下角附企业所有权字样，并配有突显地区声誉的宣传口号。",
+        "ms": "Termasuk teks pemilikan korporat di sudut kanan bawah dan cogan kata promosi yang menonjolkan pengiktirafan serantau.",
+        "ta": "கீழ் வலது மூலையில் நிறுவன உரிமை வாசகமும், பிராந்தியப் புகழை எடுத்துக்காட்டும் விளம்பர வாசகங்களும் இடம்பெற்றுள்ளன.",
+        "jawi": "ترماسوق تيکس ڤميليقن کورڤورت د سودوت کانن باوه دان چوݢن کات ڤروموسي يڠ منونجولکن ڤڠيعترافن سرنتاو."
+      }
     },
     {
       "photo_id": "BB_01",
@@ -587,7 +737,19 @@
       "language_count": 2,
       "representative": false,
       "caption": "Malay-English public transport signage at Bukit Bintang Monorail Station.",
-      "notes": "Malay and English function together as public service languages for navigation and accessibility."
+      "notes": "Malay and English function together as public service languages for navigation and accessibility.",
+      "caption_i18n": {
+        "zh": "武吉免登单轨站的马来文-英文公共交通指示牌。",
+        "ms": "Papan tanda pengangkutan awam Melayu-Inggeris di Stesen Monorel Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங் மோனோரயில் நிலையத்தில் உள்ள மலாய்-ஆங்கில பொதுப் போக்குவரத்து வழிகாட்டிப் பலகை.",
+        "jawi": "ڤاڤن تندا ڤڠڠکوتن عوام ملايو-ايڠݢريس دستيسين مونوريل بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "马来文与英文共同作为公共服务用语，承担导向与可达性功能。",
+        "ms": "Bahasa Melayu dan Inggeris berfungsi bersama sebagai bahasa perkhidmatan awam untuk navigasi dan keterangkuman.",
+        "ta": "வழிசெலுத்தலுக்கும் அணுகுதிறனுக்கும் மலாய் மற்றும் ஆங்கிலம் பொதுச் சேவை மொழிகளாக ஒன்றாக செயல்படுகின்றன.",
+        "jawi": "بهاس ملايو دان ايڠݢريس برفوڠسي برسام سباݢاي بهاس ڤرخدمتن عوام اونتوق نافيݢاسي دان کترڠکومن."
+      }
     },
     {
       "photo_id": "BB_02",
@@ -606,7 +768,19 @@
       "language_count": 2,
       "representative": false,
       "caption": "English-Malay restaurant sign featuring Indian cuisine branding in Bukit Bintang.",
-      "notes": "English dominates the commercial branding, while Malay serves a functional role through the use of the word “RESTORAN”."
+      "notes": "English dominates the commercial branding, while Malay serves a functional role through the use of the word “RESTORAN”.",
+      "caption_i18n": {
+        "zh": "武吉免登一家印度料理品牌的英文-马来文餐厅招牌。",
+        "ms": "Papan tanda restoran Inggeris-Melayu memaparkan jenama masakan India di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் இந்திய உணவு வகை முத்திரையுடன் கூடிய ஆங்கிலம்-மலாய் உணவகப் பலகை.",
+        "jawi": "ڤاڤن تندا ريستوران ايڠݢريس-ملايو مماڤرکن جنام ماسقن اينديا د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "英文主导商业品牌呈现，马来文则通过「RESTORAN」一词承担功能性角色。",
+        "ms": "Bahasa Inggeris menguasai penjenamaan komersial, manakala bahasa Melayu memainkan peranan berfungsi melalui penggunaan perkataan \"RESTORAN\".",
+        "ta": "வணிக முத்திரையில் ஆங்கிலம் ஆதிக்கம் செலுத்தும் அதே நேரத்தில், மலாய் மொழி \"RESTORAN\" என்ற சொல்லின் வழியாக ஒரு செயல்பாட்டுப் பங்கை ஆற்றுகிறது.",
+        "jawi": "بهاس ايڠݢريس مڠواساءي ڤنجنامأن کومرسيال، ماناکالا بهاس ملايو ممأينکن ڤرانن برفوڠسي ملالوءي ڤڠݢوناءن ڤرکاتأن \"RESTORAN\"."
+      }
     },
     {
       "photo_id": "BB_03",
@@ -625,7 +799,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "Multilingual Indian restaurant sign in Bukit Bintang.",
-      "notes": "Tamil reflects Indian cultural identity while English and Malay improve accessibility."
+      "notes": "Tamil reflects Indian cultural identity while English and Malay improve accessibility.",
+      "caption_i18n": {
+        "zh": "武吉免登的多语印度餐厅招牌。",
+        "ms": "Papan tanda restoran India berbilang bahasa di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள பன்மொழி இந்திய உணவகப் பலகை.",
+        "jawi": "ڤاڤن تندا ريستوران اينديا بربيلڠ بهاس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "Tamil 体现印度文化认同，英文与马来文提升可达性。",
+        "ms": "Tamil mencerminkan identiti budaya India manakala bahasa Inggeris dan Melayu meningkatkan keterangkuman.",
+        "ta": "தமிழ் இந்தியப் பண்பாட்டு அடையாளத்தைப் பிரதிபலிக்க, ஆங்கிலமும் மலாய் மொழியும் அணுகுதிறனை மேம்படுத்துகின்றன.",
+        "jawi": "تاميل منچرمينکن ايدينتيتي بودايا اينديا ماناکالا بهاس ايڠݢريس دان ملايو منيڠکتکن کترڠکومن."
+      }
     },
     {
       "photo_id": "BB_04",
@@ -644,7 +830,19 @@
       "language_count": 3,
       "representative": false,
       "caption": "Multilingual travel agency advertisement in Bukit Bintang.",
-      "notes": "The sign targets multilingual customers through the use of three languages."
+      "notes": "The sign targets multilingual customers through the use of three languages.",
+      "caption_i18n": {
+        "zh": "武吉免登的多语旅行社广告。",
+        "ms": "Iklan agensi pelancongan berbilang bahasa di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள பன்மொழி பயண முகவர் விளம்பரம்.",
+        "jawi": "اعلان اݢينسي ڤلنچوڠن بربيلڠ بهاس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "招牌通过使用三种语言，针对多语顾客群体进行传播。",
+        "ms": "Papan tanda ini menyasarkan pelanggan berbilang bahasa melalui penggunaan tiga bahasa.",
+        "ta": "மூன்று மொழிகளைப் பயன்படுத்துவதன் வழியாக இந்த அடையாளப் பலகை பன்மொழி வாடிக்கையாளர்களைக் குறிவைக்கிறது.",
+        "jawi": "ڤاڤن تندا اين مڽاسرکن ڤلڠݢن بربيلڠ بهاس ملالوءي ڤڠݢوناءن تيݢا بهاس."
+      }
     },
     {
       "photo_id": "BB_05",
@@ -663,7 +861,19 @@
       "language_count": 2,
       "representative": false,
       "caption": "Malay-English transportation directional signage in Bukit Bintang.",
-      "notes": "Malay is used for official transport information while English improves accessibility for tourists and international visitors."
+      "notes": "Malay is used for official transport information while English improves accessibility for tourists and international visitors.",
+      "caption_i18n": {
+        "zh": "武吉免登的马来文-英文交通方向指示牌。",
+        "ms": "Papan tanda arah pengangkutan Melayu-Inggeris di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள மலாய்-ஆங்கில போக்குவரத்து வழிகாட்டிப் பலகை.",
+        "jawi": "ڤاڤن تندا اره ڤڠڠکوتن ملايو-ايڠݢريس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "马来文用于官方交通信息，英文则提升对游客与国际访客的可达性。",
+        "ms": "Bahasa Melayu digunakan untuk maklumat pengangkutan rasmi manakala bahasa Inggeris meningkatkan keterangkuman bagi pelancong dan pengunjung antarabangsa.",
+        "ta": "உத்தியோகபூர்வ போக்குவரத்து தகவல்களுக்கு மலாய் பயன்படுத்தப்பட, ஆங்கிலம் சுற்றுலாப் பயணிகள் மற்றும் சர்வதேச விருந்தினர்களின் அணுகுதிறனை மேம்படுத்துகிறது.",
+        "jawi": "بهاس ملايو دݢوناکن اونتوق معلومت ڤڠڠکوتن راسمي ماناکالا بهاس ايڠݢريس منيڠکتکن کترڠکومن باݢي ڤلنچوڠ دان ڤڠونجوڠ انترباڠسا."
+      }
     },
     {
       "photo_id": "BB_06",
@@ -682,7 +892,19 @@
       "language_count": 2,
       "representative": false,
       "caption": "Malay-English commercial advertisement inside Pavilion Kuala Lumpur.",
-      "notes": "English dominates international branding while Malay localizes the advertisement for Malaysian consumers."
+      "notes": "English dominates international branding while Malay localizes the advertisement for Malaysian consumers.",
+      "caption_i18n": {
+        "zh": "Pavilion Kuala Lumpur 商场内的马来文-英文商业广告。",
+        "ms": "Iklan komersial Melayu-Inggeris di dalam Pavilion Kuala Lumpur.",
+        "ta": "பவிலியன் கோலாலம்பூரில் உள்ள மலாய்-ஆங்கில வணிக விளம்பரம்.",
+        "jawi": "اعلان کومرسيال ملايو-ايڠݢريس ددالم Pavilion Kuala Lumpur."
+      },
+      "notes_i18n": {
+        "zh": "英文主导国际品牌呈现，马来文则将广告本土化以贴近马来西亚消费者。",
+        "ms": "Bahasa Inggeris menguasai penjenamaan antarabangsa manakala bahasa Melayu menempatkan iklan ini untuk pengguna Malaysia.",
+        "ta": "சர்வதேசப் பிராண்டிங்கில் ஆங்கிலம் ஆதிக்கம் செலுத்த, மலாய் மொழி இந்த விளம்பரத்தை மலேசியா நுகர்வோருக்காக உள்ளூர்மயமாக்குகிறது.",
+        "jawi": "بهاس ايڠݢريس مڠواساءي ڤنجنامأن انترباڠسا ماناکالا بهاس ملايو منمڤتکن اعلان اين اونتوق ڤڠݢونا مليسيا."
+      }
     },
     {
       "photo_id": "BB_07",
@@ -701,7 +923,19 @@
       "language_count": 3,
       "representative": false,
       "caption": "Multilingual Muslim restaurant sign in Bukit Bintang.",
-      "notes": "Arabic and Chinese are used together with Malay and English to attract diverse customers."
+      "notes": "Arabic and Chinese are used together with Malay and English to attract diverse customers.",
+      "caption_i18n": {
+        "zh": "武吉免登的多语穆斯林餐厅招牌。",
+        "ms": "Papan tanda restoran Muslim berbilang bahasa di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள பன்மொழி முஸ்லிம் உணவகப் பலகை.",
+        "jawi": "ڤاڤن تندا ريستوران مسلم بربيلڠ بهاس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "阿拉伯文与华文与马来文、英文并用，以吸引多元背景的顾客。",
+        "ms": "Bahasa Arab dan Cina digunakan bersama bahasa Melayu dan Inggeris untuk menarik pelanggan yang pelbagai latar belakang.",
+        "ta": "பல்வேறுபட்ட வாடிக்கையாளர்களை ஈர்ப்பதற்காக, மலாய் மற்றும் ஆங்கிலத்துடன் அரபு மற்றும் சீன மொழிகளும் சேர்த்துப் பயன்படுத்தப்படுகின்றன.",
+        "jawi": "بهاس عرب دان چينا دݢوناکن برسام بهاس ملايو دان ايڠݢريس اونتوق مناريق ڤلڠݢن يڠ ڤلباݢاي لاتر بلاکڠ."
+      }
     },
     {
       "photo_id": "BB_08",
@@ -720,7 +954,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "Multilingual Chinese hotpot restaurant signage in Bukit Bintang featuring Chinese, English, and Malay.",
-      "notes": "Chinese dominates the restaurant identity, while English and Malay improve accessibility for local and international customers."
+      "notes": "Chinese dominates the restaurant identity, while English and Malay improve accessibility for local and international customers.",
+      "caption_i18n": {
+        "zh": "武吉免登一家华人火锅餐厅的多语招牌，含华文、英文、马来文。",
+        "ms": "Papan tanda restoran stim panas Cina berbilang bahasa di Bukit Bintang yang memaparkan bahasa Cina, Inggeris, dan Melayu.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள பன்மொழி சீன ஹாட்பாட் உணவகப் பலகை; சீனம், ஆங்கிலம் மற்றும் மலாய் இடம்பெற்றுள்ளன.",
+        "jawi": "ڤاڤن تندا ريستوران ستيم ڤانس چينا بربيلڠ بهاس د بوکيت بينتڠ يڠ مماڤرکن بهاس چينا، ايڠݢريس، دان ملايو."
+      },
+      "notes_i18n": {
+        "zh": "华文主导餐厅身份呈现，英文与马来文则提升本地与国际顾客的可达性。",
+        "ms": "Bahasa Cina menguasai identiti restoran, manakala bahasa Inggeris dan Melayu meningkatkan keterangkuman untuk pelanggan tempatan dan antarabangsa.",
+        "ta": "உணவகத்தின் அடையாளத்தில் சீனம் ஆதிக்கம் செலுத்த, ஆங்கிலமும் மலாயும் உள்ளூர் மற்றும் சர்வதேச வாடிக்கையாளர்களின் அணுகுதிறனை மேம்படுத்துகின்றன.",
+        "jawi": "بهاس چينا مڠواساءي ايدينتيتي ريستوران، ماناکالا بهاس ايڠݢريس دان ملايو منيڠکتکن کترڠکومن اونتوق ڤلڠݢن تمڤتن دان انترباڠسا."
+      }
     },
     {
       "photo_id": "BB_09",
@@ -739,7 +985,19 @@
       "language_count": 3,
       "representative": false,
       "caption": "Chinese-English-Malay restaurant signage in Bukit Bintang.",
-      "notes": "Chinese dominates the restaurant identity while English and Malay improve accessibility."
+      "notes": "Chinese dominates the restaurant identity while English and Malay improve accessibility.",
+      "caption_i18n": {
+        "zh": "武吉免登的华文-英文-马来文餐厅招牌。",
+        "ms": "Papan tanda restoran Cina-Inggeris-Melayu di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள சீனம்-ஆங்கிலம்-மலாய் உணவகப் பலகை.",
+        "jawi": "ڤاڤن تندا ريستوران چينا-ايڠݢريس-ملايو د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "华文主导餐厅身份呈现，英文与马来文则提升可达性。",
+        "ms": "Bahasa Cina menguasai identiti restoran manakala bahasa Inggeris dan Melayu meningkatkan keterangkuman.",
+        "ta": "உணவகத்தின் அடையாளத்தில் சீனம் ஆதிக்கம் செலுத்த, ஆங்கிலமும் மலாயும் அணுகுதிறனை மேம்படுத்துகின்றன.",
+        "jawi": "بهاس چينا مڠواساءي ايدينتيتي ريستوران ماناکالا بهاس ايڠݢريس دان ملايو منيڠکتکن کترڠکومن."
+      }
     },
     {
       "photo_id": "BB_10",
@@ -758,7 +1016,19 @@
       "language_count": 2,
       "representative": true,
       "caption": "Malay-English MRT directional signage in Bukit Bintang.",
-      "notes": "Malay and English are used together in public transport signage for local and international accessibility."
+      "notes": "Malay and English are used together in public transport signage for local and international accessibility.",
+      "caption_i18n": {
+        "zh": "武吉免登 MRT 站的马来文-英文方向指示牌。",
+        "ms": "Papan tanda arah MRT Melayu-Inggeris di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள MRT நிலையத்தின் மலாய்-ஆங்கில வழிகாட்டிப் பலகை.",
+        "jawi": "ڤاڤن تندا اره MRT ملايو-ايڠݢريس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "马来文与英文共同用于公共交通指示，服务本地与国际可达性。",
+        "ms": "Bahasa Melayu dan Inggeris digunakan bersama dalam papan tanda pengangkutan awam untuk keterangkuman tempatan dan antarabangsa.",
+        "ta": "உள்ளூர் மற்றும் சர்வதேச அணுகுதிறனுக்காக பொதுப் போக்குவரத்து வழிகாட்டிப் பலகையில் மலாயும் ஆங்கிலமும் ஒன்றாக பயன்படுத்தப்படுகின்றன.",
+        "jawi": "بهاس ملايو دان ايڠݢريس دݢوناکن برسام دالم ڤاڤن تندا ڤڠڠکوتن عوام اونتوق کترڠکومن تمڤتن دان انترباڠسا."
+      }
     },
     {
       "photo_id": "BB_11",
@@ -777,7 +1047,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "Multilingual pharmacy signage in Bukit Bintang.",
-      "notes": "The sign combines Malay, English, Chinese, and another regional language to attract customers from diverse linguistic backgrounds."
+      "notes": "The sign combines Malay, English, Chinese, and another regional language to attract customers from diverse linguistic backgrounds.",
+      "caption_i18n": {
+        "zh": "武吉免登的多语药房招牌。",
+        "ms": "Papan tanda farmasi berbilang bahasa di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள பன்மொழி மருந்தகப் பலகை.",
+        "jawi": "ڤاڤن تندا فرماسي بربيلڠ بهاس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "招牌结合马来文、英文、华文及另一种地区语言，以吸引多元语言背景的顾客。",
+        "ms": "Papan tanda ini menggabungkan bahasa Melayu, Inggeris, Cina, dan satu lagi bahasa serantau untuk menarik pelanggan dari pelbagai latar belakang bahasa.",
+        "ta": "பல்வேறு மொழிப் பின்னணியிலிருந்து வரும் வாடிக்கையாளர்களை ஈர்க்க, இந்த அடையாளப் பலகை மலாய், ஆங்கிலம், சீனம் மற்றும் மற்றொரு பிராந்திய மொழியை ஒருங்கிணைக்கிறது.",
+        "jawi": "ڤاڤن تندا اين مڠݢابوڠکن بهاس ملايو، ايڠݢريس، چينا، دان ساتو لاݢي بهاس سرنتاو اونتوق مناريق ڤلڠݢن دري ڤلباݢاي لاتر بلاکڠ بهاس."
+      }
     },
     {
       "photo_id": "BB_12",
@@ -796,7 +1078,19 @@
       "language_count": 2,
       "representative": false,
       "caption": "Chinese-Malay restaurant signage in Bukit Bintang.",
-      "notes": "Chinese cultural identity is combined with Malay food terminology in commercial branding."
+      "notes": "Chinese cultural identity is combined with Malay food terminology in commercial branding.",
+      "caption_i18n": {
+        "zh": "武吉免登的华文-马来文餐厅招牌。",
+        "ms": "Papan tanda restoran Cina-Melayu di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள சீனம்-மலாய் உணவகப் பலகை.",
+        "jawi": "ڤاڤن تندا ريستوران چينا-ملايو د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "中华文化身份在商业品牌中与马来文饮食术语相结合。",
+        "ms": "Identiti budaya Cina digabungkan dengan istilah makanan bahasa Melayu dalam penjenamaan komersial.",
+        "ta": "வணிக முத்திரையில் சீனப் பண்பாட்டு அடையாளம் மலாய் உணவுச் சொற்களுடன் இணைக்கப்பட்டுள்ளது.",
+        "jawi": "ايدينتيتي بودايا چينا ديݢابوڠکن دڠن استلاح ماکنن بهاس ملايو دالم ڤنجنامأن کومرسيال."
+      }
     },
     {
       "photo_id": "BB_13",
@@ -815,7 +1109,19 @@
       "language_count": 2,
       "representative": false,
       "caption": "Malay-English commercial advertisement in Bukit Bintang.",
-      "notes": "Malay and English are used together in advertising to target wider audiences."
+      "notes": "Malay and English are used together in advertising to target wider audiences.",
+      "caption_i18n": {
+        "zh": "武吉免登的马来文-英文商业广告。",
+        "ms": "Iklan komersial Melayu-Inggeris di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள மலாய்-ஆங்கில வணிக விளம்பரம்.",
+        "jawi": "اعلان کومرسيال ملايو-ايڠݢريس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "马来文与英文在广告中共用，以触达更广泛的受众。",
+        "ms": "Bahasa Melayu dan Inggeris digunakan bersama dalam iklan untuk menyasarkan khalayak yang lebih luas.",
+        "ta": "பரந்த பார்வையாளர்களை இலக்காகக் கொள்ள, விளம்பரத்தில் மலாயும் ஆங்கிலமும் ஒன்றாக பயன்படுத்தப்படுகின்றன.",
+        "jawi": "بهاس ملايو دان ايڠݢريس دݢوناکن برسام دالم ڤريقلانن اونتوق مڽاسرکن خلايق يڠ لبيه لواس."
+      }
     },
     {
       "photo_id": "BB_14",
@@ -834,7 +1140,19 @@
       "language_count": 3,
       "representative": false,
       "caption": "Chinese-English-Malay pharmacy signage in Bukit Bintang.",
-      "notes": "The sign uses multiple languages to attract customers from different linguistic backgrounds."
+      "notes": "The sign uses multiple languages to attract customers from different linguistic backgrounds.",
+      "caption_i18n": {
+        "zh": "武吉免登的华文-英文-马来文药房招牌。",
+        "ms": "Papan tanda farmasi Cina-Inggeris-Melayu di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள சீனம்-ஆங்கிலம்-மலாய் மருந்தகப் பலகை.",
+        "jawi": "ڤاڤن تندا فرماسي چينا-ايڠݢريس-ملايو د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "招牌使用多种语言以吸引不同语言背景的顾客。",
+        "ms": "Papan tanda ini menggunakan pelbagai bahasa untuk menarik pelanggan dari latar belakang bahasa yang berbeza.",
+        "ta": "வேறுபட்ட மொழிப் பின்னணியிலிருந்து வரும் வாடிக்கையாளர்களை ஈர்க்க இந்த அடையாளப் பலகை பல மொழிகளைப் பயன்படுத்துகிறது.",
+        "jawi": "ڤاڤن تندا اين مڠݢوناکن ڤلباݢاي بهاس اونتوق مناريق ڤلڠݢن دري لاتر بلاکڠ بهاس يڠ بربيذا."
+      }
     },
     {
       "photo_id": "BB_15",
@@ -853,7 +1171,19 @@
       "language_count": 2,
       "representative": false,
       "caption": "Malay-English commercial signage in Bukit Bintang.",
-      "notes": "Malay place names are combined with English commercial terminology in the mall branding."
+      "notes": "Malay place names are combined with English commercial terminology in the mall branding.",
+      "caption_i18n": {
+        "zh": "武吉免登的马来文-英文商业招牌。",
+        "ms": "Papan tanda komersial Melayu-Inggeris di Bukit Bintang.",
+        "ta": "புக்கிட் பிந்தாங்கில் உள்ள மலாய்-ஆங்கில வணிக அடையாளப் பலகை.",
+        "jawi": "ڤاڤن تندا کومرسيال ملايو-ايڠݢريس د بوکيت بينتڠ."
+      },
+      "notes_i18n": {
+        "zh": "马来文地名与英文商业术语在商场品牌中相结合。",
+        "ms": "Nama tempat dalam bahasa Melayu digabungkan dengan istilah komersial bahasa Inggeris dalam penjenamaan pusat membeli-belah.",
+        "ta": "வணிக மையத்தின் முத்திரையில் மலாய் இடப்பெயர்கள் ஆங்கில வணிகச் சொற்களுடன் இணைக்கப்பட்டுள்ளன.",
+        "jawi": "نام تمڤت دالم بهاس ملايو ديݢابوڠکن دڠن استلاح کومرسيال بهاس ايڠݢريس دالم ڤنجنامأن ڤوست ممبلي-بلاه."
+      }
     },
     {
       "photo_id": "LI_01",
@@ -872,7 +1202,13 @@
       "language_count": 1,
       "representative": false,
       "caption": null,
-      "notes": "Main visible language is Chinese; treated as a religious/cultural sign."
+      "notes": "Main visible language is Chinese; treated as a religious/cultural sign.",
+      "notes_i18n": {
+        "zh": "主要可见语言为华文；归类为宗教/文化招牌。",
+        "ms": "Bahasa utama yang dapat dilihat ialah Cina; diklasifikasikan sebagai papan tanda keagamaan/budaya.",
+        "ta": "முக்கியமாக காணப்படும் மொழி சீனம்; சமய/பண்பாட்டு அடையாளப் பலகையாக வகைப்படுத்தப்பட்டுள்ளது.",
+        "jawi": "بهاس اوتاما يڠ داڤت دليهت ايله چينا؛ دکلاسيفيکاسيکن سباݢاي ڤاڤن تندا کأݢامأن/بودايا."
+      }
     },
     {
       "photo_id": "LI_02",
@@ -891,7 +1227,13 @@
       "language_count": 2,
       "representative": false,
       "caption": null,
-      "notes": "Restaurant sign with Malay and English."
+      "notes": "Restaurant sign with Malay and English.",
+      "notes_i18n": {
+        "zh": "马来文与英文的餐厅招牌。",
+        "ms": "Papan tanda restoran dengan bahasa Melayu dan Inggeris.",
+        "ta": "மலாய் மற்றும் ஆங்கிலத்துடன் கூடிய உணவகப் பலகை.",
+        "jawi": "ڤاڤن تندا ريستوران دڠن بهاس ملايو دان ايڠݢريس."
+      }
     },
     {
       "photo_id": "LI_03",
@@ -910,7 +1252,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "This sign is selected because it shows a clear multilingual commercial pattern. Chinese, Malay, and English appear together, showing how non-Indian businesses can still be part of the wider visual environment around Little India.",
-      "notes": "Chinese appears together with Malay and English; no Tamil."
+      "notes": "Chinese appears together with Malay and English; no Tamil.",
+      "caption_i18n": {
+        "zh": "选取此招牌是因为它呈现清晰的多语商业格局。华语、马来文、英文同时出现，展示非印度族裔商业如何依然融入小印度周边的整体视觉环境。",
+        "ms": "Papan tanda ini dipilih kerana ia menunjukkan corak komersial berbilang bahasa yang jelas. Bahasa Cina, Melayu, dan Inggeris muncul bersama, menunjukkan bagaimana perniagaan bukan India masih boleh menjadi sebahagian daripada persekitaran visual yang lebih luas di sekitar Little India.",
+        "ta": "தெளிவான பன்மொழி வணிக முறையை காட்டுவதால் இந்த அடையாளப் பலகை தேர்ந்தெடுக்கப்பட்டுள்ளது. சீனம், மலாய் மற்றும் ஆங்கிலம் ஒன்றாக இடம்பெற்று, இந்திய சாரா வணிகங்கள் எவ்வாறு லிட்டில் இந்தியா சுற்றியுள்ள பரந்த காட்சி சூழலின் ஒரு பகுதியாக இருக்க முடியும் என்பதை காட்டுகின்றன.",
+        "jawi": "ڤاڤن تندا اين دڤيليه کرنا اي منونجوقکن چورق کومرسيال بربيلڠ بهاس يڠ جلس. بهاس چينا، ملايو، دان ايڠݢريس مونچول برسام، منونجوقکن باݢايمان ڤرنياݢاءن بوکن اينديا ماسيه بوليه منجادي سباهاݢين درڤد ڤرسکيتارن ۏيسوال يڠ لبيه لواس د سکيتر Little India."
+      },
+      "notes_i18n": {
+        "zh": "华文与马来文、英文同时出现；不含 Tamil。",
+        "ms": "Bahasa Cina muncul bersama bahasa Melayu dan Inggeris; tanpa Tamil.",
+        "ta": "சீனம், மலாய் மற்றும் ஆங்கிலத்துடன் ஒன்றாக இடம்பெற்றுள்ளது; தமிழ் இல்லை.",
+        "jawi": "بهاس چينا مونچول برسام بهاس ملايو دان ايڠݢريس؛ تنڤا تاميل."
+      }
     },
     {
       "photo_id": "LI_04",
@@ -929,7 +1283,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Commercial sign with Chinese, Malay and English."
+      "notes": "Commercial sign with Chinese, Malay and English.",
+      "notes_i18n": {
+        "zh": "含华文、马来文与英文的商业招牌。",
+        "ms": "Papan tanda komersial dengan bahasa Cina, Melayu, dan Inggeris.",
+        "ta": "சீனம், மலாய் மற்றும் ஆங்கிலத்துடன் கூடிய வணிக அடையாளப் பலகை.",
+        "jawi": "ڤاڤن تندا کومرسيال دڠن بهاس چينا، ملايو، دان ايڠݢريس."
+      }
     },
     {
       "photo_id": "LI_05",
@@ -948,7 +1308,13 @@
       "language_count": 2,
       "representative": false,
       "caption": null,
-      "notes": "Malay is used for business description; English appears mainly as the brand name."
+      "notes": "Malay is used for business description; English appears mainly as the brand name.",
+      "notes_i18n": {
+        "zh": "马来文用于业务描述，英文主要作为品牌名称出现。",
+        "ms": "Bahasa Melayu digunakan untuk huraian perniagaan, bahasa Inggeris muncul terutamanya sebagai nama jenama.",
+        "ta": "வணிக விளக்கத்திற்கு மலாய் பயன்படுத்தப்பட, ஆங்கிலம் முக்கியமாக முத்திரைப் பெயராக இடம்பெறுகிறது.",
+        "jawi": "بهاس ملايو دݢوناکن اونتوق هورايان ڤرنياݢاءن، بهاس ايڠݢريس مونچول تراوتاماڽ سباݢاي نام جنام."
+      }
     },
     {
       "photo_id": "LI_06",
@@ -967,7 +1333,13 @@
       "language_count": 2,
       "representative": false,
       "caption": null,
-      "notes": "Tamil appears together with English on a textile-related shop sign."
+      "notes": "Tamil appears together with English on a textile-related shop sign.",
+      "notes_i18n": {
+        "zh": "Tamil 与英文同时出现于一块纺织相关商铺的招牌上。",
+        "ms": "Tamil muncul bersama bahasa Inggeris pada papan tanda kedai yang berkaitan dengan tekstil.",
+        "ta": "ஜவுளி தொடர்பான கடை அடையாளப் பலகையில் தமிழ் ஆங்கிலத்துடன் ஒன்றாக இடம்பெற்றுள்ளது.",
+        "jawi": "تاميل مونچول برسام بهاس ايڠݢريس ڤد ڤاڤن تندا کداي يڠ برکاءيتن دڠن تيکستيل."
+      }
     },
     {
       "photo_id": "LI_07",
@@ -986,7 +1358,19 @@
       "language_count": 4,
       "representative": true,
       "caption": "This sign is selected because it contains all four main languages recorded in the dataset. It is a strong example of multilingual commercial signage in Little India.",
-      "notes": "Clear example where Chinese and Tamil appear together."
+      "notes": "Clear example where Chinese and Tamil appear together.",
+      "caption_i18n": {
+        "zh": "选取此招牌是因为它包含数据集中记录的全部四种主要语言。它是小印度多语商业招牌的有力范例。",
+        "ms": "Papan tanda ini dipilih kerana ia mengandungi keempat-empat bahasa utama yang direkodkan dalam dataset. Ia adalah contoh kuat papan tanda komersial berbilang bahasa di Little India.",
+        "ta": "தரவுத்தொகுப்பில் பதிவுசெய்யப்பட்ட நான்கு முக்கிய மொழிகளையும் இது கொண்டிருப்பதால், இந்தப் பலகை தேர்ந்தெடுக்கப்பட்டுள்ளது. இது லிட்டில் இந்தியாவில் உள்ள பன்மொழி வணிகப் பலகைகளுக்கு ஒரு சிறந்த எடுத்துக்காட்டாகும்.",
+        "jawi": "ڤاڤن تندا اين دڤيليه کرنا اي مڠاندوڠي کأمڤت-امڤت بهاس اوتام يڠ دريکودکن دالم dataset. اي اداله چونتوه قوات ڤاڤن تندا کومرسيال بربيلڠ بهاس د Little India."
+      },
+      "notes_i18n": {
+        "zh": "华文与 Tamil 同时出现的清晰范例。",
+        "ms": "Contoh jelas di mana bahasa Cina dan Tamil muncul bersama.",
+        "ta": "சீனமும் தமிழும் ஒன்றாக இடம்பெற்றுள்ள தெளிவான எடுத்துக்காட்டு.",
+        "jawi": "چونتوه جلس د مان بهاس چينا دان تاميل مونچول برسام."
+      }
     },
     {
       "photo_id": "LI_08",
@@ -1005,7 +1389,19 @@
       "language_count": 1,
       "representative": true,
       "caption": "This sign is selected because it represents public road signage rather than a shop sign. It shows how Malay is used in official direction signs around the area.",
-      "notes": "Public road sign; mainly Malay place/direction wording."
+      "notes": "Public road sign; mainly Malay place/direction wording.",
+      "caption_i18n": {
+        "zh": "选取此招牌是因为它属于公共道路指示牌，而非商铺招牌。它展示马来文如何用于该区域的官方方向指示。",
+        "ms": "Papan tanda ini dipilih kerana ia mewakili papan tanda jalan awam dan bukan papan tanda kedai. Ia menunjukkan bagaimana bahasa Melayu digunakan dalam papan tanda arah rasmi di sekitar kawasan ini.",
+        "ta": "இது கடை அடையாளப் பலகை அல்ல, பொதுச் சாலை அடையாளப் பலகையை குறிக்கிறது என்பதால் இந்த அடையாளப் பலகை தேர்ந்தெடுக்கப்பட்டுள்ளது. இந்த பகுதியில் உள்ள உத்தியோகபூர்வ வழிகாட்டிப் பலகைகளில் மலாய் எவ்வாறு பயன்படுத்தப்படுகிறது என்பதை இது காட்டுகிறது.",
+        "jawi": "ڤاڤن تندا اين دڤيليه کرنا اي موکيلي ڤاڤن تندا جالن عوام دان بوکن ڤاڤن تندا کداي. اي منونجوقکن باݢايمان بهاس ملايو دݢوناکن دالم ڤاڤن تندا اره راسمي د سکيتر کواسن اين."
+      },
+      "notes_i18n": {
+        "zh": "公共道路指示牌；主要为马来文地名/方向用语。",
+        "ms": "Papan tanda jalan awam; terutamanya kata nama tempat/arah dalam bahasa Melayu.",
+        "ta": "பொதுச் சாலை அடையாளம்; பெரும்பாலும் மலாய் மொழியில் இடம்/திசையைக் குறிப்பிடும் வாசகங்கள்.",
+        "jawi": "ڤاڤن تندا جالن عوام؛ تراوتاماڽ کات نام تيمڤت/اره دالم بهاس ملايو."
+      }
     },
     {
       "photo_id": "LI_09",
@@ -1024,7 +1420,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Tamil appears with Malay and English/romanised shop branding."
+      "notes": "Tamil appears with Malay and English/romanised shop branding.",
+      "notes_i18n": {
+        "zh": "Tamil 与马来文及英文/罗马字商号品牌共同出现。",
+        "ms": "Tamil muncul bersama bahasa Melayu dan penjenamaan kedai dalam bahasa Inggeris/romanized.",
+        "ta": "தமிழ், மலாய் மற்றும் ஆங்கில/ரோமனைஸ் செய்யப்பட்ட கடை முத்திரையுடன் ஒன்றாக இடம்பெற்றுள்ளது.",
+        "jawi": "تاميل مونچول برسام بهاس ملايو دان ڤنجنامأن کداي دالم بهاس ايڠݢريس/رومانايز."
+      }
     },
     {
       "photo_id": "LI_10",
@@ -1043,7 +1445,13 @@
       "language_count": 2,
       "representative": false,
       "caption": null,
-      "notes": "Religious or cultural institution sign with Tamil and English."
+      "notes": "Religious or cultural institution sign with Tamil and English.",
+      "notes_i18n": {
+        "zh": "Tamil 与英文的宗教或文化机构招牌。",
+        "ms": "Papan tanda institusi agama atau budaya dengan Tamil dan bahasa Inggeris.",
+        "ta": "தமிழ் மற்றும் ஆங்கிலத்துடன் கூடிய சமய அல்லது பண்பாட்டு நிறுவன அடையாளப் பலகை.",
+        "jawi": "ڤاڤن تندا انستيتوسي اݢام اتاو بودايا دڠن تاميل دان بهاس ايڠݢريس."
+      }
     },
     {
       "photo_id": "LI_11",
@@ -1062,7 +1470,13 @@
       "language_count": 3,
       "representative": false,
       "caption": null,
-      "notes": "Retail sign with Tamil, English and Malay elements."
+      "notes": "Retail sign with Tamil, English and Malay elements.",
+      "notes_i18n": {
+        "zh": "含 Tamil、英文与马来文元素的零售招牌。",
+        "ms": "Papan tanda runcit dengan unsur Tamil, Inggeris, dan Melayu.",
+        "ta": "தமிழ், ஆங்கிலம் மற்றும் மலாய் கூறுகளுடன் கூடிய சில்லறை வணிக அடையாளப் பலகை.",
+        "jawi": "ڤاڤن تندا رنچيت دڠن انسور تاميل، ايڠݢريس، دان ملايو."
+      }
     },
     {
       "photo_id": "LI_12",
@@ -1081,7 +1495,13 @@
       "language_count": 1,
       "representative": false,
       "caption": null,
-      "notes": "English-only commercial sign related to Indian fashion accessories."
+      "notes": "English-only commercial sign related to Indian fashion accessories.",
+      "notes_i18n": {
+        "zh": "纯英文的商业招牌，与印度时尚饰品相关。",
+        "ms": "Papan tanda komersial berbahasa Inggeris sahaja yang berkaitan dengan aksesori fesyen India.",
+        "ta": "இந்திய நாகரிக அணிகலன்கள் தொடர்பான, ஆங்கிலம் மட்டுமே கொண்ட வணிக அடையாளப் பலகை.",
+        "jawi": "ڤاڤن تندا کومرسيال برباهاسا ايڠݢريس سهاج يڠ برکاءيتن دڠن اکسيسوري فيشن اينديا."
+      }
     },
     {
       "photo_id": "LI_13",
@@ -1100,7 +1520,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "This banner is selected because it shows festival-related public communication. English, Malay and Tamil appear together, linking the linguistic landscape with Deepavali and Indian cultural identity.",
-      "notes": "Festival banner; useful for showing cultural event language use."
+      "notes": "Festival banner; useful for showing cultural event language use.",
+      "caption_i18n": {
+        "zh": "选取此横幅是因为它展示节日相关的公共传播。英文、马来文与 Tamil 同时出现，将语言景观与屠妖节及印度文化认同相联系。",
+        "ms": "Sepanduk ini dipilih kerana ia menunjukkan komunikasi awam berkaitan perayaan. Bahasa Inggeris, Melayu, dan Tamil muncul bersama, menghubungkan lanskap linguistik dengan Deepavali dan identiti budaya India.",
+        "ta": "பண்டிகை தொடர்பான பொது தொடர்பாடலை இது காட்டுவதால் இந்த பதாகை தேர்ந்தெடுக்கப்பட்டுள்ளது. ஆங்கிலம், மலாய் மற்றும் தமிழ் ஒன்றாக இடம்பெற்று, மொழியியல் நிலப்பரப்பை தீபாவளி மற்றும் இந்திய பண்பாட்டு அடையாளத்துடன் இணைக்கின்றன.",
+        "jawi": "سڤندوق اين دڤيليه کرنا اي منونجوقکن کوميونيکاسي عوام برکاءيتن ڤرايأن. بهاس ايڠݢريس، ملايو، دان تاميل مونچول برسام، مڠهوبوڠکن لنسکڤ ليڠݢويستيک دڠن ديڤاوالي دان ايدينتيتي بودايا اينديا."
+      },
+      "notes_i18n": {
+        "zh": "节日横幅；适合展示文化庆典中的语言使用。",
+        "ms": "Sepanduk perayaan; berguna untuk menunjukkan penggunaan bahasa dalam acara budaya.",
+        "ta": "பண்டிகை பதாகை; பண்பாட்டு நிகழ்வுகளில் மொழிப் பயன்பாட்டை எடுத்துக்காட்ட பயனுள்ளது.",
+        "jawi": "سڤندوق ڤرايأن؛ برݢونا اونتوق منونجوقکن ڤڠݢوناءن بهاس دالم اچارا بودايا."
+      }
     },
     {
       "photo_id": "LI_14",
@@ -1119,7 +1551,13 @@
       "language_count": 2,
       "representative": false,
       "caption": null,
-      "notes": "Textile shopfront; Malay appears in the store notice."
+      "notes": "Textile shopfront; Malay appears in the store notice.",
+      "notes_i18n": {
+        "zh": "纺织品商铺门面；马来文出现于店内告示。",
+        "ms": "Hadapan kedai tekstil; bahasa Melayu muncul dalam notis kedai.",
+        "ta": "ஜவுளிக் கடை முகப்பு; கடை அறிவிப்பில் மலாய் இடம்பெற்றுள்ளது.",
+        "jawi": "هادڤن کداي تيکستيل؛ بهاس ملايو مونچول دالم نوتيس کداي."
+      }
     },
     {
       "photo_id": "LI_15",
@@ -1138,7 +1576,19 @@
       "language_count": 3,
       "representative": true,
       "caption": "This gateway is selected because it visually represents Little India as a cultural place. Malay, English and Tamil appear together, while Tamil marks the area's Indian identity.",
-      "notes": "Gateway/landmark sign; placed under Other because the template has no gateway category."
+      "notes": "Gateway/landmark sign; placed under Other because the template has no gateway category.",
+      "caption_i18n": {
+        "zh": "选取此门楼是因为它在视觉上将小印度呈现为一个文化场所。马来文、英文与 Tamil 同时出现，而 Tamil 标记了该区域的印度族裔身份。",
+        "ms": "Pintu gerbang ini dipilih kerana ia mewakili Little India secara visual sebagai sebuah tempat budaya. Bahasa Melayu, Inggeris, dan Tamil muncul bersama, manakala Tamil menandakan identiti India kawasan ini.",
+        "ta": "லிட்டில் இந்தியாவை ஒரு பண்பாட்டுத் தலமாக காட்சி ரீதியில் பிரதிநிதித்துவப்படுத்துவதால் இந்த நுழைவாயில் தேர்ந்தெடுக்கப்பட்டுள்ளது. மலாய், ஆங்கிலம் மற்றும் தமிழ் ஒன்றாக இடம்பெற்றுள்ளன; தமிழ் இப்பகுதியின் இந்திய அடையாளத்தைக் குறிக்கிறது.",
+        "jawi": "ڤينتو ݢربڠ اين دڤيليه کرنا اي موکيلي Little India سچارا ۏيسوال سباݢاي سبواه تمڤت بودايا. بهاس ملايو، ايڠݢريس، دان تاميل مونچول برسام، ماناکالا تاميل منندکن ايدينتيتي اينديا کواسن اين."
+      },
+      "notes_i18n": {
+        "zh": "门楼/地标招牌；归入「其他」是因为模板未设门楼类别。",
+        "ms": "Papan tanda pintu gerbang/mercu tanda; dikategorikan sebagai Lain-lain kerana templat tidak mempunyai kategori pintu gerbang.",
+        "ta": "நுழைவாயில்/அடையாளச் சின்ன அடையாளப் பலகை; வார்ப்புருவில் நுழைவாயில் வகை இல்லாததால் \"இதர\" என வகைப்படுத்தப்பட்டுள்ளது.",
+        "jawi": "ڤاڤن تندا ڤينتو ݢربڠ/مرچو تندا؛ ديکاتيݢوريکن سباݢاي لاءين-لاءين کرنا تيمڤلت تيدق ممڤوڽاءي کاتيݢوري ڤينتو ݢربڠ."
+      }
     }
   ],
   "total": 60

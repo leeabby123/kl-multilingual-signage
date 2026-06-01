@@ -18,6 +18,9 @@
   --color-en-deep: #14456b;
   --color-jawi-deep: #3a4244;
 
+  /* Universal navigation arrow color — locked 6/1 (Kunm pick: antique gold, visible on all backgrounds, no language-color bias) */
+  --nav-arrow-color: #8b6914;
+
   /* Yellow center accent (used in flower stamens) */
   --color-stamen: #FFCC00;
   --color-stamen-light: #fff1a8;

@@ -39,13 +39,13 @@
 .sidebar-back-link {
   display: inline-flex;
   align-items: center;
-  color: var(--neutral-gray-400);
+  color: var(--nav-arrow-color);
   text-decoration: none;
   transition: var(--transition-fast);
   padding: 4px;
 }
-.sidebar-back-link:hover { color: var(--top-navy); }
-.sidebar-back-link svg { width: 22px; height: 22px; display: block; }
+.sidebar-back-link:hover { color: var(--nav-arrow-color); opacity: 0.7; }
+.sidebar-back-link svg { width: 32px; height: 32px; display: block; }
 
 .sidebar-nav {
   flex: 1;

@@ -145,7 +145,7 @@
   right: var(--space-md);
   background: none;
   border: none;
-  color: var(--top-gold);
+  color: var(--nav-arrow-color);
   padding: 8px;
   display: flex;
   align-items: center;
@@ -173,7 +173,7 @@
   bottom: var(--space-md);
   left: 50%;
   transform: translateX(-50%);
-  color: var(--top-gold);
+  color: var(--nav-arrow-color);
   font-size: 24px;
   animation: bounce-down 2s ease-in-out infinite;
   cursor: pointer;
@@ -308,17 +308,17 @@
 .middle-scroll-up {
   top: var(--space-md);
   transform: translateX(-50%);
-  color: var(--top-navy);
+  color: var(--nav-arrow-color);
   animation: bounce-up 2.5s ease-in-out infinite;
-  opacity: 0.6;
+  opacity: 0.9;
 }
 
 .middle-scroll-down {
   bottom: var(--space-md);
   transform: translateX(-50%);
-  color: var(--bottom-coral-bright);
+  color: var(--nav-arrow-color);
   animation: bounce-down 2.5s ease-in-out infinite;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .middle-scroll-up:hover,
@@ -329,8 +329,8 @@
 .middle-scroll-up svg,
 .middle-scroll-down svg {
   display: block;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
 }
 
 @keyframes bounce-up {

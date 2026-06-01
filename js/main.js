@@ -22,20 +22,41 @@
     sectionMiddle.scrollIntoView({ behavior, block: 'start' });
   }
 
-  scrollToMiddle('instant');
-  requestAnimationFrame(() => root.classList.remove('loading'));
-
-  window.addEventListener('load', () => {
+  // 6/2 bug 10: 综合检测来源——hub-source（从 hub 返回）/ return-to（其他二级页返回）/ URL hash。
+  // 让初次渲染就直接滚到目标位置，避免"先中间再跳"的闪烁。
+  (function initialScroll() {
+    const hash = window.location.hash;
+    const hubSource = sessionStorage.getItem('hub-source');
     const returnTo = sessionStorage.getItem('return-to');
-    if (returnTo === 'top') {
+    let goingTo = null;
+    if (hash === '#section-top' || hubSource === 'top' || returnTo === 'top') {
+      goingTo = 'top';
+    } else if (hash === '#section-bottom' || hubSource === 'bottom' || returnTo === 'bottom') {
+      goingTo = 'bottom';
+    }
+    if (goingTo === 'top') {
+      sessionStorage.removeItem('hub-source');
       sessionStorage.removeItem('return-to');
-      requestAnimationFrame(() => sectionTop.scrollIntoView({ behavior: 'instant' }));
-    } else if (returnTo === 'bottom') {
+      sectionTop.scrollIntoView({ behavior: 'instant', block: 'start' });
+    } else if (goingTo === 'bottom') {
+      sessionStorage.removeItem('hub-source');
       sessionStorage.removeItem('return-to');
-      requestAnimationFrame(() => sectionBottom.scrollIntoView({ behavior: 'instant' }));
-    } else if (!sessionStorage.getItem('scrolled-from-middle')) {
+      sectionBottom.scrollIntoView({ behavior: 'instant', block: 'start' });
+    } else {
       scrollToMiddle('instant');
     }
+    requestAnimationFrame(() => root.classList.remove('loading'));
+  })();
+
+  // load 事件：保护性二次校正（图片/字体加载完成可能触发浏览器再次滚动）
+  window.addEventListener('load', () => {
+    const hash = window.location.hash;
+    if (hash === '#section-top') {
+      sectionTop.scrollIntoView({ behavior: 'instant', block: 'start' });
+    } else if (hash === '#section-bottom') {
+      sectionBottom.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
+    // 没 hash 的情况下不再二次滚动（避免抢走用户已经手动滚动到的位置）
   });
 
   /* ----------------------------------------------------------

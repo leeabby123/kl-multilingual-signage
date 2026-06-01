@@ -122,7 +122,8 @@ html, body {
 }
 .map-stage:active { cursor: grabbing; }
 .map-svg-host {
-  width: 100%; height: 100%;
+  /* 6/2 bug 8: 125% × 125% 让 scale(0.8) 之后视觉仍能填满 stage（消除边缘空白） */
+  width: 125%; height: 125%;
   position: relative;
   user-select: none;
   transform-origin: 0 0;
@@ -1186,6 +1187,8 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 // ============================================================================
 const stage  = document.getElementById('map-stage');
 const host   = document.getElementById('map-host');
+// 由于初始 zoom 不再是 1.0，需要立刻把 transform 应用到 host
+setTimeout(() => { if (typeof applyTransform === 'function') applyTransform(); }, 0);
 const mapSvg = document.getElementById('map-svg');
 
 function attachClusterHandlers() {
@@ -1203,10 +1206,22 @@ attachClusterHandlers();
 // ============================================================================
 // ZOOM / PAN — applied to host wrapper (not the SVG inside the object)
 // ============================================================================
-let zoom = 1, panX = 0, panY = 0;
+let zoom = 0.8, panX = 0, panY = 0;  // 6/2 bug 8: 默认 80%（配合 host 125% 刚好填满 stage）
 let isPanning = false, lastX = 0, lastY = 0;
 
+function clampPan() {
+  // 6/2 bug 8: 防止拖拽时露出 stage 背景空白。
+  // host 自然宽 = 1.25 * stage 内宽；scale(zoom) 后视觉宽 = 1.25 * stage * zoom。
+  // slack = 视觉宽 − stage 宽 = stage * (1.25*zoom − 1)；panX 必须在 [−slack, 0]。
+  const w = stage.clientWidth;
+  const h = stage.clientHeight;
+  const slackX = Math.max(0, w * (1.25 * zoom - 1));
+  const slackY = Math.max(0, h * (1.25 * zoom - 1));
+  panX = Math.min(0, Math.max(-slackX, panX));
+  panY = Math.min(0, Math.max(-slackY, panY));
+}
 function applyTransform() {
+  clampPan();
   host.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
   document.getElementById('zoom-pct').textContent = `${Math.round(zoom*100)}%`;
 }
@@ -1220,7 +1235,7 @@ document.getElementById('zoom-out').onclick = () => {
   zoomAt(rect.width/2, rect.height/2, 1/1.25);
 };
 document.getElementById('zoom-reset').onclick = () => {
-  zoom = 1; panX = 0; panY = 0; applyTransform();
+  zoom = 0.8; panX = 0; panY = 0; applyTransform();  // bug 8: reset 回到 80% 基准
 };
 
 function zoomAt(cx, cy, factor) {
@@ -1287,6 +1302,8 @@ const SIGN_DETAIL_LABELS = {
 
 let currentOpenSign = null;  // for re-render on language switch
 let previousFindingKey = null;  // 6/2 bug 6: 记录跳转到 sign-detail 之前的 finding，用于返回箭头
+let previousFindingBtn = null;  // 6/2 bug 11: 保存按钮 DOM（showFinding 需要 btn 来检测 tentative class）
+let activeFindingBtn = null;    // 6/2 bug 11: 追踪当前 active finding 的按钮 DOM
 
 function escHtml(t) {
   if (!t) return '';
@@ -1298,10 +1315,12 @@ function openClusterModal(clusterEl) {
   const s = signsIndex[id];
   const modalEl = document.querySelector('.modal');
   const backdrop = document.getElementById('modal-backdrop');
-  // Bug 6: 如果当前在 finding mode，保存 finding key 并切走 finding 状态
+  // Bug 6/11: 如果当前在 finding mode，保存 finding key + btn 并切走 finding 状态
   if (activeFindingKey) {
     previousFindingKey = activeFindingKey;
+    previousFindingBtn = activeFindingBtn;
     activeFindingKey = null;
+    activeFindingBtn = null;
     backdrop.classList.remove('finding-mode', 'side-left', 'side-right');
   }
   if (!s) {
@@ -1387,14 +1406,18 @@ function renderSignDetail(s) {
   if (backBtn) {
     backBtn.onclick = (e) => {
       e.stopPropagation();
-      const restoreKey = previousFindingKey;
+      const restoreBtn = previousFindingBtn;
+      const restoreBtnKey = restoreBtn ? restoreBtn.dataset.finding : null;
       previousFindingKey = null;
+      previousFindingBtn = null;
       // 清除 sign-detail 状态
       document.querySelector('.modal').classList.remove('sign-detail');
       document.getElementById('modal-backdrop').classList.remove('sign-detail');
       currentOpenSign = null;
-      // 重开 finding modal
-      if (restoreKey) openFindingModal(restoreKey);
+      // 重开 finding modal（用正确的函数 showFinding，正确的参数 buttonKey + btn DOM）
+      if (restoreBtnKey && restoreBtn) {
+        showFinding(restoreBtnKey, restoreBtn);
+      }
     };
   }
 }
@@ -1404,6 +1427,7 @@ document.getElementById('modal-close').onclick = () => {
   document.querySelector('.modal').classList.remove('sign-detail');
   currentOpenSign = null;
   previousFindingKey = null;
+  previousFindingBtn = null;
 };
 document.getElementById('modal-backdrop').onclick = (e) => {
   // 注：sign-detail 模式下 backdrop pointer-events:none，这个 handler 不会触发；
@@ -1414,6 +1438,7 @@ document.getElementById('modal-backdrop').onclick = (e) => {
     document.querySelector('.modal').classList.remove('sign-detail');
     currentOpenSign = null;
     previousFindingKey = null;
+    previousFindingBtn = null;
   }
 };
 
@@ -1616,6 +1641,7 @@ function showFinding(buttonKey, btn) {
   if (!finding) return;
 
   activeFindingKey = findingKey;
+  activeFindingBtn = btn;  // 6/2 bug 11
 
   // Filter + dim/highlight clusters
   const predicate = buildClusterFilter(finding.relevant_clusters || {});
@@ -1658,6 +1684,7 @@ function closeFinding() {
   backdrop.classList.remove('open', 'finding-mode', 'side-left', 'side-right');
   resetMap();
   activeFindingKey = null;
+  activeFindingBtn = null;
 }
 
 // Wire up buttons

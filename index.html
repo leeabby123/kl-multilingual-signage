@@ -13,6 +13,30 @@
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/main.css">
+
+  <!-- Hub button (top + bottom pages) override: 双 chevron + 横向 bounce 动画
+       严格 poppyfield 极简: 无背景圆/胶囊/容器, 纯线条. 后期合并到 main.css. -->
+  <style>
+    .enter-hub-btn {
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      animation: bounce-right 2s ease-in-out infinite;
+    }
+    .enter-hub-btn:hover {
+      background: none !important;
+    }
+    .enter-hub-btn svg {
+      width: 36px;
+      height: 36px;
+      display: block;
+    }
+    @keyframes bounce-right {
+      0%, 100% { transform: translateX(0); opacity: 0.75; }
+      50%      { transform: translateX(6px); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,7 +50,7 @@
 
     <!-- Enter Hub button (top-right) — poppyfield minimal arrow, no background -->
     <button class="enter-hub-btn" data-enter-hub="top" type="button" aria-label="Enter Hub">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7,6 11,12 7,18"/><polyline points="13,6 17,12 13,18"/></svg>
     </button>
 
     <main class="top-content">
@@ -93,7 +117,7 @@
 
     <!-- Scroll cue: down to middle -->
     <a class="scroll-cue" data-scroll-target="#section-middle" aria-label="Scroll to middle (landing)">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,7 12,11 18,7"/><polyline points="6,13 12,17 18,13"/></svg>
     </a>
 
   </section>
@@ -107,7 +131,7 @@
 
     <!-- Up arrow → top page (poppyfield minimal: arrow only, no text) -->
     <a class="middle-scroll-up" data-scroll-target="#section-top" aria-label="Scroll up">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,15 12,9 18,15"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,11 12,7 18,11"/><polyline points="6,17 12,13 18,17"/></svg>
     </a>
 
     <div class="middle-art">
@@ -117,7 +141,7 @@
 
     <!-- Down arrow → bottom page (poppyfield minimal: arrow only, no text) -->
     <a class="middle-scroll-down" data-scroll-target="#section-bottom" aria-label="Scroll down">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,7 12,11 18,7"/><polyline points="6,13 12,17 18,13"/></svg>
     </a>
 
   </section>
@@ -132,13 +156,13 @@
     <!-- Up arrow → middle page (poppyfield minimal: arrow only, no text) -->
     <a class="middle-scroll-up" data-scroll-target="#section-middle" aria-label="Scroll up"
        style="color: var(--bottom-warm-ink);">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,15 12,9 18,15"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,11 12,7 18,11"/><polyline points="6,17 12,13 18,17"/></svg>
     </a>
 
     <!-- Enter Hub button (top-right) — poppyfield minimal arrow -->
     <button class="enter-hub-btn" data-enter-hub="bottom" type="button" aria-label="Enter Hub"
             style="color: var(--bottom-coral-bright);">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7,6 11,12 7,18"/><polyline points="13,6 17,12 13,18"/></svg>
     </button>
 
     <div class="bottom-placeholder">

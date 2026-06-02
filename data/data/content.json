@@ -1,0 +1,215 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "languages": ["ms", "zh", "en", "ta", "jawi"],
+    "default_language": "ms",
+    "note": "All UI text in 5 languages. Sign metadata is in signs.json (English only, per data-integrity decision)."
+  },
+
+  "site_title": {
+    "ms": "Bila Bahasa Menjadi Bunga, Bermekaran di Ruang Awam Kota",
+    "zh": "当语言化作花朵，绽放在都市公共空间里",
+    "en": "When Language Becomes Flower, Blooming in Urban Public Space",
+    "ta": "மொழிகள் மலராக மாறும்போது, நகர பொது வெளியில் மலர்கின்றன",
+    "jawi": "بيلا بهاس منجادي بوڠ، برمکارن دريواڠ عوام کوتا"
+  },
+
+  "page_titles": {
+    "members": {
+      "ms": "Ahli Kumpulan",
+      "zh": "组员介绍",
+      "en": "Team Members",
+      "ta": "குழு உறுப்பினர்கள்",
+      "jawi": "اهلي کومڤولن"
+    },
+    "timeline": {
+      "ms": "Garis Masa",
+      "zh": "时间轴",
+      "en": "Timeline",
+      "ta": "காலரேகை",
+      "jawi": "ݢاريس ماس"
+    },
+    "sources": {
+      "ms": "Sumber Data",
+      "zh": "数据来源",
+      "en": "Data Sources",
+      "ta": "தரவு மூலங்கள்",
+      "jawi": "سومبر داتا"
+    },
+    "about": {
+      "ms": "Tentang",
+      "zh": "关于",
+      "en": "About",
+      "ta": "பற்றி",
+      "jawi": "تنتڠ"
+    }
+  },
+
+  "switcher_labels": {
+    "zh": "华语",
+    "ta": "தமிழ்",
+    "ms": "Bahasa Melayu",
+    "en": "English",
+    "jawi": "جاوي"
+  },
+
+  "districts": {
+    "ps": {
+      "ms": "Petaling Street",
+      "zh": "茨厂街",
+      "en": "Petaling Street",
+      "ta": "சீனத் தெரு",
+      "jawi": "ڤتاليڠ ستريت",
+      "kampung_cina": "Kampung Cina"
+    },
+    "li": {
+      "ms": "Little India",
+      "zh": "小印度",
+      "en": "Little India",
+      "ta": "லிட்டில் இந்தியா",
+      "jawi": "ليتتل اينديا"
+    },
+    "bb": {
+      "ms": "Bukit Bintang",
+      "zh": "武吉免登",
+      "en": "Bukit Bintang",
+      "ta": "புக்கிட் பிந்தாங்",
+      "jawi": "بوکيت بينتڠ"
+    },
+    "kb": {
+      "ms": "Kampung Baru",
+      "zh": "甘榜峇鲁",
+      "en": "Kampung Baru",
+      "ta": "கம்போங் பாரு",
+      "jawi": "کامڤوڠ بارو"
+    }
+  },
+
+  "timeline_nodes": {
+    "week1": {
+      "ms": "Topik + Infografik",
+      "zh": "立题 + 一页信息图",
+      "en": "Topic + Infographic",
+      "ta": "தலைப்பு + தகவல்வரைபடம்",
+      "jawi": "توڤيق + اينفوݢرافيک"
+    },
+    "week2": {
+      "ms": "Pembelajaran TEI + Voyant",
+      "zh": "TEI + Voyant 学习",
+      "en": "TEI + Voyant Training",
+      "ta": "TEI + Voyant பயிற்சி",
+      "jawi": "ڤمبلاجرن TEI + Voyant"
+    },
+    "week7": {
+      "ms": "Cadangan Kumpulan + CS1 Lingscape",
+      "zh": "Group Proposal + CS1 Lingscape",
+      "en": "Group Proposal + CS1 Lingscape",
+      "ta": "குழு திட்டம் + CS1 Lingscape",
+      "jawi": "چادڠن کومڤولن + CS1 Lingscape"
+    },
+    "week8_10": {
+      "ms": "Persiapan Literatur + Helaian Excel",
+      "zh": "文献准备 + Excel 主表",
+      "en": "Literature Prep + Excel Master Sheet",
+      "ta": "இலக்கியம் + Excel முதன்மை தாள்",
+      "jawi": "ڤرسياڤن ليتراتور + هلاين Excel"
+    },
+    "week11": {
+      "ms": "Fasa 1 · Kerja Lapangan + Penyerahan",
+      "zh": "阶段 1 · 田野采样 + 交接",
+      "en": "Phase 1 · Fieldwork + Handover",
+      "ta": "கட்டம் 1 · கள ஆய்வு + ஒப்படைப்பு",
+      "jawi": "فاسا 1 · کرجا لاڤڠن + ڤڽراهن"
+    },
+    "week12": {
+      "ms": "Fasa 2 · Integrasi + Pengemukaan + Pembentangan",
+      "zh": "阶段 2 · 集成 + 提交 + 展示",
+      "en": "Phase 2 · Integration + Submission + Presentation",
+      "ta": "கட்டம் 2 · ஒருங்கிணைப்பு + சமர்ப்பித்தல் + வழங்கல்",
+      "jawi": "فاسا 2 · اينتيݢراسي + ڤڠموکاءن + ڤمبنتڠن"
+    }
+  },
+
+  "findings": {
+    "f1_zh_ta_separation": {
+      "ms": "ZH–TA tidak hidup bersama",
+      "zh": "ZH-TA 不共存",
+      "en": "ZH–TA non-coexistence",
+      "ta": "ZH–TA ஒன்றாக இல்லை",
+      "jawi": "ZH–TA تيدق هيدوڤ برسام"
+    },
+    "f2_ps_chinese_trilingual": {
+      "ms": "PS Bahasa Cina trilingual",
+      "zh": "PS 华语牌三语",
+      "en": "PS Chinese signs trilingual",
+      "ta": "PS சீன அடையாளம் முத்தொழில்",
+      "jawi": "PS بهاس چينا تيݢ بهاس"
+    },
+    "f3_kb_monolingual": {
+      "ms": "Pulau ekabahasa KB",
+      "zh": "KB 单语孤岛",
+      "en": "KB monolingual island",
+      "ta": "KB ஒற்றை மொழி தீவு",
+      "jawi": "ڤولاو ايکابهاس KB"
+    },
+    "f4_gov_vs_shop": {
+      "ms": "Kerajaan vs Kedai",
+      "zh": "政府 vs 商店",
+      "en": "Government vs Shop",
+      "ta": "அரசாங்கம் vs கடை",
+      "jawi": "کراجاءن vs کداي"
+    },
+    "f5_tamil_official_zero": {
+      "ms": "Tamil rasmi 0%",
+      "zh": "Tamil 官方 0%",
+      "en": "Tamil official 0%",
+      "ta": "தமிழ் அலுவலகம் 0%",
+      "jawi": "تاميل رسمي ٠٪"
+    },
+    "f6_chinese_radiation": {
+      "ms": "Radiasi Bahasa Cina",
+      "zh": "华语辐射",
+      "en": "Chinese radiation",
+      "ta": "சீன மொழி கதிர்வீச்சு",
+      "jawi": "ريديءاسي بهاس چينا"
+    },
+    "f7_jawi_three_functions": {
+      "ms": "Jawi/Arab 3 fungsi",
+      "zh": "Jawi/Arabic 三功能",
+      "en": "Jawi/Arabic three functions",
+      "ta": "ஜாவி/அரபு மூன்று செயல்பாடு",
+      "jawi": "جاوي/عربي تيݢ فوڠسي"
+    },
+    "f8_religious_exemption": {
+      "ms": "Pengecualian ruang agama",
+      "zh": "宗教空间豁免",
+      "en": "Religious space exemption",
+      "ta": "மத இடம் விலக்கு",
+      "jawi": "ڤڠچوالين روواڠ اݢام"
+    }
+  },
+
+  "scroll_cues": {
+    "scroll_up": {
+      "ms": "Tatal ke atas",
+      "zh": "向上滚动",
+      "en": "Scroll up",
+      "ta": "மேலே ஸ்க்ரோல்",
+      "jawi": "تاتل کأتس"
+    },
+    "scroll_down": {
+      "ms": "Tatal ke bawah",
+      "zh": "向下滚动",
+      "en": "Scroll down",
+      "ta": "கீழே ஸ்க்ரோல்",
+      "jawi": "تاتل کباوه"
+    },
+    "enter_hub": {
+      "ms": "Masuk Hub",
+      "zh": "进入 Hub",
+      "en": "Enter Hub",
+      "ta": "Hub-ஐ உள்ளிடவும்",
+      "jawi": "ماسوق Hub"
+    }
+  }
+}

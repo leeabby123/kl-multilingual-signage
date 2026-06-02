@@ -37,41 +37,36 @@ html, body {
 }
 
 /* ===== LEFT NAV RAIL (Omeka-style, fixed) ===== */
-.nav-rail {
-  position: fixed; left: 0; top: 0; bottom: 0;
-  width: 180px;
-  background: var(--accent-sage-soft);   /* sage-tinted leaf panel */
-  border-right: 1px solid var(--accent-sage);
-  padding: 28px 18px;
-  z-index: 10;
-}
-.nav-rail .back {
-  display: inline-flex;
+/* ===== HUB CORNER ARROWS — left: back to entry · right: forward to pages =====
+   Pure polyline chevrons (no container/background/capsule/text per locked
+   nav rule). Stroke uses the project's antique-gold nav arrow color. */
+.hub-corner-arrow {
+  position: fixed;
+  top: 0;
+  width: 64px;
+  height: 56px;
+  display: flex;
   align-items: center;
-  color: var(--nav-arrow-color);
-  margin-bottom: 32px;
+  justify-content: center;
+  color: var(--nav-arrow-color, #8b6914);
   text-decoration: none;
+  z-index: 11;                         /* above findings-bar */
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
 }
-.nav-rail .back:hover { color: var(--nav-arrow-color); opacity: 0.7; }
-.nav-rail .back .nav-chevron {
-  width: 36px; height: 36px;
+.hub-corner-arrow--back    { left: 0; }
+.hub-corner-arrow--forward { right: 0; }
+.hub-corner-arrow:hover { opacity: 0.65; }
+.hub-corner-arrow--back:hover    { transform: translateX(-2px); }
+.hub-corner-arrow--forward:hover { transform: translateX(2px); }
+.hub-corner-arrow svg {
+  width: 32px;
+  height: 32px;
 }
-.nav-rail ul { list-style: none; padding: 0; margin: 0; }
-.nav-rail li { margin: 14px 0; }
-.nav-rail a {
-  display: block;
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 14px;
-  padding: 4px 0;
-  border-bottom: 1px solid transparent;
-}
-.nav-rail a:hover { border-bottom-color: var(--ink-soft); }
 
 /* ===== TOP FINDINGS BAR (8 buttons, single row) ===== */
 .findings-bar {
   position: fixed;
-  top: 0; left: 180px; right: 0;
+  top: 0; left: 64px; right: 64px;        /* 64px reserved each side for corner arrows */
   height: 56px;
   background: var(--bg-page);
   border-bottom: 1px solid var(--line);
@@ -102,10 +97,27 @@ html, body {
 .finding-btn:hover { background: var(--accent-sage-soft); border-color: var(--accent-sage); }
 .finding-btn.tentative { border-style: dashed; }
 
+/* F-number prefix on each finding button (F1-F4 robust, F5-F8 sample-limited).
+   Same font-size as parent so baselines align naturally — differentiation
+   comes from color (lighter) and weight (bolder), not size. */
+.finding-num {
+  display: inline-block;
+  margin-right: 0.45em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft, #8a7d68);
+  font-variant-numeric: tabular-nums;
+}
+.finding-btn.tentative .finding-num {
+  /* Sample-limited findings: numeral picks up the tentative tone, still readable */
+  color: var(--ink-soft, #8a7d68);
+  font-style: italic;
+}
+
 /* ===== MAP CONTAINER ===== */
 .map-wrap {
   position: fixed;
-  left: 180px; right: 0;
+  left: 0; right: 0;
   top: 56px; bottom: 0;
   background: var(--bg-page);
   overflow: hidden;
@@ -274,6 +286,80 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
   filter: drop-shadow(0 0 8px rgba(128, 193, 147, 0.85));  /* sage glow */
 }
 
+/* ===== F6 — ZH radiation / TA contraction ===== */
+.map-svg-host svg .cluster.highlighted-zh {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(214, 48, 49, 0.75));  /* ZH red glow */
+}
+.map-svg-host svg .cluster.highlighted-ta {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(230, 126, 34, 0.85));  /* TA orange glow */
+}
+
+/* F6 flower-level filter: hide every flower that isn't ZH (red) or TA (orange).
+   Result: across the whole map, only red + orange petals remain visible — clusters
+   with no ZH or TA show no flowers at all. Provides the cleanest narrative read. */
+.map-svg-host svg .flower {
+  transition: opacity 0.55s ease-out;
+}
+.map-svg-host.f6-mode svg .flower:not(.lang-zh):not(.lang-ta) {
+  opacity: 0;
+}
+
+.f6-arrow {
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0;
+}
+.f6-arrow--zh {
+  stroke: #d63031;                                 /* ZH red */
+  stroke-width: 6.5;
+  stroke-dasharray: 18 6;
+  filter: drop-shadow(0 0 5px rgba(214, 48, 49, 0.55));
+  animation:
+    f6-fade-in 0.6s ease-out forwards,
+    f6-flow-zh 1.4s linear infinite 0.6s;
+}
+.f6-arrow--ta {
+  stroke: #e67e22;                                 /* TA orange — back to language color */
+  stroke-width: 4.5;
+  stroke-dasharray: 4 9;
+  filter: drop-shadow(0 0 5px rgba(230, 126, 34, 0.55));
+  animation:
+    f6-fade-in 0.6s ease-out forwards,
+    f6-flow-ta 1.7s linear infinite 0.6s;
+}
+
+/* Antique-gold chevrons + arrowheads — single unified direction-marker color
+   that stands clearly apart from both red and orange line colors. */
+.f6-chevron {
+  opacity: 0;
+  pointer-events: none;
+  fill: none;
+  stroke: #c9a64b;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 2px rgba(60, 40, 10, 0.55));
+  animation: f6-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes f6-fade-in {
+  to { opacity: 0.92; }
+}
+@keyframes f6-flow-zh {
+  to { stroke-dashoffset: -24; }                  /* dashes flow toward arrowhead (outward from PS) */
+}
+@keyframes f6-flow-ta {
+  to { stroke-dashoffset: -13; }                  /* dashes flow toward arrowhead (inward to LI) */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .f6-arrow, .f6-chevron {
+    animation: f6-fade-in 0.3s ease-out forwards !important;
+  }
+}
+
 /* Modal: when in sign-detail mode, backdrop 透传指针事件，让地图可拖拽缩放 */
 .modal-backdrop.sign-detail {
   background: rgba(110, 58, 32, 0.12);  /* 比 finding 略深，但仍可见地图 */
@@ -347,30 +433,30 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 <body>
 
 <!-- LEFT NAV (5 secondary pages + back to Hub) -->
-<nav class="nav-rail">
-  <a class="back" href="../index.html" id="back-link"
-     title="Back to entry" aria-label="Back to entry">
-    <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17,6 13,12 17,18"/><polyline points="11,6 7,12 11,18"/></svg>
-  </a>
-  <ul>
-    <li><a href="about.html"><span data-lang-content="en">About</span><span data-lang-content="ms">Tentang</span><span data-lang-content="zh">关于</span><span data-lang-content="ta">தகவல்</span><span data-lang-content="jawi">تنتڠ</span></a></li>
-    <li><a href="sources.html"><span data-lang-content="en">Data Sources</span><span data-lang-content="ms">Sumber Data</span><span data-lang-content="zh">数据来源</span><span data-lang-content="ta">தரவு மூலங்கள்</span><span data-lang-content="jawi">سومبر داتا</span></a></li>
-    <li><a href="members.html"><span data-lang-content="en">Team</span><span data-lang-content="ms">Ahli Kumpulan</span><span data-lang-content="zh">组员</span><span data-lang-content="ta">குழு</span><span data-lang-content="jawi">اهلي كومڤولن</span></a></li>
-    <li><a href="timeline.html"><span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span></a></li>
-    <li><a href="acknowledgements.html"><span data-lang-content="en">Acknowledgements</span><span data-lang-content="ms">Penghargaan</span><span data-lang-content="zh">致谢</span><span data-lang-content="ta">நன்றியுரை</span><span data-lang-content="jawi">ڤڠهرݢأن</span></a></li>
-  </ul>
-</nav>
+<!-- Top-left corner: back to entry (« double chevron) -->
+<a class="hub-corner-arrow hub-corner-arrow--back" href="../index.html" aria-label="Back to entry">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="17,6 13,12 17,18"/><polyline points="11,6 7,12 11,18"/>
+  </svg>
+</a>
+
+<!-- Top-right corner: forward to secondary pages (» double chevron) — enters via about.html, where the full sidebar lives -->
+<a class="hub-corner-arrow hub-corner-arrow--forward" href="about.html" aria-label="Forward to pages">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="7,6 11,12 7,18"/><polyline points="13,6 17,12 13,18"/>
+  </svg>
+</a>
 
 <!-- TOP FINDINGS BAR (8 buttons, single row · 4 solid stable + 4 dashed tentative) -->
 <header class="findings-bar">
-  <button class="finding-btn" data-finding="zh-ta-non-coexist"><span data-lang-content="en">ZH–TA non-coexistence</span><span data-lang-content="ms">ZH–TA tidak hidup bersama</span><span data-lang-content="zh">ZH-TA 不共存</span><span data-lang-content="ta">ZH–TA ஒன்றாக இல்லை</span><span data-lang-content="jawi">ZH–TA تيدق هيدوڤ برسام</span></button>
-  <button class="finding-btn" data-finding="ps-trilingual"><span data-lang-content="en">PS Chinese signs trilingual</span><span data-lang-content="ms">PS Bahasa Cina trilingual</span><span data-lang-content="zh">PS 华语牌三语</span><span data-lang-content="ta">PS சீன அடையாளம் முத்தொழில்</span><span data-lang-content="jawi">PS بهاس چينا تيݢ بهاس</span></button>
-  <button class="finding-btn" data-finding="kb-monolingual"><span data-lang-content="en">KB monolingual island</span><span data-lang-content="ms">Pulau ekabahasa KB</span><span data-lang-content="zh">KB 单语孤岛</span><span data-lang-content="ta">KB ஒற்றை மொழி தீவு</span><span data-lang-content="jawi">ڤولاو ايکابهاس KB</span></button>
-  <button class="finding-btn" data-finding="govt-vs-shop"><span data-lang-content="en">Government vs Shop</span><span data-lang-content="ms">Kerajaan vs Kedai</span><span data-lang-content="zh">政府 vs 商店</span><span data-lang-content="ta">அரசாங்கம் vs கடை</span><span data-lang-content="jawi">کراجاءن vs کداي</span></button>
-  <button class="finding-btn tentative" data-finding="tamil-official"><span data-lang-content="en">Tamil official 0%</span><span data-lang-content="ms">Tamil rasmi 0%</span><span data-lang-content="zh">Tamil 官方 0%</span><span data-lang-content="ta">தமிழ் அலுவலகம் 0%</span><span data-lang-content="jawi">تاميل رسمي ٠٪</span></button>
-  <button class="finding-btn tentative" data-finding="zh-spread"><span data-lang-content="en">Chinese radiation</span><span data-lang-content="ms">Radiasi Bahasa Cina</span><span data-lang-content="zh">华语辐射</span><span data-lang-content="ta">சீன மொழி கதிர்வீச்சு</span><span data-lang-content="jawi">ريديءاسي بهاس چينا</span></button>
-  <button class="finding-btn tentative" data-finding="jawi-functions"><span data-lang-content="en">Jawi/Arabic three functions</span><span data-lang-content="ms">Jawi/Arab 3 fungsi</span><span data-lang-content="zh">Jawi/Arabic 三功能</span><span data-lang-content="ta">ஜாவி/அரபு மூன்று செயல்பாடு</span><span data-lang-content="jawi">جاوي/عربي تيݢ فوڠسي</span></button>
-  <button class="finding-btn tentative" data-finding="religious-exempt"><span data-lang-content="en">Religious space exemption</span><span data-lang-content="ms">Pengecualian ruang agama</span><span data-lang-content="zh">宗教空间豁免</span><span data-lang-content="ta">மத இடம் விலக்கு</span><span data-lang-content="jawi">ڤڠچوالين روواڠ اݢام</span></button>
+  <button class="finding-btn" data-finding="zh-ta-non-coexist"><span class="finding-num">F1</span><span data-lang-content="en">ZH–TA non-coexistence</span><span data-lang-content="ms">ZH–TA tidak hidup bersama</span><span data-lang-content="zh">ZH-TA 不共存</span><span data-lang-content="ta">ZH–TA ஒன்றாக இல்லை</span><span data-lang-content="jawi">ZH–TA تيدق هيدوڤ برسام</span></button>
+  <button class="finding-btn" data-finding="ps-trilingual"><span class="finding-num">F2</span><span data-lang-content="en">PS Chinese signs trilingual</span><span data-lang-content="ms">PS Bahasa Cina trilingual</span><span data-lang-content="zh">PS 华语牌三语</span><span data-lang-content="ta">PS சீன அடையாளம் முத்தொழில்</span><span data-lang-content="jawi">PS بهاس چينا تيݢ بهاس</span></button>
+  <button class="finding-btn" data-finding="kb-monolingual"><span class="finding-num">F3</span><span data-lang-content="en">KB monolingual island</span><span data-lang-content="ms">Pulau ekabahasa KB</span><span data-lang-content="zh">KB 单语孤岛</span><span data-lang-content="ta">KB ஒற்றை மொழி தீவு</span><span data-lang-content="jawi">ڤولاو ايکابهاس KB</span></button>
+  <button class="finding-btn" data-finding="govt-vs-shop"><span class="finding-num">F4</span><span data-lang-content="en">Government vs Shop</span><span data-lang-content="ms">Kerajaan vs Kedai</span><span data-lang-content="zh">政府 vs 商店</span><span data-lang-content="ta">அரசாங்கம் vs கடை</span><span data-lang-content="jawi">کراجاءن vs کداي</span></button>
+  <button class="finding-btn tentative" data-finding="tamil-official"><span class="finding-num">F5</span><span data-lang-content="en">Tamil official 0%</span><span data-lang-content="ms">Tamil rasmi 0%</span><span data-lang-content="zh">Tamil 官方 0%</span><span data-lang-content="ta">தமிழ் அலுவலகம் 0%</span><span data-lang-content="jawi">تاميل رسمي ٠٪</span></button>
+  <button class="finding-btn tentative" data-finding="zh-spread"><span class="finding-num">F6</span><span data-lang-content="en">Chinese radiation</span><span data-lang-content="ms">Radiasi Bahasa Cina</span><span data-lang-content="zh">华语辐射</span><span data-lang-content="ta">சீன மொழி கதிர்வீச்சு</span><span data-lang-content="jawi">ريديءاسي بهاس چينا</span></button>
+  <button class="finding-btn tentative" data-finding="jawi-functions"><span class="finding-num">F7</span><span data-lang-content="en">Jawi/Arabic three functions</span><span data-lang-content="ms">Jawi/Arab 3 fungsi</span><span data-lang-content="zh">Jawi/Arabic 三功能</span><span data-lang-content="ta">ஜாவி/அரபு மூன்று செயல்பாடு</span><span data-lang-content="jawi">جاوي/عربي تيݢ فوڠسي</span></button>
+  <button class="finding-btn tentative" data-finding="religious-exempt"><span class="finding-num">F8</span><span data-lang-content="en">Religious space exemption</span><span data-lang-content="ms">Pengecualian ruang agama</span><span data-lang-content="zh">宗教空间豁免</span><span data-lang-content="ta">மத இடம் விலக்கு</span><span data-lang-content="jawi">ڤڠچوالين روواڠ اݢام</span></button>
 </header>
 
 <!-- MAP STAGE -->
@@ -1607,7 +1693,161 @@ function resetMap() {
     map.setAttribute('viewBox', originalViewBox);
   }
   document.querySelectorAll('.cluster').forEach(c =>
-    c.classList.remove('dimmed', 'highlighted'));
+    c.classList.remove('dimmed', 'highlighted', 'highlighted-zh', 'highlighted-ta'));
+  const host = document.querySelector('.map-svg-host');
+  if (host) host.classList.remove('f6-mode');
+  hideF6Arrows();
+}
+
+/* ===== F6 — Chinese radiation / Tamil contraction overlay ===== */
+const F6_CENTERS = {
+  PS: { x: 737,  y: 577 },   /* Petaling Street — ZH source */
+  BB: { x: 1345, y: 602 },
+  LI: { x: 327,  y: 766 },   /* Little India — TA sink */
+  KB: { x: 1053, y: 261 },
+};
+
+/* Inject arrowhead marker once per page load.
+   Single antique-gold marker for both ZH and TA — gold sits between red and
+   orange on the color wheel, contrasts with the cream map background, and
+   removes any "is this red or orange?" ambiguity from the arrow tip. */
+function ensureF6Markers(svg) {
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  let defs = svg.querySelector('defs');
+  if (!defs) {
+    defs = document.createElementNS(SVG_NS, 'defs');
+    svg.insertBefore(defs, svg.firstChild);
+  }
+  if (!document.getElementById('f6-arrow-head-gold')) {
+    defs.insertAdjacentHTML('beforeend',
+      '<marker id="f6-arrow-head-gold" ' +
+        'viewBox="0 0 24 24" refX="22" refY="12" ' +
+        'markerWidth="40" markerHeight="40" ' +
+        'markerUnits="userSpaceOnUse" ' +
+        'orient="auto">' +
+        /* Dark backing for contrast on cream + colored lines */
+        '<path d="M 4 3 L 22 12 L 4 21" ' +
+          'fill="none" stroke="#3a2810" stroke-width="6" ' +
+          'stroke-linecap="round" stroke-linejoin="round"/>' +
+        /* Antique gold foreground */
+        '<path d="M 4 3 L 22 12 L 4 21" ' +
+          'fill="none" stroke="#c9a64b" stroke-width="4" ' +
+          'stroke-linecap="round" stroke-linejoin="round"/>' +
+      '</marker>'
+    );
+  }
+}
+
+/* Build a parabolic curve from `from` to `to` with arrowhead at `to`, plus
+   2 inline chevrons along the path for direction reinforcement.
+   bowSign = -1 → curve bows to the "left" (ZH outward swirl).
+   bowSign = +1 → curve bows to the "right" (TA inward swirl, opposite direction).
+   ZH arrows reach close to target; TA arrows stop further out — this radial
+   separation means the convergent tips at LI don't pile on top of each other. */
+function f6MakeArrow(SVG_NS, from, to, klass, delay, bowSign) {
+  const isTa = klass.indexOf('--ta') !== -1;
+  const SHRINK_START = 55;
+  const SHRINK_END   = isTa ? 95 : 55;            /* TA tips land further from LI center */
+  const dx = to.x - from.x, dy = to.y - from.y;
+  const len = Math.sqrt(dx * dx + dy * dy);
+  const ux = dx / len, uy = dy / len;
+  const x1 = from.x + ux * SHRINK_START;
+  const y1 = from.y + uy * SHRINK_START;
+  const x2 = to.x   - ux * SHRINK_END;
+  const y2 = to.y   - uy * SHRINK_END;
+  const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+  const BOW = 200 * bowSign;
+  const cx = mx + (-uy) * BOW;
+  const cy = my +   ux  * BOW;
+
+  const group = document.createElementNS(SVG_NS, 'g');
+
+  /* Main animated curve with shared gold arrowhead marker at the end */
+  const path = document.createElementNS(SVG_NS, 'path');
+  path.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' Q ' + cx + ' ' + cy + ' ' + x2 + ' ' + y2);
+  path.setAttribute('class', klass);
+  path.setAttribute('marker-end', 'url(#f6-arrow-head-gold)');
+  path.style.animationDelay = delay + 's, ' + (delay + 0.6) + 's';
+  group.appendChild(path);
+
+  /* Two inline chevrons along the curve at t=0.32 and t=0.68.
+     Open "<" shape (polyline, stroked not filled), oriented along the tangent
+     at that t-value so they point toward the destination. */
+  [0.32, 0.68].forEach(function (t, idx) {
+    const px = (1 - t) * (1 - t) * x1 + 2 * (1 - t) * t * cx + t * t * x2;
+    const py = (1 - t) * (1 - t) * y1 + 2 * (1 - t) * t * cy + t * t * y2;
+    const txg = 2 * (1 - t) * (cx - x1) + 2 * t * (x2 - cx);
+    const tyg = 2 * (1 - t) * (cy - y1) + 2 * t * (y2 - cy);
+    const angle = Math.atan2(tyg, txg) * 180 / Math.PI;
+
+    const s = 9;
+    const chev = document.createElementNS(SVG_NS, 'polyline');
+    chev.setAttribute('points', (-s) + ',' + (-s) + ' ' + s + ',0 ' + (-s) + ',' + s);
+    chev.setAttribute('transform', 'translate(' + px + ',' + py + ') rotate(' + angle + ')');
+    chev.setAttribute('class', 'f6-chevron');
+    chev.style.animationDelay = (delay + 0.35 + idx * 0.15) + 's';
+    group.appendChild(chev);
+  });
+
+  return group;
+}
+
+function showF6Arrows() {
+  const svg = document.getElementById('map-svg');
+  if (!svg) return;
+  hideF6Arrows();
+  ensureF6Markers(svg);
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const overlay = document.createElementNS(SVG_NS, 'g');
+  overlay.id = 'f6-arrows-overlay';
+  overlay.style.pointerEvents = 'none';
+  const { PS, BB, LI, KB } = F6_CENTERS;
+  /* ZH centrifugal — 3 outward solid arrows from PS, all bow same rotation (-1) */
+  [
+    { to: BB, delay: 0.0  },
+    { to: KB, delay: 0.12 },
+    { to: LI, delay: 0.24 },
+  ].forEach(a => overlay.appendChild(
+    f6MakeArrow(SVG_NS, PS, a.to, 'f6-arrow f6-arrow--zh', a.delay, -1)
+  ));
+  /* TA centripetal — 2 inward dashed arrows to LI, bow OPPOSITE rotation (+1).
+     KB→LI carries the KB_01 outlier story. NO PS→LI: would overlap visually
+     with the ZH PS→LI line, and PS has near-zero Tamil presence. */
+  [
+    { from: BB, delay: 0.45 },
+    { from: KB, delay: 0.60 },
+  ].forEach(a => overlay.appendChild(
+    f6MakeArrow(SVG_NS, a.from, LI, 'f6-arrow f6-arrow--ta', a.delay, +1)
+  ));
+  svg.appendChild(overlay);
+}
+
+function hideF6Arrows() {
+  const el = document.getElementById('f6-arrows-overlay');
+  if (el) el.remove();
+}
+
+/* Override the default ZH-filter highlight with the dual ZH/TA classes
+   that match F6's "radiation + contraction" narrative. */
+function f6ApplyDualHighlight() {
+  const all = Array.from(document.querySelectorAll('.cluster'));
+  const matched = [];
+  all.forEach(c => {
+    const langs = (c.dataset.langs || '').toLowerCase().split(',').map(s => s.trim());
+    const hasZh = langs.includes('zh');
+    const hasTa = langs.includes('ta');
+    c.classList.remove('highlighted', 'highlighted-zh', 'highlighted-ta', 'dimmed');
+    if (hasZh) {
+      c.classList.add('highlighted-zh');
+      matched.push(c);
+    } else if (hasTa) {
+      c.classList.add('highlighted-ta');
+      matched.push(c);
+    } else {
+      c.classList.add('dimmed');
+    }
+  });
+  return matched;
 }
 
 /** Render finding content in active language (call on switch). */
@@ -1638,13 +1878,31 @@ function showFinding(buttonKey, btn) {
   activeFindingKey = findingKey;
   activeFindingBtn = btn;  // 6/2 bug 11
 
+  // Clean up any prior F6 state before applying current finding
+  hideF6Arrows();
+  document.querySelectorAll('.cluster').forEach(c =>
+    c.classList.remove('highlighted-zh', 'highlighted-ta'));
+  const host = document.querySelector('.map-svg-host');
+  if (host) host.classList.remove('f6-mode');
+
+  // F6 has a custom dual-highlight (ZH red + TA orange), flower-level filter,
+  // and animated arrow overlay
+  const isF6 = (buttonKey === 'zh-spread');
+  if (isF6 && host) host.classList.add('f6-mode');
+
   // Filter + dim/highlight clusters
-  const predicate = buildClusterFilter(finding.relevant_clusters || {});
-  const all = Array.from(document.querySelectorAll('.cluster'));
-  const matched = [], unmatched = [];
-  all.forEach(c => (predicate(c) ? matched : unmatched).push(c));
-  matched.forEach(c => { c.classList.remove('dimmed'); c.classList.add('highlighted'); });
-  unmatched.forEach(c => { c.classList.remove('highlighted'); c.classList.add('dimmed'); });
+  let matched;
+  if (isF6) {
+    matched = f6ApplyDualHighlight();
+  } else {
+    const predicate = buildClusterFilter(finding.relevant_clusters || {});
+    const all = Array.from(document.querySelectorAll('.cluster'));
+    const unmatched = [];
+    matched = [];
+    all.forEach(c => (predicate(c) ? matched : unmatched).push(c));
+    matched.forEach(c => { c.classList.remove('dimmed'); c.classList.add('highlighted'); });
+    unmatched.forEach(c => { c.classList.remove('highlighted'); c.classList.add('dimmed'); });
+  }
 
   // Pan/zoom to matched bounds + decide modal side
   const backdrop = document.getElementById('modal-backdrop');
@@ -1653,13 +1911,18 @@ function showFinding(buttonKey, btn) {
 
   const bounds = unionBounds(matched);
   if (bounds) {
-    fitMapToBounds(bounds);
+    /* F6 needs the full multi-district picture AND LI visible past the modal
+       on the left. Use a wider margin to zoom out further than the default. */
+    fitMapToBounds(bounds, isF6 ? 500 : undefined);
     // Modal goes to the side OPPOSITE the matched-cluster centroid
     const cx = (bounds.minX + bounds.maxX) / 2;
     backdrop.classList.add(cx > 800 ? 'side-left' : 'side-right');
   } else {
     backdrop.classList.add('side-right');
   }
+
+  // F6 — draw the radiating / contracting arrow overlay on the map
+  if (isF6) showF6Arrows();
 
   // Render text in active language
   renderFindingContent(findingKey);

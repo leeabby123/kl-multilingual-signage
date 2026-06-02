@@ -482,3 +482,70 @@ html:not([data-lang]) [data-lang-content="en"] {
   .secondary-page { padding: var(--space-xl) var(--space-md) var(--space-xl); }
   .lang-switcher { width: 160px; height: 160px; }
 }
+
+/* ============================================================
+   Data Sources — "View Original Dataset" external link card
+   ============================================================ */
+.sources-data-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md, 14px);
+  padding: 18px 22px;
+  margin: var(--space-md, 14px) 0 var(--space-lg, 22px);
+  background: var(--neutral-paper, #fbf8ef);
+  border: 1.5px solid var(--neutral-gray-100, #e7e5e1);
+  border-left: 4px solid var(--nav-arrow-color, #8b6914);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--neutral-gray-900, #1c1a17);
+  transition: background 0.18s ease-out, border-color 0.18s ease-out,
+              transform 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+.sources-data-link:hover {
+  background: var(--neutral-cream, #f5efde);
+  border-color: var(--neutral-gray-200, #c4bfb8);
+  border-left-color: var(--nav-arrow-color, #8b6914);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(58, 40, 16, 0.08);
+}
+.sources-data-link:focus-visible {
+  outline: 2px solid var(--nav-arrow-color, #8b6914);
+  outline-offset: 3px;
+}
+.sources-data-link-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--nav-arrow-color, #8b6914);
+}
+.sources-data-link-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.sources-data-link-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--neutral-gray-900, #1c1a17);
+  letter-spacing: 0.01em;
+}
+.sources-data-link-sub {
+  font-size: 12.5px;
+  color: var(--neutral-gray-400, #7a7670);
+  font-variant-numeric: tabular-nums;
+}
+.sources-data-link-arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--neutral-gray-400, #7a7670);
+  opacity: 0.7;
+  transition: transform 0.18s ease-out, opacity 0.18s ease-out, color 0.18s ease-out;
+}
+.sources-data-link:hover .sources-data-link-arrow {
+  opacity: 1;
+  color: var(--nav-arrow-color, #8b6914);
+  transform: translate(2px, -2px);
+}

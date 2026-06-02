@@ -577,7 +577,7 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 <main class="map-wrap">
   <div class="map-stage" id="map-stage">
     <div class="map-svg-host" id="map-host">
-      <svg id="map-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-200 -125 2000 1250" preserveAspectRatio="xMidYMid slice" role="img" class="lang-en" aria-label="KL multilingual signage map">
+      <svg id="map-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-50 -125 2000 1250" preserveAspectRatio="xMidYMid slice" role="img" class="lang-en" aria-label="KL multilingual signage map">
 <!-- Road geometry: © OpenStreetMap contributors (ODbL) -->
 <title>KL Multilingual Signage · 60 signs · 4 districts</title>
 
@@ -1801,40 +1801,67 @@ function unionBounds(clusters) {
 
 /** Animate map viewBox to fit bounds, preserving 1600:1000 aspect. */
 function fitMapToBounds(b, margin) {
+  /* Rewritten 6/2: uses CSS transform on .map-svg-host (not viewBox).
+     Why: viewBox change broke mouse drag — clampPan forced pan=0 at zoom=1.
+     Now sets CSS zoom > 1 so drag-pan works while modal is open.
+     Min zoom 1.2 ensures visible feedback even when bounds = full map (F4).
+     Modal-aware: centers bounds in the visible zone right of the side-left modal. */
   margin = margin || 100;
   const map = document.getElementById('map-svg');
   if (!map) return;
   if (!originalViewBox) originalViewBox = map.getAttribute('viewBox');
+  const [ovbX, ovbY, ovbW, ovbH] = originalViewBox.split(/[\s,]+/).map(Number);
 
-  const targetW = (b.maxX - b.minX) + margin * 2;
-  const targetH = (b.maxY - b.minY) + margin * 2;
-  const cx = (b.minX + b.maxX) / 2;
-  const cy = (b.minY + b.maxY) / 2;
-  const ASPECT = 1600 / 1000;
-  let fitW, fitH;
-  if (targetW / Math.max(targetH, 1) > ASPECT) {
-    fitW = Math.max(targetW, 700);
-    fitH = fitW / ASPECT;
-  } else {
-    fitH = Math.max(targetH, 450);
-    fitW = fitH * ASPECT;
-  }
-  const x = cx - fitW / 2;
-  const y = cy - fitH / 2;
-  map.style.transition = 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
-  map.setAttribute('viewBox', `${x} ${y} ${fitW} ${fitH}`);
+  const stageW = stage.clientWidth;
+  const stageH = stage.clientHeight;
+
+  // Target bounds + margin (in viewBox coords)
+  const tMinX = b.minX - margin, tMaxX = b.maxX + margin;
+  const tMinY = b.minY - margin, tMaxY = b.maxY + margin;
+  const tW = tMaxX - tMinX, tH = tMaxY - tMinY;
+
+  // Modal occupies ~410px on the left (380px modal + 32px padding + breathing room)
+  const MODAL_OCCLUSION = 410;
+  const visibleW = Math.max(stageW - MODAL_OCCLUSION, 400);
+  const visibleH = stageH;
+
+  // Compute zoom needed to fit target into visible area.
+  // At zoom=1, ovbW viewBox units → stageW pixels.
+  // For target (tW units) to fill visibleW px:  zoom = (visibleW * ovbW) / (tW * stageW)
+  const fitZoomX = (visibleW * ovbW) / (tW * stageW);
+  const fitZoomY = (visibleH * ovbH) / (tH * stageH);
+  let newZoom = Math.min(fitZoomX, fitZoomY);
+  newZoom = Math.max(1.2, Math.min(4, newZoom));  // clamp: min 1.2× (F4 visibility), max 4×
+
+  // Bounds center → pixel coords at zoom=1
+  const bcXPx = (((tMinX + tMaxX) / 2 - ovbX) / ovbW) * stageW;
+  const bcYPx = (((tMinY + tMaxY) / 2 - ovbY) / ovbH) * stageH;
+
+  // Pan: bounds center → center of visible zone (right of modal)
+  const visibleCenterX = MODAL_OCCLUSION + visibleW / 2;
+  const visibleCenterY = stageH / 2;
+
+  zoom = newZoom;
+  panX = visibleCenterX - bcXPx * newZoom;
+  panY = visibleCenterY - bcYPx * newZoom;
+
+  host.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+  applyTransform();
+  setTimeout(() => { host.style.transition = ''; }, 750);
 }
 
 function resetMap() {
-  const map = document.getElementById('map-svg');
-  if (map && originalViewBox) {
-    map.style.transition = 'all 0.5s ease-out';
-    map.setAttribute('viewBox', originalViewBox);
+  /* Reset CSS transform on host (matches fitMapToBounds rewrite, 6/2) */
+  zoom = 1; panX = 0; panY = 0;
+  if (host) {
+    host.style.transition = 'transform 0.5s ease-out';
+    applyTransform();
+    setTimeout(() => { host.style.transition = ''; }, 550);
   }
   document.querySelectorAll('.cluster').forEach(c =>
     c.classList.remove('dimmed', 'highlighted', 'highlighted-zh', 'highlighted-ta'));
-  const host = document.querySelector('.map-svg-host');
-  if (host) host.classList.remove('f6-mode');
+  const hostEl = document.querySelector('.map-svg-host');
+  if (hostEl) hostEl.classList.remove('f6-mode');
   hideF6Arrows();
 }
 
@@ -2049,15 +2076,12 @@ function showFinding(buttonKey, btn) {
   backdrop.classList.remove('side-left', 'side-right');
 
   const bounds = unionBounds(matched);
+  // Modal ALWAYS on left to avoid lang-switcher (bottom-right) overlap (fix 6/2)
+  backdrop.classList.add('side-left');
   if (bounds) {
     /* F6 needs the full multi-district picture AND LI visible past the modal
        on the left. Use a wider margin to zoom out further than the default. */
     fitMapToBounds(bounds, isF6 ? 500 : undefined);
-    // Modal goes to the side OPPOSITE the matched-cluster centroid
-    const cx = (bounds.minX + bounds.maxX) / 2;
-    backdrop.classList.add(cx > 800 ? 'side-left' : 'side-right');
-  } else {
-    backdrop.classList.add('side-right');
   }
 
   // F6 — draw the radiating / contracting arrow overlay on the map

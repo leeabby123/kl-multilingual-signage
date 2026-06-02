@@ -32,7 +32,6 @@
 
 .sidebar-back {
   padding: 0 var(--space-md) var(--space-md);
-  border-bottom: 1px solid var(--neutral-gray-100);
   margin-bottom: var(--space-sm);
 }
 
@@ -566,10 +565,10 @@ html:not([data-lang]) [data-lang-content="en"] {
    accents + faint hibiscus decoration via i18n.js PETAL_PATH.
    ============================================================ */
 
-/* Sidebar — cream paper, deeper border for definition */
+/* Sidebar — cream paper, NO borders (minimalist per locked design 6/2) */
 .sidebar {
   background: var(--paper);
-  border-right: 2px solid #e5d2c5;
+  border-right: none;
 }
 
 /* Active sidebar link — pink border-left + pink-pale bg + deep berry text + bold.

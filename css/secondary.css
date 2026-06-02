@@ -114,6 +114,13 @@ html:not([data-lang]) [data-lang-content="en"] {
   font-weight: 500;
 }
 
+/* RTL safety: in Jawi/Arabic mode the H1 right-aligns and would sit under
+   the fixed top-right lang-switcher (220px wide + 18px from edge).
+   Reserve a clear zone so the heading text never overlaps the flower picker. */
+[dir="rtl"] .secondary-page h1 {
+  padding-right: 250px;
+}
+
 .secondary-page h2 {
   font-family: var(--font-serif);
   font-size: var(--text-h2);
@@ -548,4 +555,87 @@ html:not([data-lang]) [data-lang-content="en"] {
   opacity: 1;
   color: var(--nav-arrow-color, #8b6914);
   transform: translate(2px, -2px);
+}
+
+
+/* ============================================================
+   Poppyfield Visual System (locked 6/2 — Kunm-approved variant B v3)
+   Applied uniformly to all 5 secondary pages: about, sources,
+   members, timeline, acknowledgements.
+   Replaces the prior sage-tinted system. Cream paper + soft pink
+   accents + faint hibiscus decoration via i18n.js PETAL_PATH.
+   ============================================================ */
+
+/* Sidebar — cream paper, deeper border for definition */
+.sidebar {
+  background: var(--paper);
+  border-right: 2px solid #e5d2c5;
+}
+
+/* Active sidebar link — pink border-left + pink-pale bg + deep berry text + bold.
+   Overrides the original navy/gray active state. No inline dot (would push long
+   labels like "Acknowledgements" into wrap). The border itself is the indicator. */
+.sidebar-link.active {
+  color: var(--pink-deep);
+  background: var(--pink-pale);
+  border-left-color: var(--pink-deep);
+  font-weight: 600;
+}
+
+/* Page bg — warmer cream */
+.page-secondary {
+  background: #fdf8ee;
+}
+
+/* Main content area — generous edge whitespace for premium feel */
+.secondary-page {
+  max-width: 1180px;
+  padding: 96px 112px 112px 112px;
+}
+
+/* H1 — big title block with 96px breathing room below.
+   The large bottom margin pushes the first H2 below the
+   lang-switcher's bottom edge (y=238) in both LTR and RTL,
+   so the wavy underline never overlaps the petal-flower labels. */
+.secondary-page h1 {
+  margin-bottom: 96px;
+  letter-spacing: -0.005em;
+}
+
+/* H2 — width: fit-content makes the box shrink to text width,
+   so the wavy ::after underline below only spans the heading text. */
+.secondary-page h2 {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  padding-bottom: 4px;
+}
+.secondary-page h2::after {
+  content: '';
+  display: block;
+  height: 6px;
+  margin-top: 8px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 6'><path d='M0 3 Q 30 0 60 3 T 120 3 T 180 3 T 240 3' stroke='%23c47a90' stroke-width='1.4' fill='none' stroke-linecap='round'/></svg>") repeat-x left center;
+}
+
+/* RTL safety override — the H1 padding-right hack from the earlier Jawi
+   bug fix can be relaxed now because the H1's 96px margin-bottom already
+   pushes content past the lang-switcher. Keep a smaller safety value
+   in case the lang-switcher labels overhang. */
+[dir="rtl"] .secondary-page h1 {
+  padding-right: 0;        /* override the earlier 250px patch — no longer needed */
+}
+
+/* Section rhythm */
+.secondary-page section {
+  margin-bottom: 64px;
+}
+
+/* Framework cards (about.html) — paper bg, clean. No decorative hibiscus:
+   the 5 colored hibiscuses on the map already carry semantic meaning
+   (one per language). A 6th non-language pink hibiscus would break that
+   semantic system. The language color stripe on top of each card is enough. */
+.framework-card {
+  background: var(--paper);
 }

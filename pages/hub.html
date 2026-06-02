@@ -21,6 +21,12 @@
   --line:        #d8c8b8;   /* dividers + borders — lighter */
   --accent-sage: #80c193;   /* sage swatch — leaf/garden accent */
   --accent-sage-soft: #b8dcc4;  /* tinted version for backgrounds */
+
+  /* Poppyfield palette — locked 6/2 (mirrors tokens.css for hub) */
+  --pink-pale: #fcefe4;
+  --pink-soft: #e8a4b8;
+  --pink-deep: #b04572;
+  --paper:     #fffaf0;
   --c-zh:        #d63031;   /* 5 locked language colors — DO NOT CHANGE */
   --c-ta:        #e67e22;
   --c-ms:        #27ae60;
@@ -31,9 +37,15 @@
 html, body {
   margin: 0; padding: 0;
   font-family: Georgia, 'Noto Serif', serif;
-  background: var(--bg-page);
   color: var(--ink);
   height: 100vh; overflow: hidden;
+}
+/* Framed-canvas layout — content sits inside hub-pad inset from viewport.
+   The pink-cream gradient body fills the surrounding "frame" area;
+   the cream findings-bar + map-wrap inside form the visual artwork. */
+:root { --hub-pad: 96px; }
+body {
+  background: linear-gradient(135deg, #fcefe4 0%, #fdf8ee 60%, #fcefe4 100%);
 }
 
 /* ===== LEFT NAV RAIL (Omeka-style, fixed) ===== */
@@ -42,8 +54,8 @@ html, body {
    nav rule). Stroke uses the project's antique-gold nav arrow color. */
 .hub-corner-arrow {
   position: fixed;
-  top: 0;
-  width: 64px;
+  top: 20px;                           /* viewport top corner (matches entry/bottom page nav convention) */
+  width: 56px;
   height: 56px;
   display: flex;
   align-items: center;
@@ -53,8 +65,8 @@ html, body {
   z-index: 11;                         /* above findings-bar */
   transition: opacity 0.18s ease-out, transform 0.18s ease-out;
 }
-.hub-corner-arrow--back    { left: 0; }
-.hub-corner-arrow--forward { right: 0; }
+.hub-corner-arrow--back    { left: 20px; }
+.hub-corner-arrow--forward { right: 20px; }
 .hub-corner-arrow:hover { opacity: 0.65; }
 .hub-corner-arrow--back:hover    { transform: translateX(-2px); }
 .hub-corner-arrow--forward:hover { transform: translateX(2px); }
@@ -66,7 +78,9 @@ html, body {
 /* ===== TOP FINDINGS BAR (8 buttons, single row) ===== */
 .findings-bar {
   position: fixed;
-  top: 0; left: 64px; right: 64px;        /* 64px reserved each side for corner arrows */
+  top: var(--hub-pad); left: var(--hub-pad); right: var(--hub-pad);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -3px 12px rgba(110, 58, 32, 0.06);        /* 64px reserved each side for corner arrows */
   height: 56px;
   background: var(--bg-page);
   border-bottom: 1px solid var(--line);
@@ -94,7 +108,7 @@ html, body {
   text-overflow: ellipsis;
   min-width: 0;
 }
-.finding-btn:hover { background: var(--accent-sage-soft); border-color: var(--accent-sage); }
+.finding-btn:hover { background: var(--pink-pale); border-color: var(--pink-deep); }
 .finding-btn.tentative { border-style: dashed; }
 
 /* F-number prefix on each finding button (F1-F4 robust, F5-F8 sample-limited).
@@ -117,10 +131,13 @@ html, body {
 /* ===== MAP CONTAINER ===== */
 .map-wrap {
   position: fixed;
-  left: 0; right: 0;
-  top: 56px; bottom: 0;
+  left: var(--hub-pad); right: var(--hub-pad);
+  top: calc(56px + var(--hub-pad)); bottom: var(--hub-pad);
   background: var(--bg-page);
   overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 10px 30px rgba(110, 58, 32, 0.10),
+              0 2px 8px rgba(110, 58, 32, 0.04);
 }
 .map-stage {
   position: absolute;
@@ -166,7 +183,7 @@ html, body {
   color: var(--ink);
   cursor: pointer;
 }
-.zoom-btn:hover { background: var(--accent-sage-soft); }
+.zoom-btn:hover { background: var(--pink-pale); }
 .zoom-pct {
   font-size: 11px; color: var(--ink-soft);
   text-align: center; padding: 4px 0;
@@ -209,7 +226,7 @@ html, body {
 }
 .modal-backdrop.open { display: flex; }
 .modal {
-  background: var(--bg-map);
+  background: var(--paper);
   border: 1px solid var(--ink-soft);
   border-radius: 6px;
   padding: 22px 26px;
@@ -231,7 +248,7 @@ html, body {
   line-height: 1; padding: 0;
   box-shadow: 0 1px 3px rgba(110, 58, 32, 0.12);
 }
-.modal .close:hover { background: var(--accent-sage-soft, #e8f1e2); }
+.modal .close:hover { background: var(--pink-pale); }
 /* finding-mode 顶部留空给 close 按钮 */
 .modal-backdrop.finding-mode .finding-body { padding-top: 16px; }
 .modal h2 {
@@ -428,6 +445,103 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 .modal .finding-meta-chip.tentative {
   background: #f5e0c8;
 }
+
+/* ============================================================
+   Language key — info button + popup (for presentation context)
+   Helps viewers unfamiliar with Chinese/Tamil/Jawi scripts.
+   Sized prominently (44px) per Kunm: this is a presentation aid,
+   not a decorative detail. Antique-gold ring matches « » arrows.
+   ============================================================ */
+.lang-info-btn {
+  position: absolute;
+  bottom: 256px;            /* clears the switcher (220+14) + label overhang */
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--nav-arrow-color, #8b6914);
+  background: rgba(255, 250, 240, 0.94);
+  color: var(--nav-arrow-color, #8b6914);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(110, 58, 32, 0.10);
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  font-family: Georgia, 'Noto Serif', serif;
+}
+.lang-info-btn:hover {
+  background: var(--pink-pale, #fcefe4);
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(110, 58, 32, 0.16);
+}
+.lang-info-btn:focus-visible {
+  outline: 2px solid var(--pink-deep, #b04572);
+  outline-offset: 3px;
+}
+.lang-info-btn svg { width: 24px; height: 24px; }
+
+.lang-info-popup {
+  position: absolute;
+  bottom: 256px;
+  right: 78px;               /* sits just to the LEFT of the 44px button (18+44+16 gap) */
+  width: 300px;
+  background: var(--paper, #fffaf0);
+  border: 1.5px solid var(--nav-arrow-color, #8b6914);
+  border-radius: 10px;
+  padding: 14px 18px;
+  box-shadow: 0 12px 32px rgba(110, 58, 32, 0.16);
+  z-index: 21;
+  font-family: Georgia, 'Noto Serif', serif;
+  animation: lang-info-fade-in 0.22s ease-out;
+}
+.lang-info-popup[hidden] { display: none; }
+
+@keyframes lang-info-fade-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.lang-info-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--nav-arrow-color, #8b6914);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(139, 105, 20, 0.30);
+}
+.lang-info-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.lang-info-list li {
+  display: grid;
+  grid-template-columns: 12px auto 1fr;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+}
+.lang-info-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.lang-info-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+.lang-info-en {
+  color: var(--ink-soft);
+  text-align: right;
+  font-size: 12px;
+  font-style: italic;
+}
+
 </style>
 </head>
 <body>
@@ -525,7 +639,7 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
   padding: 0;
   box-shadow: 0 1px 3px rgba(110, 58, 32, 0.12);
 }
-.sd-back-btn:hover { background: var(--accent-sage-soft, #e8f1e2); }
+.sd-back-btn:hover { background: var(--pink-pale); }
 .sd-back-btn svg { width: 20px; height: 20px; }
 .sd-photo {
   width: 100%;
@@ -1233,6 +1347,31 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
         <circle class="active-ring" id="active-ring" cx="-32.31" cy="44.49" r="28"/>
       </svg>
     </aside>
+
+    <!-- Language key info button — for presentation context where viewers
+         may not recognize 华语 (Chinese) / தமிழ் (Tamil) / جاوي (Jawi) scripts.
+         Located above the lang-switcher; clicking opens a small legend popup. -->
+    <button class="lang-info-btn" type="button"
+            aria-label="Show language key" aria-expanded="false"
+            aria-controls="lang-info-popup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="11"/>
+        <circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </button>
+    <div class="lang-info-popup" id="lang-info-popup" role="dialog"
+         aria-labelledby="lang-info-title" hidden>
+      <div class="lang-info-title" id="lang-info-title">Languages on signage</div>
+      <ul class="lang-info-list">
+        <li><span class="lang-info-dot" style="background:#27ae60"></span><span class="lang-info-name">Bahasa Melayu</span><span class="lang-info-en">Malay</span></li>
+        <li><span class="lang-info-dot" style="background:#d63031"></span><span class="lang-info-name">华语</span><span class="lang-info-en">Chinese</span></li>
+        <li><span class="lang-info-dot" style="background:#e67e22"></span><span class="lang-info-name">தமிழ்</span><span class="lang-info-en">Tamil</span></li>
+        <li><span class="lang-info-dot" style="background:#2980b9"></span><span class="lang-info-name">English</span><span class="lang-info-en">English</span></li>
+        <li><span class="lang-info-dot" style="background:#7f8c8d"></span><span class="lang-info-name">جاوي</span><span class="lang-info-en">Jawi · Malay in Arabic script</span></li>
+      </ul>
+    </div>
 
   </div>
 </main>
@@ -1972,5 +2111,46 @@ setLanguage = function(lang) {
   if (activeFindingKey) renderFindingContent(activeFindingKey);
 };
 </script>
+
+<!-- Language key info button toggle -->
+<script>
+(function(){
+  const btn   = document.querySelector('.lang-info-btn');
+  const popup = document.getElementById('lang-info-popup');
+  if (!btn || !popup) return;
+
+  function close() {
+    btn.setAttribute('aria-expanded', 'false');
+    popup.hidden = true;
+  }
+  function open() {
+    btn.setAttribute('aria-expanded', 'true');
+    popup.hidden = false;
+  }
+  function toggle() {
+    if (popup.hidden) open(); else close();
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggle();
+  });
+  popup.addEventListener('click', (e) => e.stopPropagation());
+
+  // Click outside to close
+  document.addEventListener('click', (e) => {
+    if (!popup.hidden) close();
+  });
+
+  // ESC to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !popup.hidden) {
+      close();
+      btn.focus();
+    }
+  });
+})();
+</script>
+
 </body>
 </html>

@@ -107,6 +107,16 @@
   --transition-fast: 0.2s ease;
   --transition-base: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /* === Poppyfield palette (locked 6/2) ===
+     Visual system for secondary pages: cream + soft pink.
+     Pink-deep is the active/accent color (sidebar active, h2 wavy underline, card stamps).
+     Paper is the warm cream used for cards and sidebar background. */
+  --pink-pale: #fcefe4;
+  --pink-soft: #e8a4b8;
+  --pink-deep: #b04572;
+  --paper:     #fffaf0;
 }
 
 /* === Reset / base === */

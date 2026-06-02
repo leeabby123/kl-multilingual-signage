@@ -196,12 +196,7 @@ body {
   width: 220px; height: 180px;
   z-index: 5;
   pointer-events: none;   /* container is transparent; petals re-enable */
-  /* Soft paper halo (6/2): hides map clusters/labels underneath without a hard edge.
-     Radial fade from opaque paper at center to transparent at the bounding box edges. */
-  background: radial-gradient(ellipse at center,
-    rgba(255, 250, 240, 0.92) 25%,
-    rgba(255, 250, 240, 0.70) 55%,
-    rgba(255, 250, 240, 0) 85%);
+  /* No halo: spatial gap from map clusters is enforced by widened viewBox instead. */
 }
 .lang-switcher svg { width: 100%; height: 100%; overflow: visible; }
 .lang-switcher .petal { cursor: pointer; pointer-events: auto; transition: opacity 0.15s; }
@@ -583,7 +578,7 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 <main class="map-wrap">
   <div class="map-stage" id="map-stage">
     <div class="map-svg-host" id="map-host">
-      <svg id="map-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-200 -125 2000 1250" preserveAspectRatio="xMidYMid slice" role="img" class="lang-en" aria-label="KL multilingual signage map">
+      <svg id="map-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-200 -125 2100 1313" preserveAspectRatio="xMidYMid slice" role="img" class="lang-en" aria-label="KL multilingual signage map">
 <!-- Road geometry: © OpenStreetMap contributors (ODbL) -->
 <title>KL Multilingual Signage · 60 signs · 4 districts</title>
 
@@ -823,10 +818,23 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
   <circle cx="5" cy="-37" r="1" fill="#e8c060"/>
 </g>
 
+<!-- Urban-grid texture pattern: subtle background road-feel for areas beyond
+     the explicit OSM road geometry. Keeps the canvas from looking "blank" when
+     fitMapToBounds pans content past the central content rect. -->
+<pattern id="urban-grid" patternUnits="userSpaceOnUse" width="140" height="140">
+  <path d="M0,50 Q35,40 70,50 T140,50 M0,95 Q35,105 70,95 T140,95"
+        stroke="#c4a78a" stroke-width="0.55" fill="none" opacity="0.42"/>
+  <path d="M40,0 Q30,40 40,80 T40,140 M95,0 Q105,40 95,80 T95,140"
+        stroke="#c4a78a" stroke-width="0.4" fill="none" opacity="0.32"/>
+  <path d="M20,20 Q70,55 120,30 M30,110 Q80,80 130,120"
+        stroke="#c4a78a" stroke-width="0.3" fill="none" opacity="0.25"/>
+</pattern>
 </defs>
 
-<!-- z=0: warm cream background -->
-<rect x="0" y="0" width="1600" height="1000" fill="#fff9eb"/>
+<!-- z=0: warm cream background filling full widened viewBox (-200,-125,2100,1313) -->
+<rect x="-200" y="-125" width="2100" height="1313" fill="#fff9eb"/>
+<!-- z=0.5: urban-grid texture overlay covering full widened viewBox -->
+<rect x="-200" y="-125" width="2100" height="1313" fill="url(#urban-grid)"/>
 
 <!-- z=1: water -->
 <g id="water">

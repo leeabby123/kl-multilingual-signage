@@ -196,6 +196,12 @@ body {
   width: 220px; height: 180px;
   z-index: 5;
   pointer-events: none;   /* container is transparent; petals re-enable */
+  /* Soft paper halo (6/2): hides map clusters/labels underneath without a hard edge.
+     Radial fade from opaque paper at center to transparent at the bounding box edges. */
+  background: radial-gradient(ellipse at center,
+    rgba(255, 250, 240, 0.92) 25%,
+    rgba(255, 250, 240, 0.70) 55%,
+    rgba(255, 250, 240, 0) 85%);
 }
 .lang-switcher svg { width: 100%; height: 100%; overflow: visible; }
 .lang-switcher .petal { cursor: pointer; pointer-events: auto; transition: opacity 0.15s; }
@@ -577,7 +583,7 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 <main class="map-wrap">
   <div class="map-stage" id="map-stage">
     <div class="map-svg-host" id="map-host">
-      <svg id="map-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-50 -125 2000 1250" preserveAspectRatio="xMidYMid slice" role="img" class="lang-en" aria-label="KL multilingual signage map">
+      <svg id="map-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-200 -125 2000 1250" preserveAspectRatio="xMidYMid slice" role="img" class="lang-en" aria-label="KL multilingual signage map">
 <!-- Road geometry: © OpenStreetMap contributors (ODbL) -->
 <title>KL Multilingual Signage · 60 signs · 4 districts</title>
 
@@ -1437,8 +1443,17 @@ function clampPan() {
   const h = stage.clientHeight;
   const slackX = Math.max(0, w * (zoom - 1));
   const slackY = Math.max(0, h * (zoom - 1));
-  panX = Math.min(0, Math.max(-slackX, panX));
-  panY = Math.min(0, Math.max(-slackY, panY));
+  // Modal-aware extra pan slack (6/2 rewrite):
+  // When modal opens on left, allow panX > 0 up to MODAL_W (=410) so map content
+  // can shift right past modal — empty space exposed on left is hidden under modal.
+  // Always allow small panY > 0 so content can shift down slightly (keep clusters
+  // above the bottom-right lang-switcher; modal does not occlude bottom).
+  const modalOpen = document.getElementById('modal-backdrop').classList.contains('finding-mode');
+  const MODAL_W = 410, SWITCHER_H = 220;
+  const maxPanX = modalOpen ? MODAL_W : 0;
+  const maxPanY = modalOpen ? 0 : 0;  // don't allow positive panY (would expose empty top)
+  panX = Math.min(maxPanX, Math.max(-slackX, panX));
+  panY = Math.min(maxPanY, Math.max(-slackY, panY));
 }
 function applyTransform() {
   clampPan();
@@ -1801,11 +1816,12 @@ function unionBounds(clusters) {
 
 /** Animate map viewBox to fit bounds, preserving 1600:1000 aspect. */
 function fitMapToBounds(b, margin) {
-  /* Rewritten 6/2: uses CSS transform on .map-svg-host (not viewBox).
-     Why: viewBox change broke mouse drag — clampPan forced pan=0 at zoom=1.
-     Now sets CSS zoom > 1 so drag-pan works while modal is open.
-     Min zoom 1.2 ensures visible feedback even when bounds = full map (F4).
-     Modal-aware: centers bounds in the visible zone right of the side-left modal. */
+  /* Comprehensive rewrite 6/2:
+     - CSS transform on .map-svg-host (drag-pan works when zoom > 1)
+     - Min zoom 1.2× ensures visible feedback even for "all matched" findings
+     - Visible center excludes BOTH modal (left ~410px) AND lang-switcher (bottom-right ~250×220)
+     - Relies on clampPan modal-aware extension (allows panX up to +410 when modal open)
+  */
   margin = margin || 100;
   const map = document.getElementById('map-svg');
   if (!map) return;
@@ -1815,31 +1831,36 @@ function fitMapToBounds(b, margin) {
   const stageW = stage.clientWidth;
   const stageH = stage.clientHeight;
 
-  // Target bounds + margin (in viewBox coords)
+  // Target bounds + margin
   const tMinX = b.minX - margin, tMaxX = b.maxX + margin;
   const tMinY = b.minY - margin, tMaxY = b.maxY + margin;
   const tW = tMaxX - tMinX, tH = tMaxY - tMinY;
 
-  // Modal occupies ~410px on the left (380px modal + 32px padding + breathing room)
-  const MODAL_OCCLUSION = 410;
-  const visibleW = Math.max(stageW - MODAL_OCCLUSION, 400);
-  const visibleH = stageH;
+  // Occluded zones in stage coordinates:
+  //   - LEFT: modal panel (~410px wide)
+  //   - BOTTOM-RIGHT: lang-switcher box (~250 × 220, including label overhang)
+  const MODAL_W = 410;
+  const SWITCHER_W = 260, SWITCHER_H = 240;
 
-  // Compute zoom needed to fit target into visible area.
-  // At zoom=1, ovbW viewBox units → stageW pixels.
-  // For target (tW units) to fill visibleW px:  zoom = (visibleW * ovbW) / (tW * stageW)
+  // Clear visible rectangle (worst-case): x ∈ [MODAL_W, stageW - SWITCHER_W*0]
+  //   Note: lang-switcher only occludes BOTTOM-right, so for X we don't subtract.
+  //   For Y, account for it being at the bottom: visible y ∈ [0, stageH - SWITCHER_H]
+  const visibleW = stageW - MODAL_W;
+  const visibleH = stageH - SWITCHER_H;
+
+  // Compute zoom needed to fit target into the clear visible area
   const fitZoomX = (visibleW * ovbW) / (tW * stageW);
   const fitZoomY = (visibleH * ovbH) / (tH * stageH);
   let newZoom = Math.min(fitZoomX, fitZoomY);
-  newZoom = Math.max(1.2, Math.min(4, newZoom));  // clamp: min 1.2× (F4 visibility), max 4×
+  newZoom = Math.max(1.2, Math.min(4, newZoom));
 
-  // Bounds center → pixel coords at zoom=1
+  // Bounds center in original-scale stage pixel coords
   const bcXPx = (((tMinX + tMaxX) / 2 - ovbX) / ovbW) * stageW;
   const bcYPx = (((tMinY + tMaxY) / 2 - ovbY) / ovbH) * stageH;
 
-  // Pan: bounds center → center of visible zone (right of modal)
-  const visibleCenterX = MODAL_OCCLUSION + visibleW / 2;
-  const visibleCenterY = stageH / 2;
+  // Target: bounds center → center of the clear visible rect
+  const visibleCenterX = MODAL_W + visibleW / 2;
+  const visibleCenterY = visibleH / 2;
 
   zoom = newZoom;
   panX = visibleCenterX - bcXPx * newZoom;

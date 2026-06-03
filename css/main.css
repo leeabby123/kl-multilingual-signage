@@ -358,41 +358,95 @@
   text-align: center;
   padding: var(--space-2xl) var(--space-lg);
   position: relative;
+  overflow: hidden;
 }
 
-.bottom-placeholder {
-  max-width: 700px;
+/* ===== Bottom page — KL map base + 5-language civilian tagline =====
+   Structure mirrors top page state discourse inversely:
+   top    = vertical UUK law + 2 national flowers (compact, official)
+   bottom = spread KL map + 60 civilian flowers + horizontal tagline (distributed, people)
+   ============================================================ */
+
+/* KL map embed: fills section as field of evidence (60 flower clusters
+   at real sampling points, already 5-language colored in kl-map.svg) */
+.bottom-map {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;   /* clusters never receive clicks here — Hub owns interaction */
+  opacity: 0.55;          /* faded so tagline overlay stays readable above */
+  transition: opacity 1.4s ease-out;
+}
+
+.bottom-map > object {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;   /* defensive: block clicks even inside the SVG document */
+}
+
+/* Q5 animation hook (logic deferred): when JS adds .faded, map dims further
+   so the tagline emerges as the focal point. Default state shows everything. */
+.bottom-map.faded {
+  opacity: 0.18;
+}
+
+/* Tagline overlay: 5 languages equal weight, MS → Jawi → ZH → TA → EN,
+   centered above the map. References middle page title typography (Georgia serif). */
+.bottom-tagline-stack {
   position: relative;
   z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55em;
 }
 
-.bottom-tagline {
+.bottom-tagline-line {
   font-family: var(--font-serif);
-  font-size: var(--text-h2);
-  font-style: italic;
+  font-size: clamp(15px, 1.8vw, 21px);
+  font-weight: 500;
+  line-height: 1.45;
   color: var(--bottom-warm-ink);
-  margin: 0 0 var(--space-md);
-  line-height: var(--leading-tight);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  margin: 0;
+  /* readability halo for text sitting above faint map */
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 14px rgba(255, 245, 230, 0.7),
+    0 0 28px rgba(255, 245, 230, 0.45);
 }
 
-.bottom-tagline-secondary {
-  font-size: var(--text-body);
-  color: var(--bottom-warm-ink-soft);
-  margin: 0 0 var(--space-xl);
-  line-height: var(--leading-relaxed);
+/* Per-script typography tuning (each script needs different size to feel equal-weight) */
+.bottom-tagline-line.lang-ms {
+  font-weight: 600;       /* slight emphasis: MS is the source-language seed */
 }
 
-.bottom-tagline-secondary > div {
-  margin-bottom: 6px;
+.bottom-tagline-line.lang-jawi {
+  font-family: "Noto Naskh Arabic", "Noto Serif", var(--font-serif);
+  font-size: clamp(17px, 2.1vw, 24px);  /* Arabic script reads smaller — boost */
+  line-height: 1.6;
 }
 
-.bottom-placeholder-note {
-  font-size: var(--text-caption);
-  color: var(--bottom-warm-ink-soft);
-  opacity: 0.55;
+.bottom-tagline-line.lang-zh {
+  font-family: "Noto Serif SC", "Noto Serif", var(--font-serif);
+  letter-spacing: 0.02em;
+}
+
+.bottom-tagline-line.lang-ta {
+  font-family: "Noto Serif Tamil", "Noto Sans Tamil", var(--font-serif);
+  font-size: clamp(13px, 1.55vw, 19px);  /* Tamil reads larger — reduce */
+  line-height: 1.55;
+}
+
+.bottom-tagline-line.lang-en {
   font-style: italic;
-  margin-top: var(--space-2xl);
+  color: var(--bottom-warm-ink-soft);   /* slight de-emphasis: EN is utility, not voice */
+}
+
+/* Q5 animation hook (logic deferred): JS will toggle .visible / .hidden later */
+.bottom-tagline-stack.hidden {
+  opacity: 0;
 }
 
 /* ============================================================

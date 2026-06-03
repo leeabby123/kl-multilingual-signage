@@ -149,9 +149,12 @@
 
   <!-- ============================================================
        SECTION 3 — BOTTOM PAGE (民间多语 · Civilian Languages)
-       Warm tone — placeholder until SVG arrives
+       Warm tone · KL map (60 civilian flower clusters in 5 lang colors)
+       overlaid with 5-language tagline — mirror of top page state discourse:
+       top: vertical UUK 3 law + bunga raya pair (2 national flowers)
+       bottom: spread KL map + 60 civilian flowers + horizontal tagline manifesto
        ============================================================ -->
-  <section class="section section--bottom" id="section-bottom" aria-label="Civilian Languages — placeholder">
+  <section class="section section--bottom" id="section-bottom" aria-label="Civilian Languages — KL multilingual evidence with people's tagline">
 
     <!-- Up arrow → middle page (poppyfield minimal: arrow only, no text) -->
     <a class="middle-scroll-up" data-scroll-target="#section-middle" aria-label="Scroll up">
@@ -163,19 +166,21 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7,6 11,12 7,18"/><polyline points="13,6 17,12 13,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="5.4,6 9.4,12 5.4,18"/><polyline points="11.4,6 15.4,12 11.4,18"/></g></svg>
     </button>
 
-    <div class="bottom-placeholder">
-      <p class="bottom-tagline">
-        Rakyat memilih kehidupan sendiri, menulis pelbagai bahasa kota.
-      </p>
-      <div class="bottom-tagline-secondary">
-        <div lang="zh">人民选择自己的生活，书写城市的多元语言。</div>
-        <div>The people choose their own lives, writing the city's many languages.</div>
-        <div lang="ta">மக்கள் தங்கள் வாழ்க்கையை தேர்ந்தெடுத்து, நகரத்தின் பல மொழிகளை எழுதுகிறார்கள்.</div>
-      </div>
+    <!-- KL Map background: 60 civilian hibiscus clusters at real sampling points,
+         5-language petal colors (ZH red / TA orange / MS green / EN blue / Jawi gray),
+         non-interactive (pure visual evidence — Hub is the interactive version) -->
+    <div class="bottom-map" aria-hidden="true">
+      <object data="scripts/kl-map.svg" type="image/svg+xml" aria-label="KL multilingual signage map with 60 civilian hibiscus clusters"></object>
+    </div>
 
-      <p class="bottom-placeholder-note">
-        [Placeholder] KL map with 60 hibiscus clusters · awaiting visual asset
-      </p>
+    <!-- Tagline overlay: 5 languages equal weight, MS → Jawi → ZH → TA → EN,
+         centered (mirrors top page's vertical UUK legal text inversely). -->
+    <div class="bottom-tagline-stack">
+      <p class="bottom-tagline-line lang-ms">Rakyat memilih kehidupan sendiri, menulis pelbagai bahasa kota.</p>
+      <p class="bottom-tagline-line lang-jawi" dir="rtl">رعيت مميليه کهيدوڤن سنديري، منوليس ڤلباݢاي بهاس کوتا.</p>
+      <p class="bottom-tagline-line lang-zh" lang="zh">人民选择自己的生活，书写城市的多元语言。</p>
+      <p class="bottom-tagline-line lang-ta" lang="ta">மக்கள் தங்கள் வாழ்க்கையை தேர்ந்தெடுத்து, நகரத்தின் பல மொழிகளை எழுதுகிறார்கள்.</p>
+      <p class="bottom-tagline-line lang-en">The people choose their own lives, writing the city's many languages.</p>
     </div>
 
   </section>

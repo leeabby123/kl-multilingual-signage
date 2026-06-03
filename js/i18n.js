@@ -193,6 +193,75 @@
   /* ----------------------------------------------------------
      Init
      ---------------------------------------------------------- */
+  // 6/2: Auto-inject language-key info button + popup on every page that
+  // loads i18n.js. Mirrors hub.html's i-button (which is hand-coded inline
+  // there because hub.html does NOT load i18n.js). On secondary pages this
+  // is the single shared source — no per-page HTML/CSS/JS duplication.
+  // Skips if .lang-info-btn already exists (defensive guard).
+  function injectLangInfoButton() {
+    if (document.querySelector('.lang-info-btn')) return;
+
+    const btn = document.createElement('button');
+    btn.className = 'lang-info-btn';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Show language key');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'lang-info-popup');
+    btn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+      ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<circle cx="12" cy="12" r="10"/>' +
+      '<line x1="12" y1="16" x2="12" y2="11"/>' +
+      '<circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/>' +
+      '</svg>';
+
+    const popup = document.createElement('div');
+    popup.className = 'lang-info-popup';
+    popup.id = 'lang-info-popup';
+    popup.setAttribute('role', 'dialog');
+    popup.setAttribute('aria-labelledby', 'lang-info-title');
+    popup.hidden = true;
+    popup.innerHTML =
+      '<div class="lang-info-title" id="lang-info-title">Languages on signage</div>' +
+      '<ul class="lang-info-list">' +
+        '<li><span class="lang-info-dot" style="background:#27ae60"></span><span class="lang-info-name">Bahasa Melayu</span><span class="lang-info-en">Malay</span></li>' +
+        '<li><span class="lang-info-dot" style="background:#d63031"></span><span class="lang-info-name">华语</span><span class="lang-info-en">Chinese</span></li>' +
+        '<li><span class="lang-info-dot" style="background:#e67e22"></span><span class="lang-info-name">தமிழ்</span><span class="lang-info-en">Tamil</span></li>' +
+        '<li><span class="lang-info-dot" style="background:#2980b9"></span><span class="lang-info-name">English</span><span class="lang-info-en">English</span></li>' +
+        '<li><span class="lang-info-dot" style="background:#7f8c8d"></span><span class="lang-info-name">جاوي</span><span class="lang-info-en">Jawi · Malay in Arabic script</span></li>' +
+      '</ul>';
+
+    document.body.appendChild(btn);
+    document.body.appendChild(popup);
+
+    function close() {
+      btn.setAttribute('aria-expanded', 'false');
+      popup.hidden = true;
+    }
+    function open() {
+      btn.setAttribute('aria-expanded', 'true');
+      popup.hidden = false;
+    }
+    function toggle() {
+      if (popup.hidden) open(); else close();
+    }
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggle();
+    });
+    popup.addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('click', () => {
+      if (!popup.hidden) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !popup.hidden) {
+        close();
+        btn.focus();
+      }
+    });
+  }
+
   function init() {
     const placeholder = document.querySelector('.lang-switcher');
     const currentLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
@@ -200,12 +269,20 @@
     // Set data-lang on <html> early so CSS selectors apply before any visible flash
     document.documentElement.setAttribute('data-lang', currentLang);
     document.documentElement.setAttribute('lang', currentLang === 'jawi' ? 'ms-Arab' : currentLang);
+    // 6/2 fix: also set `dir` on init — otherwise direct page loads with Jawi in
+    // localStorage render with LTR layout (data-lang=jawi text but no RTL flip),
+    // while navigating from another page applied dir=rtl produced a different look.
+    // Now consistent regardless of navigation order.
+    document.documentElement.setAttribute('dir', currentLang === 'jawi' ? 'rtl' : 'ltr');
 
     if (!placeholder) return;
 
     placeholder.innerHTML = '';
     placeholder.appendChild(buildSwitcher(currentLang));
     attachHandlers(placeholder);
+
+    // Auto-inject i-button on every page that loads this script
+    injectLangInfoButton();
   }
 
   if (document.readyState === 'loading') {

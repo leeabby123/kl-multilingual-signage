@@ -113,11 +113,14 @@ html:not([data-lang]) [data-lang-content="en"] {
   font-weight: 500;
 }
 
-/* RTL safety: in Jawi/Arabic mode the H1 right-aligns and would sit under
-   the fixed top-right lang-switcher (220px wide + 18px from edge).
-   Reserve a clear zone so the heading text never overlaps the flower picker. */
-[dir="rtl"] .secondary-page h1 {
-  padding-right: 250px;
+/* RTL (Jawi mode): the lang-switcher occupies the top-right corner (220x220
+   container + petal/label overflow extends visual footprint to ~y=280).
+   In RTL, right-aligned content (H1 and everything that follows) would sit
+   under that visual zone. Push the whole secondary-page content down so it
+   starts cleanly BELOW the switcher's full visual extent. (6/2 fix per Kunm:
+   "Jawi 右对齐时把文字往下移动，否则花朵切换器挡住".) */
+[dir="rtl"] .secondary-page {
+  padding-top: 280px;
 }
 
 .secondary-page h2 {
@@ -618,13 +621,12 @@ html:not([data-lang]) [data-lang-content="en"] {
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 6'><path d='M0 3 Q 30 0 60 3 T 120 3 T 180 3 T 240 3' stroke='%23c47a90' stroke-width='1.4' fill='none' stroke-linecap='round'/></svg>") repeat-x left center;
 }
 
-/* RTL safety override — the H1 padding-right hack from the earlier Jawi
-   bug fix can be relaxed now because the H1's 96px margin-bottom already
-   pushes content past the lang-switcher. Keep a smaller safety value
-   in case the lang-switcher labels overhang. */
-[dir="rtl"] .secondary-page h1 {
-  padding-right: 0;        /* override the earlier 250px patch — no longer needed */
-}
+/* (6/2: deleted the old "RTL safety override — padding-right: 0" rule.
+   The premise that "H1's 96px margin-bottom already pushes content past
+   the lang-switcher" was wrong — margin-bottom pushes content BELOW H1,
+   it doesn't push H1 itself past the switcher. Replaced by the new
+   `[dir="rtl"] .secondary-page { padding-top: 280px }` rule above, which
+   pushes ALL content (including H1) below the switcher's visual zone.) */
 
 /* Section rhythm */
 .secondary-page section {
@@ -637,4 +639,104 @@ html:not([data-lang]) [data-lang-content="en"] {
    semantic system. The language color stripe on top of each card is enough. */
 .framework-card {
   background: var(--paper);
+}
+
+/* ============================================================
+   Language key info button & popup
+   ============================================================
+   6/2: Moved here from about.html inline <style> so all secondary
+   pages (about/sources/members/timeline/acknowledgements) share
+   the same i-button. Auto-injected by js/i18n.js init().
+   Positioned for TOP-right lang-switcher (220px container + petal
+   /label overhang ~80px → top 300px clears it). Differs from
+   hub.html where switcher is bottom-right.
+   ============================================================ */
+.lang-info-btn {
+  position: fixed;
+  top: 300px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--nav-arrow-color, #8b6914);
+  background: rgba(255, 250, 240, 0.94);
+  color: var(--nav-arrow-color, #8b6914);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 99;
+  box-shadow: 0 2px 8px rgba(110, 58, 32, 0.10);
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  font-family: Georgia, 'Noto Serif', serif;
+}
+.lang-info-btn:hover {
+  background: var(--pink-pale, #fcefe4);
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(110, 58, 32, 0.16);
+}
+.lang-info-btn:focus-visible {
+  outline: 2px solid var(--pink-deep, #b04572);
+  outline-offset: 3px;
+}
+.lang-info-btn svg { width: 24px; height: 24px; }
+
+.lang-info-popup {
+  position: fixed;
+  top: 300px;
+  right: 78px;
+  width: 300px;
+  background: var(--paper, #fffaf0);
+  border: 1.5px solid var(--nav-arrow-color, #8b6914);
+  border-radius: 10px;
+  padding: 14px 18px;
+  box-shadow: 0 12px 32px rgba(110, 58, 32, 0.16);
+  z-index: 99;
+  font-family: Georgia, 'Noto Serif', serif;
+  animation: lang-info-fade-in 0.22s ease-out;
+}
+.lang-info-popup[hidden] { display: none; }
+
+@keyframes lang-info-fade-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.lang-info-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--nav-arrow-color, #8b6914);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(139, 105, 20, 0.30);
+}
+.lang-info-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.lang-info-list li {
+  display: grid;
+  grid-template-columns: 12px auto 1fr;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+}
+.lang-info-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.lang-info-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+.lang-info-en {
+  color: var(--ink-soft);
+  text-align: right;
+  font-size: 12px;
+  font-style: italic;
 }

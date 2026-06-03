@@ -166,21 +166,73 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7,6 11,12 7,18"/><polyline points="13,6 17,12 13,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="5.4,6 9.4,12 5.4,18"/><polyline points="11.4,6 15.4,12 11.4,18"/></g></svg>
     </button>
 
-    <!-- KL Map background: 60 civilian hibiscus clusters at real sampling points,
-         5-language petal colors (ZH red / TA orange / MS green / EN blue / Jawi gray),
-         non-interactive (pure visual evidence — Hub is the interactive version) -->
+    <!-- ====== Bottom page · 3-layer animation stack ======================
+         Layer 0 (z=1): kl-map.svg via <object>  — backdrop, 60 clusters
+         Layer 1 (z=2): .bottom-anim-layer SVG    — 5 falling seeds + bloom field
+         Layer 2 (z=3): .bottom-tagline-plate     — Ro-iro text on Unohana plate
+         Orchestrated by js/bottom-animation.js:
+         Phase 1 (scroll-driven)  : 5 seeds fall from above into 5 asymmetric landing spots
+         Phase 2 (3s, time-driven): ~150 bloom flowers spawn in 15 waves of 10
+         Phase 3 (3s, time-driven): map fades, tagline plate fades in
+    ====================================================================== -->
+
+    <!-- KL map background (Layer 0) -->
     <div class="bottom-map" aria-hidden="true">
       <object data="scripts/kl-map.svg" type="image/svg+xml" aria-label="KL multilingual signage map with 60 civilian hibiscus clusters"></object>
     </div>
 
-    <!-- Tagline overlay: 5 languages equal weight, MS → Jawi → ZH → TA → EN,
-         centered (mirrors top page's vertical UUK legal text inversely). -->
-    <div class="bottom-tagline-stack">
-      <p class="bottom-tagline-line lang-ms">Rakyat memilih kehidupan sendiri, menulis pelbagai bahasa kota.</p>
-      <p class="bottom-tagline-line lang-jawi" dir="rtl">رعيت مميليه کهيدوڤن سنديري، منوليس ڤلباݢاي بهاس کوتا.</p>
-      <p class="bottom-tagline-line lang-zh" lang="zh">人民选择自己的生活，书写城市的多元语言。</p>
-      <p class="bottom-tagline-line lang-ta" lang="ta">மக்கள் தங்கள் வாழ்க்கையை தேர்ந்தெடுத்து, நகரத்தின் பல மொழிகளை எழுதுகிறார்கள்.</p>
-      <p class="bottom-tagline-line lang-en">The people choose their own lives, writing the city's many languages.</p>
+    <!-- Animation layer (Layer 1) — same viewBox as kl-map so coords map 1:1 -->
+    <svg class="bottom-anim-layer" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs>
+        <g id="b-fr"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
+        <g id="b-hR"><use href="#b-fr" fill="#d63031" opacity="0.68"/><use href="#b-fr" fill="#d63031" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#d63031" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#d63031" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#d63031" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hO"><use href="#b-fr" fill="#e67e22" opacity="0.68"/><use href="#b-fr" fill="#e67e22" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#e67e22" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#e67e22" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#e67e22" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b4a10"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hG"><use href="#b-fr" fill="#27ae60" opacity="0.68"/><use href="#b-fr" fill="#27ae60" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#27ae60" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#27ae60" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#27ae60" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#145a30"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hB"><use href="#b-fr" fill="#2980b9" opacity="0.68"/><use href="#b-fr" fill="#2980b9" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#2980b9" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#2980b9" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#2980b9" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#14456b"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hGy"><use href="#b-fr" fill="#7f8c8d" opacity="0.55"/><use href="#b-fr" fill="#7f8c8d" opacity="0.5" transform="rotate(72)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.45" transform="rotate(144)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.52" transform="rotate(216)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.58" transform="rotate(288)"/><circle r="4" fill="#555"/></g>
+      </defs>
+
+      <!-- 5 falling seeds — each starts at y=-80 (above visible area) and lands
+           at an asymmetric scattered spot in a different region. JS interpolates
+           position by scroll progress (0=start, 1=landed). Start scale=0 makes
+           them grow as they fall so the entrance feels intentional. -->
+      <g id="seeds-falling">
+        <use class="falling-seed lang-jawi" href="#b-hGy"
+             data-start-x="118"  data-start-y="-80"
+             data-target-x="180" data-target-y="145"
+             transform="translate(118,-80) scale(0)"/>
+        <use class="falling-seed lang-ms"   href="#b-hG"
+             data-start-x="293"  data-start-y="-80"
+             data-target-x="580" data-target-y="200"
+             transform="translate(293,-80) scale(0)"/>
+        <use class="falling-seed lang-en"   href="#b-hB"
+             data-start-x="434"  data-start-y="-80"
+             data-target-x="140" data-target-y="510"
+             transform="translate(434,-80) scale(0)"/>
+        <use class="falling-seed lang-ta"   href="#b-hO"
+             data-start-x="720"  data-start-y="-80"
+             data-target-x="520" data-target-y="880"
+             transform="translate(720,-80) scale(0)"/>
+        <use class="falling-seed lang-zh"   href="#b-hR"
+             data-start-x="1075" data-start-y="-80"
+             data-target-x="1320" data-target-y="920"
+             transform="translate(1075,-80) scale(0)"/>
+      </g>
+
+      <!-- Bloom field — JS populates this <g> with ~150 flowers during Phase 2 -->
+      <g id="bloom-field"></g>
+    </svg>
+
+    <!-- Tagline plate (Layer 2) — Ro-iro #393937 on Unohana #F3F3F2,
+         plate uses width: max-content so it wraps the text exactly. -->
+    <div class="bottom-tagline-plate">
+      <div class="bottom-tagline-stack">
+        <p class="bottom-tagline-line lang-ms">Rakyat memilih kehidupan sendiri, menulis pelbagai bahasa kota.</p>
+        <p class="bottom-tagline-line lang-jawi" dir="rtl">رعيت مميليه کهيدوڤن سنديري، منوليس ڤلباݢاي بهاس کوتا.</p>
+        <p class="bottom-tagline-line lang-zh" lang="zh">人民选择自己的生活，书写城市的多元语言。</p>
+        <p class="bottom-tagline-line lang-ta" lang="ta">மக்கள் தங்கள் வாழ்க்கையை தேர்ந்தெடுத்து, நகரத்தின் பல மொழிகளை எழுதுகிறார்கள்.</p>
+        <p class="bottom-tagline-line lang-en">The people choose their own lives, writing the city's many languages.</p>
+      </div>
     </div>
 
   </section>
@@ -188,6 +240,7 @@
 </div>
 
 <script src="js/main.js"></script>
+<script src="js/bottom-animation.js"></script>
 
 </body>
 </html>

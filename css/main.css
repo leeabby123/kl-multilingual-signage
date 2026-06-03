@@ -361,70 +361,126 @@
   overflow: hidden;
 }
 
-/* ===== Bottom page — KL map base + 5-language civilian tagline =====
+/* ===== Bottom page — 3-layer animation stack =====
+   Layer 0 .bottom-map           — kl-map.svg via <object>, z=1
+   Layer 1 .bottom-anim-layer    — falling seeds + bloom field, z=2
+   Layer 2 .bottom-tagline-plate — Ro-iro text on Unohana plate, z=3
+
    Structure mirrors top page state discourse inversely:
    top    = vertical UUK law + 2 national flowers (compact, official)
-   bottom = spread KL map + 60 civilian flowers + horizontal tagline (distributed, people)
+   bottom = spread KL map + 60 + 150 civilian flowers + plate manifesto (distributed, people)
    ============================================================ */
 
-/* KL map embed: fills section as field of evidence (60 flower clusters
-   at real sampling points, already 5-language colored in kl-map.svg) */
+/* Layer 0: KL map base — slightly faded by default so seeds + bloom read on top */
 .bottom-map {
   position: absolute;
   inset: 0;
   z-index: 1;
-  pointer-events: none;   /* clusters never receive clicks here — Hub owns interaction */
-  opacity: 0.55;          /* faded so tagline overlay stays readable above */
+  pointer-events: none;
+  opacity: 0.62;
   transition: opacity 1.4s ease-out;
 }
 
 .bottom-map > object {
   width: 100%;
   height: 100%;
-  pointer-events: none;   /* defensive: block clicks even inside the SVG document */
+  pointer-events: none;
 }
 
-/* Q5 animation hook (logic deferred): when JS adds .faded, map dims further
-   so the tagline emerges as the focal point. Default state shows everything. */
+/* Phase 3 hook — JS adds .faded once tagline plate is emerging */
 .bottom-map.faded {
-  opacity: 0.18;
+  opacity: 0.12;
 }
 
-/* Tagline overlay: 5 languages equal weight, MS → Jawi → ZH → TA → EN,
-   centered above the map. References middle page title typography (Georgia serif). */
-.bottom-tagline-stack {
-  position: relative;
+/* Layer 1: animation SVG overlay — seeds + bloom share the kl-map's viewBox */
+.bottom-anim-layer {
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  max-width: 780px;
-  margin: 0 auto;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Falling seeds — JS drives `transform` via the data-target-* attrs and scroll progress.
+   Default state: at start position with scale 0 (invisible). Transitions live on the
+   <use> element so values interpolated by JS animate smoothly. */
+.falling-seed {
+  transition: transform 0.08s linear;
+  /* Subtle glow so seeds read as "the chosen 5" against the map */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+}
+
+/* Bloom flowers — JS spawns <use> inside #bloom-field. CSS animation handles the fade-in
+   so JS doesn't have to RAF every flower individually. */
+.bloom-flower {
+  opacity: 0;
+  animation: bloom-fade-in 0.6s ease-out forwards;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.10));
+}
+
+@keyframes bloom-fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 0.92; }
+}
+
+/* Layer 2: Tagline plate (Phase 3) — Ro-iro on Unohana, sized to wrap text exactly.
+   Hidden by default; JS adds .visible during Phase 3 to fade in.
+   Position: centered in section. The plate sits ABOVE the map via z-index. */
+.bottom-tagline-plate {
+  position: relative;
+  z-index: 3;
+
+  /* Plate background — Unohana #F3F3F2 (deutzia flower, thematic) */
+  background: #F3F3F2;
+  border: 1px solid rgba(57, 57, 55, 0.15);     /* very subtle Ro-iro outline */
+  border-radius: 4px;
+  box-shadow:
+    0 4px 24px rgba(57, 57, 55, 0.12),
+    0 1px 3px rgba(57, 57, 55, 0.08);
+
+  /* Sizing — wraps text exactly. min-content also OK; max-content gives the natural width */
+  width: max-content;
+  max-width: min(820px, 90vw);
+  padding: clamp(20px, 3vw, 36px) clamp(28px, 4vw, 52px);
+
+  /* Initially hidden — JS reveals during Phase 3 */
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.bottom-tagline-plate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tagline stack — 5 langs equal weight, MS → Jawi → ZH → TA → EN */
+.bottom-tagline-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.55em;
 }
 
+/* Each line — Ro-iro #393937 (the color Kunm referenced via nipponcolors #ro) */
 .bottom-tagline-line {
   font-family: var(--font-serif);
-  font-size: clamp(15px, 1.8vw, 21px);
+  font-size: clamp(15px, 1.7vw, 20px);
   font-weight: 500;
   line-height: 1.45;
-  color: var(--bottom-warm-ink);
+  color: #393937;                              /* Ro-iro — 11.6:1 contrast vs Unohana */
   margin: 0;
-  /* readability halo for text sitting above faint map */
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.55),
-    0 0 14px rgba(255, 245, 230, 0.7),
-    0 0 28px rgba(255, 245, 230, 0.45);
 }
 
-/* Per-script typography tuning (each script needs different size to feel equal-weight) */
 .bottom-tagline-line.lang-ms {
-  font-weight: 600;       /* slight emphasis: MS is the source-language seed */
+  font-weight: 600;
 }
 
 .bottom-tagline-line.lang-jawi {
   font-family: "Noto Naskh Arabic", "Noto Serif", var(--font-serif);
-  font-size: clamp(17px, 2.1vw, 24px);  /* Arabic script reads smaller — boost */
+  font-size: clamp(17px, 2.0vw, 23px);
   line-height: 1.6;
 }
 
@@ -435,18 +491,13 @@
 
 .bottom-tagline-line.lang-ta {
   font-family: "Noto Serif Tamil", "Noto Sans Tamil", var(--font-serif);
-  font-size: clamp(13px, 1.55vw, 19px);  /* Tamil reads larger — reduce */
+  font-size: clamp(13px, 1.5vw, 18px);
   line-height: 1.55;
 }
 
 .bottom-tagline-line.lang-en {
   font-style: italic;
-  color: var(--bottom-warm-ink-soft);   /* slight de-emphasis: EN is utility, not voice */
-}
-
-/* Q5 animation hook (logic deferred): JS will toggle .visible / .hidden later */
-.bottom-tagline-stack.hidden {
-  opacity: 0;
+  color: rgba(57, 57, 55, 0.72);              /* Ro-iro at 72% — EN is utility, not voice */
 }
 
 /* ============================================================

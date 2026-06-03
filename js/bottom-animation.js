@@ -60,10 +60,33 @@
   const seedsLayer  = document.getElementById(SEED_LAYER_ID);
   const bloomField  = document.getElementById(BLOOM_FIELD_ID);
   const mapEl       = section.querySelector('.' + MAP_CLASS);
+  const animLayer   = section.querySelector('.bottom-anim-layer');
   const plateEl     = section.querySelector('.' + PLATE_CLASS);
-  if (!seedsLayer || !bloomField || !mapEl || !plateEl) {
+  if (!seedsLayer || !bloomField || !mapEl || !animLayer || !plateEl) {
     console.warn('[bottom-animation] missing elements, aborting');
     return;
+  }
+
+  // Hide existing 60 clusters in kl-map.svg — they belong to Hub's interactive view.
+  // The bottom page wants a clean map base for our own 5 seeds + bloom field.
+  // Works only because kl-map.svg is same-origin (so contentDocument is accessible).
+  const mapObject = mapEl.querySelector('object');
+  function tryHideMapClusters() {
+    try {
+      const svgDoc = mapObject && mapObject.contentDocument;
+      if (svgDoc && svgDoc.querySelectorAll) {
+        const clusters = svgDoc.querySelectorAll('.cluster');
+        if (clusters.length > 0) {
+          clusters.forEach(c => { c.style.display = 'none'; });
+          return true;
+        }
+      }
+    } catch (e) { /* contentDocument blocked; ignore */ }
+    return false;
+  }
+  if (mapObject) {
+    mapObject.addEventListener('load', tryHideMapClusters);
+    tryHideMapClusters();  // also try immediately in case it's already loaded
   }
 
   // Cache seed targets so we don't re-parse every scroll tick
@@ -102,13 +125,14 @@
       const y = s.sy + (s.ty - s.sy) * eased;
       // Slight horizontal sway for falling feel — sin-based, offset per seed
       const sway = Math.sin((eased + i * 0.18) * Math.PI * 2) * 18 * (1 - eased);
-      // Scale grows from 0.3 → 0.9 over the fall (so they're not invisibly small at start)
-      const scale = 0.3 + 0.6 * eased;
-      // Spin slowly for life
-      const rot = (i * 47 + eased * 360 * 0.35) % 360;
+      // CONSTANT scale 0.30 — matches the middle-garden seed visual size; no growth during fall
+      const SEED_SCALE = 0.30;
+      // Multi-turn rotation during fall — alternating direction per seed for organic feel
+      const dir = (i % 2 === 0) ? 1 : -1;
+      const rot = (i * 47 + eased * 720 * dir) % 360;       // up to 2 full turns
       s.el.setAttribute(
         'transform',
-        `translate(${x + sway},${y}) scale(${scale}) rotate(${rot})`
+        `translate(${x + sway},${y}) scale(${SEED_SCALE}) rotate(${rot})`
       );
     });
 
@@ -149,7 +173,7 @@
       const color = BLOOM_COLORS[Math.floor(Math.random() * BLOOM_COLORS.length)];
       const x = BLOOM_X_MIN + Math.random() * (BLOOM_X_MAX - BLOOM_X_MIN);
       const y = BLOOM_Y_MIN + Math.random() * (BLOOM_Y_MAX - BLOOM_Y_MIN);
-      const scale = 0.18 + Math.random() * 0.22;     // 0.18 - 0.40
+      const scale = 0.30 + Math.random() * 0.15;    // 0.30 (1x of seed) to 0.45 (1.5x)
       const rot   = Math.random() * 360;
       use.setAttribute('href', '#' + color);
       use.setAttribute('class', 'bloom-flower lang-' + color.slice(2).toLowerCase());
@@ -166,8 +190,9 @@
   // -----------------------------------------------------------
   function startPhase3() {
     phase3Started = true;
-    mapEl.classList.add('faded');
-    plateEl.classList.add('visible');
+    mapEl.classList.add('faded');           // map base → nearly transparent
+    animLayer.classList.add('faded');       // bloom + seeds → nearly transparent
+    plateEl.classList.add('visible');       // plate emerges with text
   }
 
   // -----------------------------------------------------------
@@ -183,6 +208,7 @@
 
     // Reset map + plate
     mapEl.classList.remove('faded');
+    animLayer.classList.remove('faded');
     plateEl.classList.remove('visible');
 
     phase2Started = false;

@@ -387,9 +387,15 @@
   pointer-events: none;
 }
 
-/* Phase 3 hook — JS adds .faded once tagline plate is emerging */
+/* Phase 3 hook — map fades to almost fully transparent so tagline plate dominates */
 .bottom-map.faded {
-  opacity: 0.12;
+  opacity: 0.04;
+}
+
+/* Phase 3: anim-layer (bloom + landed seeds) also fades almost out — only plate remains */
+.bottom-anim-layer.faded {
+  opacity: 0.10;
+  transition: opacity 1.4s ease-out;
 }
 
 /* Layer 1: animation SVG overlay — seeds + bloom share the kl-map's viewBox */
@@ -425,29 +431,34 @@
   100% { opacity: 0.92; }
 }
 
-/* Layer 2: Tagline plate (Phase 3) — Ro-iro on Unohana, sized to wrap text exactly.
-   Hidden by default; JS adds .visible during Phase 3 to fade in.
-   Position: centered in section. The plate sits ABOVE the map via z-index. */
+/* Layer 2: Tagline plate (Phase 3) — warm palette from nipponcolors,
+   tuned to harmonize with the peach/coral bottom-page background.
+   Plate is hidden by default; JS adds .visible during Phase 3. */
 .bottom-tagline-plate {
   position: relative;
   z-index: 3;
 
-  /* Plate background — Unohana #F3F3F2 (deutzia flower, thematic) */
-  background: #F3F3F2;
-  border: 1px solid rgba(57, 57, 55, 0.15);     /* very subtle Ro-iro outline */
-  border-radius: 4px;
-  box-shadow:
-    0 4px 24px rgba(57, 57, 55, 0.12),
-    0 1px 3px rgba(57, 57, 55, 0.08);
+  /* Plate background — 練色 Neri-iro #F0EAD6 (warm parchment cream)
+     harmonizes with the peach gradient instead of cutting against it. */
+  background: #F0EAD6;
+  border: 1px solid rgba(86, 74, 56, 0.10);     /* very soft 焦茶 outline */
 
-  /* Sizing — wraps text exactly. min-content also OK; max-content gives the natural width */
+  /* Rounded edges + layered shadow for depth ("有层次感") */
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),    /* subtle top-edge highlight */
+    0 1px 3px   rgba(86, 74, 56, 0.10),         /* close contact shadow */
+    0 6px 18px  rgba(86, 74, 56, 0.16),         /* mid shadow */
+    0 18px 44px rgba(86, 74, 56, 0.22);         /* far/deep shadow */
+
+  /* Sizing — wraps text exactly. max-content gives the natural width */
   width: max-content;
   max-width: min(820px, 90vw);
-  padding: clamp(20px, 3vw, 36px) clamp(28px, 4vw, 52px);
+  padding: clamp(22px, 3.2vw, 40px) clamp(30px, 4.2vw, 56px);
 
   /* Initially hidden — JS reveals during Phase 3 */
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(14px);
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
@@ -464,13 +475,14 @@
   gap: 0.55em;
 }
 
-/* Each line — Ro-iro #393937 (the color Kunm referenced via nipponcolors #ro) */
+/* Each line — 焦茶 Koge-cha #564A38 (warm dark brown, harmonizes with cream plate)
+   Contrast vs Neri-iro #F0EAD6 ≈ 8.4:1, comfortably above WCAG AAA (7:1). */
 .bottom-tagline-line {
   font-family: var(--font-serif);
   font-size: clamp(15px, 1.7vw, 20px);
   font-weight: 500;
   line-height: 1.45;
-  color: #393937;                              /* Ro-iro — 11.6:1 contrast vs Unohana */
+  color: #564A38;
   margin: 0;
 }
 
@@ -497,7 +509,7 @@
 
 .bottom-tagline-line.lang-en {
   font-style: italic;
-  color: rgba(57, 57, 55, 0.72);              /* Ro-iro at 72% — EN is utility, not voice */
+  color: rgba(86, 74, 56, 0.68);               /* 焦茶 at 68% — EN is utility, not voice */
 }
 
 /* ============================================================

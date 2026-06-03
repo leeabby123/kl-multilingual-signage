@@ -34,8 +34,8 @@
   const PLATE_CLASS        = 'bottom-tagline-plate';
 
   // Phase 2 (bloom) tuning
-  const BLOOM_TOTAL        = 150;     // ~150 flowers across the whole map
-  const BLOOM_WAVES        = 15;      // 15 waves over 3 s = one every 200 ms
+  const BLOOM_TOTAL        = 200;     // ~200 flowers — denser/more elaborate (繁复)
+  const BLOOM_WAVES        = 20;      // 20 waves over 3 s = one every 150 ms
   const BLOOM_DURATION_MS  = 3000;
   const BLOOM_COLORS       = ['b-hR', 'b-hO', 'b-hG', 'b-hB', 'b-hGy'];
   // viewBox 0 0 1600 1000 — keep some margin so flowers don't clip the edge
@@ -67,27 +67,49 @@
     return;
   }
 
-  // Hide existing 60 clusters in kl-map.svg — they belong to Hub's interactive view.
-  // The bottom page wants a clean map base for our own 5 seeds + bloom field.
-  // Works only because kl-map.svg is same-origin (so contentDocument is accessible).
-  const mapObject = mapEl.querySelector('object');
-  function tryHideMapClusters() {
-    try {
-      const svgDoc = mapObject && mapObject.contentDocument;
-      if (svgDoc && svgDoc.querySelectorAll) {
-        const clusters = svgDoc.querySelectorAll('.cluster');
-        if (clusters.length > 0) {
-          clusters.forEach(c => { c.style.display = 'none'; });
-          return true;
-        }
-      }
-    } catch (e) { /* contentDocument blocked; ignore */ }
-    return false;
+  // Replace the <object> kl-map embed with an inline <svg> that has all
+  // 60 cluster groups REMOVED (not just hidden). Previous attempts using
+  // <object>.contentDocument were unreliable on GitHub Pages — some
+  // browser configurations block cross-document DOM access even on same
+  // origin. Inline injection gives us full control: the user never sees
+  // a version of kl-map that contains clusters.
+  function inlineCleanedMap() {
+    fetch('scripts/kl-map.svg')
+      .then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(svgText => {
+        const doc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+        const svg = doc.documentElement;
+
+        // Drop every cluster group — they belong to Hub's interactive map,
+        // not the bottom page's bloom narrative.
+        const removed = svg.querySelectorAll('.cluster').length;
+        svg.querySelectorAll('.cluster').forEach(c => c.remove());
+
+        // Sizing/styling for inline use
+        svg.removeAttribute('width');
+        svg.removeAttribute('height');
+        svg.style.width = '100%';
+        svg.style.height = '100%';
+        svg.style.pointerEvents = 'none';
+        // Fill the container — no letterbox bars on the sides (which were
+        // showing as "dark rectangles" because the section's peach gradient
+        // showed through where the 1.6:1 SVG didn't reach in a 1.78:1 viewport).
+        // 'slice' scales up to cover, cropping ~6% top/bottom in 16:9 viewports.
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+
+        // Swap <object> for the cleaned inline <svg>
+        mapEl.innerHTML = '';
+        mapEl.appendChild(svg);
+        console.info('[bottom-animation] map inlined, ' + removed + ' clusters removed');
+      })
+      .catch(e => {
+        console.warn('[bottom-animation] inline map failed:', e);
+      });
   }
-  if (mapObject) {
-    mapObject.addEventListener('load', tryHideMapClusters);
-    tryHideMapClusters();  // also try immediately in case it's already loaded
-  }
+  inlineCleanedMap();
 
   // Cache seed targets so we don't re-parse every scroll tick
   const seeds = Array.from(seedsLayer.querySelectorAll('.falling-seed')).map(el => ({
@@ -129,7 +151,7 @@
       const SEED_SCALE = 0.30;
       // Multi-turn rotation during fall — alternating direction per seed for organic feel
       const dir = (i % 2 === 0) ? 1 : -1;
-      const rot = (i * 47 + eased * 720 * dir) % 360;       // up to 2 full turns
+      const rot = (i * 47 + eased * 360 * dir) % 360;       // 1 full gentle turn (缓缓)
       s.el.setAttribute(
         'transform',
         `translate(${x + sway},${y}) scale(${SEED_SCALE}) rotate(${rot})`

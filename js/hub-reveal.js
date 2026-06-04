@@ -12,16 +12,26 @@
    CSS loads, so opacity:0 applies instantly. If JS is disabled, elements
    stay visible (no .hub-animating means default opacity:1).
 
-   Once-per-session: sessionStorage gate skips the animation on subsequent
-   visits within the same browser session. Escape key skips to final state.
+   ─── Engine ──────────────────────────────────────────────────
+   Frame-aligned rAF scheduler instead of setTimeout chain:
+     · DOM changes happen just before next paint → no visual jitter
+     · Elapsed time driven by performance.now() each frame → no drift
+       (one frame's delay never accumulates into later items)
+     · Tab visibility pause/resume: rAF auto-pauses on hidden tab;
+       when user returns, the hidden duration is added to pausedTime
+       so playback continues from where it left off (not jumped ahead)
+     · One rAF loop scans the schedule array, vs ~72 setTimeout calls
+       crowding the task queue
+
+   Once-per-session: sessionStorage gate skips the animation on
+   subsequent visits within the same browser session.
+   Escape key skips to final state.
    ============================================================ */
 (function() {
   'use strict';
 
   const SESSION_KEY = 'hub-reveal-played';
-  const PREFERS_REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Skip animation if: already played this session, OR user prefers reduced motion
+  const PREFERS_REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const shouldSkip = sessionStorage.getItem(SESSION_KEY) === '1' || PREFERS_REDUCED;
 
   function revealAll() {
@@ -32,67 +42,122 @@
   }
 
   if (shouldSkip) {
-    // Either skip flag or first paint already done in head — just reveal everything
     revealAll();
     return;
   }
 
-  // Timeline of staggered reveals
-  const timeouts = [];
-  function later(ms, fn) { timeouts.push(setTimeout(fn, ms)); }
+  /* ---- Build schedule array: { at: ms-from-start, action: fn, done: bool } ---- */
+  const schedule = [];
+  function add(at, action) { schedule.push({ at, action, done: false }); }
 
-  function startCascade() {
-    // Phase 1: labels (0.5s)
-    later(500, () => {
-      document.querySelectorAll('.hub-findings-label, .hub-map-label')
-        .forEach(el => el.classList.add('hub-revealed'));
-    });
+  // Phase 1: labels (0.5s)
+  add(500, () => {
+    document.querySelectorAll('.hub-findings-label, .hub-map-label')
+      .forEach(el => el.classList.add('hub-revealed'));
+  });
 
-    // Phase 2: 8 finding buttons (0.8s + 150ms stagger)
-    const findings = document.querySelectorAll('.finding-btn');
-    findings.forEach((btn, i) => {
-      later(800 + i * 150, () => btn.classList.add('hub-revealed'));
-    });
+  // Phase 2: 8 finding buttons, 150ms stagger
+  document.querySelectorAll('.finding-btn').forEach((btn, i) => {
+    add(800 + i * 150, () => btn.classList.add('hub-revealed'));
+  });
 
-    // Phase 3: 60 clusters by district order, within each by DOM order
-    const districts = ['KB', 'PS', 'BB', 'LI'];
-    let clusterIndex = 0;
-    districts.forEach(dist => {
-      const clusters = document.querySelectorAll(`.cluster[data-district="${dist}"]`);
-      clusters.forEach(c => {
-        later(2200 + clusterIndex * 60, () => c.classList.add('hub-revealed'));
-        clusterIndex++;
-      });
+  // Phase 3: 60 clusters, district order KB→PS→BB→LI, 60ms stagger
+  let clusterIndex = 0;
+  ['KB', 'PS', 'BB', 'LI'].forEach(dist => {
+    document.querySelectorAll(`.cluster[data-district="${dist}"]`).forEach(c => {
+      add(2200 + clusterIndex * 60, () => c.classList.add('hub-revealed'));
+      clusterIndex++;
     });
+  });
 
-    // Phase 4: language switcher (6.3s, after all clusters done at ~5.8s)
-    later(6300, () => {
-      document.querySelector('.lang-switcher')?.classList.add('hub-revealed');
-    });
+  // Phase 4: language switcher (6.3s)
+  add(6300, () => {
+    document.querySelector('.lang-switcher')?.classList.add('hub-revealed');
+  });
 
-    // Animation complete: drop the html class so any new elements added later
-    // (e.g. dynamic markers) default to opacity:1 instead of 0
-    later(7100, () => {
-      document.documentElement.classList.remove('hub-animating');
-      sessionStorage.setItem(SESSION_KEY, '1');
-    });
+  // Finalize: remove animating class, mark session played
+  add(7100, () => {
+    document.documentElement.classList.remove('hub-animating');
+    sessionStorage.setItem(SESSION_KEY, '1');
+  });
+
+  /* ---- rAF scheduler ---- */
+  let startTime = null;
+  let pausedTime = 0;     // total time the tab was hidden (subtracted from elapsed)
+  let hiddenAt = null;    // timestamp when tab became hidden
+  let rafId = null;
+
+  function tick(now) {
+    if (startTime === null) startTime = now;
+    const elapsed = now - startTime - pausedTime;
+
+    let allDone = true;
+    for (let i = 0; i < schedule.length; i++) {
+      const item = schedule[i];
+      if (item.done) continue;
+      if (elapsed >= item.at) {
+        item.action();
+        item.done = true;
+      } else {
+        allDone = false;
+      }
+    }
+
+    if (allDone) {
+      cleanup();
+    } else {
+      rafId = requestAnimationFrame(tick);
+    }
   }
 
-  // Skip on Escape key — user controls pacing
-  function onSkipKey(e) {
-    if (e.key === 'Escape') {
-      timeouts.forEach(t => clearTimeout(t));
-      revealAll();
-      sessionStorage.setItem(SESSION_KEY, '1');
-      document.removeEventListener('keydown', onSkipKey);
+  function cleanup() {
+    rafId = null;
+    document.removeEventListener('visibilitychange', onVisChange);
+    document.removeEventListener('keydown', onSkipKey);
+  }
+
+  /* ---- Pause on hidden tab, resume on visible, compensate for hidden duration ---- */
+  function onVisChange() {
+    if (document.hidden) {
+      hiddenAt = performance.now();
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    } else {
+      if (hiddenAt !== null) {
+        pausedTime += performance.now() - hiddenAt;
+        hiddenAt = null;
+      }
+      if (rafId === null) {
+        rafId = requestAnimationFrame(tick);
+      }
     }
+  }
+  document.addEventListener('visibilitychange', onVisChange);
+
+  /* ---- Escape skip ---- */
+  function onSkipKey(e) {
+    if (e.key !== 'Escape') return;
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    // Fire any remaining scheduled actions immediately, in order
+    schedule.forEach(item => {
+      if (!item.done) { item.action(); item.done = true; }
+    });
+    revealAll();
+    sessionStorage.setItem(SESSION_KEY, '1');
+    cleanup();
   }
   document.addEventListener('keydown', onSkipKey);
 
-  // Start after page paint settles
+  /* ---- Kick off ---- */
+  function start() { rafId = requestAnimationFrame(tick); }
   if (document.readyState === 'complete') {
-    startCascade();
+    start();
   } else {
-    window.addEventListener('load', startCascade, { once: true });
+    window.addEventListener('load', start, { once: true });
   }
 })();

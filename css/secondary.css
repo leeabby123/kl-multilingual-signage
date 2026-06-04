@@ -335,11 +335,11 @@ html:not([data-lang]) [data-lang-content="en"] {
   font-size: var(--text-h3);
   color: white;
 }
-.member-avatar--a { background: var(--district-kb); }
-.member-avatar--b { background: var(--district-ps); }
-.member-avatar--c { background: var(--district-bb); }
-.member-avatar--d { background: var(--district-li); }
-.member-avatar--e { background: linear-gradient(135deg, var(--color-zh), var(--color-en)); }
+.member-avatar--a { background: #d63031; }   /* A · LIAO RUIXUAN — red */
+.member-avatar--b { background: #27ae60; }   /* B · WEI JITAO   — green */
+.member-avatar--c { background: #e67e22; }   /* C · CHEN MEILIN — orange */
+.member-avatar--d { background: #7f8c8d; }   /* D · WEI HONGHAI — gray */
+.member-avatar--e { background: #2980b9; }   /* E · LI BINGYI   — blue */
 
 .member-name {
   font-weight: 600;
@@ -758,4 +758,62 @@ html:not([data-lang]) [data-lang-content="en"] {
   text-align: right;
   font-size: 12px;
   font-style: italic;
+}
+
+/* === Member tasks: 3 evenly-weighted lines per card === */
+.member-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: var(--text-small);
+  color: var(--neutral-gray-700);
+  line-height: 1.4;
+}
+
+.member-tasks .task-line {
+  padding: 4px 6px;
+  border-radius: 4px;
+  min-height: 1.4em;
+}
+
+/* B's concept-origin line: highlight subtly so it reads as distinct contribution */
+.member-card[data-member="B"] .task-line--concept {
+  background: rgba(39, 174, 96, 0.08);
+  color: #1a5e36;
+  font-weight: 500;
+}
+
+/* Card role line — for B, allow two-segment display "Fieldwork · Concept" */
+.member-role--multi { font-size: 11px; }
+
+/* === Concept Origin section — credits Wei Jitao === */
+.concept-origin {
+  margin: var(--space-2xl) auto;
+  max-width: 720px;
+  padding: var(--space-lg) var(--space-xl);
+  background: rgba(39, 174, 96, 0.04);
+  border-left: 3px solid #27ae60;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.concept-origin h2 {
+  margin-top: 0;
+  color: #1a5e36;
+  font-size: var(--text-h3);
+  margin-bottom: var(--space-sm);
+}
+
+.concept-origin p {
+  margin: 0 0 var(--space-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-gray-700);
+}
+
+.concept-origin .credit-line {
+  margin-top: var(--space-sm);
+  font-size: 13px;
+  color: #1a5e36;
+  font-style: italic;
+  text-align: right;
 }

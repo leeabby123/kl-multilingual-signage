@@ -1,13 +1,16 @@
 /* ============================================================
-   Timeline River — v6 final (6/4 night)
-   - wrap 720 × 1750 with overflow:hidden
-   - SVG height 1830 (80px past wrap bottom) so river path can extend
-     past wrap edge; wrap.overflow:hidden clips it → "river still flowing,
-     page just ends" visual.
-   - River end anchor (550, 1820, w=68) — STILL WIDE, no taper.
-   - SVG coords = wrap coords 1:1 (cluster cx aligns with article x).
-   - Multi-script serif fonts per language.
-   - RTL mirror via scaleX(-1) around wrap center (360).
+   Timeline River — v7 (6/4 late night)
+   - Larger fonts following web reading standards (body 16px ref)
+   - Node intervals 170 (was 150) to accommodate larger fonts without overlap
+   - Article width 175 non-key / 155 key (Kunm permitted shrinking key frames)
+   - wrap 720 × 1750 overflow:hidden, SVG height 1870 (river clipped at wrap bottom)
+   - Member-flower color reassignment (6/4 night):
+       A LIAO RUIXUAN → red
+       B WEI JITAO    → green
+       C CHEN MEILIN  → orange
+       D WEI HONGHAI  → gray
+       E LI BINGYI    → blue
+   - Removed Key Milestones section (timeline already conveys it)
    ============================================================ */
 
 :root {
@@ -39,38 +42,37 @@
   margin-bottom: 0.75rem;
   font-family: var(--font-display);
   font-weight: 500;
+  font-size: 2rem;
 }
 
 .timeline-lede {
-  max-width: 620px;
-  margin: 0 auto 2.5rem;
+  max-width: 640px;
+  margin: 0 auto 3rem;
   text-align: start;
   color: var(--color-text-secondary, #5f5e5a);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 16px;                /* web body reading standard */
   line-height: 1.75;
 }
 
 /* ------------------------------------------------------------
-   River container — 720 × 1750 with overflow:hidden so river path
-   that extends past wrap bottom (y > 1750) gets clipped by wrap edge.
+   River container — wrap 720 × 1750 with overflow:hidden
    ------------------------------------------------------------ */
 .timeline-river-wrap {
   position: relative;
   width: 720px;
-  height: 1750px;
+  height: 2000px;
   margin: 0 auto;
-  overflow: hidden;          /* clips river past wrap bottom */
+  overflow: hidden;
 }
 
-/* SVG element 720×1830 — 80px taller than wrap so path can continue past wrap.
-   Override any global svg{max-width:100%} that would shrink it. */
+/* SVG element 720×2080 — 80px taller than wrap; clipped by wrap.overflow:hidden */
 .timeline-river {
   position: absolute;
   left: 0;
   top: 0;
   width: 720px !important;
-  height: 1830px !important;
+  height: 2080px !important;
   max-width: none !important;
   display: block;
   opacity: 0;
@@ -79,7 +81,6 @@
   z-index: 0;
 }
 
-/* RTL (Jawi): mirror SVG around wrap center (360) — cluster R↔L swap matches article R↔L swap */
 [dir="rtl"] .timeline-river {
   transform: scaleX(-1);
   transform-origin: 360px 0;
@@ -91,7 +92,7 @@
 .river-accent { pointer-events: none; }
 
 /* ------------------------------------------------------------
-   Marker system
+   Markers
    ------------------------------------------------------------ */
 .node-markers {
   opacity: 0;
@@ -120,25 +121,25 @@
   stroke: var(--color-text-primary, #2c2c2a);
   stroke-width: 0.5; stroke-dasharray: 2 2;
 }
-.marker--dot .dot-mark { opacity: 0.6; transition: opacity 0.2s; }
+.marker--dot .dot-mark { opacity: 0.65; transition: opacity 0.2s; }
 .marker--dot:hover .dot-mark { opacity: 0.95; }
 
 /* ------------------------------------------------------------
-   Node labels — fixed columns, narrower for key (Kunm authorized)
+   Node labels — wider (175) for non-key, narrower (155) for key
+   Vertical interval 170 in node-top; max article height ~145 → ~25 gap
    ------------------------------------------------------------ */
 .node-label {
   position: absolute;
   top: var(--top);
   left: var(--x);
-  width: 160px;
+  width: 175px;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   z-index: 1;
 }
 
-/* Key nodes get even narrower (Kunm permitted shrinking key-node text frames) */
-.node-label--key { width: 140px; }
+.node-label--key { width: 155px; }
 
 .node-label[data-side="R"] { text-align: left; }
 .node-label[data-side="L"] { text-align: right; }
@@ -150,44 +151,45 @@
 [dir="rtl"] .node-label[data-side="R"] { text-align: right; }
 [dir="rtl"] .node-label[data-side="L"] { text-align: left; }
 
-.node-label--preamble.revealed { opacity: 0.7; }
+.node-label--preamble.revealed { opacity: 0.72; }
 .node-label--mid.revealed      { opacity: 0.9; }
 .node-label--key.revealed      { opacity: 1; }
 
 .node-label.revealed { transform: translateY(0); }
 
-/* ------------ 3-tier font hierarchy ------------ */
+/* ------------ Font hierarchy: week-tag is LEVEL 1 (most prominent) ------------ */
 .node-tag {
   font-family: var(--font-tag);
-  font-size: 12.5px;             /* bumped from 11.5 — Kunm said too small */
-  letter-spacing: 0.16em;
-  color: var(--color-text-secondary, #8a8780);
-  font-weight: 500;
-  margin-bottom: 8px;
+  font-size: 16px;                /* LEVEL 1 — week info is primary */
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary, #2c2c2a);
+  font-weight: 600;
+  margin-bottom: 9px;
   unicode-bidi: plaintext;
+  line-height: 1.4;
 }
 
 [data-lang="ta"] .node-tag,
 [data-lang="jawi"] .node-tag {
-  letter-spacing: 0.04em;
-  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  font-size: 17px;
 }
 
 .node-title {
   font-family: var(--font-display);
   color: var(--color-text-primary, #2c2c2a);
-  margin: 0 0 6px;
+  margin: 0 0 7px;
   line-height: 1.3;
   unicode-bidi: plaintext;
   overflow-wrap: break-word;
 }
-.node-label--preamble .node-title { font-size: 14px; font-weight: 400; }
-.node-label--mid      .node-title { font-size: 15px; font-weight: 500; }
-.node-label--key      .node-title { font-size: 17px; font-weight: 600; }
+.node-label--preamble .node-title { font-size: 13.5px; font-weight: 400; }
+.node-label--mid      .node-title { font-size: 14.5px; font-weight: 500; }
+.node-label--key      .node-title { font-size: 15.5px; font-weight: 600; }
 
 .node-desc {
   font-family: var(--font-body);
-  font-size: 12.5px;
+  font-size: 13px;                /* still comfortable read */
   line-height: 1.55;
   color: var(--color-text-secondary, #5f5e5a);
   margin: 0;
@@ -196,7 +198,7 @@
 }
 .node-label--key .node-desc { color: var(--color-text-primary, #3a3a36); }
 
-/* Per-language wrap behavior: CJK chars can break anywhere; Latin/Tamil/Arabic only at word boundaries */
+/* Per-language wrapping rules */
 [data-lang="zh"] .node-title,
 [data-lang="zh"] .node-desc {
   word-break: normal;
@@ -223,21 +225,21 @@
   background: rgba(255, 255, 255, 0.97);
   border: 0.5px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  padding: 8px 12px;
-  max-width: 220px;
+  padding: 9px 13px;
+  max-width: 240px;
   pointer-events: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   text-align: start;
 }
 .member-tooltip[hidden] { display: none; }
-.tooltip-name { font-weight: 500; color: var(--color-text-primary, #2c2c2a); margin-bottom: 2px; font-size: 12px; }
-.tooltip-desc { color: var(--color-text-secondary, #5f5e5a); font-size: 11.5px; }
+.tooltip-name { font-weight: 600; color: var(--color-text-primary, #2c2c2a); margin-bottom: 3px; font-size: 13.5px; }
+.tooltip-desc { color: var(--color-text-secondary, #5f5e5a); font-size: 12.5px; }
 
 /* ------------------------------------------------------------
-   Trace banner (position:fixed, not affected by wrap clip)
+   Trace banner
    ------------------------------------------------------------ */
 .trace-banner {
   position: fixed;
@@ -248,9 +250,9 @@
   background: rgba(255, 255, 255, 0.96);
   border: 0.5px solid rgba(0, 0, 0, 0.18);
   border-radius: 999px;
-  padding: 8px 18px;
+  padding: 9px 20px;
   font-family: var(--font-body);
-  font-size: 12.5px;
+  font-size: 13.5px;
   color: var(--color-text-secondary, #5f5e5a);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
   display: flex;
@@ -258,46 +260,11 @@
   gap: 6px;
 }
 .trace-banner[hidden] { display: none; }
-.trace-banner-name { font-weight: 500; color: var(--color-text-primary, #2c2c2a); }
+.trace-banner-name { font-weight: 600; color: var(--color-text-primary, #2c2c2a); }
 
 body.trace-mode .marker:not(.trace-active) { opacity: 0.22; transition: opacity 0.3s ease-out; }
 body.trace-mode .marker.trace-active { opacity: 1; }
 body.trace-mode .node-label.trace-untouched { opacity: 0.35; transition: opacity 0.3s ease-out; }
-
-/* ------------------------------------------------------------
-   Key milestones section
-   ------------------------------------------------------------ */
-.timeline-key-milestones {
-  max-width: 620px;
-  margin: 3rem auto 0;
-  padding: 1.5rem 1.75rem;
-  background: var(--color-surface, #f5efe6);
-  border-radius: 8px;
-  font-family: var(--font-body);
-}
-
-.timeline-key-milestones h2 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  margin: 0 0 0.75rem;
-  font-weight: 500;
-  color: var(--color-text-primary, #2c2c2a);
-  text-align: start;
-}
-
-.timeline-key-milestones p {
-  font-size: 0.9rem;
-  line-height: 1.75;
-  color: var(--color-text-secondary, #5f5e5a);
-  margin: 0;
-  text-align: start;
-  unicode-bidi: plaintext;
-}
-
-.timeline-key-milestones strong {
-  color: var(--color-text-primary, #2c2c2a);
-  font-weight: 600;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .timeline-river, .node-markers, .node-label, .marker {

@@ -44,7 +44,7 @@
   </p>
 
   <div class="timeline-river-wrap" id="river-wrap">
-    <svg class="timeline-river" viewBox="0 0 720 1830" preserveAspectRatio="xMinYMin meet" focusable="false">
+    <svg class="timeline-river" viewBox="0 0 720 2080" preserveAspectRatio="xMinYMin meet" focusable="false">
       <defs>
         <linearGradient id="riverFlow" x1="0.05" y1="0.05" x2="0.95" y2="0.95">
           <stop offset="0%" stop-color="#cad9e2" stop-opacity="0.4"/>
@@ -57,22 +57,28 @@
 
         <g id="hp"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
 
-        <g id="fA"><use href="#hp" fill="#27ae60" opacity=".78"/><use href="#hp" fill="#27ae60" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#27ae60" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#27ae60" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#27ae60" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#1a5e36"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="fB"><use href="#hp" fill="#d63031" opacity=".78"/><use href="#hp" fill="#d63031" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#d63031" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#d63031" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#d63031" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="fC"><use href="#hp" fill="#2980b9" opacity=".78"/><use href="#hp" fill="#2980b9" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#2980b9" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#2980b9" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#2980b9" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#1a4a6a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="fD"><use href="#hp" fill="#e67e22" opacity=".78"/><use href="#hp" fill="#e67e22" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#e67e22" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#e67e22" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#e67e22" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#8b4a10"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="fE"><use href="#hp" fill="#7f8c8d" opacity=".78"/><use href="#hp" fill="#7f8c8d" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#7f8c8d" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#7f8c8d" opacity=".70" transform="rotate(216)"/><use href="#hp" fill="#7f8c8d" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#3a4548"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <!-- NEW MEMBER COLOR MAPPING (6/4 night):
+             A LIAO RUIXUAN → red
+             B WEI JITAO → green
+             C CHEN MEILIN → orange
+             D WEI HONGHAI → gray
+             E LI BINGYI → blue                                              -->
+        <g id="fA"><use href="#hp" fill="#d63031" opacity=".78"/><use href="#hp" fill="#d63031" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#d63031" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#d63031" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#d63031" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fB"><use href="#hp" fill="#27ae60" opacity=".78"/><use href="#hp" fill="#27ae60" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#27ae60" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#27ae60" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#27ae60" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#1a5e36"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fC"><use href="#hp" fill="#e67e22" opacity=".78"/><use href="#hp" fill="#e67e22" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#e67e22" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#e67e22" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#e67e22" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#8b4a10"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fD"><use href="#hp" fill="#7f8c8d" opacity=".78"/><use href="#hp" fill="#7f8c8d" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#7f8c8d" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#7f8c8d" opacity=".70" transform="rotate(216)"/><use href="#hp" fill="#7f8c8d" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#3a4548"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fE"><use href="#hp" fill="#2980b9" opacity=".78"/><use href="#hp" fill="#2980b9" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#2980b9" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#2980b9" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#2980b9" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#1a4a6a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
       </defs>
 
-      <!-- River: tip at top-left (0,0,w=0), winds central x=340-360 corridor,
-           ends at (550,1820,w=68) — wide end, past wrap bottom (y=1750), clipped by wrap overflow:hidden -->
-      <path class="river-path" fill="url(#riverFlow)" d="M 0.0 0.0 C 9.4 22.8, -23.9 62.1, 47.1 114.1 C 118.1 166.1, 298.6 201.7, 355.0 259.9 C 411.4 318.1, 331.0 346.0, 329.0 405.0 C 327.0 464.0, 346.8 495.0, 345.0 555.0 C 343.2 615.0, 322.0 645.0, 320.0 705.0 C 318.0 765.0, 336.8 795.0, 335.0 855.0 C 333.2 915.0, 312.6 945.0, 311.0 1005.0 C 309.4 1065.0, 328.6 1095.0, 327.0 1155.0 C 325.4 1215.0, 304.2 1243.2, 303.0 1305.0 C 301.8 1366.8, 308.6 1407.4, 321.0 1463.8 C 333.4 1520.3, 341.3 1540.2, 365.0 1587.1 C 388.6 1634.1, 408.0 1648.6, 439.1 1698.5 C 470.2 1748.5, 504.2 1809.2, 520.5 1836.9 L 579.5 1803.1 C 563.8 1774.8, 529.8 1711.5, 500.9 1661.5 C 472.0 1611.4, 455.4 1595.9, 435.0 1552.9 C 414.7 1509.8, 410.6 1495.7, 399.0 1446.2 C 387.4 1396.6, 378.2 1363.2, 377.0 1305.0 C 375.8 1246.8, 394.6 1215.0, 393.0 1155.0 C 391.4 1095.0, 370.6 1065.0, 369.0 1005.0 C 367.4 945.0, 386.8 915.0, 385.0 855.0 C 383.2 795.0, 362.0 765.0, 360.0 705.0 C 358.0 645.0, 376.8 615.0, 375.0 555.0 C 373.2 495.0, 353.0 466.0, 351.0 405.0 C 349.0 344.0, 424.6 309.9, 365.0 250.1 C 305.4 190.3, 125.9 155.9, 52.9 105.9 C -20.1 55.9, 10.6 21.2, 0.0 0.0 Z"/>
+      <!-- River: tip-in at (0,0,0) top-left wrap corner, winds central x=340-360 corridor,
+           end anchor (520,1870,70) WIDE — wrap.overflow:hidden clips it at y=1750. -->
+      <path class="river-path" fill="url(#riverFlow)" d="M 0.0 0.0 C 9.4 22.8, -23.9 62.1, 47.1 114.1 C 118.1 166.0, 298.5 197.6, 354.9 259.7 C 411.2 321.9, 331.0 357.9, 329.0 425.0 C 327.0 492.1, 346.8 527.0, 345.0 595.0 C 343.2 663.0, 322.0 697.0, 320.0 765.0 C 318.0 833.0, 336.8 867.0, 335.0 935.0 C 333.2 1003.0, 312.6 1037.0, 311.0 1105.0 C 309.4 1173.0, 328.6 1207.0, 327.0 1275.0 C 325.4 1343.0, 304.2 1375.4, 303.0 1445.0 C 301.8 1514.6, 309.1 1562.8, 320.9 1623.2 C 332.6 1683.7, 339.8 1696.0, 361.7 1747.2 C 383.6 1798.4, 397.0 1808.9, 430.4 1879.2 C 463.9 1949.5, 509.3 2054.7, 529.0 2098.6 L 611.0 2061.4 C 590.7 2017.3, 544.1 1910.5, 509.6 1840.8 C 475.0 1771.1, 460.4 1759.6, 438.3 1712.8 C 416.2 1666.0, 411.4 1660.3, 399.1 1606.8 C 386.9 1553.2, 378.2 1511.4, 377.0 1445.0 C 375.8 1378.6, 394.6 1343.0, 393.0 1275.0 C 391.4 1207.0, 370.6 1173.0, 369.0 1105.0 C 367.4 1037.0, 386.8 1003.0, 385.0 935.0 C 383.2 867.0, 362.0 833.0, 360.0 765.0 C 358.0 697.0, 376.8 663.0, 375.0 595.0 C 373.2 527.0, 353.0 493.9, 351.0 425.0 C 349.0 356.1, 424.8 314.1, 365.1 250.3 C 305.5 186.4, 125.9 156.0, 52.9 105.9 C -20.1 55.9, 10.6 21.2, 0.0 0.0 Z"/>
 
-      <path class="river-accent" fill="none" stroke="#4d7a92" stroke-width="0.9" stroke-dasharray="4 8" opacity="0.45" d="M 0.0 0.0 C 10.0 22.0, -22.0 59.0, 50.0 110.0 C 122.0 161.0, 302.0 196.0, 360.0 255.0 C 418.0 314.0, 340.0 345.0, 340.0 405.0 C 340.0 465.0, 360.0 495.0, 360.0 555.0 C 360.0 615.0, 340.0 645.0, 340.0 705.0 C 340.0 765.0, 360.0 795.0, 360.0 855.0 C 360.0 915.0, 340.0 945.0, 340.0 1005.0 C 340.0 1065.0, 360.0 1095.0, 360.0 1155.0 C 360.0 1215.0, 340.0 1245.0, 340.0 1305.0 C 340.0 1365.0, 348.0 1402.0, 360.0 1455.0 C 372.0 1508.0, 378.0 1525.0, 400.0 1570.0 C 422.0 1615.0, 440.0 1630.0, 470.0 1680.0 C 500.0 1730.0, 534.0 1792.0, 550.0 1820.0"/>
+      <path class="river-accent" fill="none" stroke="#4d7a92" stroke-width="0.9" stroke-dasharray="4 8" opacity="0.45" d="M 0.0 0.0 C 10.0 22.0, -22.0 59.0, 50.0 110.0 C 122.0 161.0, 302.0 192.0, 360.0 255.0 C 418.0 318.0, 340.0 357.0, 340.0 425.0 C 340.0 493.0, 360.0 527.0, 360.0 595.0 C 360.0 663.0, 340.0 697.0, 340.0 765.0 C 340.0 833.0, 360.0 867.0, 360.0 935.0 C 360.0 1003.0, 340.0 1037.0, 340.0 1105.0 C 340.0 1173.0, 360.0 1207.0, 360.0 1275.0 C 360.0 1343.0, 340.0 1377.0, 340.0 1445.0 C 340.0 1513.0, 348.0 1558.0, 360.0 1615.0 C 372.0 1672.0, 378.0 1681.0, 400.0 1730.0 C 422.0 1779.0, 436.0 1790.0, 470.0 1860.0 C 504.0 1930.0, 550.0 2036.0, 570.0 2080.0"/>
 
-      <!-- Clusters: cx=240 (L), cx=480 (R); radius 20 (pre+mid) / 22 (key); SVG coords = wrap coords 1:1 -->
+      <!-- Cluster cy values at 170 intervals: 255, 425, 595, 765, 935, 1105, 1275, 1445, 1615 -->
 
-      <!-- N1 preamble R cluster(480,255) -->
+      <!-- N1 preamble R cluster(480, 255) -->
       <g class="node-markers" data-node="w1-2" data-level="preamble">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(480,237) scale(.15)"/><circle cx="480" cy="237" r="13" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(499,249) scale(.15)"/><circle cx="499" cy="249" r="13" class="hit"/></g>
@@ -81,130 +87,130 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(461,249) scale(.15)"/><circle cx="461" cy="249" r="13" class="hit"/></g>
       </g>
 
-      <!-- N2 mid L cluster(240,405) -->
+      <!-- N2 mid L cluster(240, 425) -->
       <g class="node-markers" data-node="w7-cs1" data-level="mid">
-        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(240,387) scale(.15)"/><circle cx="240" cy="387" r="13" class="hit"/></g>
-        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(259,399) scale(.15)"/><circle cx="259" cy="399" r="13" class="hit"/></g>
-        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(251,420) scale(.15)"/><circle cx="251" cy="420" r="13" class="hit"/></g>
-        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(229,420) scale(.15)"/><circle cx="229" cy="420" r="13" class="hit"/></g>
-        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(221,399) scale(.15)"/><circle cx="221" cy="399" r="13" class="hit"/></g>
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(240,407) scale(.15)"/><circle cx="240" cy="407" r="13" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(259,419) scale(.15)"/><circle cx="259" cy="419" r="13" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(251,440) scale(.15)"/><circle cx="251" cy="440" r="13" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(229,440) scale(.15)"/><circle cx="229" cy="440" r="13" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(221,419) scale(.15)"/><circle cx="221" cy="419" r="13" class="hit"/></g>
       </g>
 
-      <!-- N3 mid R cluster(480,555) -->
+      <!-- N3 mid R cluster(480, 595) -->
       <g class="node-markers" data-node="w8-10" data-level="mid">
-        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(480,537) scale(.15)"/><circle cx="480" cy="537" r="13" class="hit"/></g>
-        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(499,549) scale(.15)"/><circle cx="499" cy="549" r="13" class="hit"/></g>
-        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(491,570) scale(.15)"/><circle cx="491" cy="570" r="13" class="hit"/></g>
-        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(469,570) scale(.15)"/><circle cx="469" cy="570" r="13" class="hit"/></g>
-        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(461,549) scale(.15)"/><circle cx="461" cy="549" r="13" class="hit"/></g>
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(480,577) scale(.15)"/><circle cx="480" cy="577" r="13" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(499,589) scale(.15)"/><circle cx="499" cy="589" r="13" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(491,610) scale(.15)"/><circle cx="491" cy="610" r="13" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(469,610) scale(.15)"/><circle cx="469" cy="610" r="13" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(461,589) scale(.15)"/><circle cx="461" cy="589" r="13" class="hit"/></g>
       </g>
 
-      <!-- N4 mid L cluster(240,705) -->
+      <!-- N4 mid L cluster(240, 765) -->
       <g class="node-markers" data-node="may20-cs2" data-level="mid">
-        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(240,687) scale(.15)"/><circle cx="240" cy="687" r="13" class="hit"/></g>
-        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(259,699) scale(.15)"/><circle cx="259" cy="699" r="13" class="hit"/></g>
-        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(251,720) scale(.15)"/><circle cx="251" cy="720" r="13" class="hit"/></g>
-        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(229,720) scale(.15)"/><circle cx="229" cy="720" r="13" class="hit"/></g>
-        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(221,699) scale(.15)"/><circle cx="221" cy="699" r="13" class="hit"/></g>
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(240,747) scale(.15)"/><circle cx="240" cy="747" r="13" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(259,759) scale(.15)"/><circle cx="259" cy="759" r="13" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(251,780) scale(.15)"/><circle cx="251" cy="780" r="13" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(229,780) scale(.15)"/><circle cx="229" cy="780" r="13" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(221,759) scale(.15)"/><circle cx="221" cy="759" r="13" class="hit"/></g>
       </g>
 
-      <!-- N5 key R cluster(480,855) ABCD flowers + E partial -->
+      <!-- N5 key R cluster(480, 935) ABCD full + E partial -->
       <g class="node-markers" data-node="w11-fieldwork" data-level="key">
-        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(480,833) scale(.18)"/><circle cx="480" cy="833" r="15" class="hit"/></g>
-        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(501,848) scale(.18)"/><circle cx="501" cy="848" r="15" class="hit"/></g>
-        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(493,873) scale(.18)"/><circle cx="493" cy="873" r="15" class="hit"/></g>
-        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(467,873) scale(.18)"/><circle cx="467" cy="873" r="15" class="hit"/></g>
-        <g class="marker marker--partial" data-member="E" data-participated="partial"><use href="#fE" transform="translate(459,848) scale(.11)" opacity="0.75"/><circle cx="459" cy="848" r="13" class="hit"/></g>
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(480,913) scale(.18)"/><circle cx="480" cy="913" r="15" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(501,928) scale(.18)"/><circle cx="501" cy="928" r="15" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(493,953) scale(.18)"/><circle cx="493" cy="953" r="15" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(467,953) scale(.18)"/><circle cx="467" cy="953" r="15" class="hit"/></g>
+        <g class="marker marker--partial" data-member="E" data-participated="partial"><use href="#fE" transform="translate(459,928) scale(.11)" opacity="0.75"/><circle cx="459" cy="928" r="13" class="hit"/></g>
       </g>
 
-      <!-- N6 key L cluster(240,1005) ABCD dots + E flower -->
+      <!-- N6 key L cluster(240, 1105) ABCD dots + E flower. Dot colors swapped: A=red, B=green, C=orange, D=gray -->
       <g class="node-markers" data-node="may31-phase1" data-level="key">
-        <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="240" cy="983" r="4.5" fill="#27ae60" class="dot-mark"/><circle cx="240" cy="983" r="13" class="hit"/></g>
-        <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="261" cy="998" r="4.5" fill="#d63031" class="dot-mark"/><circle cx="261" cy="998" r="13" class="hit"/></g>
-        <g class="marker marker--dot" data-member="C" data-participated="false"><circle cx="253" cy="1023" r="4.5" fill="#2980b9" class="dot-mark"/><circle cx="253" cy="1023" r="13" class="hit"/></g>
-        <g class="marker marker--dot" data-member="D" data-participated="false"><circle cx="227" cy="1023" r="4.5" fill="#e67e22" class="dot-mark"/><circle cx="227" cy="1023" r="13" class="hit"/></g>
-        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(219,998) scale(.18)"/><circle cx="219" cy="998" r="15" class="hit"/></g>
+        <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="240" cy="1083" r="4.5" fill="#d63031" class="dot-mark"/><circle cx="240" cy="1083" r="13" class="hit"/></g>
+        <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="261" cy="1098" r="4.5" fill="#27ae60" class="dot-mark"/><circle cx="261" cy="1098" r="13" class="hit"/></g>
+        <g class="marker marker--dot" data-member="C" data-participated="false"><circle cx="253" cy="1123" r="4.5" fill="#e67e22" class="dot-mark"/><circle cx="253" cy="1123" r="13" class="hit"/></g>
+        <g class="marker marker--dot" data-member="D" data-participated="false"><circle cx="227" cy="1123" r="4.5" fill="#7f8c8d" class="dot-mark"/><circle cx="227" cy="1123" r="13" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(219,1098) scale(.18)"/><circle cx="219" cy="1098" r="15" class="hit"/></g>
       </g>
 
-      <!-- N7 key R cluster(480,1155) ABCD dots + E flower -->
+      <!-- N7 key R cluster(480, 1275) ABCD dots + E flower -->
       <g class="node-markers" data-node="w12a-integration" data-level="key">
-        <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="480" cy="1133" r="4.5" fill="#27ae60" class="dot-mark"/><circle cx="480" cy="1133" r="13" class="hit"/></g>
-        <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="501" cy="1148" r="4.5" fill="#d63031" class="dot-mark"/><circle cx="501" cy="1148" r="13" class="hit"/></g>
-        <g class="marker marker--dot" data-member="C" data-participated="false"><circle cx="493" cy="1173" r="4.5" fill="#2980b9" class="dot-mark"/><circle cx="493" cy="1173" r="13" class="hit"/></g>
-        <g class="marker marker--dot" data-member="D" data-participated="false"><circle cx="467" cy="1173" r="4.5" fill="#e67e22" class="dot-mark"/><circle cx="467" cy="1173" r="13" class="hit"/></g>
-        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(459,1148) scale(.18)"/><circle cx="459" cy="1148" r="15" class="hit"/></g>
+        <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="480" cy="1253" r="4.5" fill="#d63031" class="dot-mark"/><circle cx="480" cy="1253" r="13" class="hit"/></g>
+        <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="501" cy="1268" r="4.5" fill="#27ae60" class="dot-mark"/><circle cx="501" cy="1268" r="13" class="hit"/></g>
+        <g class="marker marker--dot" data-member="C" data-participated="false"><circle cx="493" cy="1293" r="4.5" fill="#e67e22" class="dot-mark"/><circle cx="493" cy="1293" r="13" class="hit"/></g>
+        <g class="marker marker--dot" data-member="D" data-participated="false"><circle cx="467" cy="1293" r="4.5" fill="#7f8c8d" class="dot-mark"/><circle cx="467" cy="1293" r="13" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(459,1268) scale(.18)"/><circle cx="459" cy="1268" r="15" class="hit"/></g>
       </g>
 
-      <!-- N8 key L cluster(240,1305) all flowers -->
+      <!-- N8 key L cluster(240, 1445) ABCD flowers + E dot (E didn't participate in testing) -->
       <g class="node-markers" data-node="w12b-testing" data-level="key">
-        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(240,1283) scale(.18)"/><circle cx="240" cy="1283" r="15" class="hit"/></g>
-        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(261,1298) scale(.18)"/><circle cx="261" cy="1298" r="15" class="hit"/></g>
-        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(253,1323) scale(.18)"/><circle cx="253" cy="1323" r="15" class="hit"/></g>
-        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(227,1323) scale(.18)"/><circle cx="227" cy="1323" r="15" class="hit"/></g>
-        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(219,1298) scale(.18)"/><circle cx="219" cy="1298" r="15" class="hit"/></g>
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(240,1423) scale(.18)"/><circle cx="240" cy="1423" r="15" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(261,1438) scale(.18)"/><circle cx="261" cy="1438" r="15" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(253,1463) scale(.18)"/><circle cx="253" cy="1463" r="15" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(227,1463) scale(.18)"/><circle cx="227" cy="1463" r="15" class="hit"/></g>
+        <g class="marker marker--dot" data-member="E" data-participated="false"><circle cx="219" cy="1438" r="4.5" fill="#2980b9" class="dot-mark"/><circle cx="219" cy="1438" r="13" class="hit"/></g>
       </g>
 
-      <!-- N9 key R cluster(480,1455) all flowers -->
+      <!-- N9 key R cluster(480, 1615) all flowers -->
       <g class="node-markers" data-node="end" data-level="key">
-        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(480,1433) scale(.18)"/><circle cx="480" cy="1433" r="15" class="hit"/></g>
-        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(501,1448) scale(.18)"/><circle cx="501" cy="1448" r="15" class="hit"/></g>
-        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(493,1473) scale(.18)"/><circle cx="493" cy="1473" r="15" class="hit"/></g>
-        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(467,1473) scale(.18)"/><circle cx="467" cy="1473" r="15" class="hit"/></g>
-        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(459,1448) scale(.18)"/><circle cx="459" cy="1448" r="15" class="hit"/></g>
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(480,1593) scale(.18)"/><circle cx="480" cy="1593" r="15" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(501,1608) scale(.18)"/><circle cx="501" cy="1608" r="15" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(493,1633) scale(.18)"/><circle cx="493" cy="1633" r="15" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(467,1633) scale(.18)"/><circle cx="467" cy="1633" r="15" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(459,1608) scale(.18)"/><circle cx="459" cy="1608" r="15" class="hit"/></g>
       </g>
     </svg>
 
-    <!-- Article labels: x=20 (L) / x=540 (R); width 160 (non-key) / 140 (key) -->
+    <!-- Article positions: --top at 170 intervals: 220, 390, 560, 730, 900, 1070, 1240, 1410, 1580 -->
 
-    <article class="node-label node-label--preamble" data-node="w1-2" data-side="R" style="--top: 220px; --x: 540px;">
+    <article class="node-label node-label--preamble" data-node="w1-2" data-side="R" style="--top: 220px; --x: 535px;">
       <div class="node-tag"><span data-lang-content="en">WEEK 1–2 · FEB 15–22</span><span data-lang-content="ms">MINGGU 1–2 · 15–22 FEB</span><span data-lang-content="zh">第 1–2 周 · 2/15–2/22</span><span data-lang-content="ta">வாரம் 1–2 · பிப் 15–22</span><span data-lang-content="jawi">ميڠݢو ١–٢ · ١٥–٢٢ فيب</span></div>
       <h2 class="node-title"><span data-lang-content="en">Topic + TEI/Voyant training</span><span data-lang-content="ms">Topik + Latihan TEI/Voyant</span><span data-lang-content="zh">立题 + TEI/Voyant 训练</span><span data-lang-content="ta">தலைப்பு + TEI/Voyant பயிற்சி</span><span data-lang-content="jawi">توڤيق + لاتيهن TEI/Voyant</span></h2>
       <p class="node-desc"><span data-lang-content="en">Research focus locked; TEI training</span><span data-lang-content="ms">Fokus kajian dimuktamadkan; TEI</span><span data-lang-content="zh">研究焦点锁定 · 编码训练</span><span data-lang-content="ta">ஆராய்ச்சி குவியம்; TEI பயிற்சி</span><span data-lang-content="jawi">فوكوس كاجين؛ TEI</span></p>
     </article>
 
-    <article class="node-label node-label--mid" data-node="w7-cs1" data-side="L" style="--top: 370px; --x: 20px;">
+    <article class="node-label node-label--mid" data-node="w7-cs1" data-side="L" style="--top: 390px; --x: 20px;">
       <div class="node-tag"><span data-lang-content="en">WEEK 7 · APR 13–20 · CS1</span><span data-lang-content="ms">MINGGU 7 · 13–20 APR · CS1</span><span data-lang-content="zh">第 7 周 · 4/13–4/20 · CS1</span><span data-lang-content="ta">வாரம் 7 · ஏப் 13–20 · CS1</span><span data-lang-content="jawi">ميڠݢو ٧ · ١٣–٢٠ اڤريل · CS1</span></div>
       <h2 class="node-title"><span data-lang-content="en">Group proposal + Lingscape</span><span data-lang-content="ms">Cadangan kumpulan + Lingscape</span><span data-lang-content="zh">小组提案 + Lingscape</span><span data-lang-content="ta">குழு முன்மொழிவு + Lingscape</span><span data-lang-content="jawi">چادڠن كومڤولن + Lingscape</span></h2>
       <p class="node-desc"><span data-lang-content="en">Group proposal · individual CS1</span><span data-lang-content="ms">Cadangan kumpulan · CS1 individu</span><span data-lang-content="zh">小组提案 · 各自 CS1</span><span data-lang-content="ta">குழு முன்மொழிவு · CS1</span><span data-lang-content="jawi">چادڠن كومڤولن · CS1</span></p>
     </article>
 
-    <article class="node-label node-label--mid" data-node="w8-10" data-side="R" style="--top: 520px; --x: 540px;">
+    <article class="node-label node-label--mid" data-node="w8-10" data-side="R" style="--top: 560px; --x: 535px;">
       <div class="node-tag"><span data-lang-content="en">WEEK 8–10 · APR 20–MAY 10</span><span data-lang-content="ms">MINGGU 8–10 · 20 APR–10 MEI</span><span data-lang-content="zh">第 8–10 周 · 4/20–5/10</span><span data-lang-content="ta">வாரம் 8–10 · ஏப் 20–மே 10</span><span data-lang-content="jawi">ميڠݢو ٨–١٠ · ٢٠ اڤ–١٠ ماي</span></div>
       <h2 class="node-title"><span data-lang-content="en">Literature + Excel master</span><span data-lang-content="ms">Literatur + Excel</span><span data-lang-content="zh">文献 + Excel 主表</span><span data-lang-content="ta">இலக்கியம் + Excel</span><span data-lang-content="jawi">ليتراتور + Excel</span></h2>
       <p class="node-desc"><span data-lang-content="en">Field protocol; 6-column schema locked</span><span data-lang-content="ms">Protokol; skema 6-lajur</span><span data-lang-content="zh">田野协议 · 6 列标注架构</span><span data-lang-content="ta">கள நெறிமுறை · 6-நெடுவரிசை</span><span data-lang-content="jawi">ڤروتوكول · سكيما ٦-لاجور</span></p>
     </article>
 
-    <article class="node-label node-label--mid" data-node="may20-cs2" data-side="L" style="--top: 670px; --x: 20px;">
+    <article class="node-label node-label--mid" data-node="may20-cs2" data-side="L" style="--top: 730px; --x: 20px;">
       <div class="node-tag"><span data-lang-content="en">MAY 20 · CS2 submission</span><span data-lang-content="ms">20 MEI · Penyerahan CS2</span><span data-lang-content="zh">5/20 · CS2 提交</span><span data-lang-content="ta">மே 20 · CS2 சமர்ப்பிப்பு</span><span data-lang-content="jawi">٢٠ ماي · ڤڽراهن CS2</span></div>
       <h2 class="node-title"><span data-lang-content="en">Case Study 2</span><span data-lang-content="ms">Kajian Kes 2</span><span data-lang-content="zh">案例研究 2</span><span data-lang-content="ta">வழக்கு ஆய்வு 2</span><span data-lang-content="jawi">كاجين كيس ٢</span></h2>
       <p class="node-desc"><span data-lang-content="en">Each member submitted individual CS2</span><span data-lang-content="ms">CS2 individu sendiri</span><span data-lang-content="zh">各成员提交 CS2（自选 trend）</span><span data-lang-content="ta">தனிப்பட்ட CS2</span><span data-lang-content="jawi">CS2 اينديۏيدو</span></p>
     </article>
 
-    <article class="node-label node-label--key" data-node="w11-fieldwork" data-side="R" style="--top: 820px; --x: 540px;">
+    <article class="node-label node-label--key" data-node="w11-fieldwork" data-side="R" style="--top: 900px; --x: 535px;">
       <div class="node-tag"><span data-lang-content="en">WEEK 11 · MAY 26–30</span><span data-lang-content="ms">MINGGU 11 · 26–30 MEI</span><span data-lang-content="zh">第 11 周 · 5/26–5/30</span><span data-lang-content="ta">வாரம் 11 · மே 26–30</span><span data-lang-content="jawi">ميڠݢو ١١ · ٢٦–٣٠ ماي</span></div>
       <h2 class="node-title"><span data-lang-content="en">Fieldwork + handover</span><span data-lang-content="ms">Kerja lapangan + handover</span><span data-lang-content="zh">田野采样 + 交付</span><span data-lang-content="ta">கள ஆய்வு + ஒப்படைப்பு</span><span data-lang-content="jawi">كرجا لاڤڠن + handover</span></h2>
       <p class="node-desc"><span data-lang-content="en">4 districts × 15 signs · ABCD parallel · E gets all 5/30</span><span data-lang-content="ms">4 daerah × 15 · ABCD selari · E 30/5</span><span data-lang-content="zh">4 区 × 15 块 · ABCD 并行 · E 5/30 接手</span><span data-lang-content="ta">4 × 15 · ABCD இணையாக · 5/30 E</span><span data-lang-content="jawi">٤ × ١٥ · ABCD سلاري · E ٣٠/٥</span></p>
     </article>
 
-    <article class="node-label node-label--key" data-node="may31-phase1" data-side="L" style="--top: 970px; --x: 20px;">
+    <article class="node-label node-label--key" data-node="may31-phase1" data-side="L" style="--top: 1070px; --x: 20px;">
       <div class="node-tag"><span data-lang-content="en">MAY 31 · MILESTONE</span><span data-lang-content="ms">31 MEI · PENCAPAIAN</span><span data-lang-content="zh">5/31 · 关键节点</span><span data-lang-content="ta">மே 31 · மைல்கல்</span><span data-lang-content="jawi">٣١ ماي · ڤنچاڤاين</span></div>
-      <h2 class="node-title"><span data-lang-content="en">Phase 1 site live</span><span data-lang-content="ms">Tapak Fasa 1 dilancarkan</span><span data-lang-content="zh">Phase 1 网站上线</span><span data-lang-content="ta">கட்டம் 1 இணையதளம் நேரலை</span><span data-lang-content="jawi">تاڤق فاسا ١ ديلنچركن</span></h2>
-      <p class="node-desc"><span data-lang-content="en">E delivered the visual baseline</span><span data-lang-content="ms">E menghantar garis dasar</span><span data-lang-content="zh">E 独立完成视觉基线</span><span data-lang-content="ta">E காட்சி அடிப்படை</span><span data-lang-content="jawi">E مڠهنتر داسر ۏيسوال</span></p>
+      <h2 class="node-title"><span data-lang-content="en">Phase 1 conceptual design</span><span data-lang-content="ms">Reka bentuk konsep Fasa 1</span><span data-lang-content="zh">阶段一网站概念设计</span><span data-lang-content="ta">கட்டம் 1 கருத்து வடிவமைப்பு</span><span data-lang-content="jawi">ركا بنتوق كونسيڤ فاسا ١</span></h2>
+      <p class="node-desc"><span data-lang-content="en">E delivered the conceptual baseline (not yet live)</span><span data-lang-content="ms">E menghantar reka bentuk konsep</span><span data-lang-content="zh">E 独立完成概念设计（尚未上线）</span><span data-lang-content="ta">E கருத்து வடிவமைப்பை வழங்கினார்</span><span data-lang-content="jawi">E مڠهنتر ركا بنتوق كونسيڤ</span></p>
     </article>
 
-    <article class="node-label node-label--key" data-node="w12a-integration" data-side="R" style="--top: 1120px; --x: 540px;">
+    <article class="node-label node-label--key" data-node="w12a-integration" data-side="R" style="--top: 1240px; --x: 535px;">
       <div class="node-tag"><span data-lang-content="en">WEEK 12a · JUN 1–4</span><span data-lang-content="ms">MINGGU 12a · 1–4 JUN</span><span data-lang-content="zh">第 12a 周 · 6/1–6/4</span><span data-lang-content="ta">வாரம் 12a · ஜூன் 1–4</span><span data-lang-content="jawi">ميڠݢو ١٢a · ١–٤ جون</span></div>
       <h2 class="node-title"><span data-lang-content="en">Phase 2 · integration</span><span data-lang-content="ms">Fasa 2 · integrasi</span><span data-lang-content="zh">阶段 2 · 集成</span><span data-lang-content="ta">கட்டம் 2 · ஒருங்கிணைப்பு</span><span data-lang-content="jawi">فاسا ٢ · اينتيݢراسي</span></h2>
       <p class="node-desc"><span data-lang-content="en">E integrated all member content</span><span data-lang-content="ms">E mengintegrasikan kandungan</span><span data-lang-content="zh">E 独立将所有组员内容集成进网站</span><span data-lang-content="ta">E உள்ளடக்கம் ஒருங்கிணைத்தார்</span><span data-lang-content="jawi">E مڠاينتيݢراسيكن كاندوڠن</span></p>
     </article>
 
-    <article class="node-label node-label--key" data-node="w12b-testing" data-side="L" style="--top: 1270px; --x: 20px;">
+    <article class="node-label node-label--key" data-node="w12b-testing" data-side="L" style="--top: 1410px; --x: 20px;">
       <div class="node-tag"><span data-lang-content="en">WEEK 12b · JUN 5–7</span><span data-lang-content="ms">MINGGU 12b · 5–7 JUN</span><span data-lang-content="zh">第 12b 周 · 6/5–6/7</span><span data-lang-content="ta">வாரம் 12b · ஜூன் 5–7</span><span data-lang-content="jawi">ميڠݢو ١٢b · ٥–٧ جون</span></div>
       <h2 class="node-title"><span data-lang-content="en">Internal testing</span><span data-lang-content="ms">Ujian dalaman</span><span data-lang-content="zh">内部测试 · 全员协作</span><span data-lang-content="ta">உள்ளக சோதனை</span><span data-lang-content="jawi">اوجين دالمن</span></h2>
-      <p class="node-desc"><span data-lang-content="en">Team tests, reports bugs, E fixes</span><span data-lang-content="ms">Pasukan menguji, E baiki</span><span data-lang-content="zh">全员测试 · 反馈 bug · E 修复</span><span data-lang-content="ta">குழு சோதனை, E சரிசெய்</span><span data-lang-content="jawi">ڤاسوكن مڠوجي، E ممبيقي</span></p>
+      <p class="node-desc"><span data-lang-content="en">ABCD test the site, report bugs to E</span><span data-lang-content="ms">ABCD menguji, melapor bug kepada E</span><span data-lang-content="zh">ABCD 测试网站 · 反馈 bug 给 E</span><span data-lang-content="ta">ABCD சோதிக்கிறது, E-க்கு பிழைகள்</span><span data-lang-content="jawi">ABCD مڠوجي، لاڤور بوݢ كڤد E</span></p>
     </article>
 
-    <article class="node-label node-label--key" data-node="end" data-side="R" style="--top: 1420px; --x: 540px;">
+    <article class="node-label node-label--key" data-node="end" data-side="R" style="--top: 1580px; --x: 535px;">
       <div class="node-tag"><span data-lang-content="en">JUN 8 / 10 · ENDPOINT</span><span data-lang-content="ms">8 / 10 JUN · TITIK AKHIR</span><span data-lang-content="zh">6/8 · 6/10 · 终点</span><span data-lang-content="ta">ஜூன் 8 / 10 · இறுதி</span><span data-lang-content="jawi">٨ / ١٠ جون · اخير</span></div>
       <h2 class="node-title"><span data-lang-content="en">Submission + presentation</span><span data-lang-content="ms">Penyerahan + Pembentangan</span><span data-lang-content="zh">提交 + 课堂展示</span><span data-lang-content="ta">சமர்ப்பிப்பு + வழங்கல்</span><span data-lang-content="jawi">ڤڽراهن + ڤمبنتڠن</span></h2>
       <p class="node-desc"><span data-lang-content="en">6/8 submission (E) · 6/10 presentation (team)</span><span data-lang-content="ms">8/6 (E) · 10/6 (pasukan)</span><span data-lang-content="zh">6/8 提交（E）· 6/10 全员展示</span><span data-lang-content="ta">6/8 (E) · 6/10 குழு</span><span data-lang-content="jawi">٨/٦ (E) · ١٠/٦ (ڤاسوكن)</span></p>
@@ -226,18 +232,6 @@
     </div>
   </div>
 
-  <section class="timeline-key-milestones">
-    <h2>
-      <span data-lang-content="en">Key Milestones</span><span data-lang-content="ms">Pencapaian Utama</span><span data-lang-content="zh">关键节点</span><span data-lang-content="ta">முக்கிய மைல்கற்கள்</span><span data-lang-content="jawi">ڤنچاڤاين اوتاما</span>
-    </h2>
-    <p>
-      <span data-lang-content="en"><strong>April 20, 2026</strong> · Case Study 1 (Lingscape analysis) submitted<br><strong>May 20, 2026</strong> · Case Study 2 (Information Literacy reframing) submitted<br><strong>May 31, 2026</strong> · Phase 1 website live · stable visual baseline<br><strong>June 8, 2026</strong> · Capstone website final submission<br><strong>June 10, 2026</strong> · In-class presentation</span>
-      <span data-lang-content="ms"><strong>20 April 2026</strong> · Kajian Kes 1 dihantar<br><strong>20 Mei 2026</strong> · Kajian Kes 2 dihantar<br><strong>31 Mei 2026</strong> · Laman web Fasa 1 dilancarkan<br><strong>8 Jun 2026</strong> · Penyerahan akhir<br><strong>10 Jun 2026</strong> · Pembentangan dalam kelas</span>
-      <span data-lang-content="zh"><strong>2026 年 4 月 20 日</strong> · 案例研究 1（Lingscape 分析）提交<br><strong>2026 年 5 月 20 日</strong> · 案例研究 2（信息素养重构）提交<br><strong>2026 年 5 月 31 日</strong> · 阶段 1 网站上线 · 视觉基线稳定<br><strong>2026 年 6 月 8 日</strong> · 毕业项目网站最终提交<br><strong>2026 年 6 月 10 日</strong> · 课堂展示</span>
-      <span data-lang-content="ta"><strong>ஏப்ரல் 20, 2026</strong> · வழக்கு ஆய்வு 1 சமர்ப்பிக்கப்பட்டது<br><strong>மே 20, 2026</strong> · வழக்கு ஆய்வு 2 சமர்ப்பிக்கப்பட்டது<br><strong>மே 31, 2026</strong> · கட்டம் 1 இணையதளம் நேரலை<br><strong>ஜூன் 8, 2026</strong> · இறுதி சமர்ப்பிப்பு<br><strong>ஜூன் 10, 2026</strong> · வகுப்பறை வழங்கல்</span>
-      <span data-lang-content="jawi"><strong>٢٠ اڤريل ٢٠٢٦</strong> · كاجين كيس ١ ديهنتر<br><strong>٢٠ ماي ٢٠٢٦</strong> · كاجين كيس ٢ ديهنتر<br><strong>٣١ ماي ٢٠٢٦</strong> · لامن ويب فاسا ١ ديلنچركن<br><strong>٨ جون ٢٠٢٦</strong> · ڤڽراهن اخير<br><strong>١٠ جون ٢٠٢٦</strong> · ڤمبنتڠن دالم كلس</span>
-    </p>
-  </section>
 </main>
 
 <script src="../js/i18n.js"></script>

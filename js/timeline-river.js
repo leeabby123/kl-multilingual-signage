@@ -246,8 +246,11 @@
   // Click empty space → exit trace
   document.addEventListener('click', (e) => {
     if (!tracedMember) return;
-    // Ignore clicks on markers and tooltip itself (already handled)
-    if (e.target.closest('.marker') || e.target.closest('.trace-banner')) return;
+    // Ignore clicks on markers, tooltip, chips, replay button, trace banner
+    if (e.target.closest('.marker') ||
+        e.target.closest('.trace-banner') ||
+        e.target.closest('.member-chip') ||
+        e.target.closest('.replay-btn')) return;
     exitTrace();
   });
 
@@ -281,8 +284,83 @@
     if (svg) svg.classList.add('loaded');
   });
 
-  /* ---------- Re-render tooltip text on language switch ----------
-     i18n.js doesn't fire an event, so observe data-lang attribute on <html> */
+  /* ---------- Member Stats Dashboard handlers (participation tracker) ---------- */
+
+  // Sync chip 'active' class when trace state changes (observe body.trace-mode class)
+  function syncChipStates() {
+    const activeMarker = document.body.classList.contains('trace-mode')
+      ? document.querySelector('.marker.trace-active')
+      : null;
+    const activeMember = activeMarker ? activeMarker.dataset.member : null;
+    document.querySelectorAll('.member-chip').forEach(chip => {
+      chip.classList.toggle('active', chip.dataset.member === activeMember);
+    });
+  }
+
+  const traceClassObserver = new MutationObserver(syncChipStates);
+  traceClassObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  document.querySelectorAll('.member-chip').forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const member = chip.dataset.member;
+      if (tracedMember === member) {
+        exitTrace();
+      } else {
+        enterTrace(member);
+      }
+    });
+  });
+
+  /* ---------- Replay timeline animation ---------- */
+
+  const NODE_ORDER = ['w1-2', 'w7-cs1', 'w8-10', 'may20-cs2', 'w11-fieldwork',
+                      'may31-phase1', 'w12a-integration', 'w12b-testing', 'end'];
+
+  const replayBtn = document.getElementById('replay-timeline');
+  if (replayBtn) {
+    replayBtn.addEventListener('click', () => {
+      if (replayBtn.classList.contains('replaying')) return;
+      replayBtn.classList.add('replaying');
+
+      // Exit trace mode if active
+      if (tracedMember) exitTrace();
+
+      // Reset: remove all revealed states
+      document.querySelectorAll('.node-label.revealed, .node-markers.revealed').forEach(el => {
+        el.classList.remove('revealed');
+      });
+      const svg = document.querySelector('.timeline-river');
+      svg.classList.remove('loaded');
+
+      // Scroll the timeline back into view from top
+      const wrap = document.getElementById('river-wrap');
+      if (wrap) {
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Force reflow so transitions restart cleanly
+      void document.body.offsetHeight;
+
+      // Stage 1: river fade-in (after scroll settles)
+      setTimeout(() => svg.classList.add('loaded'), 400);
+
+      // Stage 2: nodes reveal one-by-one in time order
+      NODE_ORDER.forEach((nodeId, idx) => {
+        setTimeout(() => {
+          document.querySelectorAll(`[data-node="${nodeId}"]`).forEach(el => {
+            el.classList.add('revealed');
+          });
+        }, 900 + idx * 420);
+      });
+
+      // Re-enable button after animation completes
+      setTimeout(() => replayBtn.classList.remove('replaying'),
+                 900 + NODE_ORDER.length * 420 + 300);
+    });
+  }
+
+
   const langObserver = new MutationObserver(() => {
     refreshTraceLabels();
     hideTooltip(); // close any stale tooltip

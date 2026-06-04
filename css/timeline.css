@@ -56,7 +56,139 @@
 }
 
 /* ------------------------------------------------------------
-   River container — wrap 720 × 1750 with overflow:hidden
+   Member Stats Dashboard — participation tracker (the deliverable)
+   ------------------------------------------------------------ */
+.member-stats-bar {
+  width: 720px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  flex-wrap: wrap;
+  font-family: var(--font-tag);
+}
+
+.member-chip {
+  flex: 1 1 auto;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 10px 12px 10px 16px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  text-align: start;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--color-text-primary, #2c2c2a);
+  position: relative;
+}
+
+.member-chip::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--c, #ccc);
+  border-radius: 8px 0 0 8px;
+}
+
+.member-chip:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.member-chip.active {
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--c, #999);
+  box-shadow: 0 0 0 2px var(--c, #999), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.chip-color { display: none; }
+
+.chip-letter {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--c, currentColor);
+  margin-right: 4px;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+.member-chip[data-member="A"] { --c: #d63031; }
+.member-chip[data-member="B"] { --c: #27ae60; }
+.member-chip[data-member="C"] { --c: #e67e22; }
+.member-chip[data-member="D"] { --c: #7f8c8d; }
+.member-chip[data-member="E"] { --c: #2980b9; }
+
+.chip-name {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--color-text-secondary, #5f5e5a);
+  letter-spacing: 0.02em;
+}
+
+.chip-count {
+  display: block;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--c, currentColor);
+  margin-top: 2px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1;
+}
+
+.chip-total {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-secondary, #8a8780);
+}
+
+.replay-btn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 20px;
+  background: var(--color-text-primary, #2c2c2a);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease-out;
+  height: auto;
+  align-self: stretch;
+}
+
+.replay-btn:hover {
+  background: #1a1a18;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.replay-btn:active { transform: translateY(0); }
+
+.replay-btn .replay-icon { font-size: 10px; opacity: 0.9; }
+
+.replay-btn.replaying {
+  opacity: 0.5;
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------
+   River container — wrap 720 × 2000 with overflow:hidden
    ------------------------------------------------------------ */
 .timeline-river-wrap {
   position: relative;

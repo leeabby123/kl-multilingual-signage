@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>KL Signage · Hub</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <script>
 /* FOUC prevention: set animating class synchronously BEFORE CSS loads,
    so opacity:0 on animatable elements is applied on first paint and they
@@ -689,6 +690,17 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 </style>
 </head>
 <body>
+
+<!-- Accessibility anchor: every page needs an h1 even when the design is
+     primarily visual/interactive. Hidden from sighted users but announced
+     by screen readers. -->
+<h1 class="sr-only">
+  <span data-lang-content="en">Multilingual Signage Hub — 60 Signs Across Kuala Lumpur</span>
+  <span data-lang-content="ms">Hub Papan Tanda Berbilang Bahasa — 60 Papan di Kuala Lumpur</span>
+  <span data-lang-content="zh">多语招牌中心 — 吉隆坡 60 块招牌</span>
+  <span data-lang-content="ta">பன்மொழி அடையாள மையம் — கோலாலம்பூர் 60 அடையாளங்கள்</span>
+  <span data-lang-content="jawi">هب ڤاڤن تندا برباݢاي بهاس — ٦٠ ڤاڤن دي كوالا لومڤور</span>
+</h1>
 
 <!-- LEFT NAV (5 secondary pages + back to Hub) -->
 <!-- Top-left corner: back to entry (« double chevron) -->

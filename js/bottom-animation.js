@@ -163,38 +163,47 @@
     const eased = t * t * t;
 
     seeds.forEach((s, i) => {
-      const dx = s.tx - s.sx;
-      const dy = s.ty - s.sy;
+      // ============================================================
+      // CURVED TRAJECTORY — quadratic Bézier
+      // ============================================================
+      // Each seed follows a quadratic Bézier curve from start (sx,sy)
+      // through a control point CP to target (tx,ty). The CP is offset
+      // RIGHT (+CURVE_X) and slightly DOWN (+CURVE_Y) from the straight-line
+      // midpoint, so EVERY seed's path bulges to the right of its straight
+      // line. This creates a unified visual "rightward swirl" that pairs
+      // with the clockwise spin below.
+      //
+      // B(t) = (1-t)² · P0  +  2(1-t)t · CP  +  t² · P2
+      //
+      // We feed `eased` (cubic ease-in) into t so the fall is slow-start /
+      // fast-end (keeps seeds visible throughout the entry-page scroll).
+      // ============================================================
+      const CURVE_X = 300;
+      const CURVE_Y = 80;
+      const midX = (s.sx + s.tx) / 2;
+      const midY = (s.sy + s.ty) / 2;
+      const cpX  = midX + CURVE_X;
+      const cpY  = midY + CURVE_Y;
 
-      // Straight-line interpolation between (sx,sy) and (tx,ty)
-      const linX = s.sx + dx * eased;
-      const linY = s.sy + dy * eased;
+      const u = 1 - eased;                       // 1-t
+      const x = u*u*s.sx + 2*u*eased*cpX + eased*eased*s.tx;
+      const y = u*u*s.sy + 2*u*eased*cpY + eased*eased*s.ty;
 
-      // Perpendicular curve offset — gives each seed a CURVED trajectory
-      // rather than falling on a rigid straight line. sin(π·t) peaks at the
-      // midpoint of the fall and is zero at both ends, so the seed starts
-      // and ends exactly on the line but swings out perpendicular to it
-      // during the middle of the fall. Alternating direction per seed so
-      // the 5 seeds spread out in a fan of curves.
-      const lineLen = Math.sqrt(dx*dx + dy*dy) || 1;
-      const perpX   = -dy / lineLen;
-      const perpY   =  dx / lineLen;
-      const sideDir = (i % 2 === 0) ? 1 : -1;
-      const curveAmp = 180 * Math.sin(t * Math.PI);     // amplitude ~180 viewBox units at mid-fall
-      const curveX   = perpX * curveAmp * sideDir;
-      const curveY   = perpY * curveAmp * sideDir;
-
-      const x = linX + curveX;
-      const y = linY + curveY;
-
-      // CONSTANT scale — matches the middle-garden seed visual size; no growth during fall
+      // CONSTANT scale — matches the middle-garden seed visual size
       const SEED_SCALE = 0.30;
 
-      // Rotation — uses LINEAR raw progress p (not eased) so the spin is
-      // visually steady throughout the fall, even while the position is
-      // slow-start / fast-end. ~1.5 full turns total, alternating direction.
-      const rotDir = (i % 2 === 0) ? 1 : -1;
-      const rot = (i * 47 + p * 540 * rotDir) % 360;
+      // ============================================================
+      // CLOCKWISE-ONLY rotation
+      // ============================================================
+      // In SVG the Y-axis points DOWN, so a POSITIVE rotate() angle
+      // visually rotates the element CLOCKWISE on screen. No alternating
+      // direction per seed — every flower spins the same way.
+      // Linear in the raw scroll progress `p` (not eased) so the spin
+      // feels steady throughout the fall — about 1.5 full turns total.
+      // `i*47` is just a per-seed phase offset so the 5 flowers aren't
+      // all at the exact same rotation angle.
+      // ============================================================
+      const rot = (i * 47 + p * 540) % 360;
 
       s.el.setAttribute(
         'transform',

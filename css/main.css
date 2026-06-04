@@ -395,11 +395,7 @@
   opacity: 0.04;
 }
 
-/* Phase 3: anim-layer (bloom + landed seeds) also fades almost out — only plate remains */
-.bottom-anim-layer.faded {
-  opacity: 0.10;
-  transition: opacity 1.4s ease-out;
-}
+/* Phase 3 anim-layer fade: see the rule further down (after .garden-loaded). */
 
 /* Layer 1: animation SVG overlay — seeds + bloom share the kl-map's viewBox */
 .bottom-anim-layer {
@@ -430,6 +426,16 @@
   opacity: 1;
 }
 
+/* Phase 3 fade — MUST come AFTER .garden-loaded in source order so it
+   wins the cascade (both rules have specificity 0,2,0). Earlier this rule
+   sat before .garden-loaded; .garden-loaded won and forced opacity:1
+   during Phase 3, leaving the bloom flowers fully visible and covering
+   the tagline plate. */
+.bottom-anim-layer.faded {
+  opacity: 0.10;
+  transition: opacity 1.4s ease-out;
+}
+
 /* Falling seeds — JS drives `transform` via the data-target-* attrs and scroll progress.
    Default state: at start position with scale 0 (invisible). Transitions live on the
    <use> element so values interpolated by JS animate smoothly. */
@@ -457,7 +463,11 @@
    Plate is hidden by default; JS adds .visible during Phase 3. */
 .bottom-tagline-plate {
   position: relative;
-  z-index: 3;
+  /* z-index 20 — must be ABOVE .bottom-anim-layer (z=10) so the bloom
+     flowers don't paint over the plate during Phase 3. Earlier this was
+     z=3 which placed the plate BEHIND the anim-layer; the bloom flowers
+     covered the tagline text. */
+  z-index: 20;
 
   /* Plate background — 練色 Neri-iro #F0EAD6 (warm parchment cream)
      harmonizes with the peach gradient instead of cutting against it. */

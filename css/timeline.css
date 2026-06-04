@@ -1,17 +1,4 @@
-/* ============================================================
-   Timeline River — v7 (6/4 late night)
-   - Larger fonts following web reading standards (body 16px ref)
-   - Node intervals 170 (was 150) to accommodate larger fonts without overlap
-   - Article width 175 non-key / 155 key (Kunm permitted shrinking key frames)
-   - wrap 720 × 1750 overflow:hidden, SVG height 1870 (river clipped at wrap bottom)
-   - Member-flower color reassignment (6/4 night):
-       A LIAO RUIXUAN → red
-       B WEI JITAO    → green
-       C CHEN MEILIN  → orange
-       D WEI HONGHAI  → gray
-       E LI BINGYI    → blue
-   - Removed Key Milestones section (timeline already conveys it)
-   ============================================================ */
+
 
 :root {
   --font-display: 'Cormorant Garamond', 'Noto Serif SC', 'Noto Serif Tamil', 'Amiri', 'Times New Roman', Georgia, serif;
@@ -34,11 +21,9 @@
 
 .timeline-river-page {
   padding-top: 2rem;
-  padding-bottom: 0;          /* river reaches page bottom edge */
+  padding-bottom: 0;          
 }
 
-/* All content blocks (lede, dashboard, river-wrap) share this frame so they're
-   guaranteed to align with the same left/right edges */
 .timeline-content-frame {
   width: 720px;
   max-width: 100%;
@@ -59,13 +44,10 @@
   text-align: start;
   color: var(--color-text-secondary, #5f5e5a);
   font-family: var(--font-body);
-  font-size: 16px;                /* web body reading standard */
+  font-size: 16px;                
   line-height: 1.75;
 }
 
-/* ------------------------------------------------------------
-   Member Stats Dashboard — participation tracker (the deliverable)
-   ------------------------------------------------------------ */
 .member-stats-bar {
   width: 100%;
   margin: 0 0 2.5rem 0;
@@ -146,9 +128,6 @@
   min-width: 0;
 }
 
-/* ------------------------------------------------------------
-   River container — wrap 720 × 2000 with overflow:hidden
-   ------------------------------------------------------------ */
 .timeline-river-wrap {
   position: relative;
   width: 100%;
@@ -158,7 +137,6 @@
   overflow: hidden;
 }
 
-/* SVG element 720×2080 — 80px taller than wrap; clipped by wrap.overflow:hidden */
 .timeline-river {
   position: absolute;
   left: 0;
@@ -183,9 +161,6 @@
 .river-path,
 .river-accent { pointer-events: none; }
 
-/* ------------------------------------------------------------
-   Markers
-   ------------------------------------------------------------ */
 .node-markers {
   opacity: 0;
   transition: opacity 0.6s ease-out;
@@ -216,10 +191,6 @@
 .marker--dot .dot-mark { opacity: 0.65; transition: opacity 0.2s; }
 .marker--dot:hover .dot-mark { opacity: 0.95; }
 
-/* ------------------------------------------------------------
-   Node labels — wider (175) for non-key, narrower (155) for key
-   Vertical interval 170 in node-top; max article height ~145 → ~25 gap
-   ------------------------------------------------------------ */
 .node-label {
   position: absolute;
   top: var(--top);
@@ -249,10 +220,9 @@
 
 .node-label.revealed { transform: translateY(0); }
 
-/* ------------ Font hierarchy: week-tag is LEVEL 1 (most prominent) ------------ */
 .node-tag {
   font-family: var(--font-tag);
-  font-size: 16px;                /* LEVEL 1 — week info is primary */
+  font-size: 16px;                
   letter-spacing: 0.04em;
   color: var(--color-text-primary, #2c2c2a);
   font-weight: 600;
@@ -281,7 +251,7 @@
 
 .node-desc {
   font-family: var(--font-body);
-  font-size: 13px;                /* still comfortable read */
+  font-size: 13px;                
   line-height: 1.55;
   color: var(--color-text-secondary, #5f5e5a);
   margin: 0;
@@ -290,7 +260,6 @@
 }
 .node-label--key .node-desc { color: var(--color-text-primary, #3a3a36); }
 
-/* Per-language wrapping rules */
 [data-lang="zh"] .node-title,
 [data-lang="zh"] .node-desc {
   word-break: normal;
@@ -308,9 +277,6 @@
   hyphens: auto;
 }
 
-/* ------------------------------------------------------------
-   Tooltip
-   ------------------------------------------------------------ */
 .member-tooltip {
   position: absolute;
   z-index: 100;
@@ -330,9 +296,6 @@
 .tooltip-name { font-weight: 600; color: var(--color-text-primary, #2c2c2a); margin-bottom: 3px; font-size: 13.5px; }
 .tooltip-desc { color: var(--color-text-secondary, #5f5e5a); font-size: 12.5px; }
 
-/* ------------------------------------------------------------
-   Trace banner
-   ------------------------------------------------------------ */
 .trace-banner {
   position: fixed;
   top: 16px;
@@ -358,9 +321,6 @@ body.trace-mode .marker:not(.trace-active) { opacity: 0.22; transition: opacity 
 body.trace-mode .marker.trace-active { opacity: 1; }
 body.trace-mode .node-label.trace-untouched { opacity: 0.35; transition: opacity 0.3s ease-out; }
 
-/* ------------------------------------------------------------
-   Reactive hover feedback — hovering an article wakes its cluster
-   ------------------------------------------------------------ */
 .node-label {
   transition: opacity 0.6s ease-out, transform 0.3s ease-out;
 }
@@ -369,7 +329,6 @@ body.trace-mode .node-label.trace-untouched { opacity: 0.35; transition: opacity
   transform: translateY(-2px);
 }
 
-/* When article is hovered, JS adds .node-hover-active to corresponding cluster */
 .node-markers.node-hover-active .marker {
   transform: scale(1.08);
   transform-origin: center;

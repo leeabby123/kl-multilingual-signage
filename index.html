@@ -7,7 +7,6 @@
   <title>Bila Bahasa Menjadi Bunga · 当语言化作花朵 · When Language Becomes Flower</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Noto family for cross-script consistency -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&family=Noto+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -15,8 +14,6 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/main.css">
 
-  <!-- Hub button (top + bottom pages) override: 双 chevron + 横向 bounce 动画
-       严格 poppyfield 极简: 无背景圆/胶囊/容器, 纯线条. 后期合并到 main.css. -->
   <style>
     .enter-hub-btn {
       background: none !important;
@@ -43,13 +40,8 @@
 
 <div class="spa-root loading">
 
-  <!-- ============================================================
-       SECTION 1 — TOP PAGE (国家话语 · National Discourse)
-       Navy + gold, locked design from top_page_navy_mockup.html
-       ============================================================ -->
   <section class="section section--top" id="section-top" aria-label="National Discourse — UUK 3 Bahasa Iklan">
 
-    <!-- Enter Hub button (top-right) — poppyfield minimal arrow, no background -->
     <button class="enter-hub-btn" data-enter-hub="top" type="button" aria-label="Enter Hub">
       <svg style="width:37px !important;height:37px !important;display:block !important" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11,6 17,12 11,18"/><polyline points="5,6 11,12 5,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="9.4,6 15.4,12 9.4,18"/><polyline points="3.4,6 9.4,12 3.4,18"/></g></svg>
     </button>
@@ -59,9 +51,8 @@
       <p class="top-label">Undang-undang Malaysia</p>
       <div class="top-rule"></div>
 
-      <!-- Bunga raya pair: green Bahasa Melayu + gray Jawi behind -->
       <svg class="top-flowers" viewBox="0 0 280 240" role="img" aria-label="Hibiscus pair: Bahasa Melayu (green) with Jawi (gray)">
-        <!-- Gray Jawi: smaller (62%), offset bottom-right, drawn first so green sits on top -->
+        
         <g transform="translate(195, 158)" opacity="0.55">
           <g transform="scale(0.62)">
             <g transform="rotate(0)"><path d="M0,0 C-18,-8 -32,-28 -28,-48 C-24,-62 -10,-65 0,-52 C10,-65 24,-62 28,-48 C32,-28 18,-8 0,0Z" fill="#7f8c8d" opacity="0.72"/></g>
@@ -77,7 +68,7 @@
             <circle cx="0" cy="-36" r="3" fill="#c5cdce"/>
           </g>
         </g>
-        <!-- Green Bahasa Melayu: large, centered, on top -->
+        
         <g transform="translate(125, 108)">
           <g transform="rotate(0)"><path d="M0,0 C-22,-10 -38,-32 -34,-58 C-30,-74 -12,-78 0,-62 C12,-78 30,-74 34,-58 C38,-32 22,-10 0,0Z" fill="#27ae60" opacity="0.62"/></g>
           <g transform="rotate(72)"><path d="M0,0 C-22,-10 -38,-32 -34,-58 C-30,-74 -12,-78 0,-62 C12,-78 30,-74 34,-58 C38,-32 22,-10 0,0Z" fill="#27ae60" opacity="0.70"/></g>
@@ -116,74 +107,47 @@
 
     </main>
 
-    <!-- Scroll cue: down to middle -->
     <a class="scroll-cue" data-scroll-target="#section-middle" aria-label="Scroll to middle (landing)">
       <svg style="width:37px !important;height:37px !important;display:block !important" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,7 12,13 18,7"/><polyline points="6,13 12,19 18,13"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="6,5.4 12,11.4 18,5.4"/><polyline points="6,11.4 12,17.4 18,11.4"/></g></svg>
     </a>
 
   </section>
 
-
-  <!-- ============================================================
-       SECTION 2 — MIDDLE PAGE (Landing · Entry · 中间页)
-       Watercolor garden — 4-lang title plaque + 5-color hibiscuses
-       ============================================================ -->
+  
   <section class="section section--middle" id="section-middle" aria-label="Landing — Bila Bahasa Menjadi Bunga">
 
-    <!-- Up arrow → top page (poppyfield minimal: arrow only, no text) -->
     <a class="middle-scroll-up" data-scroll-target="#section-top" aria-label="Scroll up">
       <svg style="width:37px !important;height:37px !important;display:block !important" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,17 12,11 18,17"/><polyline points="6,11 12,5 18,11"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="6,18.6 12,12.6 18,18.6"/><polyline points="6,12.6 12,6.6 18,12.6"/></g></svg>
     </a>
 
     <div class="middle-art">
-      <!-- SVG content from homepage_garden_final.svg, embedded inline for performance -->
+      
       <object data="assets/svg/middle-garden.svg" type="image/svg+xml" aria-label="Multilingual garden landing — title plaque in 4 languages surrounded by 5-colored hibiscuses, palm trees, and KL city silhouette"></object>
     </div>
 
-
-    <!-- Down arrow → bottom page (poppyfield minimal: arrow only, no text) -->
+    
     <a class="middle-scroll-down" data-scroll-target="#section-bottom" aria-label="Scroll down">
       <svg style="width:37px !important;height:37px !important;display:block !important" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,7 12,13 18,7"/><polyline points="6,13 12,19 18,13"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="6,5.4 12,11.4 18,5.4"/><polyline points="6,11.4 12,17.4 18,11.4"/></g></svg>
     </a>
 
   </section>
 
-
-  <!-- ============================================================
-       SECTION 3 — BOTTOM PAGE (民间多语 · Civilian Languages)
-       Warm tone · KL map (60 civilian flower clusters in 5 lang colors)
-       overlaid with 5-language tagline — mirror of top page state discourse:
-       top: vertical UUK 3 law + bunga raya pair (2 national flowers)
-       bottom: spread KL map + 60 civilian flowers + horizontal tagline manifesto
-       ============================================================ -->
+  
   <section class="section section--bottom" id="section-bottom" aria-label="Civilian Languages — KL multilingual evidence with people's tagline">
 
-    <!-- Up arrow → middle page (poppyfield minimal: arrow only, no text) -->
     <a class="middle-scroll-up" data-scroll-target="#section-middle" aria-label="Scroll up">
       <svg style="width:37px !important;height:37px !important;display:block !important" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,17 12,11 18,17"/><polyline points="6,11 12,5 18,11"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="6,18.6 12,12.6 18,18.6"/><polyline points="6,12.6 12,6.6 18,12.6"/></g></svg>
     </a>
 
-    <!-- Enter Hub button (top-right) — poppyfield minimal arrow -->
     <button class="enter-hub-btn" data-enter-hub="bottom" type="button" aria-label="Enter Hub">
       <svg style="width:37px !important;height:37px !important;display:block !important" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11,6 17,12 11,18"/><polyline points="5,6 11,12 5,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="9.4,6 15.4,12 9.4,18"/><polyline points="3.4,6 9.4,12 3.4,18"/></g></svg>
     </button>
 
-    <!-- ====== Bottom page · 3-layer animation stack ======================
-         Layer 0 (z=1): kl-map.svg via <object>  — backdrop, 60 clusters
-         Layer 1 (z=2): .bottom-anim-layer SVG    — 5 falling seeds + bloom field
-         Layer 2 (z=3): .bottom-tagline-plate     — Ro-iro text on Unohana plate
-         Orchestrated by js/bottom-animation.js:
-         Phase 1 (scroll-driven)  : 5 seeds fall from above into 5 asymmetric landing spots
-         Phase 2 (3s, time-driven): ~150 bloom flowers spawn in 15 waves of 10
-         Phase 3 (3s, time-driven): map fades, tagline plate fades in
-    ====================================================================== -->
-
-    <!-- KL map background (Layer 0) -->
+    
     <div class="bottom-map" aria-hidden="true">
       <object data="scripts/kl-map-bare.svg" type="image/svg+xml" aria-label="KL multilingual signage map (clusters removed for bottom-page narrative)"></object>
     </div>
 
-    <!-- Animation layer (Layer 1) — same viewBox as kl-map so coords map 1:1 -->
     <svg class="bottom-anim-layer" viewBox="0 0 1600 2000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <g id="b-hR"><use href="#t-fr" fill="#d63031" opacity="0.68"/><use href="#t-fr" fill="#d63031" opacity="0.62" transform="rotate(72)"/><use href="#t-fr" fill="#d63031" opacity="0.57" transform="rotate(144)"/><use href="#t-fr" fill="#d63031" opacity="0.65" transform="rotate(216)"/><use href="#t-fr" fill="#d63031" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
@@ -193,22 +157,6 @@
         <g id="b-hGy"><use href="#t-fr" fill="#7f8c8d" opacity="0.55"/><use href="#t-fr" fill="#7f8c8d" opacity="0.5" transform="rotate(72)"/><use href="#t-fr" fill="#7f8c8d" opacity="0.45" transform="rotate(144)"/><use href="#t-fr" fill="#7f8c8d" opacity="0.52" transform="rotate(216)"/><use href="#t-fr" fill="#7f8c8d" opacity="0.58" transform="rotate(288)"/><circle r="4" fill="#555"/></g>
       </defs>
 
-      <!-- 5 falling seeds — initial positions at y=900 in the expanded viewBox.
-           y=900 corresponds to the garden-ground level of the entry page (the
-           middle section maps to y=0..1000, and y=900 = 90% down = where the
-           grassy garden + animals + benches are drawn). This places seeds
-           IN FRONT of the garden illustration (z-layered above), visible when
-           the user is at the entry page — NOT in the sky and NOT covered.
-           As the user scrolls down, each seed falls (with slow rotation + a
-           perpendicular sine curve) to its landing target in the bottom 1/3 of
-           the BOTTOM page (y=1700-1780; the bottom page maps to y=1000..2000).
-           NOTE: targets stay ≤1780 because (a) on 16:9 viewports the SVG
-           preserveAspectRatio="xMidYMid slice" crops viewBox y > ~1900, and
-           (b) we need every landed seed to still be inside the viewport at
-           scrollY=2vh. With these targets every seed lands at viewport-y
-           ~800-940 (out of 1080) — comfortably visible.
-           All (start → target) distances are ~1100 units so all 5 fall at the
-           same visual speed. -->
       <g id="seeds-falling">
         <use class="falling-seed lang-jawi" href="#b-hGy"
              data-start-x="840"  data-start-y="900"
@@ -232,12 +180,9 @@
              transform="translate(687,900) scale(0.30)"/>
       </g>
 
-      <!-- Bloom field — JS populates this <g> with ~150 flowers during Phase 2 -->
       <g id="bloom-field"></g>
     </svg>
 
-    <!-- Tagline plate (Layer 2) — Ro-iro #393937 on Unohana #F3F3F2,
-         plate uses width: max-content so it wraps the text exactly. -->
     <div class="bottom-tagline-plate">
       <div class="bottom-tagline-stack">
         <p class="bottom-tagline-line lang-ms">Rakyat memilih kehidupan sendiri, menulis kepelbagaian bahasa kota.</p>
@@ -250,35 +195,12 @@
 
   </section>
 
-  <!-- ============================================================
-       Top-page up-scroll animation layer
-       ============================================================
-       Sits as a DIRECT CHILD of .spa-root (not inside any section)
-       so it doesn't require overflow:visible on section--middle. This
-       eliminates the boundary "bands" caused by section descendants
-       leaking across section edges. .spa-root has position:relative
-       (set in main.css) so the layer's top:0 height:200vh resolves
-       to the top + middle viewport range (document y=0..2vh). It
-       comes AFTER all sections in DOM, so it paints last and renders
-       OVER section--top and section--middle without needing z-index
-       tricks. It does NOT extend into section--bottom (ends exactly
-       at section--bottom's top edge).
-
-       Flower data (post-Kunm-correction):
-       • Vanish order: TA orange (0.45, earliest) → ZH red (0.65) → EN blue (0.85)
-       • All 5 flowers START on the lawn (viewBox y ≈ 1810-1850)
-       • Initial scale 0.4 (40% of default); survivors interpolate
-         scale to match placeholder size at p=1 for a seamless swap.
-  -->
   <svg class="top-anim-layer" viewBox="0 0 1600 2000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
 
-    <!-- Hibiscus petal symbol — defined here, used by all petals below
-         AND (cross-SVG, backward reference) by .bottom-anim-layer's b-h* symbols. -->
     <defs>
       <g id="t-fr"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
     </defs>
 
-    <!-- TA 橙 — vanisher #1 (EARLIEST), petal order: 144 → 0 → 216 → 72 → 288 (jumping pattern) -->
     <g class="rf-body" data-color="ta" data-vanish-at="0.65"
        data-sx="200" data-sy="1830" data-ex="720" data-ey="600" data-cpx="500" data-cpy="1180"
        data-scale-start="0.4" data-scale-end="0.4">
@@ -291,7 +213,6 @@
     <use class="rf-petal" data-flower="ta" data-angle="72"  data-fall-at="0.62" data-base-opacity="0.62" href="#t-fr" fill="#e67e22"/>
     <use class="rf-petal" data-flower="ta" data-angle="288" data-fall-at="0.64" data-base-opacity="0.72" href="#t-fr" fill="#e67e22"/>
 
-    <!-- ZH 红 — vanisher #2 (MIDDLE), petal order: 0 → 72 → 144 → 216 → 288 (counterclockwise full circle) -->
     <g class="rf-body" data-color="zh" data-vanish-at="0.80"
        data-sx="560" data-sy="1840" data-ex="320" data-ey="880" data-cpx="200" data-cpy="1200"
        data-scale-start="0.4" data-scale-end="0.4">
@@ -304,7 +225,6 @@
     <use class="rf-petal" data-flower="zh" data-angle="216" data-fall-at="0.72" data-base-opacity="0.65" href="#t-fr" fill="#d63031"/>
     <use class="rf-petal" data-flower="zh" data-angle="288" data-fall-at="0.78" data-base-opacity="0.72" href="#t-fr" fill="#d63031"/>
 
-    <!-- EN 蓝 — vanisher #3 (LATEST), petal order: 288 → 216 → 144 → 72 → 0 (clockwise full circle) -->
     <g class="rf-body" data-color="en" data-vanish-at="0.92"
        data-sx="900" data-sy="1820" data-ex="1080" data-ey="320" data-cpx="680" data-cpy="820"
        data-scale-start="0.4" data-scale-end="0.4">
@@ -317,10 +237,6 @@
     <use class="rf-petal" data-flower="en" data-angle="72"  data-fall-at="0.80" data-base-opacity="0.62" href="#t-fr" fill="#2980b9"/>
     <use class="rf-petal" data-flower="en" data-angle="0"   data-fall-at="0.88" data-base-opacity="0.68" href="#t-fr" fill="#2980b9"/>
 
-    <!-- MS 绿 — survivor #1, scale grows 0.4 → 0.90 to match placeholder green at p=1.
-         data-sy moved from 1850 → 1800 (50 viewBox units up ≈ one petal diameter at scale 0.4)
-         to prevent visual leak across the middle/bottom section seam — was the lowest of
-         all 5 top-anim seeds; now sits in the same vertical band as the others (1800-1840). -->
     <g class="rf-body" data-color="ms" data-vanish-at="0.95"
        data-sx="1180" data-sy="1800" data-ex="786" data-ey="380" data-cpx="950" data-cpy="1200"
        data-scale-start="0.4" data-scale-end="0.9">
@@ -333,7 +249,6 @@
     <use class="rf-petal" data-flower="ms" data-angle="216" data-fall-at="9.9" data-base-opacity="0.65" href="#t-fr" fill="#27ae60"/>
     <use class="rf-petal" data-flower="ms" data-angle="288" data-fall-at="9.9" data-base-opacity="0.72" href="#t-fr" fill="#27ae60"/>
 
-    <!-- Jawi 灰 — survivor #2, scale grows 0.4 → 0.55 to match the smaller gray placeholder -->
     <g class="rf-body" data-color="jawi" data-vanish-at="0.95"
        data-sx="1420" data-sy="1820" data-ex="852" data-ey="430" data-cpx="1120" data-cpy="820"
        data-scale-start="0.4" data-scale-end="0.55">

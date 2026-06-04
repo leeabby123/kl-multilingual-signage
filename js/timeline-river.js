@@ -1,15 +1,8 @@
-/* ============================================================
-   Timeline River — interaction layer (6/4 rebuild)
-   - Layer 1: hover any marker → tooltip with member name + per-node contribution
-   - Layer 2: click any flower → enter trace mode, dim everyone else
-              click empty space (or same flower again) → exit
-   - Scroll reveal: nodes fade in as they enter viewport
-   ============================================================ */
+
 
 (function () {
   'use strict';
 
-  /* ---------- Member display names per language ---------- */
   const MEMBER_NAMES = {
     A: { en: 'A · Liao Ruixuan', ms: 'A · Liao Ruixuan', zh: 'A · 廖瑞萱',
          ta: 'A · லியாவ் ருய்சுவான்', jawi: 'A · لياو روي شوءن' },
@@ -23,9 +16,6 @@
          ta: 'E · லீ பிங்யி',     jawi: 'E · لي بيڠ‌يي' }
   };
 
-  /* ---------- Per-node × per-member tooltip text ----------
-     Currently zh + en filled. Other langs fall back to en.
-     Easy to extend later (just add ms/ta/jawi keys). */
   const TOOLTIPS = {
     'w1-2': {
       A: { en: 'Technologist · joined tool selection and TEI training', zh: 'Technologist · 参与工具选型与 TEI 训练' },
@@ -92,8 +82,6 @@
     }
   };
 
-  /* ---------- Helpers ---------- */
-
   function getCurrentLang() {
     return document.documentElement.getAttribute('data-lang') || 'en';
   }
@@ -110,8 +98,6 @@
     return MEMBER_NAMES[member][lang] || MEMBER_NAMES[member].en;
   }
 
-  /* ---------- Tooltip (Layer 1) ---------- */
-
   const tooltipEl = document.getElementById('member-tooltip');
   const tooltipName = tooltipEl ? tooltipEl.querySelector('.tooltip-name') : null;
   const tooltipDesc = tooltipEl ? tooltipEl.querySelector('.tooltip-desc') : null;
@@ -123,24 +109,19 @@
     tooltipName.textContent = getMemberName(member);
     tooltipDesc.textContent = getTooltipText(node, member);
 
-    // Position relative to .timeline-river-wrap
     const wrap = document.getElementById('river-wrap');
     const wrapRect = wrap.getBoundingClientRect();
     const markerRect = marker.getBoundingClientRect();
 
-    // Default: position to the right of the marker
     let left = markerRect.right - wrapRect.left + 8;
     let top  = markerRect.top   - wrapRect.top  - 4;
 
     tooltipEl.hidden = false;
-    // Defer measurement until tooltip is laid out
     requestAnimationFrame(() => {
       const tipRect = tooltipEl.getBoundingClientRect();
-      // If tooltip would overflow the right edge of wrap, position to the left of the marker instead
       if (left + tipRect.width > wrap.offsetWidth - 8) {
         left = markerRect.left - wrapRect.left - tipRect.width - 8;
       }
-      // Clamp top to stay within wrap vertical range
       if (top < 4) top = 4;
       if (top + tipRect.height > wrap.offsetHeight - 4) {
         top = wrap.offsetHeight - tipRect.height - 4;
@@ -154,8 +135,6 @@
     if (tooltipEl) tooltipEl.hidden = true;
   }
 
-  /* ---------- Trace mode (Layer 2) ---------- */
-
   let tracedMember = null;
   const traceBanner = document.getElementById('trace-banner');
   const traceBannerName = traceBanner ? traceBanner.querySelector('.trace-banner-name') : null;
@@ -164,7 +143,6 @@
     tracedMember = member;
     document.body.classList.add('trace-mode');
 
-    // Tag markers — active member gets .trace-active, others stay
     document.querySelectorAll('.marker').forEach(m => {
       if (m.dataset.member === member) {
         m.classList.add('trace-active');
@@ -173,7 +151,6 @@
       }
     });
 
-    // Tag node-labels: if traced member did NOT participate, fade the whole label
     document.querySelectorAll('.node-label').forEach(label => {
       const node = label.dataset.node;
       const markerGroup = document.querySelector(`.node-markers[data-node="${node}"]`);
@@ -202,16 +179,12 @@
   }
 
   function refreshTraceLabels() {
-    // Called when language changes, to update trace banner name
     if (tracedMember && traceBannerName) {
       traceBannerName.textContent = getMemberName(tracedMember);
     }
   }
 
-  /* ---------- Wire up markers ---------- */
-
   document.querySelectorAll('.marker').forEach(marker => {
-    // Keyboard accessibility
     marker.setAttribute('tabindex', '0');
     marker.setAttribute('role', 'button');
 
@@ -243,24 +216,17 @@
     });
   });
 
-  // Click empty space → exit trace
   document.addEventListener('click', (e) => {
     if (!tracedMember) return;
-    // Ignore clicks on markers, tooltip, chips, trace banner
     if (e.target.closest('.marker') ||
         e.target.closest('.trace-banner') ||
         e.target.closest('.member-chip')) return;
     exitTrace();
   });
 
-  // Esc → exit trace
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && tracedMember) exitTrace();
   });
-
-  /* ---------- Scroll reveal — per-node IO so bottom nodes truly fade in
-     as the user scrolls down. Each node-label triggers when ~20% visible
-     in the upper 90% of the viewport. ---------- */
 
   const reveal = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -280,16 +246,11 @@
 
   document.querySelectorAll('.node-label').forEach(el => reveal.observe(el));
 
-  /* ---------- River fade-in on load ---------- */
-
   window.addEventListener('load', () => {
     const svg = document.querySelector('.timeline-river');
     if (svg) svg.classList.add('loaded');
   });
 
-  /* ---------- Member Stats Dashboard handlers (participation tracker) ---------- */
-
-  // Sync chip 'active' class when trace state changes (observe body.trace-mode class)
   function syncChipStates() {
     const activeMarker = document.body.classList.contains('trace-mode')
       ? document.querySelector('.marker.trace-active')
@@ -315,7 +276,6 @@
     });
   });
 
-  /* ---------- Hover an article → wake its cluster (reactive feedback) ---------- */
   document.querySelectorAll('.node-label').forEach(label => {
     label.addEventListener('mouseenter', () => {
       const node = label.dataset.node;
@@ -328,7 +288,6 @@
       if (cluster) cluster.classList.remove('node-hover-active');
     });
   });
-
 
   const langObserver = new MutationObserver(() => {
     refreshTraceLabels();

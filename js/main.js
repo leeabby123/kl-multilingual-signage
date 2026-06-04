@@ -1,9 +1,4 @@
-/* ============================================================
-   Main JS — SPA navigation + scroll-bound animations (index.html)
-   Per memory #27: translation-only, reversible, no 3D/folding
-   - Up-scroll: flowers in middle page lift away, petals scatter
-   - Down-scroll: flowers rise from below
-   ============================================================ */
+
 
 (function () {
   'use strict';
@@ -15,15 +10,10 @@
 
   if (!root || !sectionMiddle) return;
 
-  /* ----------------------------------------------------------
-     1. Scroll to MIDDLE on page load (middle is the entry)
-     ---------------------------------------------------------- */
   function scrollToMiddle(behavior = 'instant') {
     sectionMiddle.scrollIntoView({ behavior, block: 'start' });
   }
 
-  // 6/2 bug 10: 综合检测来源——hub-source（从 hub 返回）/ return-to（其他二级页返回）/ URL hash。
-  // 让初次渲染就直接滚到目标位置，避免"先中间再跳"的闪烁。
   (function initialScroll() {
     const hash = window.location.hash;
     const hubSource = sessionStorage.getItem('hub-source');
@@ -48,7 +38,6 @@
     requestAnimationFrame(() => root.classList.remove('loading'));
   })();
 
-  // load 事件：保护性二次校正（图片/字体加载完成可能触发浏览器再次滚动）
   window.addEventListener('load', () => {
     const hash = window.location.hash;
     if (hash === '#section-top') {
@@ -56,19 +45,10 @@
     } else if (hash === '#section-bottom') {
       sectionBottom.scrollIntoView({ behavior: 'instant', block: 'start' });
     }
-    // 没 hash 的情况下不再二次滚动（避免抢走用户已经手动滚动到的位置）
 
-    // Reveal the falling-seed anim-layer only AFTER all sub-resources have
-    // loaded (including the async middle-garden.svg <object>). Without this,
-    // the inline 5 seeds render before the garden image arrives, so the
-    // user sees seeds floating against an empty cream background for a few
-    // hundred ms. CSS handles the fade-in.
     document.querySelector('.bottom-anim-layer')?.classList.add('garden-loaded');
   });
 
-  /* ----------------------------------------------------------
-     2. Scroll cue clicks
-     ---------------------------------------------------------- */
   document.querySelectorAll('[data-scroll-target]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
@@ -80,9 +60,6 @@
     });
   });
 
-  /* ----------------------------------------------------------
-     3. Enter Hub button
-     ---------------------------------------------------------- */
   document.querySelectorAll('[data-enter-hub]').forEach(btn => {
     btn.addEventListener('click', () => {
       const source = btn.dataset.enterHub;
@@ -91,9 +68,6 @@
     });
   });
 
-  /* ----------------------------------------------------------
-     4. Keyboard navigation
-     ---------------------------------------------------------- */
   document.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     const currentScroll = window.scrollY;
@@ -121,14 +95,6 @@
     }
   });
 
-  /* ============================================================
-     5. SCROLL-BOUND ANIMATIONS (per memory #27)
-     - All translation only, no 3D/folding
-     - Reversible: scroll back → animation reverses
-     - scroll progress drives intermediate state
-     ============================================================ */
-
-  // Get the embedded SVG document once it loads
   let svgDoc = null;
   const middleArt = document.querySelector('.middle-art object');
 
@@ -147,23 +113,18 @@
     middleArt.addEventListener('load', () => { svgDoc = middleArt.contentDocument; });
   }
 
-  // Easing helpers
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const easeOut = t => 1 - Math.pow(1 - t, 3);
 
-  // Map scrollY → 3 progress values: top-progress (0..1 between top and middle),
-  // bottom-progress (0..1 between middle and bottom)
   function getScrollProgress() {
     const sy = window.scrollY;
     const vh = window.innerHeight;
-    // 0 = at top, vh = at middle, 2vh = at bottom
     const topProgress = clamp((vh - sy) / vh, 0, 1);   // 1 when at top, 0 when at middle
     const bottomProgress = clamp((sy - vh) / vh, 0, 1); // 0 when at middle, 1 when at bottom
     return { topProgress, bottomProgress, sy, vh };
   }
 
-  // RAF-throttled animation loop
   let rafId = null;
   function onScroll() {
     if (rafId) return;
@@ -176,15 +137,10 @@
   function updateScrollAnimations() {
     const { topProgress, bottomProgress, sy, vh } = getScrollProgress();
 
-    // === Middle SVG parallax + lift ===
-    // When scrolling UP toward top page: flowers/garden shift up + fade
-    // When scrolling DOWN toward bottom page: flowers/garden shift down + fade
     const art = document.querySelector('.middle-art');
     if (art) {
-      // Upward push when scrolling to top
       const upShift = -topProgress * 80; // px translation
       const upOpacity = 1 - easeOut(topProgress) * 0.7;
-      // Downward push when scrolling to bottom
       const downShift = bottomProgress * 80;
       const downOpacity = 1 - easeOut(bottomProgress) * 0.5;
       const finalShift = upShift + downShift;
@@ -193,7 +149,6 @@
       art.style.opacity = finalOpacity;
     }
 
-    // === Top page legal text fade in ===
     const topContent = document.querySelector('.top-content');
     if (topContent) {
       const t = easeOut(topProgress);
@@ -201,7 +156,6 @@
       topContent.style.opacity = t;
     }
 
-    // === Bottom page tagline fade in ===
     const bottomPlaceholder = document.querySelector('.bottom-placeholder');
     if (bottomPlaceholder) {
       const t = easeOut(bottomProgress);
@@ -209,32 +163,10 @@
       bottomPlaceholder.style.opacity = t;
     }
 
-    // === Falling petal effect on top transition === DISABLED
-    // Previously: spawned 12 drifting petal SVGs when scrolling up toward top page.
-    // Removed because user reported the petals were noise leftover during
-    // both directions of scroll — see also: rising flowers below.
-    // updateFallingPetals(topProgress);
-
-    // === Rising flower effect on bottom transition === DISABLED
-    // Previously: spawned 14 mini-hibiscus SVGs rising from the bottom of the
-    // bottom section. The 5-petal shape from a distance read as a "rectangular
-    // flower cluster" which confused the kl-map cluster-removal investigation
-    // for several iterations. The bottom-animation.js Phase-1/2/3 narrative
-    // (falling seeds → bloom field → tagline plate) is the intended animation;
-    // this rising-flowers effect was duplicative scroll-driven decoration.
-    // updateRisingFlowers(bottomProgress);
-
-    // Defensive: if either container was already created from a prior session
-    // or from a hot-reload, hide it immediately so leftover petals/flowers
-    // don't persist on screen.
     if (petalsContainer) petalsContainer.style.display = 'none';
     if (risingContainer) risingContainer.style.display = 'none';
   }
 
-  /* ----------------------------------------------------------
-     Falling petals — when scrolling toward top page
-     Drift downward from top, fading in as scroll progresses
-     ---------------------------------------------------------- */
   let petalsContainer = null;
   function ensurePetalsContainer() {
     if (petalsContainer) return petalsContainer;
@@ -245,7 +177,6 @@
       overflow: hidden;
     `;
     sectionTop.appendChild(petalsContainer);
-    // Create N petal SVGs (5 colors × random positions)
     const colors = ['#d63031','#e67e22','#27ae60','#2980b9','#7f8c8d'];
     for (let i = 0; i < 12; i++) {
       const petal = document.createElement('div');
@@ -280,7 +211,6 @@
     for (let i = 0; i < petals.length; i++) {
       const petal = petals[i];
       const delay = parseFloat(petal.dataset.delay);
-      // Local progress: each petal starts at its delay
       const local = clamp((topProgress - delay * 0.3) / (1 - delay * 0.3), 0, 1);
       const y = local * vh * 1.05;
       const x = Math.sin(local * Math.PI * 2 + i) * 30;
@@ -291,10 +221,6 @@
     }
   }
 
-  /* ----------------------------------------------------------
-     Rising flowers — when scrolling toward bottom page
-     Flowers emerge from below and float up
-     ---------------------------------------------------------- */
   let risingContainer = null;
   function ensureRisingContainer() {
     if (risingContainer) return risingContainer;
@@ -320,7 +246,6 @@
         width: ${size}px; height: ${size}px;
         opacity: 0;
       `;
-      // Mini hibiscus (5 petals + center)
       flower.innerHTML = `<svg viewBox="-30 -30 60 60" width="${size}" height="${size}">
         ${[0,72,144,216,288].map((r,j) => 
           `<path d="M0,0 C-12,-5 -22,-19 -19,-32 C-17,-42 -7,-44 0,-35 C7,-44 17,-42 19,-32 C22,-19 12,-5 0,0Z" fill="${color}" opacity="${0.55 + j*0.04}" transform="rotate(${r})"/>`).join('')}
@@ -353,9 +278,7 @@
     }
   }
 
-  // Hook scroll listener
   window.addEventListener('scroll', onScroll, { passive: true });
-  // Initial state
   updateScrollAnimations();
 
 })();

@@ -1,14 +1,7 @@
-/* ============================================================
-   Main Stylesheet — index.html (3-section SPA)
-   ============================================================ */
 
-/* === SPA root === */
+
 .spa-root {
-  /* 3 stacked sections, each 100vh. Middle is the entry; we scroll to it on
-     page load. position:relative makes this the containing block for the
-     .top-anim-layer (which sits as a sibling of the sections at the end of
-     .spa-root) so its top:0 height:200vh anchors to section--top's top edge
-     and ends at section--bottom's top edge. */
+  
   position: relative;
 }
 
@@ -19,38 +12,30 @@
   overflow: hidden;
 }
 
-/* ============================================================
-   SECTION: TOP (国家话语) — Navy + Gold
-   Adapted from top_page_navy_mockup.html
-   ============================================================ */
 .section--top {
   background: var(--top-navy);
   color: var(--top-cream);
   font-family: var(--font-ms-en);
   display: flex;
-  align-items: center;            /* center content vertically when it fits */
+  align-items: center;            
   justify-content: center;
   padding: var(--space-md) var(--space-md);
-  overflow-y: auto;               /* allow scroll within section if too tall */
+  overflow-y: auto;               
 }
 
 .top-content {
   width: 100%;
-  max-width: 920px;                /* widened — works at normal browser zoom (was 620, looked too narrow) */
+  max-width: 920px;                
   padding: var(--space-sm) var(--space-md);
   margin: 0 auto;
-  /* Group request: scale the whole top-page content (flowers + text block)
-     down to 75% so the emblem + UUK 3 stack doesn't dominate the page. The
-     up-scroll animation's survivor-flower endpoints are dynamically calibrated
-     to the placeholder's RENDERED rect (after this transform applies), so
-     they auto-align regardless of scale. */
+  
   transform: scale(0.75);
   transform-origin: center center;
 }
 
 .top-label {
   text-align: center;
-  font-size: var(--text-caption);        /* 12px — was --text-micro (11px) */
+  font-size: var(--text-caption);        
   letter-spacing: 0.4em;
   color: var(--top-cream-label);
   margin: 0 0 14px;
@@ -67,26 +52,19 @@
 
 .top-flowers {
   display: block;
-  max-width: 320px;               /* enlarged — matches widened text column */
+  max-width: 320px;               
   width: 100%;
   margin: 0 auto var(--space-xs);
-  /* Up-scroll animation NOTE: js/top-animation.js controls this element's
-     opacity at runtime — invisible during the up-scroll until the very
-     last 0.05 of progress, when it fades in to swap with the anim-layer's
-     MS-green + Jawi-gray survivors. Default opacity:1 is fine here because
-     on entry-page loads the placeholder sits off-screen in section--top
-     during the brief pre-init window; on direct top-page loads (hub or
-     #section-top hash) the resting state IS opacity:1 — exactly what
-     CSS gives for free if JS were ever disabled. */
+  
 }
 
 .top-flower-labels {
   text-align: center;
-  margin: 0 0 var(--space-md);    /* reduced from xl */
+  margin: 0 0 var(--space-md);    
 }
 
 .top-flower-labels .primary {
-  font-size: var(--text-caption);        /* 12px — was --text-micro (11px) */
+  font-size: var(--text-caption);        
   letter-spacing: 0.25em;
   color: var(--top-cream);
 }
@@ -100,7 +78,7 @@
 
 .top-heading {
   text-align: center;
-  font-size: var(--text-h3);             /* 20px — was --text-caption (12px), far too small */
+  font-size: var(--text-h3);             
   letter-spacing: 0.25em;
   color: var(--top-gold);
   margin: 0 0 4px;
@@ -108,7 +86,7 @@
 
 .top-subtitle {
   text-align: center;
-  font-size: var(--text-body);           /* 16px — was --text-caption (12px) */
+  font-size: var(--text-body);           
   color: var(--top-cream-muted);
   margin: 0 0 var(--space-sm);
   font-family: var(--font-serif);
@@ -116,16 +94,16 @@
 }
 
 .top-legal {
-  max-width: 720px;                      /* widened — matches widened .top-content column */
+  max-width: 720px;                      
   margin: 0 auto;
   font-family: var(--font-serif);
-  font-size: 18px;                       /* readable body for UUK 3 clauses */
+  font-size: 18px;                       
   line-height: 1.7;
   color: var(--top-cream);
 }
 
 .top-legal p {
-  margin: 0 0 10px;               /* tighter */
+  margin: 0 0 10px;               
   padding-left: 28px;
   text-indent: -28px;
 }
@@ -139,7 +117,7 @@
 }
 
 .top-footer-rule {
-  max-width: 720px;                      /* widened to match .top-legal */
+  max-width: 720px;                      
   height: 1px;
   background: var(--top-gold-line);
   margin: var(--space-md) auto var(--space-xs);
@@ -147,7 +125,7 @@
 
 .top-footer-meta {
   text-align: center;
-  font-size: var(--text-caption);        /* 12px — was 10px */
+  font-size: var(--text-caption);        
   letter-spacing: 0.18em;
   color: var(--top-cream-muted);
   margin: 0;
@@ -155,9 +133,6 @@
 
 .top-footer-meta + .top-footer-meta { margin-top: 5px; }
 
-/* Hub entry button — poppyfield minimal: ONLY arrow, no chunky background.
-   Per memory #30 (5/31): "只有箭头线条，不加任何背景圆/胶囊/容器"
-   Per memory #16: 整站扁平插画水彩风, no jarring UI containers */
 .enter-hub-btn {
   position: absolute;
   top: var(--space-md);
@@ -182,11 +157,10 @@
 
 .enter-hub-btn svg {
   display: block;
-  width: 37px;                   /* unified with all site-wide nav chevrons (scroll-cue, middle-scroll-up/down, hub-corner-arrow, sidebar-back-link) */
+  width: 37px;                   
   height: 37px;
 }
 
-/* Scroll cue — down arrow */
 .scroll-cue {
   position: absolute;
   bottom: var(--space-md);
@@ -211,22 +185,15 @@
   50% { transform: translateX(-50%) translateY(-8px); opacity: 1; }
 }
 
-/* ============================================================
-   SECTION: MIDDLE (Landing) — Watercolor garden, fills viewport
-   ============================================================ */
 .section--middle {
   background: var(--neutral-cream);
   position: relative;
-  /* overflow inherits 'hidden' from .section base — the top-anim-layer now
-     lives outside section--middle (as a direct child of .spa-root), so this
-     section no longer needs to leak its descendants across boundaries. The
-     previous overflow:visible was the systemic root cause of strange
-     horizontal "bands" appearing at section edges. */
+  
 }
 
 .middle-art {
   position: absolute;
-  inset: 0;                /* fill the section completely */
+  inset: 0;                
   width: 100%;
   height: 100%;
 }
@@ -238,28 +205,20 @@
   display: block;
 }
 
-/* Force SVG to cover the viewport like background-size:cover */
 .middle-art object {
   object-fit: cover;
   object-position: center bottom;
 }
 
-/* ============================================================
-   5-Color Flower Switcher — Per memory #29
-   - Big enough to be recognizably interactive (not decorative)
-   - Labels next to each flower (self-referential script)
-   - NO hover animation (cause of shaking bug)
-   - Click-only switching
-   ============================================================ */
 .lang-switcher {
   position: fixed;
   top: 18px;
   right: 18px;
-  width: 220px;            /* much bigger than before (was 120px) */
+  width: 220px;            
   height: 220px;
   z-index: 100;
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.10));
-  pointer-events: none;    /* let svg children handle pointer events selectively */
+  pointer-events: none;    
 }
 
 .lang-switcher svg {
@@ -269,21 +228,20 @@
   pointer-events: auto;
 }
 
-/* Click target — NO transform/scale on hover (this is what caused the shake) */
 .lang-petal {
   cursor: pointer;
   outline: none;
 }
 
 .lang-petal-hit {
-  /* The clickable circle behind each flower — invisible but capturable */
+  
   fill: transparent;
   cursor: pointer;
   transition: fill 0.15s ease;
 }
 
 .lang-petal:hover .lang-petal-hit {
-  fill: rgba(0, 0, 0, 0.03);   /* whisper-subtle background, NO movement */
+  fill: rgba(0, 0, 0, 0.03);   
 }
 
 .lang-petal:focus-visible .lang-petal-hit {
@@ -304,16 +262,11 @@
 .lang-label--jawi { font-family: var(--font-jawi); font-size: 13px; }
 
 .lang-switcher.scrolled-fade {
-  /* Used by JS to fade switcher when scrolling to top page (legend fades with flowers) */
+  
   opacity: 0.15;
   transition: opacity 0.6s ease;
 }
 
-/* ============================================================
-   Middle Page Scroll Arrows — poppyfield minimal
-   ONLY arrow lines. NO pill background. NO text labels.
-   Per memory #30 (5/31): "只有箭头线条，不加任何背景圆/胶囊/容器"
-   ============================================================ */
 .middle-scroll-up,
 .middle-scroll-down {
   position: absolute;
@@ -365,11 +318,8 @@
   50% { transform: translateX(-50%) translateY(8px); }
 }
 
-/* ============================================================
-   SECTION: BOTTOM (民间多语) — Bright peach/coral, festive mood
-   ============================================================ */
 .section--bottom {
-  background: rgba(233, 205, 76, 0.75);             /* RGB(233, 205, 76) — warm yellow at 75% alpha: more present than the 0.55 (too pale) but more breathable than the original solid 1.0 */
+  background: rgba(233, 205, 76, 0.75);             
   color: var(--bottom-warm-ink);
   display: flex;
   align-items: center;
@@ -378,25 +328,10 @@
   text-align: center;
   padding: var(--space-2xl) var(--space-lg);
   position: relative;
-  /* overflow: visible — the .bottom-anim-layer uses top:-100vh to extend its
-     SVG upward into the middle-section area so the 5 seeds are visible in
-     front of the entry-page garden. With overflow:hidden (as on the .section
-     base class) that upward extension gets clipped and the seeds disappear. */
+  
   overflow: visible;
 }
 
-/* ===== Bottom page — 3-layer animation stack =====
-   Layer 0 .bottom-map           — kl-map.svg via <object>, z=1
-   Layer 1 .bottom-anim-layer    — falling seeds + bloom field, z=2
-   Layer 2 .bottom-tagline-plate — Ro-iro text on Unohana plate, z=3
-
-   Structure mirrors top page state discourse inversely:
-   top    = vertical UUK law + 2 national flowers (compact, official)
-   bottom = spread KL map + 60 + 150 civilian flowers + plate manifesto (distributed, people)
-   ============================================================ */
-
-/* Layer 0: KL map base — visible at 0.78 opacity so the map reads strongly
-   while still letting the rgba(0.55) yellow background tint show through. */
 .bottom-map {
   position: absolute;
   inset: 0;
@@ -413,35 +348,23 @@
   pointer-events: none;
 }
 
-/* Phase 3 hook — map fades to almost fully transparent so tagline plate dominates */
 .bottom-map.faded {
   opacity: 0.04;
 }
 
-/* Phase 3 anim-layer fade: see the rule further down (after .garden-loaded). */
-
-/* Layer 1: animation SVG overlay — seeds + bloom share the kl-map's viewBox */
 .bottom-anim-layer {
   position: absolute;
-  /* Extend UP from bottom section into middle section so seeds are visible
-     IN FRONT OF the entry page (the garden) before scrolling reaches the
-     bottom section. top:-100vh places the top edge at the start of the
-     middle section; height:200vh covers middle+bottom together. */
+  
   top: -100vh;
   left: 0;
   right: 0;
   height: 200vh;
-  /* z-index high so seeds render on TOP of the middle-garden SVG (palms,
-     animals, KEDAI shops). Without this, seeds get covered. */
+  
   z-index: 10;
   pointer-events: none;
   width: 100%;
   overflow: visible;
-  /* Loading-order fix: middle-garden.svg is loaded asynchronously as an
-     <object>; without this, the inline anim-layer renders FIRST, so the
-     user briefly sees the 5 seeds floating against a blank cream background
-     before the garden image arrives. Start invisible; main.js adds
-     .garden-loaded on window.load (after all sub-resources finish). */
+  
   opacity: 0;
   transition: opacity 0.5s ease-out 0.15s;
 }
@@ -449,27 +372,17 @@
   opacity: 1;
 }
 
-/* Phase 3 fade — MUST come AFTER .garden-loaded in source order so it
-   wins the cascade (both rules have specificity 0,2,0). Earlier this rule
-   sat before .garden-loaded; .garden-loaded won and forced opacity:1
-   during Phase 3, leaving the bloom flowers fully visible and covering
-   the tagline plate. */
 .bottom-anim-layer.faded {
   opacity: 0.10;
   transition: opacity 1.4s ease-out;
 }
 
-/* Falling seeds — JS drives `transform` via the data-target-* attrs and scroll progress.
-   Default state: at start position with scale 0 (invisible). Transitions live on the
-   <use> element so values interpolated by JS animate smoothly. */
 .falling-seed {
   transition: transform 0.08s linear;
-  /* Subtle glow so seeds read as "the chosen 5" against the map */
+  
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
 }
 
-/* Bloom flowers — JS spawns <use> inside #bloom-field. CSS animation handles the fade-in
-   so JS doesn't have to RAF every flower individually. */
 .bloom-flower {
   opacity: 0;
   animation: bloom-fade-in 0.6s ease-out forwards;
@@ -481,38 +394,25 @@
   100% { opacity: 0.92; }
 }
 
-/* Layer 2: Tagline plate (Phase 3) — warm palette from nipponcolors,
-   tuned to harmonize with the peach/coral bottom-page background.
-   Plate is hidden by default; JS adds .visible during Phase 3. */
 .bottom-tagline-plate {
   position: relative;
-  /* z-index 20 — must be ABOVE .bottom-anim-layer (z=10) so the bloom
-     flowers don't paint over the plate during Phase 3. Earlier this was
-     z=3 which placed the plate BEHIND the anim-layer; the bloom flowers
-     covered the tagline text. */
+  
   z-index: 20;
 
-  /* Plate background — 練色 Neri-iro #F0EAD6 (warm parchment cream)
-     harmonizes with the peach gradient instead of cutting against it. */
   background: #F0EAD6;
-  border: 1px solid rgba(86, 74, 56, 0.10);     /* very soft 焦茶 outline */
+  border: 1px solid rgba(86, 74, 56, 0.10);     
 
-  /* Rounded edges + layered shadow for depth ("有层次感") */
   border-radius: 20px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),    /* subtle top-edge highlight */
-    0 1px 3px   rgba(86, 74, 56, 0.10),         /* close contact shadow */
-    0 6px 18px  rgba(86, 74, 56, 0.16),         /* mid shadow */
-    0 18px 44px rgba(86, 74, 56, 0.22);         /* far/deep shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),    
+    0 1px 3px   rgba(86, 74, 56, 0.10),         
+    0 6px 18px  rgba(86, 74, 56, 0.16),         
+    0 18px 44px rgba(86, 74, 56, 0.22);         
 
-  /* Sizing — significantly bigger so 5-language stack reads with confidence */
   width: max-content;
   max-width: min(1200px, 92vw);
   padding: clamp(36px, 5vw, 64px) clamp(48px, 6vw, 88px);
 
-  /* Initially hidden — JS reveals during Phase 3.
-     scale(0.75) applied per group request to bring plate proportions in
-     line with the page; translateY 14px → 0 keeps the existing slide-in. */
   opacity: 0;
   transform: translateY(14px) scale(0.75);
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
@@ -523,7 +423,6 @@
   transform: translateY(0) scale(0.75);
 }
 
-/* Tagline stack — 5 langs equal weight, MS → Jawi → ZH → TA → EN */
 .bottom-tagline-stack {
   display: flex;
   flex-direction: column;
@@ -531,8 +430,6 @@
   gap: 0.55em;
 }
 
-/* Each line — 焦茶 Koge-cha #564A38 (warm dark brown, harmonizes with cream plate)
-   Contrast vs Neri-iro #F0EAD6 ≈ 8.4:1, comfortably above WCAG AAA (7:1). */
 .bottom-tagline-line {
   font-family: var(--font-serif);
   font-size: clamp(18px, 2.2vw, 26px);
@@ -565,17 +462,11 @@
 
 .bottom-tagline-line.lang-en {
   font-style: italic;
-  color: rgba(86, 74, 56, 0.68);               /* 焦茶 at 68% — EN is utility, not voice */
+  color: rgba(86, 74, 56, 0.68);               
 }
 
-/* ============================================================
-   Loading state (avoid flash before JS scrolls to middle)
-   ============================================================ */
 .spa-root.loading { visibility: hidden; }
 
-/* ============================================================
-   Utility classes
-   ============================================================ */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -588,12 +479,6 @@
   border: 0;
 }
 
-/* ============================================================
-   Language-Key i-Button + Popup
-   Auto-injected by js/i18n.js. Same visual treatment as
-   secondary pages (CSS duplicated here so index.html, which
-   doesn't load secondary.css, can render the button correctly).
-   ============================================================ */
 .lang-info-btn {
   position: fixed;
   top: 300px;
@@ -684,35 +569,17 @@
   font-style: italic;
 }
 
-/* ============================================================
-   Top page UP-SCROLL animation — .top-anim-layer
-   ============================================================
-   5 flowers rise from the entry page into the top page when the user
-   scrolls UP. 3 vanish (orange/red/blue, petals scatter + color fades);
-   2 survive (green/gray) and land where .top-flowers placeholder sits.
-
-   Layer is a DIRECT CHILD of .spa-root (not inside any section), placed
-   AFTER all three sections in the DOM so it paints last — naturally
-   overlaying section--top + section--middle without needing section
-   overflow:visible (which previously caused horizontal "bands" at
-   section boundaries). With .spa-root position:relative, top:0 anchors
-   to section--top's top edge, and height:200vh ends exactly at
-   section--bottom's top edge.
-*/
 .top-anim-layer {
   position: absolute;
-  top: 0;                         /* layer's top edge at the start of section--top (= .spa-root top) */
+  top: 0;                         
   left: 0;
   right: 0;
-  height: 200vh;                  /* covers section--top + section--middle */
+  height: 200vh;                  
   width: 100%;
-  z-index: 10;                    /* paints over section content; not relevant for ordering since DOM order already wins */
+  z-index: 10;                    
   pointer-events: none;
   overflow: visible;
-  /* Loading-order fix mirroring .bottom-anim-layer: start invisible, JS
-     adds .garden-loaded on window.load so we don't briefly show the 5
-     flowers floating against a blank background before middle-garden.svg
-     resolves. */
+  
   opacity: 0;
   transition: opacity 0.5s ease-out 0.15s;
 }
@@ -720,13 +587,11 @@
   opacity: 1;
 }
 
-/* Petal & body baseline: smooth attribute interpolation while JS drives
-   scroll-bound transforms. Same easing as .falling-seed in bottom layer. */
 .rf-petal,
 .rf-body {
   transition: transform 0.08s linear;
 }
 .rf-petal {
-  /* faint drop-shadow for separation from the navy top page background */
+  
   filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.18));
 }

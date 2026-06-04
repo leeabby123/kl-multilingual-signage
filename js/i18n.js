@@ -275,14 +275,16 @@
     // Now consistent regardless of navigation order.
     document.documentElement.setAttribute('dir', currentLang === 'jawi' ? 'rtl' : 'ltr');
 
+    // Auto-inject i-button on every page that loads this script (runs
+    // BEFORE the lang-switcher early-return so pages without a switcher —
+    // e.g. index.html — still get the color-language key).
+    injectLangInfoButton();
+
     if (!placeholder) return;
 
     placeholder.innerHTML = '';
     placeholder.appendChild(buildSwitcher(currentLang));
     attachHandlers(placeholder);
-
-    // Auto-inject i-button on every page that loads this script
-    injectLangInfoButton();
   }
 
   if (document.readyState === 'loading') {

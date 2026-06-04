@@ -476,6 +476,15 @@ html:not([data-lang]) [data-lang-content="en"] {
   color: var(--neutral-gray-700);
 }
 
+/* Dedication is now 3 paragraphs (per memory: split at semicolons,
+   each its own paragraph, blank-line spacing between). */
+.ack-text p {
+  margin: 0 0 1.6em;
+}
+.ack-text p:last-child {
+  margin-bottom: 0;
+}
+
 .ack-divider {
   width: 32px;
   height: 1px;

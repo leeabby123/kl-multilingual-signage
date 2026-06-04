@@ -562,3 +562,99 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* ============================================================
+   Language-Key i-Button + Popup
+   Auto-injected by js/i18n.js. Same visual treatment as
+   secondary pages (CSS duplicated here so index.html, which
+   doesn't load secondary.css, can render the button correctly).
+   ============================================================ */
+.lang-info-btn {
+  position: fixed;
+  top: 300px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--nav-arrow-color, #8b6914);
+  background: rgba(255, 250, 240, 0.94);
+  color: var(--nav-arrow-color, #8b6914);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 99;
+  box-shadow: 0 2px 8px rgba(110, 58, 32, 0.10);
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  font-family: Georgia, 'Noto Serif', serif;
+}
+.lang-info-btn:hover {
+  background: var(--pink-pale, #fcefe4);
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(110, 58, 32, 0.16);
+}
+.lang-info-btn:focus-visible {
+  outline: 2px solid var(--pink-deep, #b04572);
+  outline-offset: 3px;
+}
+.lang-info-btn svg { width: 24px; height: 24px; }
+
+.lang-info-popup {
+  position: fixed;
+  top: 300px;
+  right: 78px;
+  width: 300px;
+  background: var(--paper, #fffaf0);
+  border: 1.5px solid var(--nav-arrow-color, #8b6914);
+  border-radius: 10px;
+  padding: 14px 18px;
+  box-shadow: 0 12px 32px rgba(110, 58, 32, 0.16);
+  z-index: 99;
+  font-family: Georgia, 'Noto Serif', serif;
+  animation: lang-info-fade-in 0.22s ease-out;
+}
+.lang-info-popup[hidden] { display: none; }
+
+@keyframes lang-info-fade-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.lang-info-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--nav-arrow-color, #8b6914);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(139, 105, 20, 0.30);
+}
+.lang-info-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.lang-info-list li {
+  display: grid;
+  grid-template-columns: 12px auto 1fr;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+}
+.lang-info-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.lang-info-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+.lang-info-en {
+  color: var(--ink-soft);
+  text-align: right;
+  font-size: 12px;
+  font-style: italic;
+}

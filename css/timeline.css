@@ -1,16 +1,10 @@
 /* ============================================================
-   Timeline River — v2 rewrite (6/4)
-   - Diagonal closed-bank fill river (no more segment seams)
-   - River extends past viewBox edges (continuity with past/future)
-   - Removed max-width: none override (fixes lede centering)
-   - SVG overflow: visible (banks can spill past viewBox 680)
-   - RTL-aware text-align via `start`/logical properties
+   Timeline River — v3 rewrite (6/4 late)
+   Layout principle: nodes sit ALONGSIDE the river, not on it.
+   River runs central (x=200-420 zigzag), nodes alternate L/R outside.
+   River start (-20,30) past top-left wrap edge; end (720,1730) past bottom-right.
    ============================================================ */
 
-/* ------------------------------------------------------------
-   Page container — let secondary-page handle width/offset.
-   No override of max-width: layout matches all other secondary pages.
-   ------------------------------------------------------------ */
 .timeline-river-page {
   padding-top: 2rem;
   padding-bottom: 4rem;
@@ -24,29 +18,31 @@
 .timeline-lede {
   max-width: 620px;
   margin: 0 auto 2.5rem;
-  text-align: start;          /* respects dir: LTR → left, RTL → right */
+  text-align: start;
   color: var(--color-text-secondary, #5f5e5a);
   font-size: 0.95rem;
   line-height: 1.7;
 }
 
 /* ------------------------------------------------------------
-   River container — 680 × 1700 canvas centered in secondary-page
+   River container — 680 × 1750 canvas; nothing clips overflowing SVG
    ------------------------------------------------------------ */
 .timeline-river-wrap {
   position: relative;
   width: 680px;
-  height: 1700px;
+  height: 1750px;
   margin: 0 auto;
+  /* allow river to extend past the 680×1750 wrap edges */
+  overflow: visible;
 }
 
 .timeline-river {
   position: absolute;
   inset: 0;
   width: 680px;
-  height: 1700px;
+  height: 1750px;
   display: block;
-  overflow: visible;          /* allow river to flow past viewBox edges */
+  overflow: visible;
   opacity: 0;
   transition: opacity 1.2s ease-in;
 }
@@ -55,24 +51,21 @@
   opacity: 1;
 }
 
-.river-path {
-  pointer-events: none;
-}
-
+.river-path,
 .river-accent {
   pointer-events: none;
 }
 
 /* ------------------------------------------------------------
-   Marker system — flower for participated, dot for not
+   Marker system — flower OR dot per member
    ------------------------------------------------------------ */
 .node-markers {
   opacity: 0;
   transition: opacity 0.6s ease-out;
 }
 
-.node-markers[data-level="preamble"] { --node-opacity: 0.55; }
-.node-markers[data-level="mid"]      { --node-opacity: 0.82; }
+.node-markers[data-level="preamble"] { --node-opacity: 0.6; }
+.node-markers[data-level="mid"]      { --node-opacity: 0.85; }
 .node-markers[data-level="key"]      { --node-opacity: 1; }
 
 .node-markers.revealed { opacity: var(--node-opacity, 1); }
@@ -101,37 +94,46 @@
   stroke-dasharray: 2 2;
 }
 
-/* Dot variant — faded, brightens on hover */
 .marker--dot .dot-mark {
   opacity: 0.6;
   transition: opacity 0.2s;
 }
-.marker--dot:hover .dot-mark { opacity: 0.92; }
+.marker--dot:hover .dot-mark { opacity: 0.95; }
 
 /* ------------------------------------------------------------
-   Node text labels — absolutely positioned, no card background
-   `--x` is direction-aware: LTR = distance from left, RTL = from right
+   Node text labels — positioned to the side of the river/markers
+   `--x` is LTR distance from left, mirrored under RTL
    ------------------------------------------------------------ */
 .node-label {
   position: absolute;
   top: var(--top);
   left: var(--x);
-  width: 260px;
+  width: 230px;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Mirror to right side under RTL (Jawi) */
+/* LTR side-styling: left-side nodes right-align so text "leans toward" the river;
+   right-side nodes left-align for the same reason. Both readable. */
+.node-label[data-side="L"] {
+  text-align: right;
+}
+.node-label[data-side="R"] {
+  text-align: left;
+}
+
+/* Under RTL (Jawi), mirror everything: positions flip and side semantics flip */
 [dir="rtl"] .node-label {
   left: auto;
   right: var(--x);
-  text-align: right;
 }
+[dir="rtl"] .node-label[data-side="L"] { text-align: left; }
+[dir="rtl"] .node-label[data-side="R"] { text-align: right; }
 
 /* Three-tier reveal opacity */
-.node-label--preamble.revealed { opacity: 0.6; }
-.node-label--mid.revealed      { opacity: 0.85; }
+.node-label--preamble.revealed { opacity: 0.65; }
+.node-label--mid.revealed      { opacity: 0.88; }
 .node-label--key.revealed      { opacity: 1; }
 
 .node-label.revealed { transform: translateY(0); }
@@ -142,7 +144,7 @@
   color: var(--color-text-secondary, #888780);
   font-weight: 500;
   margin-bottom: 6px;
-  text-align: start;
+  unicode-bidi: plaintext;
 }
 
 .node-label--key .node-tag {
@@ -151,37 +153,29 @@
 
 .node-title {
   font-family: Georgia, 'Noto Serif SC', 'Noto Serif', serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--color-text-primary, #2c2c2a);
   margin: 0 0 6px;
-  line-height: 1.4;
-  text-align: start;
+  line-height: 1.35;
+  unicode-bidi: plaintext;
 }
 
 .node-label--key .node-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .node-desc {
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 11.5px;
+  line-height: 1.5;
   color: var(--color-text-secondary, #5f5e5a);
   margin: 0;
-  text-align: start;
-}
-
-/* RTL: Jawi/Arabic numbers + Latin product names need LTR runs inline.
-   `unicode-bidi: plaintext` lets each text run pick its own direction. */
-[dir="rtl"] .node-tag,
-[dir="rtl"] .node-title,
-[dir="rtl"] .node-desc {
   unicode-bidi: plaintext;
 }
 
 /* ------------------------------------------------------------
-   Tooltip (Layer 1)
+   Tooltip
    ------------------------------------------------------------ */
 .member-tooltip {
   position: absolute;
@@ -213,7 +207,7 @@
 }
 
 /* ------------------------------------------------------------
-   Trace banner (Layer 2)
+   Trace banner
    ------------------------------------------------------------ */
 .trace-banner {
   position: fixed;
@@ -287,9 +281,6 @@ body.trace-mode .node-label.trace-untouched {
   font-weight: 500;
 }
 
-/* ------------------------------------------------------------
-   Reduced motion
-   ------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
   .timeline-river,
   .node-markers,

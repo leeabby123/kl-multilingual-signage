@@ -59,6 +59,14 @@
   max-width: 320px;               /* enlarged — matches widened text column */
   width: 100%;
   margin: 0 auto var(--space-xs);
+  /* Up-scroll animation NOTE: js/top-animation.js controls this element's
+     opacity at runtime — invisible during the up-scroll until the very
+     last 0.05 of progress, when it fades in to swap with the anim-layer's
+     MS-green + Jawi-gray survivors. Default opacity:1 is fine here because
+     on entry-page loads the placeholder sits off-screen in section--top
+     during the brief pre-init window; on direct top-page loads (hub or
+     #section-top hash) the resting state IS opacity:1 — exactly what
+     CSS gives for free if JS were ever disabled. */
 }
 
 .top-flower-labels {
@@ -198,7 +206,12 @@
 .section--middle {
   background: var(--neutral-cream);
   position: relative;
-  overflow: hidden;
+  /* overflow: visible — needed so .top-anim-layer (positioned absolute with
+     top:-100vh height:200vh inside this section) can render its upper half
+     in front of the top page. With overflow:hidden (the .section base class
+     default) the upward extension gets clipped and the rising flowers would
+     disappear as soon as they leave the entry page boundary. */
+  overflow: visible;
 }
 
 .middle-art {
@@ -657,4 +670,49 @@
   text-align: right;
   font-size: 12px;
   font-style: italic;
+}
+
+/* ============================================================
+   Top page UP-SCROLL animation — .top-anim-layer
+   ============================================================
+   5 flowers rise from the entry page into the top page when the user
+   scrolls UP. 3 vanish (red/orange/blue, petals scatter + color fades);
+   2 survive (green/gray) and land where .top-flowers placeholder sits.
+
+   Layer is placed INSIDE section--middle (not section--top) so that
+   section--middle's later position in the DOM gives the SVG natural
+   z-stacking ABOVE section--top's content. The layer extends UP into
+   the top section via top:-100vh height:200vh, requiring section--middle
+   to have overflow:visible (see .section--middle rule above).
+*/
+.top-anim-layer {
+  position: absolute;
+  top: -100vh;                    /* layer's top edge at the start of section--top */
+  left: 0;
+  right: 0;
+  height: 200vh;                  /* covers section--top + section--middle */
+  width: 100%;
+  z-index: 10;                    /* above middle-art garden, below nav arrows */
+  pointer-events: none;
+  overflow: visible;
+  /* Loading-order fix mirroring .bottom-anim-layer: start invisible, JS
+     adds .garden-loaded on window.load so we don't briefly show the 5
+     flowers floating against a blank background before middle-garden.svg
+     resolves. */
+  opacity: 0;
+  transition: opacity 0.5s ease-out 0.15s;
+}
+.top-anim-layer.garden-loaded {
+  opacity: 1;
+}
+
+/* Petal & body baseline: smooth attribute interpolation while JS drives
+   scroll-bound transforms. Same easing as .falling-seed in bottom layer. */
+.rf-petal,
+.rf-body {
+  transition: transform 0.08s linear;
+}
+.rf-petal {
+  /* faint drop-shadow for separation from the navy top page background */
+  filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.18));
 }

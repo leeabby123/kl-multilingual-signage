@@ -118,9 +118,19 @@ html:not([data-lang]) [data-lang-content="en"] {
    In RTL, right-aligned content (H1 and everything that follows) would sit
    under that visual zone. Push the whole secondary-page content down so it
    starts cleanly BELOW the switcher's full visual extent. (6/2 fix per Kunm:
-   "Jawi 右对齐时把文字往下移动，否则花朵切换器挡住".) */
+   "Jawi 右对齐时把文字往下移动，否则花朵切换器挡住".)
+
+   Also balance the layout: .secondary-page has margin-left:200px to clear
+   the left sidebar, but no corresponding margin-right — in narrow viewports
+   the content area extends to the viewport's right edge, so the centered
+   content sits to the RIGHT of viewport center. LTR text masks this because
+   its visual weight leans left (line-starts on left), but Jawi RTL text
+   leans right and the offset compounds — the result reads as obviously
+   off-center. Mirror the left offset with margin-right:200px so the content
+   area is symmetric and centered titles/blocks land on viewport center. */
 [dir="rtl"] .secondary-page {
   padding-top: 280px;
+  margin-right: 200px;
 }
 
 .secondary-page h2 {

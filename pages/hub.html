@@ -128,6 +128,86 @@ body {
   font-style: italic;
 }
 
+/* ===== HUB ORIENTATION LABELS (locked 6/4) =====
+   Three small text labels that tell first-time visitors what this page is.
+   - hub-identity-bar: project title + data stats (top of viewport, centered between corner arrows)
+   - hub-findings-label: label above the 8 finding buttons
+   - hub-map-label: label inside map-wrap, just below findings-bar
+   All three use 5-lang switching via [data-lang-content] spans.
+   Poppyfield-style: small-caps, light, non-intrusive. Tamil/Jawi scripts skip
+   uppercase + use tighter letter-spacing since they don't have a small-caps form. */
+.hub-identity-bar {
+  position: fixed;
+  top: 22px;
+  left: calc(var(--hub-pad) + 16px);
+  right: calc(var(--hub-pad) + 16px);
+  text-align: center;
+  font-family: Georgia, 'Noto Serif', serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+html[data-lang="ta"]   .hub-identity-bar,
+html[data-lang="jawi"] .hub-identity-bar,
+html[data-lang="zh"]   .hub-identity-bar {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+.hub-findings-label {
+  position: fixed;
+  top: 76px;
+  left: var(--hub-pad);
+  right: var(--hub-pad);
+  text-align: center;
+  font-family: Georgia, 'Noto Serif', serif;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 10;
+  line-height: 1.2;
+}
+html[data-lang="ta"]   .hub-findings-label,
+html[data-lang="jawi"] .hub-findings-label,
+html[data-lang="zh"]   .hub-findings-label {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+.hub-map-label {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: Georgia, 'Noto Serif', serif;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 8;
+  line-height: 1.2;
+}
+html[data-lang="ta"]   .hub-map-label,
+html[data-lang="jawi"] .hub-map-label,
+html[data-lang="zh"]   .hub-map-label {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
 /* ===== MAP CONTAINER ===== */
 .map-wrap {
   position: fixed;
@@ -574,6 +654,23 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
   <svg style="width:37px !important;height:37px !important;display:block !important" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11,6 17,12 11,18"/><polyline points="5,6 11,12 5,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="9.4,6 15.4,12 9.4,18"/><polyline points="3.4,6 9.4,12 3.4,18"/></g></svg>
 </a>
 
+<!-- ORIENTATION LABELS (locked 6/4) — tell new visitors what this page is.
+     5-lang switching via [data-lang-content] (same pattern as finding buttons). -->
+<div class="hub-identity-bar" aria-hidden="true">
+  <span data-lang-content="en">KL Multilingual Signage · 60 signs · 4 districts</span>
+  <span data-lang-content="ms">Papan Tanda Pelbagai Bahasa KL · 60 papan · 4 daerah</span>
+  <span data-lang-content="zh">吉隆坡多语招牌 · 60 块招牌 · 4 个区</span>
+  <span data-lang-content="ta">கோலாலம்பூர் பல மொழி பலகைகள் · 60 பலகைகள் · 4 பகுதிகள்</span>
+  <span data-lang-content="jawi">ڤاڤن تنده ڤلباݢاي بهاس KL · ٦٠ ڤاڤن · ٤ دائره</span>
+</div>
+<div class="hub-findings-label" aria-hidden="true">
+  <span data-lang-content="en">Explore 8 findings</span>
+  <span data-lang-content="ms">Terokai 8 penemuan</span>
+  <span data-lang-content="zh">探索 8 个发现</span>
+  <span data-lang-content="ta">8 கண்டுபிடிப்புகளை ஆராயுங்கள்</span>
+  <span data-lang-content="jawi">تروقاي ٨ ڤنموان</span>
+</div>
+
 <!-- TOP FINDINGS BAR (8 buttons, single row · 4 solid stable + 4 dashed tentative) -->
 <header class="findings-bar">
   <button class="finding-btn" data-finding="zh-ta-non-coexist"><span class="finding-num">F1</span><span data-lang-content="en">ZH–TA non-coexistence</span><span data-lang-content="ms">ZH–TA tidak hidup bersama</span><span data-lang-content="zh">ZH-TA 不共存</span><span data-lang-content="ta">ZH–TA ஒன்றாக இல்லை</span><span data-lang-content="jawi">ZH–TA تيدق هيدوڤ برسام</span></button>
@@ -588,6 +685,13 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 
 <!-- MAP STAGE -->
 <main class="map-wrap">
+  <div class="hub-map-label" aria-hidden="true">
+    <span data-lang-content="en">Tap a flower to inspect a sign</span>
+    <span data-lang-content="ms">Ketik bunga untuk lihat papan tanda</span>
+    <span data-lang-content="zh">点击花朵查看招牌</span>
+    <span data-lang-content="ta">ஒரு பலகையை பார்க்க மலரை தட்டவும்</span>
+    <span data-lang-content="jawi">كتيق بوڠا اونتوق مليهت ڤاڤن تنده</span>
+  </div>
   <div class="map-stage" id="map-stage">
     <div class="map-svg-host" id="map-host">
       <svg id="map-svg-extension" xmlns="http://www.w3.org/2000/svg" viewBox="-913 -125 713 1313" preserveAspectRatio="xMidYMid slice" aria-hidden="true">

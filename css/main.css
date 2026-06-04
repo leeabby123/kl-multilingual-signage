@@ -32,17 +32,17 @@
 
 .top-content {
   width: 100%;
-  max-width: 620px;
+  max-width: 920px;                /* widened from 620 — the navy top page had too small a text column relative to viewport */
   padding: var(--space-sm) var(--space-md);
   margin: 0 auto;
 }
 
 .top-label {
   text-align: center;
-  font-size: var(--text-micro);
-  letter-spacing: 0.35em;
+  font-size: var(--text-caption);        /* 12px — was --text-micro (11px) */
+  letter-spacing: 0.4em;
   color: var(--top-cream-label);
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   text-transform: uppercase;
 }
 
@@ -56,7 +56,7 @@
 
 .top-flowers {
   display: block;
-  max-width: 240px;               /* reduced from 320 to free vertical space */
+  max-width: 320px;               /* enlarged from 240 — was reduced earlier to free space but now top-content is wider so we can afford a bigger hibiscus mark */
   width: 100%;
   margin: 0 auto var(--space-xs);
 }
@@ -67,7 +67,7 @@
 }
 
 .top-flower-labels .primary {
-  font-size: var(--text-micro);
+  font-size: var(--text-caption);        /* 12px — was --text-micro (11px) */
   letter-spacing: 0.25em;
   color: var(--top-cream);
 }
@@ -81,7 +81,7 @@
 
 .top-heading {
   text-align: center;
-  font-size: var(--text-caption);
+  font-size: var(--text-h3);             /* 20px — was --text-caption (12px), far too small */
   letter-spacing: 0.25em;
   color: var(--top-gold);
   margin: 0 0 4px;
@@ -89,7 +89,7 @@
 
 .top-subtitle {
   text-align: center;
-  font-size: var(--text-caption);
+  font-size: var(--text-body);           /* 16px — was --text-caption (12px) */
   color: var(--top-cream-muted);
   margin: 0 0 var(--space-sm);
   font-family: var(--font-serif);
@@ -97,11 +97,11 @@
 }
 
 .top-legal {
-  max-width: 460px;
+  max-width: 720px;                      /* widened from 460 */
   margin: 0 auto;
   font-family: var(--font-serif);
-  font-size: 14px;                /* slightly tighter */
-  line-height: 1.65;
+  font-size: 18px;                       /* was 14px — main body of UUK 3 clauses, now readable */
+  line-height: 1.7;
   color: var(--top-cream);
 }
 
@@ -120,7 +120,7 @@
 }
 
 .top-footer-rule {
-  max-width: 460px;
+  max-width: 720px;                      /* widened from 460 to match .top-legal */
   height: 1px;
   background: var(--top-gold-line);
   margin: var(--space-md) auto var(--space-xs);
@@ -128,8 +128,8 @@
 
 .top-footer-meta {
   text-align: center;
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: var(--text-caption);        /* 12px — was 10px */
+  letter-spacing: 0.18em;
   color: var(--top-cream-muted);
   margin: 0;
 }
@@ -346,7 +346,7 @@
    SECTION: BOTTOM (民间多语) — Bright peach/coral, festive mood
    ============================================================ */
 .section--bottom {
-  background: #E9CD4C;                              /* RGB(233, 205, 76) — warm yellow */
+  background: rgba(233, 205, 76, 0.55);             /* RGB(233, 205, 76) — warm yellow at 55% alpha so the kl-map texture reads through */
   color: var(--bottom-warm-ink);
   display: flex;
   align-items: center;
@@ -355,7 +355,11 @@
   text-align: center;
   padding: var(--space-2xl) var(--space-lg);
   position: relative;
-  overflow: hidden;
+  /* overflow: visible — the .bottom-anim-layer uses top:-100vh to extend its
+     SVG upward into the middle-section area so the 5 seeds are visible in
+     front of the entry-page garden. With overflow:hidden (as on the .section
+     base class) that upward extension gets clipped and the seeds disappear. */
+  overflow: visible;
 }
 
 /* ===== Bottom page — 3-layer animation stack =====
@@ -368,13 +372,14 @@
    bottom = spread KL map + 60 + 150 civilian flowers + plate manifesto (distributed, people)
    ============================================================ */
 
-/* Layer 0: KL map base — slightly faded by default so seeds + bloom read on top */
+/* Layer 0: KL map base — visible at 0.78 opacity so the map reads strongly
+   while still letting the rgba(0.55) yellow background tint show through. */
 .bottom-map {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.62;
+  opacity: 0.78;
   transition: opacity 1.4s ease-out;
 }
 

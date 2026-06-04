@@ -25,20 +25,17 @@
 
 .top-content {
   width: 100%;
-  max-width: 920px;                
+  max-width: 620px;
   padding: var(--space-sm) var(--space-md);
   margin: 0 auto;
-  
-  transform: scale(0.75);
-  transform-origin: center center;
 }
 
 .top-label {
   text-align: center;
-  font-size: var(--text-caption);        
-  letter-spacing: 0.4em;
+  font-size: var(--text-micro);
+  letter-spacing: 0.35em;
   color: var(--top-cream-label);
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   text-transform: uppercase;
 }
 
@@ -52,10 +49,9 @@
 
 .top-flowers {
   display: block;
-  max-width: 320px;               
+  max-width: 240px;
   width: 100%;
   margin: 0 auto var(--space-xs);
-  
 }
 
 .top-flower-labels {
@@ -78,7 +74,7 @@
 
 .top-heading {
   text-align: center;
-  font-size: var(--text-h3);             
+  font-size: var(--text-caption);
   letter-spacing: 0.25em;
   color: var(--top-gold);
   margin: 0 0 4px;
@@ -86,7 +82,7 @@
 
 .top-subtitle {
   text-align: center;
-  font-size: var(--text-body);           
+  font-size: var(--text-caption);
   color: var(--top-cream-muted);
   margin: 0 0 var(--space-sm);
   font-family: var(--font-serif);
@@ -94,11 +90,11 @@
 }
 
 .top-legal {
-  max-width: 720px;                      
+  max-width: 460px;
   margin: 0 auto;
   font-family: var(--font-serif);
-  font-size: 18px;                       
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--top-cream);
 }
 
@@ -117,7 +113,7 @@
 }
 
 .top-footer-rule {
-  max-width: 720px;                      
+  max-width: 460px;
   height: 1px;
   background: var(--top-gold-line);
   margin: var(--space-md) auto var(--space-xs);

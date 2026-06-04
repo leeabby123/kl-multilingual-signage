@@ -6,7 +6,7 @@
 <title>Timeline · KL Multilingual Signage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+Tamil:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/secondary.css">
@@ -36,23 +36,24 @@
     <span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span>
   </h1>
   <p class="timeline-lede">
-    <span data-lang-content="en">A condensed schedule of the AQC7015 capstone project. The river enters from beyond the upper-left and flows out past the lower-right, suggesting earlier studies upstream and others who will continue the work downstream. Nodes sit beside the river — flowers if that member participated, dots if not. Click any flower to trace that member's path.</span>
-    <span data-lang-content="ms">Jadual ringkas projek kemuncak AQC7015. Sungai mengalir masuk dari sudut kiri-atas dan keluar di sudut kanan-bawah — melambangkan kajian terdahulu di hulu dan kerja yang akan disambung di hilir. Nod terletak di sebelah sungai — bunga jika ahli itu menyertai, titik jika tidak. Klik mana-mana bunga untuk mengesan laluan ahli itu.</span>
-    <span data-lang-content="zh">AQC7015 毕业项目的浓缩时间轴。河流从画面左上方流入，向右下方流出——上游是前辈研究，下游是接力的后来者。节点坐落于河流两侧，参与本周的成员是一朵木槿花，未参与是同色小圆点。点击任意花朵追溯该成员的轨迹。</span>
-    <span data-lang-content="ta">AQC7015 இறுதி திட்டத்தின் சுருக்கமான கால அட்டவணை. ஆறு மேல்-இடதிலிருந்து உள்நுழைந்து கீழ்-வலதில் வெளியேறுகிறது — மேலாற்று முற்கால ஆய்வுகள், கீழாற்று தொடரும் ஆராய்ச்சியாளர்கள். முடிச்சுகள் ஆற்றின் இரு பக்கங்களிலும் — பங்கேற்றால் மலர், இல்லையெனில் புள்ளி.</span>
-    <span data-lang-content="jawi">جدوال ريڠكس ڤروجيك كموچق AQC7015. سوڠاي مڠالير ماسوق درڤد كيري-أتس دان كلوار دي كانن-باوه — كاجين ترداهولو دي هولو، كرجا يڠ اكن ديسمبوڠ دي هيلير. نود ترلتق دي سبله سوڠاي — بوڠا جك مڽرتاءي، تيتيق جك تيدق.</span>
+    <span data-lang-content="en">A condensed schedule of the AQC7015 capstone project. The river enters from the upper-left and flows out past the lower-right edge of the page, suggesting earlier studies upstream and others who will continue the work downstream. Nodes sit beside the river — flowers if that member participated, dots if not. Click any flower to trace that member's path.</span>
+    <span data-lang-content="ms">Jadual ringkas projek kemuncak AQC7015. Sungai mengalir masuk dari kiri-atas dan keluar di luar tepi kanan-bawah halaman — melambangkan kajian terdahulu di hulu dan kerja yang akan disambung di hilir. Nod terletak di sebelah sungai — bunga jika ahli itu menyertai, titik jika tidak.</span>
+    <span data-lang-content="zh">AQC7015 毕业项目的浓缩时间轴。河流从画面左上方流入，向右下方流出页面边缘——上游是前辈研究，下游是接力的后来者。节点坐落于河流两侧，参与本周的成员是一朵木槿花，未参与是同色小圆点。点击任意花朵追溯该成员的轨迹。</span>
+    <span data-lang-content="ta">AQC7015 இறுதி திட்டத்தின் சுருக்கமான கால அட்டவணை. ஆறு மேல்-இடதிலிருந்து உள்நுழைந்து கீழ்-வலதின் வெளியே ஓடுகிறது — மேலாற்று முற்கால ஆய்வுகள், கீழாற்று தொடரும் ஆராய்ச்சியாளர்கள். முடிச்சுகள் ஆற்றின் இரு பக்கங்களிலும் — பங்கேற்றால் மலர், இல்லையெனில் புள்ளி.</span>
+    <span data-lang-content="jawi">جدوال ريڠكس ڤروجيك كموچق AQC7015. سوڠاي مڠالير ماسوق درڤد كيري-أتس دان كلوار دي لوار تڤي كانن-باوه هلامن — كاجين ترداهولو دي هولو، كرجا يڠ اكن ديسمبوڠ دي هيلير. نود ترلتق دي سبله سوڠاي — بوڠا جك مڽرتاءي، تيتيق جك تيدق.</span>
   </p>
 
   <div class="timeline-river-wrap" id="river-wrap">
-    <svg class="timeline-river" viewBox="-100 -50 880 1900" preserveAspectRatio="xMidYMid meet" overflow="visible" focusable="false">
+    <!-- SVG breaks out of wrap to the right: width=1400 vs wrap=680 -->
+    <svg class="timeline-river" viewBox="0 0 1400 1900" preserveAspectRatio="xMinYMin meet" overflow="visible" focusable="false">
       <defs>
         <linearGradient id="riverFlow" x1="0.05" y1="0.05" x2="0.95" y2="0.95">
-          <stop offset="0%" stop-color="#cad9e2" stop-opacity="0.45"/>
+          <stop offset="0%" stop-color="#cad9e2" stop-opacity="0.4"/>
           <stop offset="6%" stop-color="#cad9e2"/>
           <stop offset="30%" stop-color="#a5c5d3"/>
           <stop offset="55%" stop-color="#7eaec5"/>
           <stop offset="80%" stop-color="#6a9fb5"/>
-          <stop offset="100%" stop-color="#5c8ca7" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#5c8ca7" stop-opacity="0.45"/>
         </linearGradient>
 
         <g id="hp"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
@@ -64,17 +65,16 @@
         <g id="fE"><use href="#hp" fill="#7f8c8d" opacity=".78"/><use href="#hp" fill="#7f8c8d" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#7f8c8d" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#7f8c8d" opacity=".70" transform="rotate(216)"/><use href="#hp" fill="#7f8c8d" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#3a4548"/><circle cy="-26" r="2" fill="#e8c840"/></g>
       </defs>
 
-      <!-- River: closed bank path with width=0 at both endpoints (tips collapse, no L-segment cap) -->
-      <path class="river-path" fill="url(#riverFlow)" d="M -80.0 -40.0 C -66.4 -23.6, -43.6 7.2, -12.2 42.1 C 19.3 76.9, 11.8 90.6, 77.3 134.2 C 142.7 177.8, 260.5 205.8, 315.1 260.0 C 369.6 314.2, 351.6 346.0, 350.0 405.0 C 348.4 464.0, 308.0 495.0, 307.0 555.0 C 306.0 615.0, 346.0 645.0, 345.0 705.0 C 344.0 765.0, 303.0 795.0, 302.0 855.0 C 301.0 915.0, 340.8 945.0, 340.0 1005.0 C 339.2 1065.0, 298.8 1094.7, 298.0 1155.0 C 297.2 1215.3, 332.1 1244.4, 336.1 1306.6 C 340.0 1368.8, 287.9 1405.4, 317.6 1466.0 C 347.3 1526.6, 422.4 1561.6, 484.6 1609.7 C 546.7 1657.7, 569.3 1670.2, 628.4 1706.3 C 687.5 1742.3, 749.7 1773.3, 780.0 1790.0 C 754.3 1766.7, 704.5 1717.7, 651.6 1673.7 C 598.7 1629.8, 573.3 1616.3, 515.4 1570.3 C 457.6 1524.4, 388.7 1497.4, 362.4 1444.0 C 336.1 1390.6, 388.0 1361.2, 383.9 1303.4 C 379.9 1245.6, 342.8 1214.7, 342.0 1155.0 C 341.2 1095.3, 380.8 1065.0, 380.0 1005.0 C 379.2 945.0, 339.0 915.0, 338.0 855.0 C 337.0 795.0, 376.0 765.0, 375.0 705.0 C 374.0 645.0, 334.0 615.0, 333.0 555.0 C 332.0 495.0, 371.6 466.0, 370.0 405.0 C 368.4 344.0, 382.4 305.8, 324.9 250.0 C 267.5 194.2, 149.3 168.2, 82.7 125.8 C 16.2 83.4, 24.7 71.1, -7.8 37.9 C -40.4 4.8, -65.6 -24.4, -80.0 -40.0 Z"/>
+      <!-- River: enters at wrap top-left (0,0) tip, exits past wrap right at (1380,1850) tip.
+           Both endpoints width=0 → natural pointed ends, no L-segment "guillotine" cut. -->
+      <path class="river-path" fill="url(#riverFlow)" d="M 0.0 0.0 C 15.4 26.8, 13.9 81.9, 76.9 133.9 C 139.9 185.9, 260.5 205.8, 315.1 260.0 C 369.7 314.2, 351.6 346.0, 350.0 405.0 C 348.4 464.0, 308.0 495.0, 307.0 555.0 C 306.0 615.0, 346.0 645.0, 345.0 705.0 C 344.0 765.0, 303.0 795.0, 302.0 855.0 C 301.0 915.0, 340.8 945.0, 340.0 1005.0 C 339.2 1065.0, 298.8 1094.7, 298.0 1155.0 C 297.2 1215.3, 332.3 1244.2, 336.1 1306.6 C 339.8 1369.0, 287.0 1407.8, 316.8 1466.8 C 346.7 1525.8, 410.4 1550.8, 485.4 1601.5 C 560.3 1652.2, 593.2 1681.9, 691.5 1720.3 C 789.9 1758.7, 839.3 1767.7, 977.0 1793.7 C 1114.7 1819.6, 1299.4 1838.7, 1380.0 1850.0 C 1300.6 1833.3, 1117.3 1800.4, 983.0 1766.3 C 848.7 1732.3, 802.1 1721.3, 708.5 1679.7 C 614.8 1638.1, 583.7 1605.8, 514.6 1558.5 C 445.6 1511.2, 389.3 1494.2, 363.2 1443.2 C 337.0 1392.2, 388.2 1361.0, 383.9 1303.4 C 379.7 1245.8, 342.8 1214.7, 342.0 1155.0 C 341.2 1095.3, 380.8 1065.0, 380.0 1005.0 C 379.2 945.0, 339.0 915.0, 338.0 855.0 C 337.0 795.0, 376.0 765.0, 375.0 705.0 C 374.0 645.0, 334.0 615.0, 333.0 555.0 C 332.0 495.0, 371.6 466.0, 370.0 405.0 C 368.4 344.0, 382.3 305.8, 324.9 250.0 C 267.5 194.2, 148.1 176.1, 83.1 126.1 C 18.1 76.1, 16.6 25.2, 0.0 0.0 Z"/>
 
-      <!-- Dashed center accent -->
-      <path class="river-accent" fill="none" stroke="#4d7a92" stroke-width="0.9" stroke-dasharray="4 8" opacity="0.45" d="M -80.0 -40.0 C -66.0 -24.0, -42.0 6.0, -10.0 40.0 C 22.0 74.0, 14.0 87.0, 80.0 130.0 C 146.0 173.0, 264.0 200.0, 320.0 255.0 C 376.0 310.0, 360.0 345.0, 360.0 405.0 C 360.0 465.0, 320.0 495.0, 320.0 555.0 C 320.0 615.0, 360.0 645.0, 360.0 705.0 C 360.0 765.0, 320.0 795.0, 320.0 855.0 C 320.0 915.0, 360.0 945.0, 360.0 1005.0 C 360.0 1065.0, 320.0 1095.0, 320.0 1155.0 C 320.0 1215.0, 356.0 1245.0, 360.0 1305.0 C 364.0 1365.0, 312.0 1398.0, 340.0 1455.0 C 368.0 1512.0, 440.0 1543.0, 500.0 1590.0 C 560.0 1637.0, 584.0 1650.0, 640.0 1690.0 C 696.0 1730.0, 752.0 1770.0, 780.0 1790.0"/>
+      <path class="river-accent" fill="none" stroke="#4d7a92" stroke-width="0.9" stroke-dasharray="4 8" opacity="0.45" d="M 0.0 0.0 C 16.0 26.0, 16.0 79.0, 80.0 130.0 C 144.0 181.0, 264.0 200.0, 320.0 255.0 C 376.0 310.0, 360.0 345.0, 360.0 405.0 C 360.0 465.0, 320.0 495.0, 320.0 555.0 C 320.0 615.0, 360.0 645.0, 360.0 705.0 C 360.0 765.0, 320.0 795.0, 320.0 855.0 C 320.0 915.0, 360.0 945.0, 360.0 1005.0 C 360.0 1065.0, 320.0 1095.0, 320.0 1155.0 C 320.0 1215.0, 356.0 1245.0, 360.0 1305.0 C 364.0 1365.0, 312.0 1400.0, 340.0 1455.0 C 368.0 1510.0, 428.0 1531.0, 500.0 1580.0 C 572.0 1629.0, 604.0 1660.0, 700.0 1700.0 C 796.0 1740.0, 844.0 1750.0, 980.0 1780.0 C 1116.0 1810.0, 1300.0 1836.0, 1380.0 1850.0"/>
 
-      <!-- ============ Node clusters — FIXED columns left (cx=255) or right (cx=425) ============
-           cluster radius 20 (preamble/mid) or 22 (key); flower scale 0.15 / 0.17
-      -->
+      <!-- Node clusters — SVG coords = wrap coords (1:1, no offset).
+           Left side cx=255; Right side cx=425. -->
 
-      <!-- N1 (preamble) — side R, cluster(425,255) -->
+      <!-- N1 (preamble R) -->
       <g class="node-markers" data-node="w1-2" data-level="preamble">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(425,237) scale(.15)"/><circle cx="425" cy="237" r="13" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(442,249) scale(.15)"/><circle cx="442" cy="249" r="13" class="hit"/></g>
@@ -83,7 +83,7 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(408,249) scale(.15)"/><circle cx="408" cy="249" r="13" class="hit"/></g>
       </g>
 
-      <!-- N2 (mid) — side L, cluster(255,405) -->
+      <!-- N2 (mid L) -->
       <g class="node-markers" data-node="w7-cs1" data-level="mid">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(255,387) scale(.15)"/><circle cx="255" cy="387" r="13" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(272,399) scale(.15)"/><circle cx="272" cy="399" r="13" class="hit"/></g>
@@ -92,7 +92,7 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(238,399) scale(.15)"/><circle cx="238" cy="399" r="13" class="hit"/></g>
       </g>
 
-      <!-- N3 (mid) — side R, cluster(425,555) -->
+      <!-- N3 (mid R) -->
       <g class="node-markers" data-node="w8-10" data-level="mid">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(425,537) scale(.15)"/><circle cx="425" cy="537" r="13" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(442,549) scale(.15)"/><circle cx="442" cy="549" r="13" class="hit"/></g>
@@ -101,7 +101,7 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(408,549) scale(.15)"/><circle cx="408" cy="549" r="13" class="hit"/></g>
       </g>
 
-      <!-- N4 (mid) — side L, cluster(255,705) -->
+      <!-- N4 (mid L) -->
       <g class="node-markers" data-node="may20-cs2" data-level="mid">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(255,687) scale(.15)"/><circle cx="255" cy="687" r="13" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(272,699) scale(.15)"/><circle cx="272" cy="699" r="13" class="hit"/></g>
@@ -110,7 +110,7 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(238,699) scale(.15)"/><circle cx="238" cy="699" r="13" class="hit"/></g>
       </g>
 
-      <!-- N5 (key) — side R, cluster(425,855) — ABCD large flowers + E partial -->
+      <!-- N5 (key R) -->
       <g class="node-markers" data-node="w11-fieldwork" data-level="key">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(425,833) scale(.18)"/><circle cx="425" cy="833" r="15" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(446,848) scale(.18)"/><circle cx="446" cy="848" r="15" class="hit"/></g>
@@ -119,7 +119,7 @@
         <g class="marker marker--partial" data-member="E" data-participated="partial"><use href="#fE" transform="translate(404,848) scale(.11)" opacity="0.75"/><circle cx="404" cy="848" r="13" class="hit"/></g>
       </g>
 
-      <!-- N6 (key) — side L, cluster(255,1005) — ABCD dots + E flower -->
+      <!-- N6 (key L) — ABCD dots + E flower -->
       <g class="node-markers" data-node="may31-phase1" data-level="key">
         <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="255" cy="983" r="4.5" fill="#27ae60" class="dot-mark"/><circle cx="255" cy="983" r="13" class="hit"/></g>
         <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="276" cy="998" r="4.5" fill="#d63031" class="dot-mark"/><circle cx="276" cy="998" r="13" class="hit"/></g>
@@ -128,7 +128,7 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(234,998) scale(.18)"/><circle cx="234" cy="998" r="15" class="hit"/></g>
       </g>
 
-      <!-- N7 (key) — side R, cluster(425,1155) — ABCD dots + E flower -->
+      <!-- N7 (key R) — ABCD dots + E flower -->
       <g class="node-markers" data-node="w12a-integration" data-level="key">
         <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="425" cy="1133" r="4.5" fill="#27ae60" class="dot-mark"/><circle cx="425" cy="1133" r="13" class="hit"/></g>
         <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="446" cy="1148" r="4.5" fill="#d63031" class="dot-mark"/><circle cx="446" cy="1148" r="13" class="hit"/></g>
@@ -137,7 +137,7 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(404,1148) scale(.18)"/><circle cx="404" cy="1148" r="15" class="hit"/></g>
       </g>
 
-      <!-- N8 (key) — side L, cluster(255,1305) — all 5 flowers -->
+      <!-- N8 (key L) -->
       <g class="node-markers" data-node="w12b-testing" data-level="key">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(255,1283) scale(.18)"/><circle cx="255" cy="1283" r="15" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(276,1298) scale(.18)"/><circle cx="276" cy="1298" r="15" class="hit"/></g>
@@ -146,7 +146,7 @@
         <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(234,1298) scale(.18)"/><circle cx="234" cy="1298" r="15" class="hit"/></g>
       </g>
 
-      <!-- N9 (key) — side R, cluster(425,1455) — all 5 flowers -->
+      <!-- N9 (key R) -->
       <g class="node-markers" data-node="end" data-level="key">
         <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(425,1433) scale(.18)"/><circle cx="425" cy="1433" r="15" class="hit"/></g>
         <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(446,1448) scale(.18)"/><circle cx="446" cy="1448" r="15" class="hit"/></g>
@@ -156,7 +156,7 @@
       </g>
     </svg>
 
-    <!-- ============ Node text labels — FIXED columns (x=20 left, x=465 right), width 195 ============ -->
+    <!-- Article labels — same wrap coord system as SVG cluster -->
 
     <article class="node-label node-label--preamble" data-node="w1-2" data-side="R" style="--top: 220px; --x: 465px;">
       <div class="node-tag"><span data-lang-content="en">WEEK 1–2 · FEB 15–22</span><span data-lang-content="ms">MINGGU 1–2 · 15–22 FEB</span><span data-lang-content="zh">第 1–2 周 · 2/15–2/22</span><span data-lang-content="ta">வாரம் 1–2 · பிப் 15–22</span><span data-lang-content="jawi">ميڠݢو ١–٢ · ١٥–٢٢ فيب</span></div>

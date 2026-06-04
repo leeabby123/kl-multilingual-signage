@@ -1,19 +1,30 @@
 /* ============================================================
-   Timeline River — v4 rewrite (6/4 late)
-   - Fixed-column layout: text columns at wrap edges, river in middle
-   - Text/clusters 40-50px away from river, NEVER overlapping
-   - River endpoints width=0 → natural tip (no L-segment "guillotine" cut)
-   - 3-tier font sizing: tag (small caps label) / title (serif emphasis) / desc (body)
-   - Cormorant Garamond (Latin) + Noto Serif SC (CJK) for academic feel
+   Timeline River — v5 (6/4 late)
+   - SVG width=1400 breaks past wrap right edge → river tip reaches viewport edge
+   - SVG coords = wrap coords 1:1 (cluster cx=255/425 matches article x=20/465)
+   - RTL: scaleX(-1) on SVG around wrap center (340px) mirrors cluster to match RTL article position
+   - Multi-script serif fonts: Cormorant Garamond (Latin) + Noto Serif SC (CJK)
+     + Noto Serif Tamil (Tamil) + Amiri (Arabic/Jawi)
    ============================================================ */
 
-/* ------------------------------------------------------------
-   Typography stacks
-   ------------------------------------------------------------ */
 :root {
-  --font-display: 'Cormorant Garamond', 'Noto Serif SC', 'Times New Roman', Georgia, serif;
-  --font-body:    'Cormorant Garamond', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
-  --font-tag:     'Helvetica Neue', 'Noto Sans SC', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Noto Serif SC', 'Noto Serif Tamil', 'Amiri', 'Times New Roman', Georgia, serif;
+  --font-body:    'Cormorant Garamond', 'Noto Serif SC', 'Noto Serif Tamil', 'Amiri', Georgia, 'Times New Roman', serif;
+  --font-tag:     'Helvetica Neue', 'Noto Sans SC', 'Noto Sans Tamil', 'Noto Sans Arabic', system-ui, sans-serif;
+}
+
+/* Per-language overrides so the best-suited serif takes priority for each script */
+[data-lang="zh"] {
+  --font-display: 'Noto Serif SC', 'Cormorant Garamond', serif;
+  --font-body:    'Noto Serif SC', 'Cormorant Garamond', serif;
+}
+[data-lang="ta"] {
+  --font-display: 'Noto Serif Tamil', 'Cormorant Garamond', serif;
+  --font-body:    'Noto Serif Tamil', 'Cormorant Garamond', serif;
+}
+[data-lang="jawi"] {
+  --font-display: 'Amiri', 'Noto Serif Tamil', serif;
+  --font-body:    'Amiri', serif;
 }
 
 .timeline-river-page {
@@ -39,7 +50,7 @@
 }
 
 /* ------------------------------------------------------------
-   River container — 680 × 1750 main area + overflow buffer for tips
+   River container
    ------------------------------------------------------------ */
 .timeline-river-wrap {
   position: relative;
@@ -49,19 +60,27 @@
   overflow: visible;
 }
 
+/* SVG element is 1400×1900 — breaks out of wrap (680×1750) to right and bottom.
+   viewBox 1:1 with element size means SVG-internal coords == wrap-pixel coords. */
 .timeline-river {
   position: absolute;
-  /* viewBox is -100 -50 880 1900 so the tip overflows the wrap box;
-     we expand the rendered area to match the viewBox aspect */
-  top: -50px;
-  left: -100px;
-  width: 880px;
+  left: 0;
+  top: 0;
+  width: 1400px;
   height: 1900px;
   display: block;
   overflow: visible;
   opacity: 0;
   transition: opacity 1.2s ease-in;
-  pointer-events: none;  /* let nodes receive pointer events; markers re-enable on .marker */
+  pointer-events: none;
+  z-index: 0;  /* sit behind articles + sidebar */
+}
+
+/* RTL (Jawi): mirror SVG around the wrap center (340) so cluster positions
+   land where the article positions (also mirrored) are. */
+[dir="rtl"] .timeline-river {
+  transform: scaleX(-1);
+  transform-origin: 340px 0;
 }
 
 .timeline-river.loaded {
@@ -92,7 +111,7 @@
   transition: transform 0.2s ease-out;
   transform-origin: center;
   transform-box: fill-box;
-  pointer-events: all;  /* re-enable since .timeline-river is pointer-events:none */
+  pointer-events: all;
 }
 
 .marker .hit {
@@ -129,14 +148,14 @@
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  z-index: 1;
 }
 
-/* Side-aware alignment: R-side text-align left, L-side text-align right
-   so the text "leans into" the river */
 .node-label[data-side="R"] { text-align: left; }
 .node-label[data-side="L"] { text-align: right; }
 
-/* Under RTL (Jawi) — mirror position, mirror alignment */
+/* RTL: mirror article position AND flip side semantics so visual side stays consistent
+   (since SVG also mirrors, cluster R↔L swap; articles must swap too) */
 [dir="rtl"] .node-label {
   left: auto;
   right: var(--x);
@@ -144,16 +163,14 @@
 [dir="rtl"] .node-label[data-side="R"] { text-align: right; }
 [dir="rtl"] .node-label[data-side="L"] { text-align: left; }
 
-/* Three-tier reveal opacity */
 .node-label--preamble.revealed { opacity: 0.7; }
 .node-label--mid.revealed      { opacity: 0.9; }
 .node-label--key.revealed      { opacity: 1; }
 
 .node-label.revealed { transform: translateY(0); }
 
-/* ------------ Font hierarchy — 3 tiers ------------ */
+/* ------------ 3-tier font hierarchy ------------ */
 
-/* Tag (week / date label) — small caps, sans, with letter-spacing */
 .node-tag {
   font-family: var(--font-tag);
   font-size: 11.5px;
@@ -162,10 +179,14 @@
   font-weight: 500;
   margin-bottom: 8px;
   unicode-bidi: plaintext;
-  text-transform: none;  /* keep CJK readable */
 }
 
-/* Title — serif display */
+[data-lang="ta"] .node-tag,
+[data-lang="jawi"] .node-tag {
+  letter-spacing: 0.06em;  /* Tamil + Arabic don't take wide letter-spacing well */
+  font-size: 12px;
+}
+
 .node-title {
   font-family: var(--font-display);
   font-weight: 500;
@@ -178,7 +199,6 @@
 .node-label--mid      .node-title { font-size: 16px; font-weight: 500; }
 .node-label--key      .node-title { font-size: 18px; font-weight: 600; }
 
-/* Description — body serif */
 .node-desc {
   font-family: var(--font-body);
   font-size: 13px;
@@ -187,7 +207,6 @@
   margin: 0;
   unicode-bidi: plaintext;
 }
-
 .node-label--key .node-desc { color: var(--color-text-primary, #3a3a36); }
 
 /* ------------------------------------------------------------
@@ -267,7 +286,7 @@ body.trace-mode .node-label.trace-untouched {
 }
 
 /* ------------------------------------------------------------
-   Key milestones section (below river)
+   Key milestones section
    ------------------------------------------------------------ */
 .timeline-key-milestones {
   max-width: 600px;
@@ -312,4 +331,5 @@ body.trace-mode .node-label.trace-untouched {
   }
   .timeline-river { opacity: 1; }
   .node-markers { opacity: var(--node-opacity, 1); }
+  [dir="rtl"] .timeline-river { transform: scaleX(-1); }
 }

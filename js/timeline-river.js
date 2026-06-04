@@ -246,12 +246,10 @@
   // Click empty space → exit trace
   document.addEventListener('click', (e) => {
     if (!tracedMember) return;
-    // Ignore clicks on markers, tooltip, chips, replay button, inline triggers, trace banner
+    // Ignore clicks on markers, tooltip, chips, trace banner
     if (e.target.closest('.marker') ||
         e.target.closest('.trace-banner') ||
-        e.target.closest('.member-chip') ||
-        e.target.closest('.replay-btn') ||
-        e.target.closest('.inline-replay')) return;
+        e.target.closest('.member-chip')) return;
     exitTrace();
   });
 
@@ -309,67 +307,6 @@
         exitTrace();
       } else {
         enterTrace(member);
-      }
-    });
-  });
-
-  /* ---------- Replay timeline animation ---------- */
-
-  const NODE_ORDER = ['w1-2', 'w7-cs1', 'w8-10', 'may20-cs2', 'w11-fieldwork',
-                      'may31-phase1', 'w12a-integration', 'w12b-testing', 'end'];
-
-  const replayBtn = document.getElementById('replay-timeline');
-
-  function playReplay() {
-    if (replayBtn && replayBtn.classList.contains('replaying')) return;
-    if (replayBtn) replayBtn.classList.add('replaying');
-
-    // Exit trace mode if active
-    if (tracedMember) exitTrace();
-
-    // Reset: remove all revealed states
-    document.querySelectorAll('.node-label.revealed, .node-markers.revealed').forEach(el => {
-      el.classList.remove('revealed');
-    });
-    const svg = document.querySelector('.timeline-river');
-    svg.classList.remove('loaded');
-
-    // Scroll the timeline back into view from top
-    const wrap = document.getElementById('river-wrap');
-    if (wrap) {
-      wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // Force reflow so transitions restart cleanly
-    void document.body.offsetHeight;
-
-    // Stage 1: river fade-in (after scroll settles)
-    setTimeout(() => svg.classList.add('loaded'), 400);
-
-    // Stage 2: nodes reveal one-by-one in time order
-    NODE_ORDER.forEach((nodeId, idx) => {
-      setTimeout(() => {
-        document.querySelectorAll(`[data-node="${nodeId}"]`).forEach(el => {
-          el.classList.add('revealed');
-        });
-      }, 900 + idx * 420);
-    });
-
-    // Re-enable button after animation completes
-    setTimeout(() => {
-      if (replayBtn) replayBtn.classList.remove('replaying');
-    }, 900 + NODE_ORDER.length * 420 + 300);
-  }
-
-  if (replayBtn) replayBtn.addEventListener('click', playReplay);
-
-  // Inline replay triggers in the lede paragraph (Kunm: lede text itself should be interactive)
-  document.querySelectorAll('.inline-replay').forEach(trigger => {
-    trigger.addEventListener('click', playReplay);
-    trigger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        playReplay();
       }
     });
   });

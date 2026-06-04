@@ -17,22 +17,6 @@
 })();
 </script>
 <style>
-@view-transition {
-  navigation: auto;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 600ms;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-::view-transition-old(kl-map),
-::view-transition-new(kl-map) {
-  animation-duration: 700ms;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -265,7 +249,6 @@ html[data-lang="zh"]   .hub-map-label {
   box-shadow: 0 2px 12px rgba(110, 58, 32, 0.08);
   overflow: hidden;
   cursor: grab;
-  view-transition-name: kl-map;
 }
 .map-stage:active { cursor: grabbing; }
 .map-svg-host {

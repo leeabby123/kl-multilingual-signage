@@ -32,7 +32,7 @@
 
 .top-content {
   width: 100%;
-  max-width: 920px;                /* widened from 620 — the navy top page had too small a text column relative to viewport */
+  max-width: 920px;                /* widened — works at normal browser zoom (was 620, looked too narrow) */
   padding: var(--space-sm) var(--space-md);
   margin: 0 auto;
 }
@@ -56,7 +56,7 @@
 
 .top-flowers {
   display: block;
-  max-width: 320px;               /* enlarged from 240 — was reduced earlier to free space but now top-content is wider so we can afford a bigger hibiscus mark */
+  max-width: 320px;               /* enlarged — matches widened text column */
   width: 100%;
   margin: 0 auto var(--space-xs);
 }
@@ -97,10 +97,10 @@
 }
 
 .top-legal {
-  max-width: 720px;                      /* widened from 460 */
+  max-width: 720px;                      /* widened — matches widened .top-content column */
   margin: 0 auto;
   font-family: var(--font-serif);
-  font-size: 18px;                       /* was 14px — main body of UUK 3 clauses, now readable */
+  font-size: 18px;                       /* readable body for UUK 3 clauses */
   line-height: 1.7;
   color: var(--top-cream);
 }
@@ -120,7 +120,7 @@
 }
 
 .top-footer-rule {
-  max-width: 720px;                      /* widened from 460 to match .top-legal */
+  max-width: 720px;                      /* widened to match .top-legal */
   height: 1px;
   background: var(--top-gold-line);
   margin: var(--space-md) auto var(--space-xs);
@@ -163,8 +163,8 @@
 
 .enter-hub-btn svg {
   display: block;
-  width: 56px;                   /* unified with all site-wide nav chevrons (scroll-cue, middle-scroll-up/down, hub-corner-arrow, sidebar-back-link) */
-  height: 56px;
+  width: 37px;                   /* unified with all site-wide nav chevrons (scroll-cue, middle-scroll-up/down, hub-corner-arrow, sidebar-back-link) */
+  height: 37px;
 }
 
 /* Scroll cue — down arrow */
@@ -329,8 +329,8 @@
 .middle-scroll-up svg,
 .middle-scroll-down svg {
   display: block;
-  width: 56px;
-  height: 56px;
+  width: 37px;
+  height: 37px;
 }
 
 @keyframes bounce-up {

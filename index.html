@@ -316,9 +316,12 @@
     <use class="rf-petal" data-flower="en" data-angle="72"  data-fall-at="0.80" data-base-opacity="0.62" href="#t-fr" fill="#2980b9"/>
     <use class="rf-petal" data-flower="en" data-angle="0"   data-fall-at="0.88" data-base-opacity="0.68" href="#t-fr" fill="#2980b9"/>
 
-    <!-- MS 绿 — survivor #1, scale grows 0.4 → 0.90 to match placeholder green at p=1 -->
+    <!-- MS 绿 — survivor #1, scale grows 0.4 → 0.90 to match placeholder green at p=1.
+         data-sy moved from 1850 → 1800 (50 viewBox units up ≈ one petal diameter at scale 0.4)
+         to prevent visual leak across the middle/bottom section seam — was the lowest of
+         all 5 top-anim seeds; now sits in the same vertical band as the others (1800-1840). -->
     <g class="rf-body" data-color="ms" data-vanish-at="0.95"
-       data-sx="1180" data-sy="1850" data-ex="786" data-ey="380" data-cpx="950" data-cpy="1200"
+       data-sx="1180" data-sy="1800" data-ex="786" data-ey="380" data-cpx="950" data-cpy="1200"
        data-scale-start="0.4" data-scale-end="0.9">
       <circle r="5" fill="#145a30"/>
       <circle cy="-26" r="2" fill="#e8c840"/>

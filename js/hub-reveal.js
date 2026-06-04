@@ -5,7 +5,9 @@
      0.0s   Map background paths visible from start (no animation)
      0.5s   Findings + map labels fade in
      0.8s   8 finding buttons fade in (150ms stagger each)
-     2.2s   60 clusters fade in by district (KB→PS→BB→LI, 60ms stagger)
+     2.2s   60 clusters fade in — 4 districts START IN PARALLEL, each with its own
+            pacing curve (KB ease-in, PS ease-out, BB smoothstep, LI linear). All
+            districts finish together at ~6.2s, giving the 4 areas equal billing.
      6.3s   Language switcher (5-hibiscus) fades in last
 
    FOUC prevention: <head> sets html.hub-animating *synchronously* before
@@ -61,12 +63,30 @@
     add(800 + i * 150, () => btn.classList.add('hub-revealed'));
   });
 
-  // Phase 3: 60 clusters, district order KB→PS→BB→LI, 60ms stagger
-  let clusterIndex = 0;
+  // Phase 3: 60 clusters, 4 districts revealed IN PARALLEL with district-specific rhythms.
+  // Each district starts at the same moment (2200 ms) and finishes together (~6200 ms),
+  // but the pacing within each district differs — giving the 4 areas equal billing rather
+  // than one district fully revealing before the next:
+  //   KB → ease-in cubic  (slow start, fast end)
+  //   PS → ease-out cubic (fast start, slow end)
+  //   BB → smoothstep     (gradual at both ends, fast middle)
+  //   LI → linear         (constant pace)
+  const DISTRICT_START = 2200;
+  const DISTRICT_DURATION = 4000;
+  const easings = {
+    KB: t => t * t * t,
+    PS: t => 1 - Math.pow(1 - t, 3),
+    BB: t => 3 * t * t - 2 * t * t * t,
+    LI: t => t
+  };
   ['KB', 'PS', 'BB', 'LI'].forEach(dist => {
-    document.querySelectorAll(`.cluster[data-district="${dist}"]`).forEach(c => {
-      add(2200 + clusterIndex * 60, () => c.classList.add('hub-revealed'));
-      clusterIndex++;
+    const clusters = document.querySelectorAll(`.cluster[data-district="${dist}"]`);
+    const ease = easings[dist];
+    const lastIdx = Math.max(1, clusters.length - 1);
+    clusters.forEach((c, i) => {
+      const t = i / lastIdx;
+      const offset = DISTRICT_DURATION * ease(t);
+      add(DISTRICT_START + offset, () => c.classList.add('hub-revealed'));
     });
   });
 

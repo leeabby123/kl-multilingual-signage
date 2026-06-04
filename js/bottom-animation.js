@@ -74,7 +74,7 @@
   // origin. Inline injection gives us full control: the user never sees
   // a version of kl-map that contains clusters.
   function inlineCleanedMap() {
-    fetch('scripts/kl-map.svg')
+    fetch('scripts/kl-map-bare.svg')
       .then(r => {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.text();

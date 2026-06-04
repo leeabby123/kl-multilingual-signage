@@ -6,10 +6,13 @@
    5 hibiscus flowers rise from scattered positions in the entry page:
 
      3 vanishers (orange TA / red ZH / blue EN):
-       - Each follows an individual petal-fall schedule (5 petals,
-         different timings + sequence patterns per flower).
-       - Body + remaining-petal alpha fades to 0 by each flower's own
-         "vanish-at" point on the scroll (TA 0.45 → ZH 0.65 → EN 0.85).
+       - Petals start falling ONLY in the back half of the scroll (TA from
+         p=0.50, ZH from p=0.55, EN from p=0.60). The front half (p<0.50)
+         leaves all 5 flowers fully intact and rising.
+       - Each follows its own petal-fall schedule (5 petals, staggered).
+       - Body alpha stays at 1 until the flower's first petal drops, then
+         fades linearly to 0 by that flower's vanish-at point
+         (TA 0.65 → ZH 0.80 → EN 0.92).
        - Detached petals fall under parabolic gravity (y ∝ lp²) with a
          small horizontal velocity derived from the petal's world-space
          facing direction at the moment of detach, counterclockwise spin,
@@ -47,15 +50,20 @@
   // -----------------------------------------------------------
   function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
 
-  // Body alpha curve. Vanishers fade linearly from p=0 to p=vanishAt.
-  // Survivors stay opaque until p=0.95, then fade out over the last
-  // 0.05 of progress to swap with the .top-flowers placeholder.
+  // Body alpha curve.
+  //   Vanishers: stay fully opaque until the earliest petal of that flower
+  //     begins to fall (flower.fadeStart, derived from petals' min fall_at),
+  //     then fade linearly to 0 by p=vanishAt. This keeps the FRONT HALF of
+  //     the scroll visually "complete" — no flowers half-faded before any
+  //     petals drop.
+  //   Survivors: opaque until p=0.95, then fade out over the last 0.05 of
+  //     progress to cross-fade with the .top-flowers placeholder.
   function computeBodyAlpha(p, flower) {
     if (flower.isSurvivor) {
-      // 1 for p ≤ 0.95, fades to 0 over p=0.95..1.00
       return clamp01((1.0 - p) / 0.05);
     }
-    return clamp01(1 - p / flower.vanishAt);
+    if (p < flower.fadeStart) return 1;
+    return clamp01(1 - (p - flower.fadeStart) / (flower.vanishAt - flower.fadeStart));
   }
 
   // Quadratic Bézier evaluation: B(t) = (1-t)² P0 + 2(1-t)t CP + t² P2
@@ -79,20 +87,36 @@
   // -----------------------------------------------------------
   // Build internal model from DOM data-attributes
   // -----------------------------------------------------------
-  const bodies = Array.from(layer.querySelectorAll('.rf-body')).map(el => ({
-    el,
-    color:    el.dataset.color,
-    vanishAt: parseFloat(el.dataset.vanishAt),
-    isSurvivor: parseFloat(el.dataset.vanishAt) >= 0.9,
-    sx: parseFloat(el.dataset.sx), sy: parseFloat(el.dataset.sy),
-    ex: parseFloat(el.dataset.ex), ey: parseFloat(el.dataset.ey),
-    cpx: parseFloat(el.dataset.cpx), cpy: parseFloat(el.dataset.cpy),
-    // Per-frame scale interpolation: start at 0.4 (40% size, all flowers);
-    // vanishers stay at 0.4, survivors grow to match placeholder's rendered
-    // green/gray hibiscus size at p=1 so the placeholder swap is seamless.
-    scaleStart: parseFloat(el.dataset.scaleStart || '0.4'),
-    scaleEnd:   parseFloat(el.dataset.scaleEnd   || '0.4'),
-  }));
+  const bodies = Array.from(layer.querySelectorAll('.rf-body')).map(el => {
+    const color = el.dataset.color;
+    const vanishAt = parseFloat(el.dataset.vanishAt);
+    const isSurvivor = vanishAt >= 0.9;
+
+    // fadeStart = the moment the FIRST petal of this flower begins to fall.
+    // Before this point, the body stays at full opacity (intact). Derived
+    // from petal data so HTML stays the single source of truth — to push the
+    // animation later or earlier, change the petal fall_at attributes and
+    // fadeStart updates automatically.
+    let fadeStart = isSurvivor ? 0.95 : 1.0;
+    if (!isSurvivor) {
+      layer.querySelectorAll(`.rf-petal[data-flower="${color}"]`).forEach(p => {
+        const fa = parseFloat(p.dataset.fallAt);
+        if (fa < 9 && fa < fadeStart) fadeStart = fa;     // 9.9 sentinel = never falls
+      });
+    }
+
+    return {
+      el, color, vanishAt, isSurvivor, fadeStart,
+      sx: parseFloat(el.dataset.sx), sy: parseFloat(el.dataset.sy),
+      ex: parseFloat(el.dataset.ex), ey: parseFloat(el.dataset.ey),
+      cpx: parseFloat(el.dataset.cpx), cpy: parseFloat(el.dataset.cpy),
+      // Per-frame scale interpolation: start at 0.4 (40% size, all flowers);
+      // vanishers stay at 0.4, survivors grow to match placeholder's rendered
+      // green/gray hibiscus size at p=1 so the placeholder swap is seamless.
+      scaleStart: parseFloat(el.dataset.scaleStart || '0.4'),
+      scaleEnd:   parseFloat(el.dataset.scaleEnd   || '0.4'),
+    };
+  });
   const bodyByColor = Object.fromEntries(bodies.map(b => [b.color, b]));
 
   const petals = Array.from(layer.querySelectorAll('.rf-petal')).map(el => {

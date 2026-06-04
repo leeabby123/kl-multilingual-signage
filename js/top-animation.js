@@ -179,8 +179,10 @@
         petal.el.setAttribute('transform', `translate(${f._bx.toFixed(1)},${f._by.toFixed(1)}) rotate(${rot.toFixed(1)}) scale(${f._scale.toFixed(3)})`);
         petal.el.setAttribute('opacity',   op.toFixed(3));
       } else {
-        // Detached — only triggers for non-survivors (survivors have fall_at=9.9)
-        const lp = (p - petal.fallAt) / 0.20;
+        // Detached — only triggers for non-survivors (survivors have fall_at=9.9).
+        // Fall duration is 0.40 of total scroll progress — each petal drifts down
+        // visibly for ~40% of the scroll, instead of disappearing too quickly.
+        const lp = (p - petal.fallAt) / 0.40;
         if (lp >= 1) {
           petal.el.setAttribute('opacity', '0');
           return;

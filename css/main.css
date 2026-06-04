@@ -4,8 +4,12 @@
 
 /* === SPA root === */
 .spa-root {
-  /* 3 stacked sections, each 100vh */
-  /* Middle is the entry; we scroll to it on page load */
+  /* 3 stacked sections, each 100vh. Middle is the entry; we scroll to it on
+     page load. position:relative makes this the containing block for the
+     .top-anim-layer (which sits as a sibling of the sections at the end of
+     .spa-root) so its top:0 height:200vh anchors to section--top's top edge
+     and ends at section--bottom's top edge. */
+  position: relative;
 }
 
 .section {
@@ -213,12 +217,11 @@
 .section--middle {
   background: var(--neutral-cream);
   position: relative;
-  /* overflow: visible — needed so .top-anim-layer (positioned absolute with
-     top:-100vh height:200vh inside this section) can render its upper half
-     in front of the top page. With overflow:hidden (the .section base class
-     default) the upward extension gets clipped and the rising flowers would
-     disappear as soon as they leave the entry page boundary. */
-  overflow: visible;
+  /* overflow inherits 'hidden' from .section base — the top-anim-layer now
+     lives outside section--middle (as a direct child of .spa-root), so this
+     section no longer needs to leak its descendants across boundaries. The
+     previous overflow:visible was the systemic root cause of strange
+     horizontal "bands" appearing at section edges. */
 }
 
 .middle-art {
@@ -685,23 +688,25 @@
    Top page UP-SCROLL animation — .top-anim-layer
    ============================================================
    5 flowers rise from the entry page into the top page when the user
-   scrolls UP. 3 vanish (red/orange/blue, petals scatter + color fades);
+   scrolls UP. 3 vanish (orange/red/blue, petals scatter + color fades);
    2 survive (green/gray) and land where .top-flowers placeholder sits.
 
-   Layer is placed INSIDE section--middle (not section--top) so that
-   section--middle's later position in the DOM gives the SVG natural
-   z-stacking ABOVE section--top's content. The layer extends UP into
-   the top section via top:-100vh height:200vh, requiring section--middle
-   to have overflow:visible (see .section--middle rule above).
+   Layer is a DIRECT CHILD of .spa-root (not inside any section), placed
+   AFTER all three sections in the DOM so it paints last — naturally
+   overlaying section--top + section--middle without needing section
+   overflow:visible (which previously caused horizontal "bands" at
+   section boundaries). With .spa-root position:relative, top:0 anchors
+   to section--top's top edge, and height:200vh ends exactly at
+   section--bottom's top edge.
 */
 .top-anim-layer {
   position: absolute;
-  top: -100vh;                    /* layer's top edge at the start of section--top */
+  top: 0;                         /* layer's top edge at the start of section--top (= .spa-root top) */
   left: 0;
   right: 0;
   height: 200vh;                  /* covers section--top + section--middle */
   width: 100%;
-  z-index: 10;                    /* above middle-art garden, below nav arrows */
+  z-index: 10;                    /* paints over section content; not relevant for ordering since DOM order already wins */
   pointer-events: none;
   overflow: visible;
   /* Loading-order fix mirroring .bottom-anim-layer: start invisible, JS

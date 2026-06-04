@@ -5,11 +5,11 @@
    Triggered as the user scrolls UP from the entry page to the top page.
    5 hibiscus flowers rise from scattered positions in the entry page:
 
-     3 vanishers (red ZH / orange TA / blue EN):
+     3 vanishers (orange TA / red ZH / blue EN):
        - Each follows an individual petal-fall schedule (5 petals,
          different timings + sequence patterns per flower).
        - Body + remaining-petal alpha fades to 0 by each flower's own
-         "vanish-at" point on the scroll (ZH 0.45 → TA 0.65 → EN 0.85).
+         "vanish-at" point on the scroll (TA 0.45 → ZH 0.65 → EN 0.85).
        - Detached petals fall under parabolic gravity (y ∝ lp²) with a
          small horizontal velocity derived from the petal's world-space
          facing direction at the moment of detach, counterclockwise spin,
@@ -87,6 +87,11 @@
     sx: parseFloat(el.dataset.sx), sy: parseFloat(el.dataset.sy),
     ex: parseFloat(el.dataset.ex), ey: parseFloat(el.dataset.ey),
     cpx: parseFloat(el.dataset.cpx), cpy: parseFloat(el.dataset.cpy),
+    // Per-frame scale interpolation: start at 0.4 (40% size, all flowers);
+    // vanishers stay at 0.4, survivors grow to match placeholder's rendered
+    // green/gray hibiscus size at p=1 so the placeholder swap is seamless.
+    scaleStart: parseFloat(el.dataset.scaleStart || '0.4'),
+    scaleEnd:   parseFloat(el.dataset.scaleEnd   || '0.4'),
   }));
   const bodyByColor = Object.fromEntries(bodies.map(b => [b.color, b]));
 
@@ -108,6 +113,8 @@
     const snapBodyRot   = -t * 540;
     const snapWorldAngle = snapBodyRot + angle;
     const snapBodyAlpha = computeBodyAlpha(t, flower);
+    // Scale at the moment of detach is locked-in; detached petals don't grow.
+    const snapScale = flower.scaleStart + (flower.scaleEnd - flower.scaleStart) * t;
 
     // Horizontal "blow-off" velocity: petal drifts outward in the
     // direction it was facing at detach. Capped at ±60 viewBox units.
@@ -115,7 +122,7 @@
 
     return {
       el, flower, angle, fallAt, baseOpacity,
-      snapX, snapY, snapWorldAngle, snapBodyAlpha, vx,
+      snapX, snapY, snapWorldAngle, snapBodyAlpha, snapScale, vx,
     };
   });
 
@@ -130,20 +137,22 @@
       const alpha = computeBodyAlpha(p, flower);
       const [bx, by] = bezierXY(p, flower);
       const brot = -p * 540;            // counterclockwise
-      flower._bx = bx; flower._by = by; flower._brot = brot;  // cache for petals
-      flower.el.setAttribute('transform', `translate(${bx.toFixed(1)},${by.toFixed(1)}) rotate(${brot.toFixed(1)})`);
+      const s    = flower.scaleStart + (flower.scaleEnd - flower.scaleStart) * p;
+      flower._bx = bx; flower._by = by; flower._brot = brot; flower._scale = s;  // cache for petals
+      flower.el.setAttribute('transform', `translate(${bx.toFixed(1)},${by.toFixed(1)}) rotate(${brot.toFixed(1)}) scale(${s.toFixed(3)})`);
       flower.el.setAttribute('opacity',   alpha.toFixed(3));
     });
 
-    // Update each petal — either attached (move + spin with body) or
-    // detached (own parabolic drift + counterclockwise spin + fade).
+    // Update each petal — either attached (move + spin + scale with body) or
+    // detached (own parabolic drift + counterclockwise spin + fade, scale locked
+    // at the snapshot value from the moment the petal left the flower).
     petals.forEach(petal => {
       const f = petal.flower;
       if (p < petal.fallAt) {
-        // Attached
+        // Attached — inherit flower body's current bx/by/brot/scale
         const rot = f._brot + petal.angle;
         const op  = computeBodyAlpha(p, f) * petal.baseOpacity;
-        petal.el.setAttribute('transform', `translate(${f._bx.toFixed(1)},${f._by.toFixed(1)}) rotate(${rot.toFixed(1)})`);
+        petal.el.setAttribute('transform', `translate(${f._bx.toFixed(1)},${f._by.toFixed(1)}) rotate(${rot.toFixed(1)}) scale(${f._scale.toFixed(3)})`);
         petal.el.setAttribute('opacity',   op.toFixed(3));
       } else {
         // Detached — only triggers for non-survivors (survivors have fall_at=9.9)
@@ -156,7 +165,7 @@
         const dy = 400 * lp * lp;       // parabolic gravity
         const rot = petal.snapWorldAngle - lp * 540;   // 1.5 extra ccw turns
         const op  = (1 - lp) * petal.baseOpacity * petal.snapBodyAlpha;
-        petal.el.setAttribute('transform', `translate(${(petal.snapX + dx).toFixed(1)},${(petal.snapY + dy).toFixed(1)}) rotate(${rot.toFixed(1)})`);
+        petal.el.setAttribute('transform', `translate(${(petal.snapX + dx).toFixed(1)},${(petal.snapY + dy).toFixed(1)}) rotate(${rot.toFixed(1)}) scale(${petal.snapScale.toFixed(3)})`);
         petal.el.setAttribute('opacity',   op.toFixed(3));
       }
     });

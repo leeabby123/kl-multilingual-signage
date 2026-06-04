@@ -1,10 +1,13 @@
 /* ============================================================
-   Timeline River — v5 (6/4 late)
-   - SVG width=1400 breaks past wrap right edge → river tip reaches viewport edge
-   - SVG coords = wrap coords 1:1 (cluster cx=255/425 matches article x=20/465)
-   - RTL: scaleX(-1) on SVG around wrap center (340px) mirrors cluster to match RTL article position
-   - Multi-script serif fonts: Cormorant Garamond (Latin) + Noto Serif SC (CJK)
-     + Noto Serif Tamil (Tamil) + Amiri (Arabic/Jawi)
+   Timeline River — v6 final (6/4 night)
+   - wrap 720 × 1750 with overflow:hidden
+   - SVG height 1830 (80px past wrap bottom) so river path can extend
+     past wrap edge; wrap.overflow:hidden clips it → "river still flowing,
+     page just ends" visual.
+   - River end anchor (550, 1820, w=68) — STILL WIDE, no taper.
+   - SVG coords = wrap coords 1:1 (cluster cx aligns with article x).
+   - Multi-script serif fonts per language.
+   - RTL mirror via scaleX(-1) around wrap center (360).
    ============================================================ */
 
 :root {
@@ -13,7 +16,6 @@
   --font-tag:     'Helvetica Neue', 'Noto Sans SC', 'Noto Sans Tamil', 'Noto Sans Arabic', system-ui, sans-serif;
 }
 
-/* Per-language overrides so the best-suited serif takes priority for each script */
 [data-lang="zh"] {
   --font-display: 'Noto Serif SC', 'Cormorant Garamond', serif;
   --font-body:    'Noto Serif SC', 'Cormorant Garamond', serif;
@@ -40,7 +42,7 @@
 }
 
 .timeline-lede {
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto 2.5rem;
   text-align: start;
   color: var(--color-text-secondary, #5f5e5a);
@@ -50,47 +52,43 @@
 }
 
 /* ------------------------------------------------------------
-   River container
+   River container — 720 × 1750 with overflow:hidden so river path
+   that extends past wrap bottom (y > 1750) gets clipped by wrap edge.
    ------------------------------------------------------------ */
 .timeline-river-wrap {
   position: relative;
-  width: 680px;
+  width: 720px;
   height: 1750px;
   margin: 0 auto;
-  overflow: visible;
+  overflow: hidden;          /* clips river past wrap bottom */
 }
 
-/* SVG element is 1400×1900 — breaks out of wrap (680×1750) to right and bottom.
-   viewBox 1:1 with element size means SVG-internal coords == wrap-pixel coords. */
+/* SVG element 720×1830 — 80px taller than wrap so path can continue past wrap.
+   Override any global svg{max-width:100%} that would shrink it. */
 .timeline-river {
   position: absolute;
   left: 0;
   top: 0;
-  width: 1400px;
-  height: 1900px;
+  width: 720px !important;
+  height: 1830px !important;
+  max-width: none !important;
   display: block;
-  overflow: visible;
   opacity: 0;
   transition: opacity 1.2s ease-in;
   pointer-events: none;
-  z-index: 0;  /* sit behind articles + sidebar */
+  z-index: 0;
 }
 
-/* RTL (Jawi): mirror SVG around the wrap center (340) so cluster positions
-   land where the article positions (also mirrored) are. */
+/* RTL (Jawi): mirror SVG around wrap center (360) — cluster R↔L swap matches article R↔L swap */
 [dir="rtl"] .timeline-river {
   transform: scaleX(-1);
-  transform-origin: 340px 0;
+  transform-origin: 360px 0;
 }
 
-.timeline-river.loaded {
-  opacity: 1;
-}
+.timeline-river.loaded { opacity: 1; }
 
 .river-path,
-.river-accent {
-  pointer-events: none;
-}
+.river-accent { pointer-events: none; }
 
 /* ------------------------------------------------------------
    Marker system
@@ -114,48 +112,37 @@
   pointer-events: all;
 }
 
-.marker .hit {
-  fill: transparent;
-  pointer-events: all;
-}
-
-.marker:hover {
-  transform: scale(1.12);
-}
-
+.marker .hit { fill: transparent; pointer-events: all; }
+.marker:hover { transform: scale(1.12); }
 .marker:focus-visible { outline: none; }
 .marker:focus-visible .hit {
   fill: rgba(125, 125, 125, 0.1);
   stroke: var(--color-text-primary, #2c2c2a);
-  stroke-width: 0.5;
-  stroke-dasharray: 2 2;
+  stroke-width: 0.5; stroke-dasharray: 2 2;
 }
-
-.marker--dot .dot-mark {
-  opacity: 0.6;
-  transition: opacity 0.2s;
-}
+.marker--dot .dot-mark { opacity: 0.6; transition: opacity 0.2s; }
 .marker--dot:hover .dot-mark { opacity: 0.95; }
 
 /* ------------------------------------------------------------
-   Node text labels — fixed columns
+   Node labels — fixed columns, narrower for key (Kunm authorized)
    ------------------------------------------------------------ */
 .node-label {
   position: absolute;
   top: var(--top);
   left: var(--x);
-  width: 195px;
+  width: 160px;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   z-index: 1;
 }
 
+/* Key nodes get even narrower (Kunm permitted shrinking key-node text frames) */
+.node-label--key { width: 140px; }
+
 .node-label[data-side="R"] { text-align: left; }
 .node-label[data-side="L"] { text-align: right; }
 
-/* RTL: mirror article position AND flip side semantics so visual side stays consistent
-   (since SVG also mirrors, cluster R↔L swap; articles must swap too) */
 [dir="rtl"] .node-label {
   left: auto;
   right: var(--x);
@@ -170,11 +157,10 @@
 .node-label.revealed { transform: translateY(0); }
 
 /* ------------ 3-tier font hierarchy ------------ */
-
 .node-tag {
   font-family: var(--font-tag);
-  font-size: 11.5px;
-  letter-spacing: 0.18em;
+  font-size: 12.5px;             /* bumped from 11.5 — Kunm said too small */
+  letter-spacing: 0.16em;
   color: var(--color-text-secondary, #8a8780);
   font-weight: 500;
   margin-bottom: 8px;
@@ -183,31 +169,50 @@
 
 [data-lang="ta"] .node-tag,
 [data-lang="jawi"] .node-tag {
-  letter-spacing: 0.06em;  /* Tamil + Arabic don't take wide letter-spacing well */
-  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-size: 13.5px;
 }
 
 .node-title {
   font-family: var(--font-display);
-  font-weight: 500;
   color: var(--color-text-primary, #2c2c2a);
   margin: 0 0 6px;
   line-height: 1.3;
   unicode-bidi: plaintext;
+  overflow-wrap: break-word;
 }
-.node-label--preamble .node-title { font-size: 15px; font-weight: 400; }
-.node-label--mid      .node-title { font-size: 16px; font-weight: 500; }
-.node-label--key      .node-title { font-size: 18px; font-weight: 600; }
+.node-label--preamble .node-title { font-size: 14px; font-weight: 400; }
+.node-label--mid      .node-title { font-size: 15px; font-weight: 500; }
+.node-label--key      .node-title { font-size: 17px; font-weight: 600; }
 
 .node-desc {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.55;
   color: var(--color-text-secondary, #5f5e5a);
   margin: 0;
   unicode-bidi: plaintext;
+  overflow-wrap: break-word;
 }
 .node-label--key .node-desc { color: var(--color-text-primary, #3a3a36); }
+
+/* Per-language wrap behavior: CJK chars can break anywhere; Latin/Tamil/Arabic only at word boundaries */
+[data-lang="zh"] .node-title,
+[data-lang="zh"] .node-desc {
+  word-break: normal;
+  line-break: strict;
+}
+[data-lang="en"] .node-title,
+[data-lang="ms"] .node-title,
+[data-lang="ta"] .node-title,
+[data-lang="jawi"] .node-title,
+[data-lang="en"] .node-desc,
+[data-lang="ms"] .node-desc,
+[data-lang="ta"] .node-desc,
+[data-lang="jawi"] .node-desc {
+  word-break: normal;
+  hyphens: auto;
+}
 
 /* ------------------------------------------------------------
    Tooltip
@@ -227,23 +232,12 @@
   line-height: 1.5;
   text-align: start;
 }
-
 .member-tooltip[hidden] { display: none; }
-
-.tooltip-name {
-  font-weight: 500;
-  color: var(--color-text-primary, #2c2c2a);
-  margin-bottom: 2px;
-  font-size: 12px;
-}
-
-.tooltip-desc {
-  color: var(--color-text-secondary, #5f5e5a);
-  font-size: 11.5px;
-}
+.tooltip-name { font-weight: 500; color: var(--color-text-primary, #2c2c2a); margin-bottom: 2px; font-size: 12px; }
+.tooltip-desc { color: var(--color-text-secondary, #5f5e5a); font-size: 11.5px; }
 
 /* ------------------------------------------------------------
-   Trace banner
+   Trace banner (position:fixed, not affected by wrap clip)
    ------------------------------------------------------------ */
 .trace-banner {
   position: fixed;
@@ -263,33 +257,18 @@
   align-items: center;
   gap: 6px;
 }
-
 .trace-banner[hidden] { display: none; }
+.trace-banner-name { font-weight: 500; color: var(--color-text-primary, #2c2c2a); }
 
-.trace-banner-name {
-  font-weight: 500;
-  color: var(--color-text-primary, #2c2c2a);
-}
-
-body.trace-mode .marker:not(.trace-active) {
-  opacity: 0.22;
-  transition: opacity 0.3s ease-out;
-}
-
-body.trace-mode .marker.trace-active {
-  opacity: 1;
-}
-
-body.trace-mode .node-label.trace-untouched {
-  opacity: 0.35;
-  transition: opacity 0.3s ease-out;
-}
+body.trace-mode .marker:not(.trace-active) { opacity: 0.22; transition: opacity 0.3s ease-out; }
+body.trace-mode .marker.trace-active { opacity: 1; }
+body.trace-mode .node-label.trace-untouched { opacity: 0.35; transition: opacity 0.3s ease-out; }
 
 /* ------------------------------------------------------------
    Key milestones section
    ------------------------------------------------------------ */
 .timeline-key-milestones {
-  max-width: 600px;
+  max-width: 620px;
   margin: 3rem auto 0;
   padding: 1.5rem 1.75rem;
   background: var(--color-surface, #f5efe6);
@@ -321,13 +300,8 @@ body.trace-mode .node-label.trace-untouched {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .timeline-river,
-  .node-markers,
-  .node-label,
-  .marker {
-    transition: none;
-    transform: none;
-    opacity: 1;
+  .timeline-river, .node-markers, .node-label, .marker {
+    transition: none; transform: none; opacity: 1;
   }
   .timeline-river { opacity: 1; }
   .node-markers { opacity: var(--node-opacity, 1); }

@@ -38,18 +38,20 @@
   const BLOOM_WAVES        = 20;      // 20 waves over 3 s = one every 150 ms
   const BLOOM_DURATION_MS  = 3000;
   const BLOOM_COLORS       = ['b-hR', 'b-hO', 'b-hG', 'b-hB', 'b-hGy'];
-  // viewBox 0 0 1600 1000 — keep some margin so flowers don't clip the edge
-  const BLOOM_X_MIN = 40,  BLOOM_X_MAX = 1560;
-  const BLOOM_Y_MIN = 40,  BLOOM_Y_MAX = 960;
+  // Expanded viewBox 0 0 1600 2000 — middle page = y=0..1000, bottom page = y=1000..2000.
+  // Bloom only spawns in the BOTTOM page area (y=1000..1900) with edge margin.
+  const BLOOM_X_MIN = 40,    BLOOM_X_MAX = 1560;
+  const BLOOM_Y_MIN = 1040,  BLOOM_Y_MAX = 1940;
 
   // Phase 3 (tagline) — kicks off PHASE3_DELAY after phase 2 starts
   const PHASE3_DELAY_MS    = 3200;     // 200 ms breather after bloom finishes
 
-  // Phase 1 (seed fall) — scroll progress threshold at which seeds are fully landed
-  // 0 = bottom-section's TOP edge at viewport bottom
-  // 1 = bottom-section fills viewport (its top is at viewport top)
-  // We map progress in [0, PHASE1_COMPLETE] to seed transform [start → target].
-  const PHASE1_COMPLETE    = 0.85;     // seeds fully landed before section is fully in view
+  // Phase 1 (seed fall) — scroll progress threshold at which seeds are fully landed.
+  // With the expanded 2-vh active range (middle + bottom), p reaches 1.0 exactly
+  // when the user has scrolled to the START of the bottom section. At that
+  // moment, the seeds' landing y=1720-1920 is at the bottom 1/3 of the visible
+  // bottom page. Setting PHASE1_COMPLETE = 1.0 uses the entire range for the fall.
+  const PHASE1_COMPLETE    = 1.0;
 
   // -----------------------------------------------------------
   // Boot
@@ -124,17 +126,27 @@
   let phase3Started = false;
   let phase2Timeouts = [];
 
+  // Reference point for scroll progress: the MIDDLE section (entry page).
+  // Seeds become visible/active from the moment the entry page enters the viewport
+  // and finish landing as the user reaches the bottom 1/3 of the bottom section.
+  // The total active scroll range is therefore ~2 viewports (middle + bottom).
+  const sectionMiddle = document.querySelector('.section--middle');
+
   // -----------------------------------------------------------
   // PHASE 1 — scroll-driven seed fall
   // -----------------------------------------------------------
   function updateSeedFall() {
-    const rect = section.getBoundingClientRect();
     const vh = window.innerHeight;
 
-    // Progress: 0 when section top is at viewport bottom, 1 when section top is at viewport top
-    // i.e., as the user scrolls section into view, progress climbs 0 → 1.
-    const raw = (vh - rect.top) / vh;
-    const p   = Math.max(0, Math.min(1, raw));
+    // Anchor progress on the middle section's top edge relative to the viewport.
+    // midTop = vh   → middle section just below viewport (user still at top page) → p = 0
+    // midTop = 0    → middle section fills viewport (user at entry page)         → p = 0.5
+    // midTop = -vh  → middle section above viewport (user at bottom page)        → p = 1.0
+    // Total span: 2*vh of scrolling. This makes the fall slow and the seeds
+    // visible throughout the entry→bottom scroll.
+    const midTop = sectionMiddle.getBoundingClientRect().top;
+    const raw    = (vh - midTop) / (2 * vh);
+    const p      = Math.max(0, Math.min(1, raw));
 
     // Map [0, PHASE1_COMPLETE] → [0, 1] for seed interpolation. Above that, seeds are landed.
     const t = Math.min(1, p / PHASE1_COMPLETE);
@@ -158,13 +170,15 @@
       );
     });
 
-    // Trigger phase 2 when seeds are fully landed AND section is mostly in view
-    if (t >= 1 && p >= 0.92 && !phase2Started) {
+    // Trigger phase 2 when seeds are fully landed (i.e., user reached start of bottom section)
+    // With the new 2-vh range, p >= ~0.98 means user is at or past scrollY = 2vh (bottom-top).
+    if (t >= 1 && p >= 0.98 && !phase2Started) {
       startPhase2();
     }
 
-    // Reset when section is clearly out of view (user scrolled back up)
-    if (p <= 0.05 && (phase2Started || phase3Started)) {
+    // Reset when user has scrolled fully back past the entry page
+    // p <= 0.40 corresponds to midTop > 0.2*vh, i.e., user still mostly above middle section.
+    if (p <= 0.40 && (phase2Started || phase3Started)) {
       resetPhases();
     }
   }
@@ -238,10 +252,21 @@
   }
 
   // -----------------------------------------------------------
-  // Scroll listener — RAF-throttled
+  // Scroll listener — RAF-throttled, with direction-aware up-scroll cleanup
   // -----------------------------------------------------------
   let ticking = false;
+  let lastScrollY = window.scrollY;
   function onScroll() {
+    // Direction-aware cleanup for #6: when the user scrolls UP while bloom
+    // (Phase 2) or the tagline plate (Phase 3) are showing, clear them
+    // immediately. Without this, the bloom and plate linger as the user
+    // returns to the entry/top pages until the slow p-threshold fires.
+    const sy = window.scrollY;
+    if (sy < lastScrollY && (phase2Started || phase3Started)) {
+      resetPhases();
+    }
+    lastScrollY = sy;
+
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {

@@ -117,7 +117,7 @@
 
     <!-- Scroll cue: down to middle -->
     <a class="scroll-cue" data-scroll-target="#section-middle" aria-label="Scroll to middle (landing)">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,7 12,11 18,7"/><polyline points="6,13 12,17 18,13"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="6,5.4 12,9.4 18,5.4"/><polyline points="6,11.4 12,15.4 18,11.4"/></g></svg>
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,7 12,11 18,7"/><polyline points="6,13 12,17 18,13"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="6,5.4 12,9.4 18,5.4"/><polyline points="6,11.4 12,15.4 18,11.4"/></g></svg>
     </a>
 
   </section>
@@ -182,7 +182,7 @@
     </div>
 
     <!-- Animation layer (Layer 1) — same viewBox as kl-map so coords map 1:1 -->
-    <svg class="bottom-anim-layer" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg class="bottom-anim-layer" viewBox="0 0 1600 2000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <g id="b-fr"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
         <g id="b-hR"><use href="#b-fr" fill="#d63031" opacity="0.68"/><use href="#b-fr" fill="#d63031" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#d63031" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#d63031" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#d63031" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
@@ -192,35 +192,39 @@
         <g id="b-hGy"><use href="#b-fr" fill="#7f8c8d" opacity="0.55"/><use href="#b-fr" fill="#7f8c8d" opacity="0.5" transform="rotate(72)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.45" transform="rotate(144)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.52" transform="rotate(216)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.58" transform="rotate(288)"/><circle r="4" fill="#555"/></g>
       </defs>
 
-      <!-- 5 falling seeds — all land in the bottom 1/3 of the map (y=720-920),
-           x positions spread across the full map width (180/480/800/1140/1420).
-           Each (start → target) distance is ~1000 units so all 5 fall at the
-           same visual speed during scroll. Trajectories vary:
-           · EN falls straight down (dx=0)
-           · MS, TA fall left-diagonal (TA enters from off-screen right x=1683)
-           · Jawi, ZH fall right-diagonal (Jawi enters from off-screen left x=-100)
-           Initial scale 0.30 = same visual size as middle-garden seeds (no growth). -->
+      <!-- 5 falling seeds — initial positions at y=900 in the expanded viewBox.
+           y=900 corresponds to the garden-ground level of the entry page (the
+           middle section maps to y=0..1000, and y=900 = 90% down = where the
+           grassy garden + animals + benches are drawn). This places seeds
+           IN FRONT of the garden illustration (z-layered above), visible when
+           the user is at the entry page — NOT in the sky and NOT covered.
+           As the user scrolls down, each seed falls (with slow rotation) to
+           its landing target in the bottom 1/3 of the BOTTOM page (y=1720-1920
+           in expanded coords; bottom page maps to y=1000..2000).
+           All (start → target) distances are ~1100 units so all 5 fall at the
+           same visual speed. Trajectories: Jawi/MS fall left-down, EN/TA/ZH
+           fall right-down. Initial scale 0.30 matches middle-garden seed size. -->
       <g id="seeds-falling">
         <use class="falling-seed lang-jawi" href="#b-hGy"
-             data-start-x="-100" data-start-y="-80"
-             data-target-x="180" data-target-y="880"
-             transform="translate(-100,-80) scale(0.30)"/>
+             data-start-x="680"  data-start-y="900"
+             data-target-x="180" data-target-y="1880"
+             transform="translate(680,900) scale(0.30)"/>
         <use class="falling-seed lang-ms"   href="#b-hG"
-             data-start-x="1080" data-start-y="-80"
-             data-target-x="480" data-target-y="720"
-             transform="translate(1080,-80) scale(0.30)"/>
+             data-start-x="1213" data-start-y="900"
+             data-target-x="480" data-target-y="1720"
+             transform="translate(1213,900) scale(0.30)"/>
         <use class="falling-seed lang-en"   href="#b-hB"
-             data-start-x="800"  data-start-y="-80"
-             data-target-x="800" data-target-y="920"
-             transform="translate(800,-80) scale(0.30)"/>
+             data-start-x="388"  data-start-y="900"
+             data-target-x="800" data-target-y="1920"
+             transform="translate(388,900) scale(0.30)"/>
         <use class="falling-seed lang-ta"   href="#b-hO"
-             data-start-x="1683" data-start-y="-80"
-             data-target-x="1140" data-target-y="760"
-             transform="translate(1683,-80) scale(0.30)"/>
+             data-start-x="454"  data-start-y="900"
+             data-target-x="1140" data-target-y="1760"
+             transform="translate(454,900) scale(0.30)"/>
         <use class="falling-seed lang-zh"   href="#b-hR"
-             data-start-x="1052" data-start-y="-80"
-             data-target-x="1420" data-target-y="850"
-             transform="translate(1052,-80) scale(0.30)"/>
+             data-start-x="865"  data-start-y="900"
+             data-target-x="1420" data-target-y="1850"
+             transform="translate(865,900) scale(0.30)"/>
       </g>
 
       <!-- Bloom field — JS populates this <g> with ~150 flowers during Phase 2 -->

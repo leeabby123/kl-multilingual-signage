@@ -329,8 +329,8 @@
 .middle-scroll-up svg,
 .middle-scroll-down svg {
   display: block;
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
 }
 
 @keyframes bounce-up {
@@ -399,11 +399,19 @@
 /* Layer 1: animation SVG overlay — seeds + bloom share the kl-map's viewBox */
 .bottom-anim-layer {
   position: absolute;
-  inset: 0;
-  z-index: 2;
+  /* Extend UP from bottom section into middle section so seeds are visible
+     IN FRONT OF the entry page (the garden) before scrolling reaches the
+     bottom section. top:-100vh places the top edge at the start of the
+     middle section; height:200vh covers middle+bottom together. */
+  top: -100vh;
+  left: 0;
+  right: 0;
+  height: 200vh;
+  /* z-index high so seeds render on TOP of the middle-garden SVG (palms,
+     animals, KEDAI shops). Without this, seeds get covered. */
+  z-index: 10;
   pointer-events: none;
   width: 100%;
-  height: 100%;
   overflow: visible;
 }
 

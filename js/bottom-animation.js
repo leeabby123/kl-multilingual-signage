@@ -153,22 +153,52 @@
     // Map [0, PHASE1_COMPLETE] → [0, 1] for seed interpolation. Above that, seeds are landed.
     const t = Math.min(1, p / PHASE1_COMPLETE);
 
-    // Ease-out cubic so seeds decelerate as they land — feels gravity-correct
-    const eased = 1 - Math.pow(1 - t, 3);
+    // Ease-IN cubic — SLOW at the start, FAST at the end. The seeds linger
+    // near their start position (y=900, garden-ground level of the entry page)
+    // throughout the entry-page viewing, only accelerating to their landing
+    // positions as the user enters the bottom page. This satisfies the
+    // requirement that the seeds remain visible DURING the entry→bottom
+    // transition (with ease-out the opposite — they'd be 87% fallen at the
+    // midpoint and well below the viewport).
+    const eased = t * t * t;
 
     seeds.forEach((s, i) => {
-      const x = s.sx + (s.tx - s.sx) * eased;
-      const y = s.sy + (s.ty - s.sy) * eased;
-      // Slight horizontal sway for falling feel — sin-based, offset per seed
-      const sway = Math.sin((eased + i * 0.18) * Math.PI * 2) * 18 * (1 - eased);
-      // CONSTANT scale 0.30 — matches the middle-garden seed visual size; no growth during fall
+      const dx = s.tx - s.sx;
+      const dy = s.ty - s.sy;
+
+      // Straight-line interpolation between (sx,sy) and (tx,ty)
+      const linX = s.sx + dx * eased;
+      const linY = s.sy + dy * eased;
+
+      // Perpendicular curve offset — gives each seed a CURVED trajectory
+      // rather than falling on a rigid straight line. sin(π·t) peaks at the
+      // midpoint of the fall and is zero at both ends, so the seed starts
+      // and ends exactly on the line but swings out perpendicular to it
+      // during the middle of the fall. Alternating direction per seed so
+      // the 5 seeds spread out in a fan of curves.
+      const lineLen = Math.sqrt(dx*dx + dy*dy) || 1;
+      const perpX   = -dy / lineLen;
+      const perpY   =  dx / lineLen;
+      const sideDir = (i % 2 === 0) ? 1 : -1;
+      const curveAmp = 180 * Math.sin(t * Math.PI);     // amplitude ~180 viewBox units at mid-fall
+      const curveX   = perpX * curveAmp * sideDir;
+      const curveY   = perpY * curveAmp * sideDir;
+
+      const x = linX + curveX;
+      const y = linY + curveY;
+
+      // CONSTANT scale — matches the middle-garden seed visual size; no growth during fall
       const SEED_SCALE = 0.30;
-      // Multi-turn rotation during fall — alternating direction per seed for organic feel
-      const dir = (i % 2 === 0) ? 1 : -1;
-      const rot = (i * 47 + eased * 360 * dir) % 360;       // 1 full gentle turn (缓缓)
+
+      // Rotation — uses LINEAR raw progress p (not eased) so the spin is
+      // visually steady throughout the fall, even while the position is
+      // slow-start / fast-end. ~1.5 full turns total, alternating direction.
+      const rotDir = (i % 2 === 0) ? 1 : -1;
+      const rot = (i * 47 + p * 540 * rotDir) % 360;
+
       s.el.setAttribute(
         'transform',
-        `translate(${x + sway},${y}) scale(${SEED_SCALE}) rotate(${rot})`
+        `translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${SEED_SCALE}) rotate(${rot.toFixed(0)})`
       );
     });
 

@@ -57,6 +57,13 @@
       sectionBottom.scrollIntoView({ behavior: 'instant', block: 'start' });
     }
     // 没 hash 的情况下不再二次滚动（避免抢走用户已经手动滚动到的位置）
+
+    // Reveal the falling-seed anim-layer only AFTER all sub-resources have
+    // loaded (including the async middle-garden.svg <object>). Without this,
+    // the inline 5 seeds render before the garden image arrives, so the
+    // user sees seeds floating against an empty cream background for a few
+    // hundred ms. CSS handles the fade-in.
+    document.querySelector('.bottom-anim-layer')?.classList.add('garden-loaded');
   });
 
   /* ----------------------------------------------------------

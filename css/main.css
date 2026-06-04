@@ -163,8 +163,8 @@
 
 .enter-hub-btn svg {
   display: block;
-  width: 32px;
-  height: 32px;
+  width: 56px;                   /* unified with all site-wide nav chevrons (scroll-cue, middle-scroll-up/down, hub-corner-arrow, sidebar-back-link) */
+  height: 56px;
 }
 
 /* Scroll cue — down arrow */
@@ -418,6 +418,16 @@
   pointer-events: none;
   width: 100%;
   overflow: visible;
+  /* Loading-order fix: middle-garden.svg is loaded asynchronously as an
+     <object>; without this, the inline anim-layer renders FIRST, so the
+     user briefly sees the 5 seeds floating against a blank cream background
+     before the garden image arrives. Start invisible; main.js adds
+     .garden-loaded on window.load (after all sub-resources finish). */
+  opacity: 0;
+  transition: opacity 0.5s ease-out 0.15s;
+}
+.bottom-anim-layer.garden-loaded {
+  opacity: 1;
 }
 
 /* Falling seeds — JS drives `transform` via the data-target-* attrs and scroll progress.

@@ -71,8 +71,8 @@ body {
 .hub-corner-arrow--back:hover    { transform: translateX(-2px); }
 .hub-corner-arrow--forward:hover { transform: translateX(2px); }
 .hub-corner-arrow svg {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
 }
 
 /* ===== TOP FINDINGS BAR (8 buttons, single row) ===== */
@@ -566,16 +566,12 @@ html:not([data-lang]) [data-lang-content="en"] { display: revert; }
 <!-- LEFT NAV (5 secondary pages + back to Hub) -->
 <!-- Top-left corner: back to entry (« double chevron) -->
 <a class="hub-corner-arrow hub-corner-arrow--back" href="../index.html" aria-label="Back to entry">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <polyline points="17,6 13,12 17,18"/><polyline points="11,6 7,12 11,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="18.6,6 14.6,12 18.6,18"/><polyline points="12.6,6 8.6,12 12.6,18"/></g>
-  </svg>
+  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="12,6 6,12 12,18"/><polyline points="18,6 12,12 18,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="13.6,6 7.6,12 13.6,18"/><polyline points="19.6,6 13.6,12 19.6,18"/></g></svg>
 </a>
 
 <!-- Top-right corner: forward to secondary pages (» double chevron) — enters via about.html, where the full sidebar lives -->
 <a class="hub-corner-arrow hub-corner-arrow--forward" href="about.html" aria-label="Forward to pages">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <polyline points="7,6 11,12 7,18"/><polyline points="13,6 17,12 13,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="5.4,6 9.4,12 5.4,18"/><polyline points="11.4,6 15.4,12 11.4,18"/></g>
-  </svg>
+  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="12,6 18,12 12,18"/><polyline points="6,6 12,12 6,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="10.4,6 16.4,12 10.4,18"/><polyline points="4.4,6 10.4,12 4.4,18"/></g></svg>
 </a>
 
 <!-- TOP FINDINGS BAR (8 buttons, single row · 4 solid stable + 4 dashed tentative) -->
@@ -1625,7 +1621,7 @@ function renderSignDetail(s) {
     : '';
 
   const backArrowHtml = previousFindingKey
-    ? `<button class="sd-back-btn" id="sd-back-btn" aria-label="Back to finding"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17,6 13,12 17,18"/><polyline points="11,6 7,12 11,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="18.6,6 14.6,12 18.6,18"/><polyline points="12.6,6 8.6,12 12.6,18"/></g></svg></button>`
+    ? `<button class="sd-back-btn" id="sd-back-btn" aria-label="Back to finding"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="12,6 6,12 12,18"/><polyline points="18,6 12,12 18,18"/><g stroke="#F2A0A1" stroke-width="1.4"><polyline points="13.6,6 7.6,12 13.6,18"/><polyline points="19.6,6 13.6,12 19.6,18"/></g></svg></button>`
     : '';
 
   const html = `

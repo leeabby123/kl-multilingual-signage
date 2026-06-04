@@ -139,13 +139,15 @@
     const vh = window.innerHeight;
 
     // Anchor progress on the middle section's top edge relative to the viewport.
-    // midTop = vh   → middle section just below viewport (user still at top page) → p = 0
-    // midTop = 0    → middle section fills viewport (user at entry page)         → p = 0.5
-    // midTop = -vh  → middle section above viewport (user at bottom page)        → p = 1.0
-    // Total span: 2*vh of scrolling. This makes the fall slow and the seeds
-    // visible throughout the entry→bottom scroll.
+    // midTop = 0    → user just reached the entry page (middle fills viewport)  → p = 0  (seeds at START y=900, visible at lawn level)
+    // midTop = -vh  → user just reached the bottom page                         → p = 1  (seeds LANDED at y=1720-1920, bottom 1/3 of bottom page)
+    // Active scroll range = 1vh (the scroll from entry-top to bottom-top).
+    //
+    // Previous bug: `raw = (vh - midTop) / (2*vh)` put p=0.5 when user was AT entry page,
+    // which (combined with ease-out cubic) made the seed already 87% fallen — landing
+    // them visually BELOW the viewport before the user had even started scrolling.
     const midTop = sectionMiddle.getBoundingClientRect().top;
-    const raw    = (vh - midTop) / (2 * vh);
+    const raw    = -midTop / vh;
     const p      = Math.max(0, Math.min(1, raw));
 
     // Map [0, PHASE1_COMPLETE] → [0, 1] for seed interpolation. Above that, seeds are landed.

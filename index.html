@@ -155,7 +155,7 @@
          Structure rationale:
          - Each FLOWER BODY (center dot + stamen) is a <g class="rf-body">
            with trajectory data on data-* attrs.
-         - Each PETAL is an independent <use href="#b-fr">; petals stay as
+         - Each PETAL is an independent <use href="#t-fr">; petals stay as
            direct children of the layer (NOT nested inside the body group)
            so the JS can switch a petal from "attached" (transformed with
            the body) to "detached" (its own snapshot+drift transform)
@@ -167,17 +167,27 @@
     -->
     <svg class="top-anim-layer" viewBox="0 0 1600 2000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
 
+      <!-- Hibiscus petal symbol — defined HERE (earliest in document) so
+           every <use href="#t-fr"> in both this layer AND the bottom-anim-layer
+           is a backward reference (target before use), which Chromium resolves
+           reliably. Previously the petal def lived in bottom-anim-layer and
+           top-anim-layer's <use> elements were FORWARD references; petals
+           silently failed to render. -->
+      <defs>
+        <g id="t-fr"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
+      </defs>
+
       <!-- ZH 红 — vanisher #1 (earliest), petal order: 144 → 0 → 216 → 72 → 288 (jumping pattern) -->
       <g class="rf-body" data-color="zh" data-vanish-at="0.45"
          data-sx="200" data-sy="1600" data-ex="320" data-ey="880" data-cpx="60" data-cpy="1240">
         <circle r="5" fill="#8b1a1a"/>
         <circle cy="-26" r="2" fill="#e8c840"/>
       </g>
-      <use class="rf-petal" data-flower="zh" data-angle="144" data-fall-at="0.10" data-base-opacity="0.57" href="#b-fr" fill="#d63031"/>
-      <use class="rf-petal" data-flower="zh" data-angle="0"   data-fall-at="0.18" data-base-opacity="0.68" href="#b-fr" fill="#d63031"/>
-      <use class="rf-petal" data-flower="zh" data-angle="216" data-fall-at="0.25" data-base-opacity="0.65" href="#b-fr" fill="#d63031"/>
-      <use class="rf-petal" data-flower="zh" data-angle="72"  data-fall-at="0.33" data-base-opacity="0.62" href="#b-fr" fill="#d63031"/>
-      <use class="rf-petal" data-flower="zh" data-angle="288" data-fall-at="0.40" data-base-opacity="0.72" href="#b-fr" fill="#d63031"/>
+      <use class="rf-petal" data-flower="zh" data-angle="144" data-fall-at="0.10" data-base-opacity="0.57" href="#t-fr" fill="#d63031"/>
+      <use class="rf-petal" data-flower="zh" data-angle="0"   data-fall-at="0.18" data-base-opacity="0.68" href="#t-fr" fill="#d63031"/>
+      <use class="rf-petal" data-flower="zh" data-angle="216" data-fall-at="0.25" data-base-opacity="0.65" href="#t-fr" fill="#d63031"/>
+      <use class="rf-petal" data-flower="zh" data-angle="72"  data-fall-at="0.33" data-base-opacity="0.62" href="#t-fr" fill="#d63031"/>
+      <use class="rf-petal" data-flower="zh" data-angle="288" data-fall-at="0.40" data-base-opacity="0.72" href="#t-fr" fill="#d63031"/>
 
       <!-- TA 橙 — vanisher #2 (middle), petal order: 0 → 72 → 144 → 216 → 288 (counterclockwise full circle) -->
       <g class="rf-body" data-color="ta" data-vanish-at="0.65"
@@ -185,11 +195,11 @@
         <circle r="5" fill="#8b4a10"/>
         <circle cy="-26" r="2" fill="#e8c840"/>
       </g>
-      <use class="rf-petal" data-flower="ta" data-angle="0"   data-fall-at="0.20" data-base-opacity="0.68" href="#b-fr" fill="#e67e22"/>
-      <use class="rf-petal" data-flower="ta" data-angle="72"  data-fall-at="0.32" data-base-opacity="0.62" href="#b-fr" fill="#e67e22"/>
-      <use class="rf-petal" data-flower="ta" data-angle="144" data-fall-at="0.42" data-base-opacity="0.57" href="#b-fr" fill="#e67e22"/>
-      <use class="rf-petal" data-flower="ta" data-angle="216" data-fall-at="0.52" data-base-opacity="0.65" href="#b-fr" fill="#e67e22"/>
-      <use class="rf-petal" data-flower="ta" data-angle="288" data-fall-at="0.62" data-base-opacity="0.72" href="#b-fr" fill="#e67e22"/>
+      <use class="rf-petal" data-flower="ta" data-angle="0"   data-fall-at="0.20" data-base-opacity="0.68" href="#t-fr" fill="#e67e22"/>
+      <use class="rf-petal" data-flower="ta" data-angle="72"  data-fall-at="0.32" data-base-opacity="0.62" href="#t-fr" fill="#e67e22"/>
+      <use class="rf-petal" data-flower="ta" data-angle="144" data-fall-at="0.42" data-base-opacity="0.57" href="#t-fr" fill="#e67e22"/>
+      <use class="rf-petal" data-flower="ta" data-angle="216" data-fall-at="0.52" data-base-opacity="0.65" href="#t-fr" fill="#e67e22"/>
+      <use class="rf-petal" data-flower="ta" data-angle="288" data-fall-at="0.62" data-base-opacity="0.72" href="#t-fr" fill="#e67e22"/>
 
       <!-- EN 蓝 — vanisher #3 (latest), petal order: 288 → 216 → 144 → 72 → 0 (clockwise full circle) -->
       <g class="rf-body" data-color="en" data-vanish-at="0.85"
@@ -197,11 +207,11 @@
         <circle r="5" fill="#14456b"/>
         <circle cy="-26" r="2" fill="#e8c840"/>
       </g>
-      <use class="rf-petal" data-flower="en" data-angle="288" data-fall-at="0.30" data-base-opacity="0.72" href="#b-fr" fill="#2980b9"/>
-      <use class="rf-petal" data-flower="en" data-angle="216" data-fall-at="0.43" data-base-opacity="0.65" href="#b-fr" fill="#2980b9"/>
-      <use class="rf-petal" data-flower="en" data-angle="144" data-fall-at="0.55" data-base-opacity="0.57" href="#b-fr" fill="#2980b9"/>
-      <use class="rf-petal" data-flower="en" data-angle="72"  data-fall-at="0.67" data-base-opacity="0.62" href="#b-fr" fill="#2980b9"/>
-      <use class="rf-petal" data-flower="en" data-angle="0"   data-fall-at="0.80" data-base-opacity="0.68" href="#b-fr" fill="#2980b9"/>
+      <use class="rf-petal" data-flower="en" data-angle="288" data-fall-at="0.30" data-base-opacity="0.72" href="#t-fr" fill="#2980b9"/>
+      <use class="rf-petal" data-flower="en" data-angle="216" data-fall-at="0.43" data-base-opacity="0.65" href="#t-fr" fill="#2980b9"/>
+      <use class="rf-petal" data-flower="en" data-angle="144" data-fall-at="0.55" data-base-opacity="0.57" href="#t-fr" fill="#2980b9"/>
+      <use class="rf-petal" data-flower="en" data-angle="72"  data-fall-at="0.67" data-base-opacity="0.62" href="#t-fr" fill="#2980b9"/>
+      <use class="rf-petal" data-flower="en" data-angle="0"   data-fall-at="0.80" data-base-opacity="0.68" href="#t-fr" fill="#2980b9"/>
 
       <!-- MS 绿 — survivor #1, no petal fall; vanish-at 0.95 only for the final placeholder swap -->
       <g class="rf-body" data-color="ms" data-vanish-at="0.95"
@@ -209,22 +219,22 @@
         <circle r="5" fill="#145a30"/>
         <circle cy="-26" r="2" fill="#e8c840"/>
       </g>
-      <use class="rf-petal" data-flower="ms" data-angle="0"   data-fall-at="9.9" data-base-opacity="0.68" href="#b-fr" fill="#27ae60"/>
-      <use class="rf-petal" data-flower="ms" data-angle="72"  data-fall-at="9.9" data-base-opacity="0.62" href="#b-fr" fill="#27ae60"/>
-      <use class="rf-petal" data-flower="ms" data-angle="144" data-fall-at="9.9" data-base-opacity="0.57" href="#b-fr" fill="#27ae60"/>
-      <use class="rf-petal" data-flower="ms" data-angle="216" data-fall-at="9.9" data-base-opacity="0.65" href="#b-fr" fill="#27ae60"/>
-      <use class="rf-petal" data-flower="ms" data-angle="288" data-fall-at="9.9" data-base-opacity="0.72" href="#b-fr" fill="#27ae60"/>
+      <use class="rf-petal" data-flower="ms" data-angle="0"   data-fall-at="9.9" data-base-opacity="0.68" href="#t-fr" fill="#27ae60"/>
+      <use class="rf-petal" data-flower="ms" data-angle="72"  data-fall-at="9.9" data-base-opacity="0.62" href="#t-fr" fill="#27ae60"/>
+      <use class="rf-petal" data-flower="ms" data-angle="144" data-fall-at="9.9" data-base-opacity="0.57" href="#t-fr" fill="#27ae60"/>
+      <use class="rf-petal" data-flower="ms" data-angle="216" data-fall-at="9.9" data-base-opacity="0.65" href="#t-fr" fill="#27ae60"/>
+      <use class="rf-petal" data-flower="ms" data-angle="288" data-fall-at="9.9" data-base-opacity="0.72" href="#t-fr" fill="#27ae60"/>
 
       <!-- Jawi 灰 — survivor #2, no petal fall; smaller center (r=4), no stamen, lower base opacities -->
       <g class="rf-body" data-color="jawi" data-vanish-at="0.95"
          data-sx="1420" data-sy="1620" data-ex="852" data-ey="430" data-cpx="1120" data-cpy="820">
         <circle r="4" fill="#555"/>
       </g>
-      <use class="rf-petal" data-flower="jawi" data-angle="0"   data-fall-at="9.9" data-base-opacity="0.55" href="#b-fr" fill="#7f8c8d"/>
-      <use class="rf-petal" data-flower="jawi" data-angle="72"  data-fall-at="9.9" data-base-opacity="0.50" href="#b-fr" fill="#7f8c8d"/>
-      <use class="rf-petal" data-flower="jawi" data-angle="144" data-fall-at="9.9" data-base-opacity="0.45" href="#b-fr" fill="#7f8c8d"/>
-      <use class="rf-petal" data-flower="jawi" data-angle="216" data-fall-at="9.9" data-base-opacity="0.52" href="#b-fr" fill="#7f8c8d"/>
-      <use class="rf-petal" data-flower="jawi" data-angle="288" data-fall-at="9.9" data-base-opacity="0.58" href="#b-fr" fill="#7f8c8d"/>
+      <use class="rf-petal" data-flower="jawi" data-angle="0"   data-fall-at="9.9" data-base-opacity="0.55" href="#t-fr" fill="#7f8c8d"/>
+      <use class="rf-petal" data-flower="jawi" data-angle="72"  data-fall-at="9.9" data-base-opacity="0.50" href="#t-fr" fill="#7f8c8d"/>
+      <use class="rf-petal" data-flower="jawi" data-angle="144" data-fall-at="9.9" data-base-opacity="0.45" href="#t-fr" fill="#7f8c8d"/>
+      <use class="rf-petal" data-flower="jawi" data-angle="216" data-fall-at="9.9" data-base-opacity="0.52" href="#t-fr" fill="#7f8c8d"/>
+      <use class="rf-petal" data-flower="jawi" data-angle="288" data-fall-at="9.9" data-base-opacity="0.58" href="#t-fr" fill="#7f8c8d"/>
 
     </svg>
 
@@ -273,12 +283,11 @@
     <!-- Animation layer (Layer 1) — same viewBox as kl-map so coords map 1:1 -->
     <svg class="bottom-anim-layer" viewBox="0 0 1600 2000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <g id="b-fr"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
-        <g id="b-hR"><use href="#b-fr" fill="#d63031" opacity="0.68"/><use href="#b-fr" fill="#d63031" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#d63031" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#d63031" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#d63031" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="b-hO"><use href="#b-fr" fill="#e67e22" opacity="0.68"/><use href="#b-fr" fill="#e67e22" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#e67e22" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#e67e22" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#e67e22" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b4a10"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="b-hG"><use href="#b-fr" fill="#27ae60" opacity="0.68"/><use href="#b-fr" fill="#27ae60" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#27ae60" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#27ae60" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#27ae60" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#145a30"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="b-hB"><use href="#b-fr" fill="#2980b9" opacity="0.68"/><use href="#b-fr" fill="#2980b9" opacity="0.62" transform="rotate(72)"/><use href="#b-fr" fill="#2980b9" opacity="0.57" transform="rotate(144)"/><use href="#b-fr" fill="#2980b9" opacity="0.65" transform="rotate(216)"/><use href="#b-fr" fill="#2980b9" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#14456b"/><circle cy="-26" r="2" fill="#e8c840"/></g>
-        <g id="b-hGy"><use href="#b-fr" fill="#7f8c8d" opacity="0.55"/><use href="#b-fr" fill="#7f8c8d" opacity="0.5" transform="rotate(72)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.45" transform="rotate(144)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.52" transform="rotate(216)"/><use href="#b-fr" fill="#7f8c8d" opacity="0.58" transform="rotate(288)"/><circle r="4" fill="#555"/></g>
+        <g id="b-hR"><use href="#t-fr" fill="#d63031" opacity="0.68"/><use href="#t-fr" fill="#d63031" opacity="0.62" transform="rotate(72)"/><use href="#t-fr" fill="#d63031" opacity="0.57" transform="rotate(144)"/><use href="#t-fr" fill="#d63031" opacity="0.65" transform="rotate(216)"/><use href="#t-fr" fill="#d63031" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hO"><use href="#t-fr" fill="#e67e22" opacity="0.68"/><use href="#t-fr" fill="#e67e22" opacity="0.62" transform="rotate(72)"/><use href="#t-fr" fill="#e67e22" opacity="0.57" transform="rotate(144)"/><use href="#t-fr" fill="#e67e22" opacity="0.65" transform="rotate(216)"/><use href="#t-fr" fill="#e67e22" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#8b4a10"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hG"><use href="#t-fr" fill="#27ae60" opacity="0.68"/><use href="#t-fr" fill="#27ae60" opacity="0.62" transform="rotate(72)"/><use href="#t-fr" fill="#27ae60" opacity="0.57" transform="rotate(144)"/><use href="#t-fr" fill="#27ae60" opacity="0.65" transform="rotate(216)"/><use href="#t-fr" fill="#27ae60" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#145a30"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hB"><use href="#t-fr" fill="#2980b9" opacity="0.68"/><use href="#t-fr" fill="#2980b9" opacity="0.62" transform="rotate(72)"/><use href="#t-fr" fill="#2980b9" opacity="0.57" transform="rotate(144)"/><use href="#t-fr" fill="#2980b9" opacity="0.65" transform="rotate(216)"/><use href="#t-fr" fill="#2980b9" opacity="0.72" transform="rotate(288)"/><circle r="5" fill="#14456b"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="b-hGy"><use href="#t-fr" fill="#7f8c8d" opacity="0.55"/><use href="#t-fr" fill="#7f8c8d" opacity="0.5" transform="rotate(72)"/><use href="#t-fr" fill="#7f8c8d" opacity="0.45" transform="rotate(144)"/><use href="#t-fr" fill="#7f8c8d" opacity="0.52" transform="rotate(216)"/><use href="#t-fr" fill="#7f8c8d" opacity="0.58" transform="rotate(288)"/><circle r="4" fill="#555"/></g>
       </defs>
 
       <!-- 5 falling seeds — initial positions at y=900 in the expanded viewBox.

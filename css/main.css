@@ -35,6 +35,13 @@
   max-width: 920px;                /* widened — works at normal browser zoom (was 620, looked too narrow) */
   padding: var(--space-sm) var(--space-md);
   margin: 0 auto;
+  /* Group request: scale the whole top-page content (flowers + text block)
+     down to 75% so the emblem + UUK 3 stack doesn't dominate the page. The
+     up-scroll animation's survivor-flower endpoints are dynamically calibrated
+     to the placeholder's RENDERED rect (after this transform applies), so
+     they auto-align regardless of scale. */
+  transform: scale(0.75);
+  transform-origin: center center;
 }
 
 .top-label {
@@ -500,15 +507,17 @@
   max-width: min(1200px, 92vw);
   padding: clamp(36px, 5vw, 64px) clamp(48px, 6vw, 88px);
 
-  /* Initially hidden — JS reveals during Phase 3 */
+  /* Initially hidden — JS reveals during Phase 3.
+     scale(0.75) applied per group request to bring plate proportions in
+     line with the page; translateY 14px → 0 keeps the existing slide-in. */
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(14px) scale(0.75);
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
 .bottom-tagline-plate.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(0.75);
 }
 
 /* Tagline stack — 5 langs equal weight, MS → Jawi → ZH → TA → EN */

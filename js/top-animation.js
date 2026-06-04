@@ -173,6 +173,59 @@
   }
 
   // -----------------------------------------------------------
+  // Survivor-endpoint calibration
+  // -----------------------------------------------------------
+  // The MS-green + Jawi-gray survivors must land EXACTLY on the
+  // .top-flowers placeholder's green and gray sub-flower positions so the
+  // opacity swap at p=0.95→1.00 looks seamless. The placeholder's rendered
+  // pixel position depends on the top-page layout (and on transforms like
+  // scale(0.75) applied to .top-content), so hardcoded viewBox endpoints
+  // are fragile. Measure the placeholder's bounding rect at runtime and
+  // convert to the top-anim-layer's viewBox coordinate system.
+  //
+  // Placeholder SVG viewBox is 0 0 280 240. Inside that local space:
+  //   green hibiscus center is at (125, 108)  — offset (-15, -12) from
+  //                                              placeholder local center (140, 120)
+  //   gray  hibiscus center is at (195, 158)  — offset (+55, +38) from center
+  function calibrateSurvivorEndpoints() {
+    if (!placeholder) return;
+    const layerRect = layer.getBoundingClientRect();
+    const phRect    = placeholder.getBoundingClientRect();
+    if (layerRect.width === 0 || phRect.width === 0) return;  // not laid out yet
+
+    // top-anim-layer's preserveAspectRatio is "xMidYMid slice" — scale is
+    // the LARGER of width/1600 and height/2000, content centered + cropped.
+    const scaleX = layerRect.width / 1600;
+    const scaleY = layerRect.height / 2000;
+    const scale  = Math.max(scaleX, scaleY);
+    const cropX  = (1600 * scale - layerRect.width)  / 2;
+    const cropY  = (2000 * scale - layerRect.height) / 2;
+
+    // Placeholder center in layer's local pixel space (relative to layer's top-left)
+    const phCenterPxX = (phRect.left + phRect.width  / 2) - layerRect.left;
+    const phCenterPxY = (phRect.top  + phRect.height / 2) - layerRect.top;
+
+    // Convert to viewBox coords (account for the slice crop)
+    const phCenterVbX = (phCenterPxX + cropX) / scale;
+    const phCenterVbY = (phCenterPxY + cropY) / scale;
+
+    // Sub-flower offsets: in placeholder-local viewBox units (0..280, 0..240).
+    // Convert to top-anim-layer viewBox units via the placeholder's rendered
+    // pixel size and the layer's scale: 1 placeholder-local unit = (phRect.width/280)
+    // CSS pixels = (phRect.width / 280) / scale layer-viewBox units.
+    const ratio = phRect.width / (280 * scale);
+    const GREEN_DX = -15 * ratio;   // -15 in placeholder-local x
+    const GREEN_DY = -12 * ratio;
+    const GRAY_DX  =  55 * ratio;
+    const GRAY_DY  =  38 * ratio;
+
+    const green = bodyByColor['ms'];
+    const jawi  = bodyByColor['jawi'];
+    if (green) { green.ex = phCenterVbX + GREEN_DX; green.ey = phCenterVbY + GREEN_DY; }
+    if (jawi)  { jawi.ex  = phCenterVbX + GRAY_DX;  jawi.ey  = phCenterVbY + GRAY_DY;  }
+  }
+
+  // -----------------------------------------------------------
   // Scroll listener — RAF-throttled
   // -----------------------------------------------------------
   let ticking = false;
@@ -186,14 +239,21 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    calibrateSurvivorEndpoints();    // viewport size change → re-measure
+    onScroll();
+  }, { passive: true });
 
   // Run once at DOMContentLoaded so the initial state is correct
   // regardless of whether the page loaded scrolled-to-top (hash nav)
   // or scrolled-to-middle (entry-page default in main.js initialScroll).
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', update);
+    document.addEventListener('DOMContentLoaded', () => {
+      calibrateSurvivorEndpoints();
+      update();
+    });
   } else {
+    calibrateSurvivorEndpoints();
     update();
   }
 
@@ -203,6 +263,7 @@
   // before the garden art arrives.
   window.addEventListener('load', () => {
     layer.classList.add('garden-loaded');
+    calibrateSurvivorEndpoints();    // fonts/layout fully settled → re-measure
     update();
   });
 

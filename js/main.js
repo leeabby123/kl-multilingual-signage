@@ -202,12 +202,26 @@
       bottomPlaceholder.style.opacity = t;
     }
 
-    // === Falling petal effect on top transition ===
-    // Spawn drifting flower SVGs in the top section when scrolling up
-    updateFallingPetals(topProgress);
+    // === Falling petal effect on top transition === DISABLED
+    // Previously: spawned 12 drifting petal SVGs when scrolling up toward top page.
+    // Removed because user reported the petals were noise leftover during
+    // both directions of scroll — see also: rising flowers below.
+    // updateFallingPetals(topProgress);
 
-    // === Rising flower effect on bottom transition ===
-    updateRisingFlowers(bottomProgress);
+    // === Rising flower effect on bottom transition === DISABLED
+    // Previously: spawned 14 mini-hibiscus SVGs rising from the bottom of the
+    // bottom section. The 5-petal shape from a distance read as a "rectangular
+    // flower cluster" which confused the kl-map cluster-removal investigation
+    // for several iterations. The bottom-animation.js Phase-1/2/3 narrative
+    // (falling seeds → bloom field → tagline plate) is the intended animation;
+    // this rising-flowers effect was duplicative scroll-driven decoration.
+    // updateRisingFlowers(bottomProgress);
+
+    // Defensive: if either container was already created from a prior session
+    // or from a hot-reload, hide it immediately so leftover petals/flowers
+    // don't persist on screen.
+    if (petalsContainer) petalsContainer.style.display = 'none';
+    if (risingContainer) risingContainer.style.display = 'none';
   }
 
   /* ----------------------------------------------------------

@@ -404,13 +404,6 @@
   pointer-events: none;
   opacity: 0.78;
   transition: opacity 1.4s ease-out;
-  /* Shift map background RIGHT by ~4 bloom-flower diameters
-     (≈ 184 viewBox units of 1600 ≈ 12% of viewport width) so the
-     Little India landmark (originally near the left frame edge)
-     comes well inside the visible area. This DOES NOT affect the
-     bottom-anim-layer — falling seeds land at their original
-     viewBox coordinates, only the map underneath has moved. */
-  transform: translateX(12vw);
 }
 
 .bottom-map > object,

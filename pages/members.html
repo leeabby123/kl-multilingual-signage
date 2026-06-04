@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/secondary.css">
+  <link rel="stylesheet" href="../css/members.css">
 </head>
 <body class="page-secondary">
 
@@ -30,85 +31,262 @@
   </nav>
 </aside>
 
-<main class="secondary-page members-page">
-  <h1 style="text-align: center;">
-    <span data-lang-content="en">Group Members</span><span data-lang-content="ms">Ahli Kumpulan</span><span data-lang-content="zh">组员介绍</span><span data-lang-content="ta">குழு உறுப்பினர்கள்</span><span data-lang-content="jawi">اهلي كومڤولن</span>
+<main class="secondary-page garden-page">
+  <h1 class="garden-h1">
+    <span data-lang-content="en">The Garden That Grew</span><span data-lang-content="ms">Taman Yang Mekar</span><span data-lang-content="zh">花园是如何长成的</span><span data-lang-content="ta">வளர்ந்த தோட்டம்</span><span data-lang-content="jawi">تامن يڠ تومبوه</span>
   </h1>
 
-  <div class="advisor-bar" style="text-align: center; margin-top: var(--space-lg);">
-    <div class="advisor-label" style="font-size: 0.85em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neutral-gray-400); margin-bottom: var(--space-xs);">
-      <span data-lang-content="en">Course Advisor</span><span data-lang-content="ms">Penyelia Kursus</span><span data-lang-content="zh">课程导师</span><span data-lang-content="ta">பாடப் பேராசிரியர்</span><span data-lang-content="jawi">ڤڽليا كورسوس</span>
+  <p class="garden-lede">
+    <span data-lang-content="en">An interactive tool tracking how five hands tended one project. Each flower marks a moment of contribution; drag the slider to watch the garden unfold over four months.</span>
+    <span data-lang-content="ms">Alat interaktif yang menjejaki bagaimana lima tangan menjaga satu projek. Setiap bunga menandakan satu sumbangan; seret peluncur untuk melihat taman mekar selama empat bulan.</span>
+    <span data-lang-content="zh">这是一个互动工具，记录了五双手如何共同养护一个项目。每一朵花标记一次贡献；拖动滑块，看花园在四个月里慢慢展开。</span>
+    <span data-lang-content="ta">ஒரு திட்டத்தை ஐந்து கைகள் எவ்வாறு கவனித்தன என்பதைக் கண்காணிக்கும் ஊடாடும் கருவி. ஒவ்வொரு மலரும் ஒரு பங்களிப்பின் தருணத்தைக் குறிக்கிறது; நான்கு மாதங்களாக தோட்டம் விரிவதைப் பார்க்க ஸ்லைடரை இழுக்கவும்.</span>
+    <span data-lang-content="jawi">الت اينتراكتيف يڠ منجيجق باݢايمان ليما تاڠن منجاݢ ساتو ڤروجيك. ستياڤ بوڠا منندكن ساتو سومبڠن؛ سيريت ڤلونچور اونتوق مليهت تامن مكر سلام امڤت بولن.</span>
+  </p>
+
+  <!-- Advisor row -->
+  <div class="advisor-row">
+    <span class="advisor-label">
+      <span data-lang-content="en">Course Advisor:</span><span data-lang-content="ms">Penyelia Kursus:</span><span data-lang-content="zh">课程导师：</span><span data-lang-content="ta">பாட பேராசிரியர்:</span><span data-lang-content="jawi">ڤڽليا كورسوس:</span>
+    </span>
+    <span class="advisor-name">Dr. Ali Fauzi Bin Ahmad Khan</span>
+  </div>
+
+  <!-- ============================================================
+       MEMBER CHIPS — click to filter the garden
+       Each chip carries the member's language color (district language)
+       ============================================================ -->
+  <div class="member-chips" role="group" aria-label="Filter by team member">
+    <button class="member-chip" data-member="A" data-lang-color="ms" aria-pressed="false">
+      <svg class="chip-flower" viewBox="-40 -40 80 80" aria-hidden="true">
+        <use href="#garden-hG"/>
+      </svg>
+      <span class="chip-letter">A</span>
+      <span class="chip-name">LIAO RUIXUAN</span>
+      <span class="chip-district" data-lang-content="en">Kampung Baru</span><span class="chip-district" data-lang-content="ms">Kampung Baru</span><span class="chip-district" data-lang-content="zh">甘榜峇鲁</span><span class="chip-district" data-lang-content="ta">கம்போங் பாரு</span><span class="chip-district" data-lang-content="jawi">كامڤوڠ بارو</span>
+    </button>
+    <button class="member-chip" data-member="B" data-lang-color="zh" aria-pressed="false">
+      <svg class="chip-flower" viewBox="-40 -40 80 80" aria-hidden="true">
+        <use href="#garden-hR"/>
+      </svg>
+      <span class="chip-letter">B</span>
+      <span class="chip-name">WEI JITAO</span>
+      <span class="chip-district" data-lang-content="en">Petaling Street</span><span class="chip-district" data-lang-content="ms">Petaling Street</span><span class="chip-district" data-lang-content="zh">茨厂街</span><span class="chip-district" data-lang-content="ta">பெட்டாலிங் தெரு</span><span class="chip-district" data-lang-content="jawi">ڤيتاليڠ ستريت</span>
+    </button>
+    <button class="member-chip" data-member="C" data-lang-color="en" aria-pressed="false">
+      <svg class="chip-flower" viewBox="-40 -40 80 80" aria-hidden="true">
+        <use href="#garden-hB"/>
+      </svg>
+      <span class="chip-letter">C</span>
+      <span class="chip-name">CHEN MEILIN</span>
+      <span class="chip-district" data-lang-content="en">Bukit Bintang</span><span class="chip-district" data-lang-content="ms">Bukit Bintang</span><span class="chip-district" data-lang-content="zh">武吉免登</span><span class="chip-district" data-lang-content="ta">புக்கிட் பிந்தாங்</span><span class="chip-district" data-lang-content="jawi">بوكيت بينتڠ</span>
+    </button>
+    <button class="member-chip" data-member="D" data-lang-color="ta" aria-pressed="false">
+      <svg class="chip-flower" viewBox="-40 -40 80 80" aria-hidden="true">
+        <use href="#garden-hO"/>
+      </svg>
+      <span class="chip-letter">D</span>
+      <span class="chip-name">WEI HONGHAI</span>
+      <span class="chip-district" data-lang-content="en">Little India</span><span class="chip-district" data-lang-content="ms">Little India</span><span class="chip-district" data-lang-content="zh">小印度</span><span class="chip-district" data-lang-content="ta">லிட்டில் இந்தியா</span><span class="chip-district" data-lang-content="jawi">ليتيل اينديا</span>
+    </button>
+    <button class="member-chip" data-member="E" data-lang-color="jawi" aria-pressed="false">
+      <svg class="chip-flower" viewBox="-40 -40 80 80" aria-hidden="true">
+        <use href="#garden-hGy"/>
+      </svg>
+      <span class="chip-letter">E</span>
+      <span class="chip-name">LI BINGYI</span>
+      <span class="chip-district" data-lang-content="en">Web Development</span><span class="chip-district" data-lang-content="ms">Pembangunan Laman Web</span><span class="chip-district" data-lang-content="zh">网站开发</span><span class="chip-district" data-lang-content="ta">இணையதள உருவாக்கம்</span><span class="chip-district" data-lang-content="jawi">ڤمباڠونن لامن ويب</span>
+    </button>
+  </div>
+
+  <p class="filter-hint">
+    <span data-lang-content="en">Click a member to see only their flowers · Click again to clear</span>
+    <span data-lang-content="ms">Klik ahli untuk melihat bunganya sahaja · Klik sekali lagi untuk reset</span>
+    <span data-lang-content="zh">点击成员只看她/他的花 · 再点一次取消</span>
+    <span data-lang-content="ta">அவர்களின் மலர்களை மட்டும் பார்க்க உறுப்பினரைக் கிளிக் செய்யவும் · மீட்டமைக்க மீண்டும் கிளிக் செய்யவும்</span>
+    <span data-lang-content="jawi">كليك اهلي اونتوق مليهت بوڠاڽ سهاج · كليك سكالي لاݢي اونتوق ريسيت</span>
+  </p>
+
+  <!-- ============================================================
+       GARDEN CANVAS — winding watercolor path from TL to BR
+       12 events x members' flowers planted along the path
+       ============================================================ -->
+  <div class="garden-canvas-wrap">
+    <svg class="garden-canvas" viewBox="0 0 960 720" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="Project garden">
+      <defs>
+        <!-- ================================================
+             Hibiscus symbols (one per member color)
+             5 petals + center + stamen highlight
+             ================================================ -->
+        <symbol id="garden-hR" viewBox="-40 -40 80 80">
+          <g class="hibiscus hibiscus-zh">
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#d63031" opacity="0.78"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#d63031" opacity="0.78" transform="rotate(72)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#d63031" opacity="0.78" transform="rotate(144)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#d63031" opacity="0.78" transform="rotate(216)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#d63031" opacity="0.78" transform="rotate(288)"/>
+            <circle r="6" fill="#8b1a1a"/>
+            <circle cy="-26" r="2.2" fill="#FFCC00"/>
+          </g>
+        </symbol>
+        <symbol id="garden-hO" viewBox="-40 -40 80 80">
+          <g class="hibiscus hibiscus-ta">
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#e67e22" opacity="0.78"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#e67e22" opacity="0.78" transform="rotate(72)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#e67e22" opacity="0.78" transform="rotate(144)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#e67e22" opacity="0.78" transform="rotate(216)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#e67e22" opacity="0.78" transform="rotate(288)"/>
+            <circle r="6" fill="#8b4a10"/>
+            <circle cy="-26" r="2.2" fill="#FFCC00"/>
+          </g>
+        </symbol>
+        <symbol id="garden-hG" viewBox="-40 -40 80 80">
+          <g class="hibiscus hibiscus-ms">
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#27ae60" opacity="0.78"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#27ae60" opacity="0.78" transform="rotate(72)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#27ae60" opacity="0.78" transform="rotate(144)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#27ae60" opacity="0.78" transform="rotate(216)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#27ae60" opacity="0.78" transform="rotate(288)"/>
+            <circle r="6" fill="#145a30"/>
+            <circle cy="-26" r="2.2" fill="#FFCC00"/>
+          </g>
+        </symbol>
+        <symbol id="garden-hB" viewBox="-40 -40 80 80">
+          <g class="hibiscus hibiscus-en">
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#2980b9" opacity="0.78"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#2980b9" opacity="0.78" transform="rotate(72)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#2980b9" opacity="0.78" transform="rotate(144)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#2980b9" opacity="0.78" transform="rotate(216)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#2980b9" opacity="0.78" transform="rotate(288)"/>
+            <circle r="6" fill="#14456b"/>
+            <circle cy="-26" r="2.2" fill="#FFCC00"/>
+          </g>
+        </symbol>
+        <symbol id="garden-hGy" viewBox="-40 -40 80 80">
+          <g class="hibiscus hibiscus-jawi">
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#7f8c8d" opacity="0.72"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#7f8c8d" opacity="0.72" transform="rotate(72)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#7f8c8d" opacity="0.72" transform="rotate(144)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#7f8c8d" opacity="0.72" transform="rotate(216)"/>
+            <path d="M0,0 Q-14,-20 -8,-34 Q0,-38 8,-34 Q14,-20 0,0 Z" fill="#7f8c8d" opacity="0.72" transform="rotate(288)"/>
+            <circle r="6" fill="#3a4244"/>
+            <circle cy="-26" r="2.2" fill="#fff1a8"/>
+          </g>
+        </symbol>
+
+        <!-- Seed (small dot, before bloom) -->
+        <symbol id="garden-seed" viewBox="-10 -10 20 20">
+          <circle r="2.5" fill="#a89878" opacity="0.55"/>
+        </symbol>
+
+        <!-- ================================================
+             THE WINDING TIME PATH — diagonal from TL to BR
+             3 bends. Hand-tuned cubic Bézier.
+             Used invisibly for geometry (getPointAtLength)
+             and visibly as the watercolor garden path.
+             ================================================ -->
+        <path id="timePath"
+              d="M 130 175
+                 C 290 185, 380 275, 410 370
+                 C 440 465, 320 495, 410 560
+                 C 530 595, 700 580, 830 580"
+              fill="none"/>
+      </defs>
+
+      <!-- Watercolor background tint -->
+      <rect width="960" height="720" fill="#fdf8ee"/>
+      <!-- Subtle radial watercolor wash, top-left + bottom-right -->
+      <radialGradient id="wcTL" cx="0.1" cy="0.1" r="0.4">
+        <stop offset="0%" stop-color="#f0e8d0" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#fdf8ee" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="wcBR" cx="0.9" cy="0.9" r="0.45">
+        <stop offset="0%" stop-color="#ffd4b8" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#fdf8ee" stop-opacity="0"/>
+      </radialGradient>
+      <rect width="960" height="720" fill="url(#wcTL)"/>
+      <rect width="960" height="720" fill="url(#wcBR)"/>
+
+      <!-- ===========================================
+           THE PATH ITSELF — watercolor sandy ribbon
+           Two strokes: wider lighter underlay + thinner
+           darker overlay for soft hand-drawn feel
+           =========================================== -->
+      <use href="#timePath" stroke="#c49a55" stroke-width="22" stroke-linecap="round" fill="none" opacity="0.32"/>
+      <use href="#timePath" stroke="#c49a55" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <use href="#timePath" stroke="#b08540" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.4" stroke-dasharray="2 8"/>
+
+      <!-- Decorative stones / pebbles along the path edges (placed by JS) -->
+      <g id="pathDecorations"></g>
+
+      <!-- Phase signposts (placed by JS) -->
+      <g id="signposts"></g>
+
+      <!-- Flowers (placed by JS) — sorted by t for back-to-front layering -->
+      <g id="flowers"></g>
+
+      <!-- Time scrubber: small watering can icon traveling along path -->
+      <g id="scrubber">
+        <!-- Halo -->
+        <circle r="14" fill="#fff" opacity="0.85" stroke="#7a5a35" stroke-width="1.5"/>
+        <!-- Watering-can simple silhouette -->
+        <g transform="translate(-6,-4) scale(0.55)">
+          <path d="M0,8 Q-2,2 4,2 L18,2 Q24,2 22,8 L22,18 Q22,22 18,22 L4,22 Q0,22 0,18 Z" fill="#8b6914" opacity="0.85"/>
+          <path d="M18,4 L26,0 L28,4 L22,8 Z" fill="#8b6914" opacity="0.85"/>
+          <path d="M-4,6 Q-8,2 -6,-2" stroke="#8b6914" stroke-width="1.8" fill="none" opacity="0.85"/>
+        </g>
+        <!-- Water droplets falling (subtle, animated by CSS) -->
+        <circle cx="14" cy="14" r="1.4" fill="#7eaec5" opacity="0.7" class="droplet"/>
+      </g>
+    </svg>
+
+    <!-- Tooltip layer (HTML, positioned absolutely over SVG) -->
+    <div class="garden-tooltip" id="gardenTooltip" hidden role="tooltip" aria-live="polite">
+      <div class="tt-date"></div>
+      <div class="tt-event"></div>
+      <div class="tt-member"></div>
     </div>
-    <div class="advisor-name"><strong>Dr. Ali Fauzi Bin Ahmad Khan</strong></div>
   </div>
 
-  <div class="members-grid">
-    <article class="member-card">
-      <div class="member-avatar member-avatar--a">A</div>
-      <div class="member-name">LIAO RUIXUAN</div>
-      <div class="member-role">
-        <span data-lang-content="en">Fieldwork</span><span data-lang-content="ms">Kerja Lapangan</span><span data-lang-content="zh">田野调研</span><span data-lang-content="ta">கள ஆய்வு</span><span data-lang-content="jawi">كرجا لاڤڠن</span>
-      </div>
-      <div class="member-task">
-        <span data-lang-content="en">Kampung Baru<br>(15 signs)</span><span data-lang-content="ms">Kampung Baru<br>(15 papan tanda)</span><span data-lang-content="zh">甘榜峇鲁<br>（15 块招牌）</span><span data-lang-content="ta">கம்போங் பாரு<br>(15 பலகைகள்)</span><span data-lang-content="jawi">كامڤوڠ بارو<br>(١٥ ڤاڤن تنده)</span>
-      </div>
-    </article>
-    <article class="member-card">
-      <div class="member-avatar member-avatar--b">B</div>
-      <div class="member-name">WEI JITAO</div>
-      <div class="member-role">
-        <span data-lang-content="en">Fieldwork</span><span data-lang-content="ms">Kerja Lapangan</span><span data-lang-content="zh">田野调研</span><span data-lang-content="ta">கள ஆய்வு</span><span data-lang-content="jawi">كرجا لاڤڠن</span>
-      </div>
-      <div class="member-task">
-        <span data-lang-content="en">Petaling Street<br>(15 signs)</span><span data-lang-content="ms">Petaling Street<br>(15 papan tanda)</span><span data-lang-content="zh">茨厂街<br>（15 块招牌）</span><span data-lang-content="ta">பெட்டாலிங் தெரு<br>(15 பலகைகள்)</span><span data-lang-content="jawi">ڤيتاليڠ ستريت<br>(١٥ ڤاڤن تنده)</span>
-      </div>
-    </article>
-    <article class="member-card">
-      <div class="member-avatar member-avatar--c">C</div>
-      <div class="member-name">CHEN MEILIN</div>
-      <div class="member-role">
-        <span data-lang-content="en">Fieldwork</span><span data-lang-content="ms">Kerja Lapangan</span><span data-lang-content="zh">田野调研</span><span data-lang-content="ta">கள ஆய்வு</span><span data-lang-content="jawi">كرجا لاڤڠن</span>
-      </div>
-      <div class="member-task">
-        <span data-lang-content="en">Bukit Bintang<br>(15 signs)</span><span data-lang-content="ms">Bukit Bintang<br>(15 papan tanda)</span><span data-lang-content="zh">武吉免登<br>（15 块招牌）</span><span data-lang-content="ta">புக்கிட் பிந்தாங்<br>(15 பலகைகள்)</span><span data-lang-content="jawi">بوكيت بينتڠ<br>(١٥ ڤاڤن تنده)</span>
-      </div>
-    </article>
-    <article class="member-card">
-      <div class="member-avatar member-avatar--d">D</div>
-      <div class="member-name">WEI HONGHAI</div>
-      <div class="member-role">
-        <span data-lang-content="en">Fieldwork</span><span data-lang-content="ms">Kerja Lapangan</span><span data-lang-content="zh">田野调研</span><span data-lang-content="ta">கள ஆய்வு</span><span data-lang-content="jawi">كرجا لاڤڠن</span>
-      </div>
-      <div class="member-task">
-        <span data-lang-content="en">Little India<br>(15 signs)</span><span data-lang-content="ms">Little India<br>(15 papan tanda)</span><span data-lang-content="zh">小印度<br>（15 块招牌）</span><span data-lang-content="ta">லிட்டில் இந்தியா<br>(15 பலகைகள்)</span><span data-lang-content="jawi">ليتيل اينديا<br>(١٥ ڤاڤن تنده)</span>
-      </div>
-    </article>
-    <article class="member-card">
-      <div class="member-avatar member-avatar--e">E</div>
-      <div class="member-name">LI BINGYI</div>
-      <div class="member-role">
-        <span data-lang-content="en">Web Development</span><span data-lang-content="ms">Pembangunan Laman Web</span><span data-lang-content="zh">网站开发</span><span data-lang-content="ta">இணையதள உருவாக்கம்</span><span data-lang-content="jawi">ڤمباڠونن لامن ويب</span>
-      </div>
-      <div class="member-task">
-        <span data-lang-content="en">Site design,<br>data integration,<br>5-language switcher</span><span data-lang-content="ms">Reka bentuk laman,<br>integrasi data,<br>penukar 5 bahasa</span><span data-lang-content="zh">站点设计、<br>数据集成、<br>5 语切换器</span><span data-lang-content="ta">தள வடிவமைப்பு,<br>தரவு ஒருங்கிணைப்பு,<br>5-மொழி மாற்றி</span><span data-lang-content="jawi">ريك بنتوق لامن،<br>اينتيݢراسي داتا،<br>ڤنوكر ٥ بهاس</span>
-      </div>
-    </article>
+  <!-- ============================================================
+       SLIDER + AUTOPLAY CONTROLS
+       Default: slider at right end (fully bloomed garden)
+       Auto-play: 8-second sweep from start to end
+       ============================================================ -->
+  <div class="garden-controls">
+    <button class="autoplay-btn" type="button" id="autoplayBtn" aria-label="Replay garden growth">
+      <svg class="autoplay-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <span data-lang-content="en">Replay growth</span><span data-lang-content="ms">Mainkan semula</span><span data-lang-content="zh">重播花园生长</span><span data-lang-content="ta">வளர்ச்சியை மீண்டும் இயக்கு</span><span data-lang-content="jawi">ماين سمولا</span>
+    </button>
+
+    <div class="slider-wrap">
+      <span class="time-label time-start">Feb 16</span>
+      <input type="range" class="time-slider" id="timeSlider" min="0" max="1000" value="1000" step="1" aria-label="Time scrubber">
+      <span class="time-label time-end">Jun 10</span>
+    </div>
   </div>
 
-  <section style="margin-top: var(--space-2xl); text-align: left;">
-    <h2 style="margin-left: auto; margin-right: auto;">
+  <!-- ============================================================
+       PROJECT CONTEXT — sampling distribution preserved as
+       narrative footnote (was a section on the old members page)
+       ============================================================ -->
+  <section class="sampling-note">
+    <h2 class="sampling-h2">
       <span data-lang-content="en">Sampling Distribution</span><span data-lang-content="ms">Pengagihan Pensampelan</span><span data-lang-content="zh">采样分工</span><span data-lang-content="ta">மாதிரி எடுப்பு பகிர்வு</span><span data-lang-content="jawi">ڤڠاݢيهن ڤنسامڤلن</span>
     </h2>
-    <p style="text-align: center; max-width: 720px; margin-left: auto; margin-right: auto;">
+    <p>
       <span data-lang-content="en">Each fieldworker collected data exclusively from their assigned district. This ensured consistent coverage and avoided sampling bias from overlapping observations. Site development (LI BINGYI) began after fieldwork data was consolidated into the master spreadsheet — a sequential workflow that balanced field labour with technical integration.</span>
       <span data-lang-content="ms">Setiap penyelidik lapangan hanya mengumpul data dari daerah yang ditugaskan kepadanya. Ini memastikan liputan yang konsisten dan mengelakkan bias pensampelan akibat pemerhatian bertindih. Pembangunan laman web (LI BINGYI) dimulakan selepas data lapangan dikumpulkan ke dalam helaian induk — aliran kerja berurutan yang mengimbangi kerja lapangan dengan integrasi teknikal.</span>
       <span data-lang-content="zh">每位田野调研者只采集分配区域内的数据，确保覆盖一致并避免重叠观察带来的采样偏差。网站开发（LI BINGYI）在所有田野数据汇总到主表后启动——这是一种顺序工作流，平衡了田野劳动与技术集成。</span>
-      <span data-lang-content="ta">ஒவ்வொரு கள ஆராய்ச்சியாளரும் தங்களுக்கு ஒதுக்கப்பட்ட பகுதியில் இருந்து மட்டுமே தரவைச் சேகரித்தனர். இது நிலையான பாதுகாப்பை உறுதி செய்தது மற்றும் மீள் பார்வைகளால் ஏற்படும் மாதிரி சார்பைத் தவிர்த்தது. கள தரவுகள் முதன்மை விரிதாளில் ஒருங்கிணைக்கப்பட்ட பிறகே இணையதள உருவாக்கம் (LI BINGYI) தொடங்கியது — இது கள உழைப்பையும் தொழில்நுட்ப ஒருங்கிணைப்பையும் சமநிலையில் வைக்கும் வரிசை வேலை.</span>
-      <span data-lang-content="jawi">ستياڤ ڤڽليديق لاڤڠن هاڽ مڠومڤول داتا دري دائره يڠ ديتوݢسكن كڤداڽ. اين مماستيكن ليڤوتن يڠ كونسيستين دان مڠيلككن بياس ڤنسامڤلن اكيبت ڤمرهاتين برتينديه. ڤمباڠونن لامن ويب (LI BINGYI) ديمولاكن سلڤس داتا لاڤڠن ديكومڤولكن ك دالم هلاين اينڈوق — اليرن كرجا برأوروتن يڠ مڠيمبڠي كرجا لاڤڠن دڠن اينتيݢراسي تكنيكل.</span>
+      <span data-lang-content="ta">ஒவ்வொரு கள ஆராய்ச்சியாளரும் தங்களுக்கு ஒதுக்கப்பட்ட பகுதியில் இருந்து மட்டுமே தரவைச் சேகரித்தனர். இது நிலையான பாதுகாப்பை உறுதி செய்தது மற்றும் மீள் பார்வைகளால் ஏற்படும் மாதிரி சார்பைத் தவிர்த்தது. கள தரவுகள் முதன்மை விரிதாளில் ஒருங்கிணைக்கப்பட்ட பிறகே இணையதள உருவாக்கம் (LI BINGYI) தொடங்கியது.</span>
+      <span data-lang-content="jawi">ستياڤ ڤڽليديق لاڤڠن هاڽ مڠومڤول داتا دري دائره يڠ ديتوݢسكن كڤداڽ. اين مماستيكن ليڤوتن يڠ كونسيستين دان مڠيلككن بياس ڤنسامڤلن اكيبت ڤمرهاتين برتينديه. ڤمباڠونن لامن ويب (LI BINGYI) ديمولاكن سلڤس داتا لاڤڠن ديكومڤولكن ك دالم هلاين اينڈوق.</span>
     </p>
   </section>
 </main>
 
 <script src="../js/i18n.js"></script>
+<script src="../js/engagement-garden.js"></script>
 </body>
 </html>

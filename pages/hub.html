@@ -30,15 +30,19 @@ html.hub-animating .finding-btn,
 html.hub-animating .cluster,
 html.hub-animating .lang-switcher {
   opacity: 0;
+  transition: opacity 0.6s ease-out;
 }
 
-.hub-findings-label.hub-revealed,
-.hub-map-label.hub-revealed,
-.finding-btn.hub-revealed,
-.cluster.hub-revealed,
-.lang-switcher.hub-revealed {
+/* Specificity must be higher than the hidden rule above (0,3,1 vs 0,2,1),
+   otherwise adding .hub-revealed during animation has no visual effect
+   and all elements stay at opacity:0 until html.hub-animating is removed
+   at 7.1s — causing a sudden bulk reveal instead of staggered cascade. */
+html.hub-animating .hub-findings-label.hub-revealed,
+html.hub-animating .hub-map-label.hub-revealed,
+html.hub-animating .finding-btn.hub-revealed,
+html.hub-animating .cluster.hub-revealed,
+html.hub-animating .lang-switcher.hub-revealed {
   opacity: 1;
-  transition: opacity 0.6s ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {

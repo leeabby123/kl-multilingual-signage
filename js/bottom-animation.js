@@ -39,9 +39,13 @@
   const BLOOM_DURATION_MS  = 3000;
   const BLOOM_COLORS       = ['b-hR', 'b-hO', 'b-hG', 'b-hB', 'b-hGy'];
   // Expanded viewBox 0 0 1600 2000 — middle page = y=0..1000, bottom page = y=1000..2000.
-  // Bloom only spawns in the BOTTOM page area (y=1000..1900) with edge margin.
+  // Bloom only spawns in the BOTTOM page area with edge margins:
+  //  · y MIN = 1140 → top petals (extending up ~26 units at max scale 0.45)
+  //    stay safely below y=1100, well clear of the section--bottom top edge
+  //    at y=1000 — prevents the green-flower-at-top-right leak Kunm flagged.
+  //  · y MAX = 1940 → bottom petals stay above viewBox edge at y=2000.
   const BLOOM_X_MIN = 40,    BLOOM_X_MAX = 1560;
-  const BLOOM_Y_MIN = 1040,  BLOOM_Y_MAX = 1940;
+  const BLOOM_Y_MIN = 1140,  BLOOM_Y_MAX = 1940;
 
   // Phase 3 (tagline) — kicks off PHASE3_DELAY after phase 2 starts
   const PHASE3_DELAY_MS    = 3200;     // 200 ms breather after bloom finishes

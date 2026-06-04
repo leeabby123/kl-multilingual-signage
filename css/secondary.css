@@ -817,3 +817,22 @@ html:not([data-lang]) [data-lang-content="en"] {
   font-style: italic;
   text-align: right;
 }
+
+/* === Generic Members-page sections (District Selection, Sampling) === */
+.members-section {
+  margin: var(--space-2xl) auto 0;
+  max-width: 720px;
+}
+
+.members-section h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-h3);
+  color: var(--neutral-gray-900);
+}
+
+.members-section p {
+  margin: 0;
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-gray-700);
+}

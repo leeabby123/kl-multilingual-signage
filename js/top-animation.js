@@ -190,7 +190,15 @@
         const dx = petal.vx * lp;
         const dy = 400 * lp * lp;       // parabolic gravity
         const rot = petal.snapWorldAngle - lp * 540;   // 1.5 extra ccw turns
-        const op  = (1 - lp) * petal.baseOpacity * petal.snapBodyAlpha;
+        let op  = (1 - lp) * petal.baseOpacity * petal.snapBodyAlpha;
+        // End-of-scroll safety fade: when the fall duration (0.40) plus a late
+        // fallAt would mathematically end past p=1.0 (e.g. EN's last petal at
+        // fall_at=0.88 + 0.40 = 1.28), the petal could still be visible when
+        // the placeholder swap completes. Force any non-survivor to be fully
+        // transparent by p=1.0 by multiplying in a (1-p)/0.15 ramp from p=0.85.
+        if (p > 0.85) {
+          op *= Math.max(0, (1 - p) / 0.15);
+        }
         petal.el.setAttribute('transform', `translate(${(petal.snapX + dx).toFixed(1)},${(petal.snapY + dy).toFixed(1)}) rotate(${rot.toFixed(1)}) scale(${petal.snapScale.toFixed(3)})`);
         petal.el.setAttribute('opacity',   op.toFixed(3));
       }

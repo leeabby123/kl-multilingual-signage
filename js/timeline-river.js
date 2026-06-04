@@ -258,39 +258,27 @@
     if (e.key === 'Escape' && tracedMember) exitTrace();
   });
 
-  /* ---------- Scroll reveal — staggered cascade when wrap enters viewport ----------
-     User wanted progressive fade-in (N1 → N9 in time order) instead of
-     all nodes appearing simultaneously when viewport is large. */
+  /* ---------- Scroll reveal — per-node IO so bottom nodes truly fade in
+     as the user scrolls down. Each node-label triggers when ~20% visible
+     in the upper 90% of the viewport. ---------- */
 
-  const NODE_ORDER = ['w1-2', 'w7-cs1', 'w8-10', 'may20-cs2', 'w11-fieldwork',
-                      'may31-phase1', 'w12a-integration', 'w12b-testing', 'end'];
-  let cascadeStarted = false;
-
-  function revealCascade() {
-    if (cascadeStarted) return;
-    cascadeStarted = true;
-    NODE_ORDER.forEach((nodeId, idx) => {
-      setTimeout(() => {
-        document.querySelectorAll(`[data-node="${nodeId}"]`).forEach(el => {
-          el.classList.add('revealed');
-        });
-      }, idx * 280);    // 280ms between each node — total ~2.5s
-    });
-  }
-
-  const wrapEl = document.getElementById('river-wrap');
-  if (wrapEl) {
-    const cascadeObserver = new IntersectionObserver((entries) => {
-      if (entries.some(e => e.isIntersecting)) {
-        revealCascade();
-        cascadeObserver.disconnect();
+  const reveal = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('revealed');
+      const node = e.target.dataset.node;
+      if (node) {
+        const markerGroup = document.querySelector(`.node-markers[data-node="${node}"]`);
+        if (markerGroup) markerGroup.classList.add('revealed');
       }
-    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
-    cascadeObserver.observe(wrapEl);
-  } else {
-    // Fallback if wrap missing — reveal immediately
-    revealCascade();
-  }
+      reveal.unobserve(e.target);
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -10% 0px'   // trigger when element enters upper 90% of viewport
+  });
+
+  document.querySelectorAll('.node-label').forEach(el => reveal.observe(el));
 
   /* ---------- River fade-in on load ---------- */
 

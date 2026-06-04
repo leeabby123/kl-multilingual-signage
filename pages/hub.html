@@ -3,7 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <title>KL Signage · Hub</title>
+<script>
+/* FOUC prevention: set animating class synchronously BEFORE CSS loads,
+   so opacity:0 on animatable elements is applied on first paint and they
+   don't briefly flash visible before hub-reveal.js takes over.
+   Skipped if user prefers reduced motion or has already seen the intro. */
+(function(){
+  try {
+    var played = sessionStorage.getItem('hub-reveal-played') === '1';
+    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!played && !reduced) {
+      document.documentElement.classList.add('hub-animating');
+    }
+  } catch (e) {}
+})();
+</script>
 <style>
+/* ============================================================================
+   Progressive reveal — 7-second cascade on first hub.html visit per session.
+   Mirrors poppyfield.org's intro pacing. Driven by js/hub-reveal.js, which
+   adds .hub-revealed to each element on its scheduled tick.
+   ============================================================================ */
+html.hub-animating .hub-findings-label,
+html.hub-animating .hub-map-label,
+html.hub-animating .finding-btn,
+html.hub-animating .cluster,
+html.hub-animating .lang-switcher {
+  opacity: 0;
+}
+
+.hub-findings-label.hub-revealed,
+.hub-map-label.hub-revealed,
+.finding-btn.hub-revealed,
+.cluster.hub-revealed,
+.lang-switcher.hub-revealed {
+  opacity: 1;
+  transition: opacity 0.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-findings-label, .hub-map-label, .finding-btn, .cluster, .lang-switcher {
+    opacity: 1 !important;
+  }
+}
+
 /* ============================================================================
    Hub page · neutral background · interactive map · 5-flower switcher
    Design system anchors (matches AQC7015 capstone tokens):
@@ -2327,6 +2370,8 @@ setLanguage = function(lang) {
   });
 })();
 </script>
+
+<script src="../js/hub-reveal.js"></script>
 
 </body>
 </html>

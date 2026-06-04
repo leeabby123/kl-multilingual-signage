@@ -1,36 +1,42 @@
 /* ============================================================
-   Timeline River — diagonal flow + 5 marker member system
-   Last rewrite: 6/4 — replaces vertical-S layout with diagonal
-   river, hibiscus/dot markers, hover tooltip + click trace mode.
+   Timeline River — v2 rewrite (6/4)
+   - Diagonal closed-bank fill river (no more segment seams)
+   - River extends past viewBox edges (continuity with past/future)
+   - Removed max-width: none override (fixes lede centering)
+   - SVG overflow: visible (banks can spill past viewBox 680)
+   - RTL-aware text-align via `start`/logical properties
    ============================================================ */
 
+/* ------------------------------------------------------------
+   Page container — let secondary-page handle width/offset.
+   No override of max-width: layout matches all other secondary pages.
+   ------------------------------------------------------------ */
 .timeline-river-page {
-  max-width: none;
   padding-top: 2rem;
   padding-bottom: 4rem;
 }
 
 .timeline-h1 {
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .timeline-lede {
   max-width: 620px;
   margin: 0 auto 2.5rem;
-  text-align: center;
+  text-align: start;          /* respects dir: LTR → left, RTL → right */
   color: var(--color-text-secondary, #5f5e5a);
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* ------------------------------------------------------------
-   River container — 680 × 1380 canvas, positioning context
+   River container — 680 × 1700 canvas centered in secondary-page
    ------------------------------------------------------------ */
 .timeline-river-wrap {
   position: relative;
   width: 680px;
-  height: 1380px;
+  height: 1700px;
   margin: 0 auto;
 }
 
@@ -38,8 +44,9 @@
   position: absolute;
   inset: 0;
   width: 680px;
-  height: 1380px;
+  height: 1700px;
   display: block;
+  overflow: visible;          /* allow river to flow past viewBox edges */
   opacity: 0;
   transition: opacity 1.2s ease-in;
 }
@@ -48,7 +55,6 @@
   opacity: 1;
 }
 
-/* River segments share styling — width varies per segment in markup */
 .river-path {
   pointer-events: none;
 }
@@ -58,36 +64,24 @@
 }
 
 /* ------------------------------------------------------------
-   Marker system — flower or dot per member
+   Marker system — flower for participated, dot for not
    ------------------------------------------------------------ */
 .node-markers {
   opacity: 0;
   transition: opacity 0.6s ease-out;
 }
 
-.node-markers.revealed {
-  opacity: 1;
-}
-
-/* Level tiers — apply opacity scaling to whole marker groups */
-.node-markers[data-level="preamble"] {
-  --node-opacity: 0.55;
-}
-
-.node-markers[data-level="mid"] {
-  --node-opacity: 0.82;
-}
-
-.node-markers[data-level="key"] {
-  --node-opacity: 1;
-}
+.node-markers[data-level="preamble"] { --node-opacity: 0.55; }
+.node-markers[data-level="mid"]      { --node-opacity: 0.82; }
+.node-markers[data-level="key"]      { --node-opacity: 1; }
 
 .node-markers.revealed { opacity: var(--node-opacity, 1); }
 
-/* Individual marker — clickable, focusable */
 .marker {
   cursor: pointer;
   transition: transform 0.2s ease-out;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 .marker .hit {
@@ -96,15 +90,10 @@
 }
 
 .marker:hover {
-  transform: scale(1.08);
-  transform-origin: center;
-  transform-box: fill-box;
+  transform: scale(1.12);
 }
 
-.marker:focus-visible {
-  outline: none;
-}
-
+.marker:focus-visible { outline: none; }
 .marker:focus-visible .hit {
   fill: rgba(125, 125, 125, 0.1);
   stroke: var(--color-text-primary, #2c2c2a);
@@ -112,43 +101,40 @@
   stroke-dasharray: 2 2;
 }
 
-/* Dot variant (未参与) — slightly faded so flower marker pops */
+/* Dot variant — faded, brightens on hover */
 .marker--dot .dot-mark {
-  opacity: 0.55;
+  opacity: 0.6;
   transition: opacity 0.2s;
 }
-
-.marker--dot:hover .dot-mark {
-  opacity: 0.85;
-}
+.marker--dot:hover .dot-mark { opacity: 0.92; }
 
 /* ------------------------------------------------------------
-   Node text labels — absolutely positioned, NO white background
+   Node text labels — absolutely positioned, no card background
+   `--x` is direction-aware: LTR = distance from left, RTL = from right
    ------------------------------------------------------------ */
 .node-label {
   position: absolute;
   top: var(--top);
-  left: var(--left);
-  width: 240px;
+  left: var(--x);
+  width: 260px;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.node-label.revealed {
-  opacity: 1;
-  transform: translateY(0);
+/* Mirror to right side under RTL (Jawi) */
+[dir="rtl"] .node-label {
+  left: auto;
+  right: var(--x);
+  text-align: right;
 }
 
-/* Three-tier text hierarchy */
-.node-label--preamble {
-  opacity: 0;
-}
-.node-label--preamble.revealed { opacity: 0.55; }
+/* Three-tier reveal opacity */
+.node-label--preamble.revealed { opacity: 0.6; }
+.node-label--mid.revealed      { opacity: 0.85; }
+.node-label--key.revealed      { opacity: 1; }
 
-.node-label--mid.revealed { opacity: 0.82; }
-
-.node-label--key.revealed { opacity: 1; }
+.node-label.revealed { transform: translateY(0); }
 
 .node-tag {
   font-size: 10px;
@@ -156,6 +142,7 @@
   color: var(--color-text-secondary, #888780);
   font-weight: 500;
   margin-bottom: 6px;
+  text-align: start;
 }
 
 .node-label--key .node-tag {
@@ -163,33 +150,43 @@
 }
 
 .node-title {
-  font-family: Georgia, 'Noto Serif SC', serif;
+  font-family: Georgia, 'Noto Serif SC', 'Noto Serif', serif;
   font-size: 15px;
   font-weight: 400;
   color: var(--color-text-primary, #2c2c2a);
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   line-height: 1.4;
+  text-align: start;
 }
 
 .node-label--key .node-title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
 }
 
 .node-desc {
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--color-text-secondary, #5f5e5a);
   margin: 0;
+  text-align: start;
+}
+
+/* RTL: Jawi/Arabic numbers + Latin product names need LTR runs inline.
+   `unicode-bidi: plaintext` lets each text run pick its own direction. */
+[dir="rtl"] .node-tag,
+[dir="rtl"] .node-title,
+[dir="rtl"] .node-desc {
+  unicode-bidi: plaintext;
 }
 
 /* ------------------------------------------------------------
-   Tooltip — single shared, repositioned by JS on hover
+   Tooltip (Layer 1)
    ------------------------------------------------------------ */
 .member-tooltip {
   position: absolute;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.97);
   border: 0.5px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   padding: 8px 12px;
@@ -198,12 +195,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   font-size: 12px;
   line-height: 1.5;
-  transition: opacity 0.15s ease-out;
+  text-align: start;
 }
 
-.member-tooltip[hidden] {
-  display: none;
-}
+.member-tooltip[hidden] { display: none; }
 
 .tooltip-name {
   font-weight: 500;
@@ -218,7 +213,7 @@
 }
 
 /* ------------------------------------------------------------
-   Trace mode — entered by clicking a flower
+   Trace banner (Layer 2)
    ------------------------------------------------------------ */
 .trace-banner {
   position: fixed;
@@ -238,16 +233,13 @@
   gap: 6px;
 }
 
-.trace-banner[hidden] {
-  display: none;
-}
+.trace-banner[hidden] { display: none; }
 
 .trace-banner-name {
   font-weight: 500;
   color: var(--color-text-primary, #2c2c2a);
 }
 
-/* Markers in trace mode: active member stays full, others dim */
 body.trace-mode .marker:not(.trace-active) {
   opacity: 0.22;
   transition: opacity 0.3s ease-out;
@@ -257,19 +249,13 @@ body.trace-mode .marker.trace-active {
   opacity: 1;
 }
 
-body.trace-mode .marker.trace-active use,
-body.trace-mode .marker.trace-active .dot-mark {
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
-}
-
-/* In trace mode, node-labels containing no participation by the traced member can dim slightly */
 body.trace-mode .node-label.trace-untouched {
   opacity: 0.35;
   transition: opacity 0.3s ease-out;
 }
 
 /* ------------------------------------------------------------
-   Key milestones text block (below river — retained for accessibility/print)
+   Key milestones text section (below river)
    ------------------------------------------------------------ */
 .timeline-key-milestones {
   max-width: 620px;
@@ -284,6 +270,7 @@ body.trace-mode .node-label.trace-untouched {
   margin: 0 0 0.75rem;
   font-weight: 500;
   color: var(--color-text-primary, #2c2c2a);
+  text-align: start;
 }
 
 .timeline-key-milestones p {
@@ -291,6 +278,8 @@ body.trace-mode .node-label.trace-untouched {
   line-height: 1.7;
   color: var(--color-text-secondary, #5f5e5a);
   margin: 0;
+  text-align: start;
+  unicode-bidi: plaintext;
 }
 
 .timeline-key-milestones strong {
@@ -299,7 +288,7 @@ body.trace-mode .node-label.trace-untouched {
 }
 
 /* ------------------------------------------------------------
-   Reduced motion — disable transitions
+   Reduced motion
    ------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
   .timeline-river,

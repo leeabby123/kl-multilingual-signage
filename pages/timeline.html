@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timeline · KL Multilingual Signage</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+Tamil:wght@400&family=Noto+Naskh+Arabic:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/secondary.css">
-  <link rel="stylesheet" href="../css/timeline.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline · KL Multilingual Signage</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/secondary.css">
+<link rel="stylesheet" href="../css/timeline.css">
 </head>
 <body class="page-secondary">
 
@@ -36,17 +33,19 @@
     <span data-lang-content="en">Timeline</span><span data-lang-content="ms">Garis Masa</span><span data-lang-content="zh">时间轴</span><span data-lang-content="ta">காலவரிசை</span><span data-lang-content="jawi">ݢاريس ماس</span>
   </h1>
   <p class="timeline-lede">
-    <span data-lang-content="en">A condensed schedule of the AQC7015 capstone project — from topic selection to final presentation.</span>
-    <span data-lang-content="ms">Jadual ringkas projek kemuncak AQC7015 — daripada pemilihan topik hingga pembentangan akhir.</span>
-    <span data-lang-content="zh">AQC7015 毕业项目的浓缩时间轴——从选题到最终展示。</span>
-    <span data-lang-content="ta">AQC7015 இறுதி திட்டத்தின் சுருக்கமான கால அட்டவணை — தலைப்பு தேர்வு முதல் இறுதி வழங்கல் வரை.</span>
-    <span data-lang-content="jawi">جدوال ريڠكس ڤروجيك كموچق AQC7015 — درڤد ڤميليهن توڤيق هيڠݢ ڤمبنتڠن اخير.</span>
+    <span data-lang-content="en">A condensed schedule of the AQC7015 capstone project — from topic selection to final presentation. Each node holds five member markers: a hibiscus flower if that member participated that week, a small dot if they did not. Click any flower to trace that member's path through the river.</span>
+    <span data-lang-content="ms">Jadual ringkas projek kemuncak AQC7015 — daripada pemilihan topik hingga pembentangan akhir. Setiap nod memegang lima penanda ahli: sekuntum bunga raya jika ahli itu menyertai minggu tersebut, satu titik kecil jika tidak. Klik mana-mana bunga untuk mengesan laluan ahli itu menyusuri sungai.</span>
+    <span data-lang-content="zh">AQC7015 毕业项目的浓缩时间轴——从选题到最终展示。每个节点上有五个成员标记：参与本周工作的成员是一朵木槿花，未参与的是同色小圆点。点击任意木槿花追溯该成员在整条河流上的轨迹。</span>
+    <span data-lang-content="ta">AQC7015 இறுதி திட்டத்தின் சுருக்கமான கால அட்டவணை — தலைப்பு தேர்வு முதல் இறுதி வழங்கல் வரை. ஒவ்வொரு முடிச்சிலும் ஐந்து உறுப்பினர் குறியீடுகள் உள்ளன: அந்த வாரத்தில் பங்கேற்றால் செம்பருத்தி மலர், இல்லையெனில் சிறிய புள்ளி. எந்த மலரையும் சொடுக்கி அந்த உறுப்பினரின் பாதையை ஆற்றில் கண்டறியவும்.</span>
+    <span data-lang-content="jawi">جدوال ريڠكس ڤروجيك كموچق AQC7015 — درڤد ڤميليهن توڤيق هيڠݢ ڤمبنتڠن اخير. ستياڤ نود ممݢڠ ليما ڤنندا اهلي: سكونتوم بوڠا راي جك اهلي ايت مڽرتاءي ميڠݢو ترسبوت، ساتو تيتيق كچيل جك تيدق. كليك مان٢ بوڠا اونتوق مڠيسن لالوان اهلي ايت مڽوسوري سوڠاي.</span>
   </p>
 
-  <div class="timeline-river-wrap">
-    <svg class="timeline-river" viewBox="0 0 680 1350" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+  <div class="timeline-river-wrap" id="river-wrap">
+    <svg class="timeline-river" viewBox="0 0 680 1380" preserveAspectRatio="xMidYMid meet" focusable="false">
       <defs>
-        <linearGradient id="riverFlow" x1="0" y1="0" x2="0" y2="1">
+        <!-- River cold-blue gradient — sourced from original timeline.html #riverFlow,
+             direction rotated to diagonal (top-left to bottom-right) -->
+        <linearGradient id="riverFlow" x1="0.05" y1="0.05" x2="0.95" y2="0.95">
           <stop offset="0%" stop-color="#cad9e2" stop-opacity="0.5"/>
           <stop offset="4%" stop-color="#cad9e2" stop-opacity="0.9"/>
           <stop offset="8%" stop-color="#cad9e2"/>
@@ -56,82 +55,181 @@
           <stop offset="96%" stop-color="#5c8ca7"/>
           <stop offset="100%" stop-color="#5c8ca7" stop-opacity="0.6"/>
         </linearGradient>
+
+        <!-- Hibiscus petal path — verbatim from hub.html #sw-fr -->
+        <g id="hp"><path d="M0,0 C-16,-7 -28,-25 -25,-42 C-22,-55 -9,-58 0,-46 C9,-58 22,-55 25,-42 C28,-25 16,-7 0,0Z"/></g>
+
+        <!-- 5 per-member flowers, each reusing 5 rotated petals + pistil + stamen -->
+        <g id="fA"><use href="#hp" fill="#27ae60" opacity=".78"/><use href="#hp" fill="#27ae60" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#27ae60" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#27ae60" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#27ae60" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#1a5e36"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fB"><use href="#hp" fill="#d63031" opacity=".78"/><use href="#hp" fill="#d63031" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#d63031" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#d63031" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#d63031" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#8b1a1a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fC"><use href="#hp" fill="#2980b9" opacity=".78"/><use href="#hp" fill="#2980b9" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#2980b9" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#2980b9" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#2980b9" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#1a4a6a"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fD"><use href="#hp" fill="#e67e22" opacity=".78"/><use href="#hp" fill="#e67e22" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#e67e22" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#e67e22" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#e67e22" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#8b4a10"/><circle cy="-26" r="2" fill="#e8c840"/></g>
+        <g id="fE"><use href="#hp" fill="#7f8c8d" opacity=".78"/><use href="#hp" fill="#7f8c8d" opacity=".70" transform="rotate(72)"/><use href="#hp" fill="#7f8c8d" opacity=".65" transform="rotate(144)"/><use href="#hp" fill="#7f8c8d" opacity=".73" transform="rotate(216)"/><use href="#hp" fill="#7f8c8d" opacity=".80" transform="rotate(288)"/><circle r="4" fill="#3a4548"/><circle cy="-26" r="2" fill="#e8c840"/></g>
       </defs>
 
-      <path class="river-path" fill="url(#riverFlow)" d="M 334 0 C 333 60, 332 90, 331 120 C 333 165, 339 205, 340 245 C 339 295, 333 345, 329 385 C 322 445, 307 525, 306 585 C 305 645, 293 725, 296 785 C 297 855, 301 925, 303 985 C 301 1100, 294 1200, 290 1300 C 287 1325, 285 1340, 283 1350 L 397 1350 C 395 1340, 393 1325, 390 1300 C 393 1200, 395 1100, 393 985 C 392 925, 379 855, 376 785 C 373 725, 343 645, 334 585 C 339 525, 348 445, 351 385 C 354 345, 360 295, 356 245 C 354 205, 348 165, 345 120 C 346 90, 347 60, 346 0 Z"/>
+      <!-- Diagonal river: 3 segments at increasing stroke widths (Minard workload encoding) -->
+      <path class="river-path river-segment-1" d="M 50 100 C 70 140, 130 175, 120 200 C 105 250, 60 305, 80 340" fill="none" stroke="url(#riverFlow)" stroke-width="14" stroke-linecap="round"/>
+      <path class="river-path river-segment-2" d="M 80 340 C 105 400, 230 445, 230 480 C 230 540, 175 595, 190 620" fill="none" stroke="url(#riverFlow)" stroke-width="32" stroke-linecap="round"/>
+      <path class="river-path river-segment-3" d="M 190 620 C 210 685, 360 705, 370 750 C 380 820, 290 860, 310 870 C 350 920, 470 965, 480 990 C 510 1050, 540 1085, 560 1110 C 590 1170, 600 1220, 600 1240 C 615 1290, 640 1340, 640 1380" fill="none" stroke="url(#riverFlow)" stroke-width="60" stroke-linecap="round"/>
 
-      <circle class="milestone-dot" data-milestone="apr20" cx="311" cy="488" r="5"/>
-      <circle class="milestone-dot" data-milestone="may20" cx="370" cy="728" r="5"/>
-      <circle class="milestone-dot" data-milestone="may31" cx="295" cy="928" r="5"/>
-      <circle class="milestone-dot" data-milestone="jun8" cx="396" cy="1268" r="5"/>
-      <circle class="milestone-dot" data-milestone="jun10" cx="282" cy="1318" r="5"/>
+      <!-- River accent (dashed water current overlay, full length) -->
+      <path class="river-accent" d="M 50 100 C 70 140, 130 175, 120 200 C 105 250, 60 305, 80 340 C 105 400, 230 445, 230 480 C 230 540, 175 595, 190 620 C 210 685, 360 705, 370 750 C 380 820, 290 860, 310 870 C 350 920, 470 965, 480 990 C 510 1050, 540 1085, 560 1110 C 590 1170, 600 1220, 600 1240 C 615 1290, 640 1340, 640 1380" fill="none" stroke="#4d7a92" stroke-width="0.8" stroke-dasharray="3 7" opacity="0.55"/>
+
+      <!-- ============ Node markers — 9 nodes × 5 members each ============ -->
+
+      <!-- N1 w1-2 (preamble) center (120, 200) — all 5 participated -->
+      <g class="node-markers" data-node="w1-2" data-level="preamble">
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(120,184) scale(.13)"/><circle cx="120" cy="184" r="10" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(136,195) scale(.13)"/><circle cx="136" cy="195" r="10" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(130,215) scale(.13)"/><circle cx="130" cy="215" r="10" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(110,215) scale(.13)"/><circle cx="110" cy="215" r="10" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(104,195) scale(.13)"/><circle cx="104" cy="195" r="10" class="hit"/></g>
+      </g>
+
+      <!-- N2 w7-cs1 (mid) center (80, 340) — all 5 participated -->
+      <g class="node-markers" data-node="w7-cs1" data-level="mid">
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(80,324) scale(.13)"/><circle cx="80" cy="324" r="10" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(96,335) scale(.13)"/><circle cx="96" cy="335" r="10" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(90,355) scale(.13)"/><circle cx="90" cy="355" r="10" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(70,355) scale(.13)"/><circle cx="70" cy="355" r="10" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(64,335) scale(.13)"/><circle cx="64" cy="335" r="10" class="hit"/></g>
+      </g>
+
+      <!-- N3 w8-10 (mid) center (230, 480) — all 5 participated -->
+      <g class="node-markers" data-node="w8-10" data-level="mid">
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(230,464) scale(.13)"/><circle cx="230" cy="464" r="10" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(246,475) scale(.13)"/><circle cx="246" cy="475" r="10" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(240,495) scale(.13)"/><circle cx="240" cy="495" r="10" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(220,495) scale(.13)"/><circle cx="220" cy="495" r="10" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(214,475) scale(.13)"/><circle cx="214" cy="475" r="10" class="hit"/></g>
+      </g>
+
+      <!-- N4 may20-cs2 (mid) center (190, 620) — all 5 participated -->
+      <g class="node-markers" data-node="may20-cs2" data-level="mid">
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(190,604) scale(.13)"/><circle cx="190" cy="604" r="10" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(206,615) scale(.13)"/><circle cx="206" cy="615" r="10" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(200,635) scale(.13)"/><circle cx="200" cy="635" r="10" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(180,635) scale(.13)"/><circle cx="180" cy="635" r="10" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(174,615) scale(.13)"/><circle cx="174" cy="615" r="10" class="hit"/></g>
+      </g>
+
+      <!-- N5 w11-fieldwork (key) center (370, 750) — ABCD full flowers + E small flower (末日接手) -->
+      <g class="node-markers" data-node="w11-fieldwork" data-level="key">
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(370,732) scale(.15)"/><circle cx="370" cy="732" r="12" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(390,745) scale(.15)"/><circle cx="390" cy="745" r="12" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(382,770) scale(.15)"/><circle cx="382" cy="770" r="12" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(358,770) scale(.15)"/><circle cx="358" cy="770" r="12" class="hit"/></g>
+        <g class="marker marker--partial" data-member="E" data-participated="partial"><use href="#fE" transform="translate(350,745) scale(.09)" opacity="0.7"/><circle cx="350" cy="745" r="10" class="hit"/></g>
+      </g>
+
+      <!-- N6 may31-phase1 (key) center (310, 870) — ABCD dots + E full flower -->
+      <g class="node-markers" data-node="may31-phase1" data-level="key">
+        <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="310" cy="852" r="3.5" fill="#27ae60" class="dot-mark"/><circle cx="310" cy="852" r="10" class="hit"/></g>
+        <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="330" cy="865" r="3.5" fill="#d63031" class="dot-mark"/><circle cx="330" cy="865" r="10" class="hit"/></g>
+        <g class="marker marker--dot" data-member="C" data-participated="false"><circle cx="322" cy="890" r="3.5" fill="#2980b9" class="dot-mark"/><circle cx="322" cy="890" r="10" class="hit"/></g>
+        <g class="marker marker--dot" data-member="D" data-participated="false"><circle cx="298" cy="890" r="3.5" fill="#e67e22" class="dot-mark"/><circle cx="298" cy="890" r="10" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(290,865) scale(.15)"/><circle cx="290" cy="865" r="12" class="hit"/></g>
+      </g>
+
+      <!-- N7 w12a-integration (key) center (480, 990) — ABCD dots + E full flower -->
+      <g class="node-markers" data-node="w12a-integration" data-level="key">
+        <g class="marker marker--dot" data-member="A" data-participated="false"><circle cx="480" cy="972" r="3.5" fill="#27ae60" class="dot-mark"/><circle cx="480" cy="972" r="10" class="hit"/></g>
+        <g class="marker marker--dot" data-member="B" data-participated="false"><circle cx="500" cy="985" r="3.5" fill="#d63031" class="dot-mark"/><circle cx="500" cy="985" r="10" class="hit"/></g>
+        <g class="marker marker--dot" data-member="C" data-participated="false"><circle cx="492" cy="1010" r="3.5" fill="#2980b9" class="dot-mark"/><circle cx="492" cy="1010" r="10" class="hit"/></g>
+        <g class="marker marker--dot" data-member="D" data-participated="false"><circle cx="468" cy="1010" r="3.5" fill="#e67e22" class="dot-mark"/><circle cx="468" cy="1010" r="10" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(460,985) scale(.15)"/><circle cx="460" cy="985" r="12" class="hit"/></g>
+      </g>
+
+      <!-- N8 w12b-testing (key) center (560, 1110) — all 5 participated (全员测试) -->
+      <g class="node-markers" data-node="w12b-testing" data-level="key">
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(560,1092) scale(.15)"/><circle cx="560" cy="1092" r="12" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(580,1105) scale(.15)"/><circle cx="580" cy="1105" r="12" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(572,1130) scale(.15)"/><circle cx="572" cy="1130" r="12" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(548,1130) scale(.15)"/><circle cx="548" cy="1130" r="12" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(540,1105) scale(.15)"/><circle cx="540" cy="1105" r="12" class="hit"/></g>
+      </g>
+
+      <!-- N9 end (key) center (600, 1240) — all 5 participated (终点) -->
+      <g class="node-markers" data-node="end" data-level="key">
+        <g class="marker" data-member="A" data-participated="true"><use href="#fA" transform="translate(600,1222) scale(.15)"/><circle cx="600" cy="1222" r="12" class="hit"/></g>
+        <g class="marker" data-member="B" data-participated="true"><use href="#fB" transform="translate(620,1235) scale(.15)"/><circle cx="620" cy="1235" r="12" class="hit"/></g>
+        <g class="marker" data-member="C" data-participated="true"><use href="#fC" transform="translate(612,1260) scale(.15)"/><circle cx="612" cy="1260" r="12" class="hit"/></g>
+        <g class="marker" data-member="D" data-participated="true"><use href="#fD" transform="translate(588,1260) scale(.15)"/><circle cx="588" cy="1260" r="12" class="hit"/></g>
+        <g class="marker" data-member="E" data-participated="true"><use href="#fE" transform="translate(580,1235) scale(.15)"/><circle cx="580" cy="1235" r="12" class="hit"/></g>
+      </g>
     </svg>
 
-    <div class="week-card week-card--preamble week-card--left" data-week="1" style="--top: 90px; --right: 360px;">
-      <div class="week-num"><span data-lang-content="en">Week 1</span><span data-lang-content="ms">Minggu 1</span><span data-lang-content="zh">第 1 周</span><span data-lang-content="ta">வாரம் 1</span><span data-lang-content="jawi">ميڠݢو ١</span></div>
-      <div class="week-title"><span data-lang-content="en">Topic + Infographic</span><span data-lang-content="ms">Topik + Infografik</span><span data-lang-content="zh">立题 + 一页信息图</span><span data-lang-content="ta">தலைப்பு + தகவல்வரைபடம்</span><span data-lang-content="jawi">توڤيق + اينفوݢرافيك</span></div>
-      <div class="week-desc"><span data-lang-content="en">Locked: KL multilingual signage as research focus.</span><span data-lang-content="ms">Dimuktamadkan: papan tanda pelbagai bahasa KL sebagai fokus kajian.</span><span data-lang-content="zh">锁定：KL 多语招牌作为研究焦点。</span><span data-lang-content="ta">உறுதிசெய்யப்பட்டது: ஆராய்ச்சி குவியமாக KL பலமொழிப் பலகைகள்.</span><span data-lang-content="jawi">ديموكتمدكن: ڤاڤن تنده ڤلباݢاي بهاس KL سباݢاي فوكوس كاجين.</span></div>
+    <!-- ============ Node text labels — absolutely positioned, no white card ============ -->
+
+    <article class="node-label node-label--preamble" data-node="w1-2" style="--top: 178px; --left: 200px;">
+      <div class="node-tag"><span data-lang-content="en">WEEK 1–2 · FEB 15–22</span><span data-lang-content="ms">MINGGU 1–2 · 15–22 FEB</span><span data-lang-content="zh">第 1–2 周 · 2/15–2/22</span><span data-lang-content="ta">வாரம் 1–2 · பிப் 15–22</span><span data-lang-content="jawi">ميڠݢو ١–٢ · ١٥–٢٢ فيب</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Topic + TEI/Voyant training</span><span data-lang-content="ms">Topik + Latihan TEI/Voyant</span><span data-lang-content="zh">立题 + TEI/Voyant 训练</span><span data-lang-content="ta">தலைப்பு + TEI/Voyant பயிற்சி</span><span data-lang-content="jawi">توڤيق + لاتيهن TEI/Voyant</span></h2>
+      <p class="node-desc"><span data-lang-content="en">Research focus locked; TEI encoding training</span><span data-lang-content="ms">Fokus kajian dimuktamadkan; latihan pengekodan TEI</span><span data-lang-content="zh">研究焦点锁定 · 编码训练</span><span data-lang-content="ta">ஆராய்ச்சி குவியம் உறுதி; TEI பயிற்சி</span><span data-lang-content="jawi">فوكوس كاجين ديموكتمدكن؛ لاتيهن TEI</span></p>
+    </article>
+
+    <article class="node-label node-label--mid" data-node="w7-cs1" style="--top: 318px; --left: 170px;">
+      <div class="node-tag"><span data-lang-content="en">WEEK 7 · APR 13–20 · CS1</span><span data-lang-content="ms">MINGGU 7 · 13–20 APR · CS1</span><span data-lang-content="zh">第 7 周 · 4/13–4/20 · CS1 提交</span><span data-lang-content="ta">வாரம் 7 · ஏப் 13–20 · CS1</span><span data-lang-content="jawi">ميڠݢو ٧ · ١٣–٢٠ اڤريل · CS1</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Group proposal + Lingscape</span><span data-lang-content="ms">Cadangan kumpulan + Lingscape</span><span data-lang-content="zh">小组提案 + Lingscape</span><span data-lang-content="ta">குழு முன்மொழிவு + Lingscape</span><span data-lang-content="jawi">چادڠن كومڤولن + Lingscape</span></h2>
+      <p class="node-desc"><span data-lang-content="en">Group proposal submitted · individual CS1 submitted by each member</span><span data-lang-content="ms">Cadangan kumpulan dihantar · CS1 individu dihantar oleh setiap ahli</span><span data-lang-content="zh">小组提案提交 · 各成员各自提交 CS1（individual）</span><span data-lang-content="ta">குழு முன்மொழிவு சமர்ப்பிக்கப்பட்டது · ஒவ்வொரு உறுப்பினரும் தனிப்பட்ட CS1 சமர்ப்பித்தனர்</span><span data-lang-content="jawi">چادڠن كومڤولن ديهنتر · CS1 اينديۏيدو ديهنتر اوليه ستياڤ اهلي</span></p>
+    </article>
+
+    <article class="node-label node-label--mid" data-node="w8-10" style="--top: 458px; --left: 280px;">
+      <div class="node-tag"><span data-lang-content="en">WEEK 8–10 · APR 20–MAY 10</span><span data-lang-content="ms">MINGGU 8–10 · 20 APR–10 MEI</span><span data-lang-content="zh">第 8–10 周 · 4/20–5/10</span><span data-lang-content="ta">வாரம் 8–10 · ஏப் 20–மே 10</span><span data-lang-content="jawi">ميڠݢو ٨–١٠ · ٢٠ اڤريل–١٠ ماي</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Literature + Excel master sheet</span><span data-lang-content="ms">Literatur + Helaian induk Excel</span><span data-lang-content="zh">文献准备 + Excel 主表</span><span data-lang-content="ta">இலக்கியம் + Excel முதன்மை தாள்</span><span data-lang-content="jawi">ليتراتور + هلاين اينداء Excel</span></h2>
+      <p class="node-desc"><span data-lang-content="en">Field protocol agreed; 6-column annotation schema locked</span><span data-lang-content="ms">Protokol lapangan dipersetujui; skema anotasi 6-lajur dimuktamadkan</span><span data-lang-content="zh">田野协议达成 · 6 列标注架构锁定</span><span data-lang-content="ta">கள நெறிமுறை ஒப்புக்கொள்ளப்பட்டது; 6-நெடுவரிசை குறிப்புத் திட்டம் உறுதி</span><span data-lang-content="jawi">ڤروتوكول لاڤڠن ديڤرستوجوءي؛ سكيما انوتاسي ٦-لاجور ديموكتمدكن</span></p>
+    </article>
+
+    <article class="node-label node-label--mid" data-node="may20-cs2" style="--top: 598px; --left: 240px;">
+      <div class="node-tag"><span data-lang-content="en">MAY 20 · CS2 submission</span><span data-lang-content="ms">20 MEI · Penyerahan CS2</span><span data-lang-content="zh">5/20 · CS2 提交</span><span data-lang-content="ta">மே 20 · CS2 சமர்ப்பிப்பு</span><span data-lang-content="jawi">٢٠ ماي · ڤڽراهن CS2</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Case Study 2</span><span data-lang-content="ms">Kajian Kes 2</span><span data-lang-content="zh">案例研究 2</span><span data-lang-content="ta">வழக்கு ஆய்வு 2</span><span data-lang-content="jawi">كاجين كيس ٢</span></h2>
+      <p class="node-desc"><span data-lang-content="en">Each member submitted their individual CS2 (own choice of trend)</span><span data-lang-content="ms">Setiap ahli menghantar CS2 individu mereka sendiri (pilihan trend sendiri)</span><span data-lang-content="zh">各成员各自提交 individual CS2（自选 trend）</span><span data-lang-content="ta">ஒவ்வொரு உறுப்பினரும் தங்கள் தனிப்பட்ட CS2 சமர்ப்பித்தனர் (சொந்த போக்கு தேர்வு)</span><span data-lang-content="jawi">ستياڤ اهلي مڠهنتر CS2 اينديۏيدو مريك سنديري (ڤيليهن ترين سنديري)</span></p>
+    </article>
+
+    <article class="node-label node-label--key" data-node="w11-fieldwork" style="--top: 728px; --left: 40px;">
+      <div class="node-tag"><span data-lang-content="en">WEEK 11 · MAY 26–30 · PHASE 1</span><span data-lang-content="ms">MINGGU 11 · 26–30 MEI · FASA 1</span><span data-lang-content="zh">第 11 周 · 5/26–5/30 · 阶段 1</span><span data-lang-content="ta">வாரம் 11 · மே 26–30 · கட்டம் 1</span><span data-lang-content="jawi">ميڠݢو ١١ · ٢٦–٣٠ ماي · فاسا ١</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Fieldwork + 60 signs handover</span><span data-lang-content="ms">Kerja lapangan + Penyerahan 60 papan tanda</span><span data-lang-content="zh">田野采样 + 60 块交付</span><span data-lang-content="ta">கள ஆய்வு + 60 பலகைகள் ஒப்படைப்பு</span><span data-lang-content="jawi">كرجا لاڤڠن + ڤڽراهن ٦٠ ڤاڤن تنده</span></h2>
+      <p class="node-desc"><span data-lang-content="en">4 districts × 15 signs · ABCD sample in parallel · E receives all on 5/30</span><span data-lang-content="ms">4 daerah × 15 papan tanda · ABCD ambil sampel selari · E menerima semua pada 30/5</span><span data-lang-content="zh">4 区 × 15 块 · ABCD 并行采样 · E 5/30 接手</span><span data-lang-content="ta">4 பகுதிகள் × 15 பலகைகள் · ABCD இணையாக மாதிரி எடுப்பு · 5/30 அன்று E பெறுகிறார்</span><span data-lang-content="jawi">٤ دائره × ١٥ ڤاڤن تنده · ABCD مڠمبيل سامڤل سلاري · E مڽامبوت ڤد ٣٠/٥</span></p>
+    </article>
+
+    <article class="node-label node-label--key" data-node="may31-phase1" style="--top: 848px; --left: 390px;">
+      <div class="node-tag"><span data-lang-content="en">MAY 31 · MILESTONE</span><span data-lang-content="ms">31 MEI · PENCAPAIAN</span><span data-lang-content="zh">5/31 · 关键节点</span><span data-lang-content="ta">மே 31 · மைல்கல்</span><span data-lang-content="jawi">٣١ ماي · ڤنچاڤاين</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Phase 1 site live</span><span data-lang-content="ms">Tapak Fasa 1 dilancarkan</span><span data-lang-content="zh">Phase 1 网站上线</span><span data-lang-content="ta">கட்டம் 1 இணையதளம் நேரலை</span><span data-lang-content="jawi">تاڤق فاسا ١ ديلنچركن</span></h2>
+      <p class="node-desc"><span data-lang-content="en">E independently delivered the visual baseline</span><span data-lang-content="ms">E secara bersendirian menghantar garis dasar visual</span><span data-lang-content="zh">E 独立完成视觉基线</span><span data-lang-content="ta">E தனியாக காட்சி அடிப்படையை வழங்கினார்</span><span data-lang-content="jawi">E سچارا برسنديرين مڠهنتر ݢاريس داسر ۏيسوال</span></p>
+    </article>
+
+    <article class="node-label node-label--key" data-node="w12a-integration" style="--top: 968px; --left: 40px;">
+      <div class="node-tag"><span data-lang-content="en">WEEK 12a · JUN 1–4</span><span data-lang-content="ms">MINGGU 12a · 1–4 JUN</span><span data-lang-content="zh">第 12a 周 · 6/1–6/4</span><span data-lang-content="ta">வாரம் 12a · ஜூன் 1–4</span><span data-lang-content="jawi">ميڠݢو ١٢a · ١–٤ جون</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Phase 2 · final integration</span><span data-lang-content="ms">Fasa 2 · Integrasi akhir</span><span data-lang-content="zh">阶段 2 · 最终集成</span><span data-lang-content="ta">கட்டம் 2 · இறுதி ஒருங்கிணைப்பு</span><span data-lang-content="jawi">فاسا ٢ · اينتيݢراسي اخير</span></h2>
+      <p class="node-desc"><span data-lang-content="en">E independently integrated all member content into the website</span><span data-lang-content="ms">E secara bersendirian mengintegrasikan semua kandungan ahli ke dalam laman web</span><span data-lang-content="zh">E 独立将所有组员内容集成进网站</span><span data-lang-content="ta">E தனியாக அனைத்து உறுப்பினர் உள்ளடக்கத்தையும் இணையதளத்தில் ஒருங்கிணைத்தார்</span><span data-lang-content="jawi">E سچارا برسنديرين مڠاينتيݢراسيكن سموا كاندوڠن اهلي ك دالم لامن ويب</span></p>
+    </article>
+
+    <article class="node-label node-label--key" data-node="w12b-testing" style="--top: 1088px; --left: 40px;">
+      <div class="node-tag"><span data-lang-content="en">WEEK 12b · JUN 5–7</span><span data-lang-content="ms">MINGGU 12b · 5–7 JUN</span><span data-lang-content="zh">第 12b 周 · 6/5–6/7</span><span data-lang-content="ta">வாரம் 12b · ஜூன் 5–7</span><span data-lang-content="jawi">ميڠݢو ١٢b · ٥–٧ جون</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Internal testing · whole team</span><span data-lang-content="ms">Ujian dalaman · seluruh pasukan</span><span data-lang-content="zh">内部测试 · 全员协作</span><span data-lang-content="ta">உள்ளக சோதனை · முழு குழு</span><span data-lang-content="jawi">اوجين دالمن · سلوروه ڤاسوكن</span></h2>
+      <p class="node-desc"><span data-lang-content="en">Full team tests the site, reports bugs, E iterates fixes</span><span data-lang-content="ms">Seluruh pasukan menguji laman, melaporkan bug, E mengulangi pembaikan</span><span data-lang-content="zh">全员协作测试网站 · 反馈 bug · E 迭代修复</span><span data-lang-content="ta">முழு குழுவும் தளத்தை சோதிக்கிறது, பிழைகளைப் புகாரளிக்கிறது, E மீண்டும் சரிசெய்கிறார்</span><span data-lang-content="jawi">سلوروه ڤاسوكن مڠوجي لامن، ملاڤوركن بوݢ، E مڠولڠي ڤمبيقكن</span></p>
+    </article>
+
+    <article class="node-label node-label--key" data-node="end" style="--top: 1208px; --left: 40px;">
+      <div class="node-tag"><span data-lang-content="en">JUN 8 / JUN 10 · ENDPOINT</span><span data-lang-content="ms">8 JUN / 10 JUN · TITIK AKHIR</span><span data-lang-content="zh">6/8 · 6/10 · 终点</span><span data-lang-content="ta">ஜூன் 8 / ஜூன் 10 · இறுதி புள்ளி</span><span data-lang-content="jawi">٨ جون / ١٠ جون · تيتيق اخير</span></div>
+      <h2 class="node-title"><span data-lang-content="en">Submission + presentation</span><span data-lang-content="ms">Penyerahan + Pembentangan</span><span data-lang-content="zh">最终提交 + 课堂展示</span><span data-lang-content="ta">சமர்ப்பிப்பு + வழங்கல்</span><span data-lang-content="jawi">ڤڽراهن + ڤمبنتڠن</span></h2>
+      <p class="node-desc"><span data-lang-content="en">6/8 site submission (E) · 6/10 in-class presentation (whole team)</span><span data-lang-content="ms">8/6 penyerahan laman (E) · 10/6 pembentangan dalam kelas (seluruh pasukan)</span><span data-lang-content="zh">6/8 网站提交（E）· 6/10 课堂展示（全员）</span><span data-lang-content="ta">6/8 தள சமர்ப்பிப்பு (E) · 6/10 வகுப்பறை வழங்கல் (முழு குழு)</span><span data-lang-content="jawi">٨/٦ ڤڽراهن لامن (E) · ١٠/٦ ڤمبنتڠن دالم كلس (سلوروه ڤاسوكن)</span></p>
+    </article>
+
+    <!-- Tooltip for hover (single shared element, JS rewrites content + position) -->
+    <div class="member-tooltip" id="member-tooltip" hidden>
+      <div class="tooltip-name"></div>
+      <div class="tooltip-desc"></div>
     </div>
 
-    <div class="week-card week-card--preamble week-card--right" data-week="2" style="--top: 215px; --left: 367px;">
-      <div class="week-num"><span data-lang-content="en">Week 2</span><span data-lang-content="ms">Minggu 2</span><span data-lang-content="zh">第 2 周</span><span data-lang-content="ta">வாரம் 2</span><span data-lang-content="jawi">ميڠݢو ٢</span></div>
-      <div class="week-title"><span data-lang-content="en">TEI + Voyant Training</span><span data-lang-content="ms">Pembelajaran TEI + Voyant</span><span data-lang-content="zh">TEI + Voyant 学习</span><span data-lang-content="ta">TEI + Voyant பயிற்சி</span><span data-lang-content="jawi">ڤمبلاجرن TEI + Voyant</span></div>
-      <div class="week-desc"><span data-lang-content="en">Encoded PS_007 + LI_016; tested ZH–TA hypothesis.</span><span data-lang-content="ms">Mengekod PS_007 + LI_016; menguji hipotesis ZH–TA.</span><span data-lang-content="zh">编码 PS_007 + LI_016；测试 ZH–TA 假设。</span><span data-lang-content="ta">PS_007 + LI_016 குறியீடாக்கப்பட்டது; ZH–TA கருதுகோள் சோதிக்கப்பட்டது.</span><span data-lang-content="jawi">مڠكود PS_007 + LI_016؛ مڠوجي هيڤوتيسيس ZH–TA.</span></div>
-    </div>
-
-    <div class="week-card week-card--mid week-card--left" data-week="7" style="--top: 355px; --right: 362px;">
-      <div class="week-num"><span data-lang-content="en">Week 7</span><span data-lang-content="ms">Minggu 7</span><span data-lang-content="zh">第 7 周</span><span data-lang-content="ta">வாரம் 7</span><span data-lang-content="jawi">ميڠݢو ٧</span></div>
-      <div class="week-title"><span data-lang-content="en">Group Proposal + CS1 Lingscape</span><span data-lang-content="ms">Cadangan Kumpulan + CS1 Lingscape</span><span data-lang-content="zh">小组提案 + CS1 Lingscape</span><span data-lang-content="ta">குழு முன்மொழிவு + CS1 Lingscape</span><span data-lang-content="jawi">چادڠن كومڤولن + CS1 Lingscape</span></div>
-      <div class="week-desc"><span data-lang-content="en">Group proposal + Lingscape app case study.</span><span data-lang-content="ms">Cadangan kumpulan + kajian kes aplikasi Lingscape.</span><span data-lang-content="zh">小组提案 + Lingscape 应用案例研究。</span><span data-lang-content="ta">குழு முன்மொழிவு + Lingscape செயலி வழக்கு ஆய்வு.</span><span data-lang-content="jawi">چادڠن كومڤولن + كاجين كيس اڤليكاسي Lingscape.</span></div>
-    </div>
-
-    <div class="week-card week-card--mid week-card--right" data-week="8-10" style="--top: 555px; --left: 345px;">
-      <div class="week-num"><span data-lang-content="en">Week 8–10</span><span data-lang-content="ms">Minggu 8–10</span><span data-lang-content="zh">第 8–10 周</span><span data-lang-content="ta">வாரம் 8–10</span><span data-lang-content="jawi">ميڠݢو ٨–١٠</span></div>
-      <div class="week-title"><span data-lang-content="en">Literature Prep + Excel Master Sheet</span><span data-lang-content="ms">Persiapan Literatur + Helaian Excel</span><span data-lang-content="zh">文献准备 + Excel 主表</span><span data-lang-content="ta">இலக்கிய தயாரிப்பு + Excel முதன்மை தாள்</span><span data-lang-content="jawi">ڤرسياڤن ليتراتور + هلاين Excel</span></div>
-      <div class="week-desc"><span data-lang-content="en">Field protocol agreed; 6-column annotation schema locked.</span><span data-lang-content="ms">Protokol lapangan dipersetujui; skema anotasi 6-lajur dimuktamadkan.</span><span data-lang-content="zh">田野协议达成；6 列标注架构锁定。</span><span data-lang-content="ta">கள நெறிமுறை ஒப்புக்கொள்ளப்பட்டது; 6-நெடுவரிசை குறிப்புத் திட்டம் உறுதிசெய்யப்பட்டது.</span><span data-lang-content="jawi">ڤروتوكول لاڤڠن ديڤرستوجوءي؛ سكيما انوتاسي ٦-لاجور ديموكتمدكن.</span></div>
-    </div>
-
-    <div class="week-card week-card--key week-card--left" data-week="11" style="--top: 775px; --right: 395px;">
-      <div class="week-num"><span data-lang-content="en">Week 11</span><span data-lang-content="ms">Minggu 11</span><span data-lang-content="zh">第 11 周</span><span data-lang-content="ta">வாரம் 11</span><span data-lang-content="jawi">ميڠݢو ١١</span></div>
-      <div class="week-title"><span data-lang-content="en">Phase 1 · Fieldwork + Handover</span><span data-lang-content="ms">Fasa 1 · Kerja Lapangan + Penyerahan</span><span data-lang-content="zh">阶段 1 · 田野采样 + 交接</span><span data-lang-content="ta">கட்டம் 1 · கள ஆய்வு + ஒப்படைப்பு</span><span data-lang-content="jawi">فاسا ١ · كرجا لاڤڠن + ڤڽراهن</span></div>
-      <div class="week-desc"><span data-lang-content="en">4 districts × 15 signs = 60 photographs collected. Handover to LI BINGYI on 5/30.</span><span data-lang-content="ms">4 daerah × 15 papan tanda = 60 foto dikumpul. Diserahkan kepada LI BINGYI pada 30/5.</span><span data-lang-content="zh">4 区 × 15 张招牌 = 60 张照片采集完成。5/30 移交给 LI BINGYI。</span><span data-lang-content="ta">4 பகுதிகள் × 15 பலகைகள் = 60 புகைப்படங்கள் சேகரிக்கப்பட்டன. 5/30 அன்று LI BINGYI-க்கு ஒப்படைப்பு.</span><span data-lang-content="jawi">٤ دائره × ١٥ ڤاڤن تنده = ٦٠ ݢمبر دكومڤول. ديسراهكن كڤد LI BINGYI ڤد ٣٠/٥.</span></div>
-    </div>
-
-    <div class="week-card week-card--key week-card--right" data-week="12" style="--top: 975px; --left: 404px;">
-      <div class="week-num"><span data-lang-content="en">Week 12</span><span data-lang-content="ms">Minggu 12</span><span data-lang-content="zh">第 12 周</span><span data-lang-content="ta">வாரம் 12</span><span data-lang-content="jawi">ميڠݢو ١٢</span></div>
-      <div class="week-title"><span data-lang-content="en">Phase 2 · Website Build</span><span data-lang-content="ms">Fasa 2 · Pembinaan Laman Web</span><span data-lang-content="zh">阶段 2 · 网站建设</span><span data-lang-content="ta">கட்டம் 2 · இணையதள கட்டமைப்பு</span><span data-lang-content="jawi">فاسا ٢ · ڤمبيناءن لامن ويب</span></div>
-      <div class="week-desc"><span data-lang-content="en">Final integration; internal testing (6/7).</span><span data-lang-content="ms">Integrasi akhir; ujian dalaman (7/6).</span><span data-lang-content="zh">最终集成；内部测试（6/7）。</span><span data-lang-content="ta">இறுதி ஒருங்கிணைப்பு; உள்ளக சோதனை (6/7).</span><span data-lang-content="jawi">اينتيݢراسي اخير؛ اوجين دالمن (٧/٦).</span></div>
-    </div>
-
-    <div class="week-card week-card--key week-card--left" data-week="13" style="--top: 1115px; --right: 394px;">
-      <div class="week-num"><span data-lang-content="en">Week 13</span><span data-lang-content="ms">Minggu 13</span><span data-lang-content="zh">第 13 周</span><span data-lang-content="ta">வாரம் 13</span><span data-lang-content="jawi">ميڠݢو ١٣</span></div>
-      <div class="week-title"><span data-lang-content="en">Submission + Presentation</span><span data-lang-content="ms">Pengemukaan + Pembentangan</span><span data-lang-content="zh">提交 + 展示</span><span data-lang-content="ta">சமர்ப்பித்தல் + வழங்கல்</span><span data-lang-content="jawi">ڤڠموكاءن + ڤمبنتڠن</span></div>
-      <div class="week-desc"><span data-lang-content="en">Final deliverables — 6/8 capstone submission · 6/10 in-class presentation.</span><span data-lang-content="ms">Penyerahan akhir — 8/6 kemuncak dihantar · 10/6 pembentangan dalam kelas.</span><span data-lang-content="zh">最终交付——6/8 提交毕业项目 · 6/10 课堂展示。</span><span data-lang-content="ta">இறுதி சமர்ப்பணங்கள் — 6/8 இறுதி திட்ட சமர்ப்பிப்பு · 6/10 வகுப்பறை வழங்கல்.</span><span data-lang-content="jawi">ڤڽراهن اخير — ٨/٦ ڤروجيك كموچق ديهنتر · ١٠/٦ ڤمبنتڠن دالم كلس.</span></div>
-    </div>
-
-    <div class="milestone-label milestone-label--left" data-milestone="apr20" style="--top: 480px; --right: 376px;">
-      <span class="milestone-date"><span data-lang-content="en">Apr 20</span><span data-lang-content="ms">20 Apr</span><span data-lang-content="zh">4/20</span><span data-lang-content="ta">ஏப்ரல் 20</span><span data-lang-content="jawi">٢٠ اڤريل</span></span>
-      <span class="milestone-event"><span data-lang-content="en">· CS1 submitted</span><span data-lang-content="ms">· Kajian Kes 1 dihantar</span><span data-lang-content="zh">· CS1 提交</span><span data-lang-content="ta">· CS1 சமர்ப்பிக்கப்பட்டது</span><span data-lang-content="jawi">· CS1 ديهنتر</span></span>
-    </div>
-
-    <div class="milestone-label milestone-label--right" data-milestone="may20" style="--top: 720px; --left: 377px;">
-      <span class="milestone-date"><span data-lang-content="en">May 20</span><span data-lang-content="ms">20 Mei</span><span data-lang-content="zh">5/20</span><span data-lang-content="ta">மே 20</span><span data-lang-content="jawi">٢٠ ماي</span></span>
-      <span class="milestone-event"><span data-lang-content="en">· CS2 submitted</span><span data-lang-content="ms">· Kajian Kes 2 dihantar</span><span data-lang-content="zh">· CS2 提交</span><span data-lang-content="ta">· CS2 சமர்ப்பிக்கப்பட்டது</span><span data-lang-content="jawi">· CS2 ديهنتر</span></span>
-    </div>
-
-    <div class="milestone-label milestone-label--left" data-milestone="may31" style="--top: 920px; --right: 392px;">
-      <span class="milestone-date"><span data-lang-content="en">May 31</span><span data-lang-content="ms">31 Mei</span><span data-lang-content="zh">5/31</span><span data-lang-content="ta">மே 31</span><span data-lang-content="jawi">٣١ ماي</span></span>
-      <span class="milestone-event"><span data-lang-content="en">· Phase 1 site live</span><span data-lang-content="ms">· Laman Fasa 1 dilancarkan</span><span data-lang-content="zh">· 阶段 1 网站上线</span><span data-lang-content="ta">· கட்டம் 1 இணையதளம் நேரலை</span><span data-lang-content="jawi">· لامن فاسا ١ ديلنچركن</span></span>
-    </div>
-
-    <div class="milestone-label milestone-label--right" data-milestone="jun8" style="--top: 1260px; --left: 403px;">
-      <span class="milestone-date"><span data-lang-content="en">Jun 8</span><span data-lang-content="ms">8 Jun</span><span data-lang-content="zh">6/8</span><span data-lang-content="ta">ஜூன் 8</span><span data-lang-content="jawi">٨ جون</span></span>
-      <span class="milestone-event"><span data-lang-content="en">· Final submission</span><span data-lang-content="ms">· Penyerahan akhir</span><span data-lang-content="zh">· 最终提交</span><span data-lang-content="ta">· இறுதி சமர்ப்பிப்பு</span><span data-lang-content="jawi">· ڤڽراهن اخير</span></span>
-    </div>
-
-    <div class="milestone-label milestone-label--left" data-milestone="jun10" style="--top: 1310px; --right: 405px;">
-      <span class="milestone-date"><span data-lang-content="en">Jun 10</span><span data-lang-content="ms">10 Jun</span><span data-lang-content="zh">6/10</span><span data-lang-content="ta">ஜூன் 10</span><span data-lang-content="jawi">١٠ جون</span></span>
-      <span class="milestone-event"><span data-lang-content="en">· In-class presentation</span><span data-lang-content="ms">· Pembentangan dalam kelas</span><span data-lang-content="zh">· 课堂展示</span><span data-lang-content="ta">· வகுப்பறை வழங்கல்</span><span data-lang-content="jawi">· ڤمبنتڠن دالم كلس</span></span>
+    <!-- Trace mode banner (visible only when a member is selected via click) -->
+    <div class="trace-banner" id="trace-banner" hidden>
+      <span class="trace-banner-label">
+        <span data-lang-content="en">Tracing</span><span data-lang-content="ms">Menjejak</span><span data-lang-content="zh">正在追溯</span><span data-lang-content="ta">தடம் காண்கிறது</span><span data-lang-content="jawi">منججق</span>
+      </span>
+      <span class="trace-banner-name"></span>
+      <span class="trace-banner-hint">
+        · <span data-lang-content="en">click empty space to exit</span><span data-lang-content="ms">klik ruang kosong untuk keluar</span><span data-lang-content="zh">点击空白取消</span><span data-lang-content="ta">வெளியேற காலி இடத்தை சொடுக்கவும்</span><span data-lang-content="jawi">كليك روانݢ كوسوڠ اونتوق كلوار</span>
+      </span>
     </div>
   </div>
 
@@ -150,31 +248,6 @@
 </main>
 
 <script src="../js/i18n.js"></script>
-<script>
-  (function () {
-    const reveal = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('revealed');
-          if (e.target.classList.contains('milestone-label')) {
-            const id = e.target.dataset.milestone;
-            const dot = document.querySelector('.milestone-dot[data-milestone="' + id + '"]');
-            if (dot) dot.classList.add('revealed');
-          }
-          reveal.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
-
-    document.querySelectorAll('.week-card, .milestone-label').forEach(function (el) {
-      reveal.observe(el);
-    });
-
-    window.addEventListener('load', function () {
-      const svg = document.querySelector('.timeline-river');
-      if (svg) svg.classList.add('loaded');
-    });
-  })();
-</script>
+<script src="../js/timeline-river.js"></script>
 </body>
 </html>

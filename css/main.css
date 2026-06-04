@@ -1,7 +1,20 @@
+@view-transition {
+  navigation: auto;
+}
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(kl-map),
+::view-transition-new(kl-map) {
+  animation-duration: 700ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .spa-root {
-  
   position: relative;
 }
 
@@ -335,6 +348,7 @@
   pointer-events: none;
   opacity: 0.78;
   transition: opacity 1.4s ease-out;
+  view-transition-name: kl-map;
 }
 
 .bottom-map > object,

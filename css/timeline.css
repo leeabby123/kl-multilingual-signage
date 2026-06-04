@@ -55,6 +55,30 @@
   line-height: 1.75;
 }
 
+/* Inline replay trigger inside the lede paragraph — text is interactive */
+.inline-replay {
+  cursor: pointer;
+  color: var(--color-text-primary, #2c2c2a);
+  border-bottom: 1.5px dotted currentColor;
+  font-weight: 500;
+  transition: all 0.15s ease-out;
+  padding: 0 2px;
+  white-space: nowrap;
+}
+
+.inline-replay:hover,
+.inline-replay:focus-visible {
+  color: #c0392b;
+  border-bottom-style: solid;
+  outline: none;
+}
+
+.inline-replay::before {
+  content: '▶\00a0';
+  font-size: 0.8em;
+  opacity: 0.75;
+}
+
 /* ------------------------------------------------------------
    Member Stats Dashboard — participation tracker (the deliverable)
    ------------------------------------------------------------ */
@@ -397,6 +421,25 @@
 body.trace-mode .marker:not(.trace-active) { opacity: 0.22; transition: opacity 0.3s ease-out; }
 body.trace-mode .marker.trace-active { opacity: 1; }
 body.trace-mode .node-label.trace-untouched { opacity: 0.35; transition: opacity 0.3s ease-out; }
+
+/* ------------------------------------------------------------
+   Reactive hover feedback — hovering an article wakes its cluster
+   ------------------------------------------------------------ */
+.node-label {
+  transition: opacity 0.6s ease-out, transform 0.3s ease-out;
+}
+
+.node-label:hover {
+  transform: translateY(-2px);
+}
+
+/* When article is hovered, JS adds .node-hover-active to corresponding cluster */
+.node-markers.node-hover-active .marker {
+  transform: scale(1.08);
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: transform 0.2s ease-out;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .timeline-river, .node-markers, .node-label, .marker {
